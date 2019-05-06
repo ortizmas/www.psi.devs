@@ -27,7 +27,7 @@ class UpdatePostRequest extends FormRequest
             'title' => 'required|string|max:255',
             'slug' => 'required|max:255|unique:posts,slug,' . $this->post->id,
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'description' => 'max:300',
+            'description' => 'max:1000',
             'content' => 'required',
             'external_url' => 'nullable|url',
             'category_id' => 'required|integer',

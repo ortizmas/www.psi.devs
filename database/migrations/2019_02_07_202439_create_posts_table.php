@@ -17,17 +17,17 @@ class CreatePostsTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->string('slug');
-            $table->string('image');
-            $table->text('content');
-            $table->date('date_start');
-            $table->date('date_end');
-            $table->text('description');
-            $table->string('target');
+            $table->string('image')->nullable();
+            $table->text('content')->nullable();
+            $table->date('date_start')->nullable();
+            $table->date('date_end')->nullable();
+            $table->text('description')->nullable();
+            $table->string('target')->nullable();
             $table->boolean('status')->default(1);
-            $table->string('external_url');
-            $table->char('redirect', 3);
-            $table->string('author');
-            $table->integer('order');
+            $table->string('external_url')->nullable();
+            $table->char('redirect', 3)->nullable();
+            $table->string('author')->nullable();
+            $table->integer('order')->nullable();
 
             $table->unsignedInteger('category_id');
             $table->foreign('category_id')->references('id')->on('categories');

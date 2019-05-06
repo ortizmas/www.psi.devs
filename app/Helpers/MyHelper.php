@@ -115,27 +115,122 @@ class MyHelper
 	}
 
 	public static function destaque(){
-	    $destaques = Post::where('status', 1)->get();
+	    $destaques = Post::where('status', 1)->where('category_id', 2)->get();
 	        
 	    foreach ($destaques as $key => $value) {
             if ($value->redirect == 1) { ?>
 	            <div class="carousel-item  <?php echo ($key == 0) ? 'active' : '' ?>">
 	            	<a target="<?php echo $value->target ?>" href="<?php echo $value->external_url ?>" title="<?php echo $value->title ?>"><img class="img-fluid" src="uploads/images/<?php echo $value->image ?>" alt="<?php echo $value->title ?>"></a>
-	            	<a target="<?php echo $value->target ?>" href="<?php echo $value->external_url ?>" title="<?php echo $value->title ?>"><div class="carousel-caption hidden-xs">
-	            		<p><?php echo $value->resumen ?></p>
+	            	<a target="<?php echo $value->target ?>" href="<?php echo $value->external_url ?>" title="<?php echo $value->title ?>"><div class="carousel-caption">
+	            		<p><?php echo $value->description ?></p>
 	            	</div></a>
 	            </div>
             <?php
             }else{ ?>
 				<div class="carousel-item  <?php echo ($key == 0) ? 'active' : '' ?>">
 	            	<a href="<?php echo '/destaque/'.$value->urlpath ?>" title=""><img class="img-fluid" src="uploads/images/<?php echo $value->image ?>" alt="<?php echo $value->title ?>"></a>
-	            	<a href="<?php echo '/destaque/'.$value->urlpath ?>" title=""><div class="carousel-caption hidden-xs">
-	            		<p><?php echo $value->resumen ?></p>
+	            	<a href="<?php echo '/destaque/'.$value->urlpath ?>" title=""><div class="carousel-caption">
+	            		<p><?php echo $value->description ?></p>
 	            	</div></a>
 	            </div>
             <?php
 	        }
 	    } 
 	}
+
+	public static function projetos(){
+	        $projetos = Post::where('status', 1)->where('category_id', 3)->get();
+		    foreach ($projetos as $key => $value) {
+		        if ($value->redirect == 1) { ?>
+		            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 pb-3">
+		            	<div class="card h-100" style="max-width: 18rem;">
+			            	<a class="img-card" target="<?php echo $value->target ?>" href="<?php echo $value->external_url ?>">
+		                        <img class="card-img-top img-fluid" src="uploads/images/<?php echo $value->image	?>" alt="<?php echo $value->title ?>">
+		                    </a>
+
+		                    <div class="card-body">
+	                            <h4 class="card-title">
+	                                <a target="<?php echo $value->target ?>" href="<?php echo $value->external_url ?>"><?php echo $value->title ?></a>
+	                            </h4>
+	                            <p class="">
+	                                <?php echo $value->description; ?>
+	                            </p>
+	                        </div>
+
+	                        <div class="card-read-more">
+	                            <a target="<?php echo $value->target ?>" href="<?php echo $value->external_url ?>"> class="btn btn-link btn-block">
+	                                Lêr mais
+	                            </a>
+	                        </div>
+						</div>
+						
+					</div>
+		        <?
+		        }else{ ?>
+		            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 pb-3">
+		            	<div class="card h-100" style="max-width: 26rem;">
+		            		<a class="img-card" target="<?php echo $value->target ?>" href="<?php echo 'projeto/'.$value->slug ?>">
+		                        <img class="card-img-top img-fluid" src="uploads/images/<?php echo $value->image	?>" alt="<?php echo $value->title ?>">
+		                    </a>
+
+		                    <div class="card-body">
+	                            <h4 class="card-title">
+	                                <a target="<?php echo $value->target ?>" href="<?php echo 'projeto/'.$value->slug ?>"><?php echo $value->title ?></a>
+	                            </h4>
+	                            <p class="card-text">
+	                                <?php echo $value->description; ?>
+	                            </p>
+	                        </div>
+		                    <div class="card-read-more">
+	                            <a target="<?php echo $value->target ?>" href="<?php echo 'projeto/'.$value->slug ?>" class="btn btn-link btn-block">
+	                                Lêr mais
+	                            </a>
+	                        </div>
+		            	</div>
+					</div>
+
+		        <?
+		        }
+		    }
+		}
+
+		public static function palestras(){
+	        $palestras = Post::where('status', 1)->where('category_id', 3)->get();;
+		    foreach ($palestras as $key => $value) {
+		        if ($value->redirect == 1) { ?>
+		            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 pb-3">
+						<div class="card">
+		            		<div class="image">
+		            			<img class="card-img-top img-fluid" src="uploads/images/<?php echo $value->image; ?>" alt="<?php echo $value->title ?>">
+		            		</div>
+		            		<div class="details">
+		            			<div class="center">
+		            				<a target="<?php echo $value->target ?>" href="<?php echo $value->external_url ?>"><h1><?php echo $value->title ?></h1></a>
+		            				<p><?php echo $value->description; ?></p>
+		            				<a class="btn btn-outline-dark btn-sm" target="<?php echo $value->target ?>" href="<?php echo $value->external_url ?>"><i class="fa fa-plus"> </i> INFO</a>
+		            			</div>
+		            		</div>
+		            	</div>
+					</div>
+		        <?
+		        }else{ ?>
+		            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 pb-3">
+		            	<div class="card">
+		            		<div class="image">
+		            			<img class="card-img-top img-fluid" src="uploads/images/<?php echo $value->image; ?>" alt="<?php echo $value->title ?>">
+		            		</div>
+		            		<div class="details">
+		            			<div class="center">
+		            				<a target="<?php echo $value->target ?>" href="<?php echo 'palestra/'.$value->slug ?>"><h1><?php echo $value->title ?></h1></a>
+		            				<p><?php echo $value->description; ?></p>
+		            				<a class="btn btn-outline-dark btn-sm" target="<?php echo $value->target ?>" href="<?php echo 'palestra/'.$value->slug ?>"><i class="fa fa-plus"> </i> INFO</a>
+		            			</div>
+		            		</div>
+		            	</div>
+					</div>
+		        <?
+		        }
+		    }
+		}
 
 }

@@ -75,7 +75,7 @@
                                 </div>
                                 
                                 <div class="form-group mb-3">
-                                    <textarea name="description" class="form-control{{ $errors->has('description') ? ' is-invalid' : '' }}" placeholder="Resumo...">{{ old('description') }}</textarea>
+                                    <textarea id="textarea-um" name="description" class="form-control{{ $errors->has('description') ? ' is-invalid' : '' }}" placeholder="Resumo...">{{ old('description') }}</textarea>
                                     <samll id="edescriptionHelp" class="form-text text-muted">Resumos são pequenas descrições opcionais do conteúdo do seu post feitas manualmente, que podem ser usadas em seu tema. <a target="_blank" href="https://codex.wordpress.org/pt-br:Resumo" title="Resumo">Aprenda mais sobre resumos manuais.</a></small>
                                     @if ($errors->has('description'))
                                         <span class="invalid-feedback" role="alert">
@@ -85,7 +85,7 @@
                                 </div>
 
                                 <div class="input-group mb-3">
-                                    <textarea id="content" name="content" class="form-control{{ $errors->has('content') ? ' is-invalid' : '' }}" placeholder="Conteudo do post" rows="10">{{ old('content') }}</textarea>
+                                    <textarea id="textarea-dois" name="content" class="form-control{{ $errors->has('content') ? ' is-invalid' : '' }}" placeholder="Conteudo do post" rows="10">{{ old('content') }}</textarea>
                                     @if ($errors->has('content'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('content') }}</strong>
@@ -346,7 +346,48 @@
         
     </script>
 
-    <script src="{{ asset('/dist/plugins/tinymce/tinymce.min.js') }}" type="text/javascript"></script>
+    <script src="/vendor/filemanagerjs/tinymce/tinymce.min.js" type="text/javascript"></script>
+    <script>
+        var BASE_URL = "/"; // use your own base url
+        tinymce.init({
+            selector: "textarea#textarea-um",
+            // theme: "modern",width: 1200,height: 60,
+            relative_urls: false,
+            remove_script_host: false,
+            plugins: [
+            "advlist autolink link image lists charmap print preview hr anchor pagebreak",
+            "searchreplace wordcount visualblocks visualchars insertdatetime media nonbreaking",
+            "table contextmenu directionality emoticons paste responsivefilemanager textcolor code"
+            ],
+            toolbar1: "undo redo | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | styleselect",
+
+        });
+
+        tinymce.init({
+            selector: "textarea#textarea-dois",
+            // theme: "modern",width: 1200,height: 60,
+            relative_urls: false,
+            remove_script_host: false,
+            plugins: [
+            "advlist autolink link image lists charmap print preview hr anchor pagebreak",
+            "searchreplace wordcount visualblocks visualchars insertdatetime media nonbreaking",
+            "table contextmenu directionality emoticons paste responsivefilemanager textcolor code"
+            ],
+            toolbar1: "undo redo | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | styleselect",
+            toolbar2: "| link unlink anchor | responsivefilemanager | image media | forecolor backcolor  | print preview code ",
+            image_advtab: true,
+            relative_urls: false,
+
+            external_filemanager_path: BASE_URL + "vendor/filemanagerjs/filemanager/",
+            filemanager_title: "Media Gallery",
+            external_plugins: { "filemanager": BASE_URL + "vendor/filemanagerjs/filemanager/plugin.min.js" }
+
+        });
+        
+    </script> 
+
+    <!--Funciona com laravel-filemanager v-5.6-->
+    {{-- <script src="{{ asset('/dist/plugins/tinymce/tinymce.min.js') }}" type="text/javascript"></script>
     <script>
         var editor_config = {
             path_absolute : "/",
@@ -383,5 +424,5 @@
         };
 
         tinymce.init(editor_config);
-    </script>
+    </script> --}}
 @stop
