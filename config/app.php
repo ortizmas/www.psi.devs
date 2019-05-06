@@ -218,7 +218,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
-        'Menus' => App\Helpers\Menus::class,
+        'MyHelper' => App\Helpers\MyHelper::class,
         //'Menu' => Harimayco\Menu\Facades\Menu::class,
         //'Image' => Intervention\Image\Facades\Image::class,
 
