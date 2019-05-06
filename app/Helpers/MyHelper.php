@@ -2,18 +2,10 @@
 namespace App\Helpers;
 
 use App\Page;
+use App\Post;
 
 class MyHelper
 {
-	public static function globalMenu($value='')
-	{
-		$pages = Page::get();
-		foreach ($pages as $value) {
-			
-		}
-		return $pages;
-	}
-
 	public function menuTest() 
 	{ ?>
 		<ul class="navbar-nav">
@@ -122,6 +114,28 @@ class MyHelper
 		}
 	}
 
-}
+	public static function destaque(){
+	    $destaques = Post::where('status', 1)->get();
+	        
+	    foreach ($destaques as $key => $value) {
+            if ($value->redirect == 1) { ?>
+	            <div class="carousel-item  <?php echo ($key == 0) ? 'active' : '' ?>">
+	            	<a target="<?php echo $value->target ?>" href="<?php echo $value->external_url ?>" title="<?php echo $value->title ?>"><img class="img-fluid" src="uploads/images/<?php echo $value->image ?>" alt="<?php echo $value->title ?>"></a>
+	            	<a target="<?php echo $value->target ?>" href="<?php echo $value->external_url ?>" title="<?php echo $value->title ?>"><div class="carousel-caption hidden-xs">
+	            		<p><?php echo $value->resumen ?></p>
+	            	</div></a>
+	            </div>
+            <?php
+            }else{ ?>
+				<div class="carousel-item  <?php echo ($key == 0) ? 'active' : '' ?>">
+	            	<a href="<?php echo '/destaque/'.$value->urlpath ?>" title=""><img class="img-fluid" src="uploads/images/<?php echo $value->image ?>" alt="<?php echo $value->title ?>"></a>
+	            	<a href="<?php echo '/destaque/'.$value->urlpath ?>" title=""><div class="carousel-caption hidden-xs">
+	            		<p><?php echo $value->resumen ?></p>
+	            	</div></a>
+	            </div>
+            <?php
+	        }
+	    } 
+	}
 
-?>
+}

@@ -2,24 +2,37 @@
 
 @section('content')
     @include('layouts.frontend.menu', ['some' => 'data'])
-    <div class="hero-content" id="home" style="background: url(/site/images/bg-gt-5.jpg) no-repeat center;">
-        
-
-        <div class="hero-content-overlay">
-            <div class="container">
+    
+    <div class="clearfix"></div>
+    <!--Slide-->
+    <section class="section-slide pt-1" id="inicio">
+        <div class="container-fluid">
+            <div class="container-page">
                 <div class="row">
-                    <div class="col-12">
-                        <div class="hero-content-wrap hero-content-wrap-gt flex flex-column justify-content-center align-items-start">
-                            <header class="entry-header">
-                                <h1>GESTÃO<br/><strong class="text-danger font-weight-bold">DE TALENTOS</strong></h1>
-                                <h3 class="text-white font-weight-bold">FACULDADE ADVENTISTA DA BAHIA</h3>
-                            </header>
+                    <div class="col-md">
+                        <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
+                            <!-- Wrapper for slides -->
+                            <div class="carousel-inner" role="listbox">
+                                <?php
+                                MyHelper::destaque();
+                                ?>
+                            </div>
+                            <!-- Controls -->
+                            <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
+                                <span class="fa fa-chevron-circle-left fa-2x" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="carousel-control-next" href="#carouselExampleFade" role="button" data-slide="next">
+                                <span class="fa fa-chevron-circle-right fa-2x" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
+    <!--start-slide-->
     
     <!--- Sobre Nós -->
     <section class="about-section bg-white pt-5 pb-5" id="sobre-programa">
