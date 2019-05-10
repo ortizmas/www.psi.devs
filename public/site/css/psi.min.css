@@ -144,7 +144,8 @@
 }
 /*TREINAMENTOS*/
 .treinamentos{
-    background: linear-gradient(270deg, #21abdf, #0e6f94);
+    /*background: linear-gradient(270deg, #21abdf, #0e6f94);*/
+    background-image: linear-gradient(to right top, #051937, #004d7a, #008793, #00bf72, #a8eb12);
     background-size: 400% 400%;
 
     -webkit-animation: treinamento 42s ease infinite;

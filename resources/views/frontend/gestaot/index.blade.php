@@ -1,6 +1,7 @@
 @extends('layouts.frontend.psi')
 
 @section('content')
+
     @include('layouts.frontend.menu', ['some' => 'data'])
     
     <div class="clearfix"></div>

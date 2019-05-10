@@ -61,10 +61,10 @@ class MyHelper
 				            $c2=$menuHeader->where('parent_id', $submenu->id)->where('enabled', 1)->count();
 				            if ( $c2 == 0 ) {
 				            	if($submenu->redirect==1){ ?>
-									<li><a target="<?php echo $submenu->target ?>" href="<?= $submenu->redirect ?>" title="Ir a <?= $submenu->title ?>"><?php echo $submenu->title ?></a></li>
+									<li><a target="<?php echo $submenu->target ?>" href="<?php echo $submenu->redirect ?>" title="Ir a <?php echo $submenu->title ?>"><?php echo $submenu->title ?></a></li>
 								<?php
 								}else{ ?>
-									<li><a target="<?php echo $submenu->target ?>" href="/<?=$menu->slug ?>/<?=$submenu->slug ?>" title="Ir a <?= $submenu->title ?>"><?php echo $submenu->title ?></a></li>
+									<li><a target="<?php echo $submenu->target ?>" href="/<?php echo $menu->slug ?>/<?php echo $submenu->slug ?>" title="Ir a <?php echo $submenu->title ?>"><?php echo $submenu->title ?></a></li>
 								<?php
 								}
 				            }else { ?>
@@ -76,10 +76,10 @@ class MyHelper
 					            			$c3=$menuHeader->where('parent_id', $treemenu->id)->where('enabled', 1)->count();
 					            			if  ($c3 == 0 ) {
 					            				if($treemenu->redireccionar==1){ ?>
-					            					<li><a tabindex="-1" target="<?php echo $treemenu->target ?>" href="<?= $treemenu->redirect ?>" title="Ir a <?= $treemenu->title ?>"><?php echo $treemenu->title ?></a></li>
+					            					<li><a tabindex="-1" target="<?php echo $treemenu->target ?>" href="<?php echo $treemenu->redirect ?>" title="Ir a <?php echo $treemenu->title ?>"><?php echo $treemenu->title ?></a></li>
 					            					<?php
 					            				}else{ ?>
-					            					<li><a tabindex="-1" target="<?php echo $treemenu->target ?>" href="/<?=$menu->slug ?>/<?=$submenu->slug ?>/<?=$treemenu->slug ?>" title="Ir a <?= $treemenu->title ?>"><?php echo $treemenu->title ?></a></li>
+					            					<li><a tabindex="-1" target="<?php echo $treemenu->target ?>" href="/<?=$menu->slug ?>/<?=$submenu->slug ?>/<?=$treemenu->slug ?>" title="Ir a <?php echo $treemenu->title ?>"><?php echo $treemenu->title ?></a></li>
 					            					<?php
 					            				}
 					            			} else { ?>
@@ -88,10 +88,10 @@ class MyHelper
 					            					<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
 							            				<?php foreach ($menuHeader->where('parent_id', $treemenu->id)->where('enabled', 1)->get() as $fourMenu): 
 							            					if($fourMenu->redireccionar==1){ ?>
-								            					<li><a tabindex="-1" target="<?php echo $fourMenu->target ?>" href="<?= $fourMenu->redirect ?>" title="Ir a <?= $fourMenu->title ?>"><?php echo $fourMenu->title ?></a></li>
+								            					<li><a tabindex="-1" target="<?php echo $fourMenu->target ?>" href="<?php echo $fourMenu->redirect ?>" title="Ir a <?php echo $fourMenu->title ?>"><?php echo $fourMenu->title ?></a></li>
 								            					<?php
 								            				}else{ ?>
-								            					<li><a tabindex="-1" target="<?php echo $fourMenu->target ?>" href="/<?=$menu->slug ?>/<?=$submenu->slug ?>/<?=$fourMenu->slug ?>" title="Ir a <?= $fourMenu->title ?>"><?php echo $fourMenu->title ?></a></li>
+								            					<li><a tabindex="-1" target="<?php echo $fourMenu->target ?>" href="/<?=$menu->slug ?>/<?=$submenu->slug ?>/<?=$fourMenu->slug ?>" title="Ir a <?php echo $fourMenu->title ?>"><?php echo $fourMenu->title ?></a></li>
 								            					<?php
 								            				}
 							            				endforeach ?>
@@ -165,7 +165,7 @@ class MyHelper
 						</div>
 						
 					</div>
-		        <?
+		        <?php
 		        }else{ ?>
 		            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 pb-3">
 		            	<div class="card h-100" style="max-width: 26rem;">
@@ -189,7 +189,7 @@ class MyHelper
 		            	</div>
 					</div>
 
-		        <?
+		        <?php
 		        }
 		    }
 		}
@@ -212,7 +212,7 @@ class MyHelper
 		            		</div>
 		            	</div>
 					</div>
-		        <?
+		        <?php
 		        }else{ ?>
 		            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 pb-3">
 		            	<div class="card">
@@ -228,7 +228,7 @@ class MyHelper
 		            		</div>
 		            	</div>
 					</div>
-		        <?
+		        <?php
 		        }
 		    }
 		}
