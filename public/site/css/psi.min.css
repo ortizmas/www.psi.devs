@@ -212,6 +212,12 @@
   position: absolute;
   top: 100%;
 }
+.treinamentos .card-title a {
+  color: #727272;
+}
+.treinamentos .card-title a:hover {
+  color: #051937 !important;
+}
 .line {
   position: relative;
   margin-bottom: 2rem;
@@ -279,7 +285,7 @@
 }
 .treinamentos .img-card img{
   width: 100%;
-  height: auto;
+  height: 250px;
   object-fit:cover; 
   transition: all .25s ease;
 } 

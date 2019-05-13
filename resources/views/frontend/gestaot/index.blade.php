@@ -70,7 +70,7 @@
     </section> --}}
 
     <!--Inicio treinamentos style="background-image: url(/img/psi/bg/bg-4.jpg);"-->
-    <section class="treinamentos pt-2 pb-5">
+    <section class="treinamentos pt-2 pb-5" id="treinamentos">
         <div class="container-fluid">
             <div class="container-page">
                 <div class="text-center pb-4">
@@ -85,7 +85,7 @@
     <!----//End-treinamentos----->
 
     <!--Inicio treinamentos-->
-    <section class="palestras pt-4 pb-4">
+    <section class="palestras pt-4 pb-4" id="palestras">
         <div class="container-fluid">
             <div class="container-page">
                 <div class="text-center">
@@ -190,7 +190,7 @@
 
 
     <footer class="site-footer">
-        <div class="footer-widgets">
+        <div class="footer-widgets pt-4 pb-2">
             <div class="container">
                 <div class="row flex-wrap justify-content-center justify-content-lg-between align-items-center">
                     <div class="col-12 col-lg-3">
@@ -206,12 +206,12 @@
                     <div class="col-12 col-lg-9 mt-4 mt-lg-0">
                         <div class="footer-bar-nav">
                             <ul class="flex flex-wrap justify-content-center justify-content-lg-end align-items-center">
-                                <li><a href="#">SOBRE O PROGRAMA</a></li>
-                                <li><a href="#">INSCRIÇÕES</a></li>
-                                <li><a href="#">NOMINATA 2018</a></li>
-                                <li><a href="#">CURSOS PARTICIPANTES</a></li>
-                                <li><a href="#">ORGANIZAÇÃO</a></li>
-
+                                <li><a href="#">HOME</a></li>
+                                <li><a href="#">QUEM SOMOS</a></li>
+                                <li><a href="#">TREINAMENTOS</a></li>
+                                <li><a href="#">PALESTRAS</a></li>
+                                <li><a href="#">CLINICA</a></li>
+                                <li><a href="#">CONTATOS</a></li>
                             </ul>
                         </div>
                     </div>
@@ -223,8 +223,7 @@
             <div class="container pt-3 pb-1">
                 <div class="row flex-wrap justify-content-center align-items-center">
                     <div class="col-12 col-lg-8 align-items-center">
-                        <p class="text-muted text-center">FADBA - Faculdade Adventista da Bahia - © 2019 - Todos os direitos reservados.
-                            Uma instituição do Sistema Educacional Adventista - Igreja Adventista do Sétimo Dia</p>
+                        <p class="text-muted text-center">PSI - Pro Saúde Integral - © 2019 - Todos os direitos reservados.</p>
                     </div>
                 </div>
             </div>

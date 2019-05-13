@@ -46,7 +46,7 @@ class MyHelper
 			$c1=$menuHeader->where('parent_id', $menu->id)->count();
 			if ( $c1 == 0 ) {
 				if($menu->redirect==1)	{	?>
-			   		<li class="<?php echo ($key==0) ? 'active' : '' ?>"><a class="text-dark text-uppercase font-weight-bold" target="<?php echo $menu->target ?>" href="<?php echo $menu->external_url ?>" ><?php echo $menu->title ?><span class="sr-only"></span></a></li>
+			   		<li class="<?php echo ($key==0) ? 'active' : '' ?>"><a class="text-dark text-uppercase font-weight-bold js-scroll-trigger" target="<?php echo $menu->target ?>" href="<?php echo $menu->external_url ?>" ><?php echo $menu->title ?><span class="sr-only"></span></a></li>
 				<?php
 				} else { ?>
 					<li class="<?php echo ($key==0) ? 'active' : '' ?>"><a class="text-dark text-uppercase font-weight-bold" target="<?php echo $menu->target ?>" href="<?php echo $menu->slug ?>" ><?php echo $menu->title ?><span class="sr-only"></span></a></li>
@@ -152,16 +152,16 @@ class MyHelper
 	                            <h4 class="card-title">
 	                                <a target="<?php echo $value->target ?>" href="<?php echo $value->external_url ?>"><?php echo $value->title ?></a>
 	                            </h4>
-	                            <p class="">
-	                                <?php echo $value->description; ?>
-	                            </p>
+	                            <!-- <p class="">
+	                                <?php //echo $value->description; ?>
+	                            </p> -->
 	                        </div>
 
-	                        <div class="card-read-more">
-	                            <a target="<?php echo $value->target ?>" href="<?php echo $value->external_url ?>"> class="btn btn-link btn-block">
+	                        <!-- <div class="card-read-more">
+	                            <a target="<?php //echo $value->target ?>" href="<?php //echo $value->external_url ?>"> class="btn btn-link btn-block">
 	                                Lêr mais
 	                            </a>
-	                        </div>
+	                        </div> -->
 						</div>
 						
 					</div>
@@ -174,18 +174,18 @@ class MyHelper
 		                    </a>
 
 		                    <div class="card-body">
-	                            <h4 class="card-title">
-	                                <a target="<?php echo $value->target ?>" href="<?php echo 'projeto/'.$value->slug ?>"><?php echo $value->title ?></a>
+	                            <h4 class="card-title text-center">
+	                                <a class="text-muted" target="<?php echo $value->target ?>" href="<?php echo 'projeto/'.$value->slug ?>"><?php echo $value->title ?></a>
 	                            </h4>
-	                            <p class="card-text">
-	                                <?php echo $value->description; ?>
-	                            </p>
+	                            <!-- <p class="card-text">
+	                                <?php //echo $value->description; ?>
+	                            </p> -->
 	                        </div>
-		                    <div class="card-read-more">
-	                            <a target="<?php echo $value->target ?>" href="<?php echo 'projeto/'.$value->slug ?>" class="btn btn-link btn-block">
+		                    <!-- <div class="card-read-more">
+	                            <a target="<?php //echo $value->target ?>" href="<?php //echo 'projeto/'.$value->slug ?>" class="btn btn-link btn-block">
 	                                Lêr mais
 	                            </a>
-	                        </div>
+	                        </div> -->
 		            	</div>
 					</div>
 

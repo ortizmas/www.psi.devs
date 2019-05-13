@@ -2993,7 +2993,6 @@ ul.author-social-profile li:hover .fa {
     background: linear-gradient(90deg, #2483d0 20%, #49a7f3 45%, rgb(36, 131, 208) 75%);
 }
 .footer-widgets {
-    padding: 60px 0;
     background: rgb(251,93,92);
     /*background: linear-gradient(90deg, rgba(251,93,92,1) 20%, rgba(235,57,55,1) 45%, rgba(251,93,92,1) 75%);*/
     background: linear-gradient(90deg, #2483d0 20%, #49a7f3 45%, rgb(36, 131, 208) 75%);
@@ -3120,7 +3119,7 @@ p.footer-copyright {
     color:#fff;
     font-size:16px;
     text-transform:capitalize;
-    padding:16px 15px;
+    padding:8px 15px;
     font-family:'Roboto',
     sans-serif;
     display: block !important;
