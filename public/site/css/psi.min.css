@@ -489,10 +489,10 @@
     padding-top: 50px;
     padding-bottom: 60px;
 }
+/*quem somos*/
 #quemsomos{
     display: block;
     clear: both;
-    padding-top: 8em;
 }
 #quemsomos-title{
     clear: both;
@@ -505,6 +505,19 @@
     padding: 1em;
     margin-bottom: 0px;
 }
+.bg-blue {
+    background-color: #EDF5F6 !important;
+    color: #2093BF !important;
+}
+.white-blue {
+    background-color: #EDF5F6 !important;
+    color: #2093BF !important;
+}
+.blue-light-2 {
+    background-color: #001B25 !important;
+    color: #EDF5F6 !important;
+}
+
 #lojavirtual{
     display: block;
     clear: both;
@@ -1174,44 +1187,3 @@ input[type="tel"].error,textarea.error,input[type="email"].error, input[type="te
     padding:6px;
   }
 
-/*Extra small devices (portrait phones, less than 576px)*/
-@media (max-width: 575.98px) {
-    .container-page .carousel-control-prev {
-      color:#036;
-      margin-left: 0rem;
-      z-index: 10;
-    }
-    .treinamentos h2 {
-        font-size: 3em;
-    }
-    .section-slide {
-        padding-top: 11em;
-    }
-    .contact-form {
-        padding-right: 40px;
-        padding-left: 40px;
-    }
-}
-
-/*Small devices (landscape phones, 576px and up)*/
-@media (min-width: 576px) and (max-width: 767.98px) {
-    .contact-form {
-        padding-right: 40px;
-        padding-left: 40px;
-    }
-}
-
-/*Medium devices (tablets, 768px and up)*/
-@media (min-width: 768px) and (max-width: 991.98px) {
-
-}
-
-/*Large devices (desktops, 992px and up)*/
-@media (min-width: 992px) and (max-width: 1199.98px) {
-
-}
-
-/*Extra large devices (large desktops, 1200px and up)*/
-@media (min-width: 1200px) {
-
-}

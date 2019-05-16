@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use App\Career;
-use App\Trainee;
 use App\Page;
 use App\Menu;
 
@@ -11,26 +9,22 @@ use App\Http\Requests\Site\StoreInscriptionRequest;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class GtalentosController extends Controller
+class StartController extends Controller
 {
     public function index()
     {
-    	$career = Career::all();
-    	$trainees = Trainee::get();
-        // Used to get the menu items into the blade template
-    	return view('frontend.gestaot.index', compact('career', 'trainees'));
+    	return view('frontend.index');
     }
 
-    public function vacancies()
+    public function quemSomos()
     {
-        $pages = Page::where('slug', 'processos-seletivos')->first();
-        return view('frontend.gestaot.vacancies', compact('pages'));
+        return view('frontend.quem_somos');
         
     }
 
     public function show($slug = null)
     {
-    	//dd($slug);
+
     	if ($slug != null) {
     		$career = Career::all();
     		$trainees = Trainee::get();
@@ -53,16 +47,6 @@ class GtalentosController extends Controller
     {
         return view('frontend.gestaot.faleconosco');
         
-    }
-
-    public static function filter()
-    {
-    	return view('tests.filter');
-    }
-
-    public function inscription(StoreInscriptionRequest $request)
-    {
-    	dd($request);
     }
 
 }

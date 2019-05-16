@@ -18,10 +18,10 @@
 | Route::get('/users/{user}', 'UserController@destroy')->name('users.destroy'); //DELETE
 |
 */
+Route::get('/', 'Frontend\StartController@index')->name('inicio');
+Route::get('/quem-somos', 'Frontend\StartController@quemSomos')->name('quem.somos');
 
-Route::get('/', 'Frontend\AppController@index')->name('inicio');
-Route::get('/quem-somos', 'Frontend\GtalentosController@trabalheConosco');
-
+Route::get('/gestaot', 'Frontend\GtalentosController@index')->name('gestaot');
 Route::get('/processo-seletivo', 'Frontend\GtalentosController@vacancies')->name('processo.seletivo');
 Route::post('/send-email', 'MailController@sendemail')->name('send.email');
 Route::get('/fale-conosco', 'Frontend\GtalentosController@faleconosco')->name('fale.conosco');
