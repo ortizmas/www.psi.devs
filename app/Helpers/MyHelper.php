@@ -138,9 +138,9 @@ class MyHelper
 	    } 
 	}
 
-	public static function projetos(){
-	        $projetos = Post::where('status', 1)->where('category_id', 3)->get();
-		    foreach ($projetos as $key => $value) {
+	public static function treinamentos(){
+	        $trinamentos = Post::where('status', 1)->where('category_id', 3)->get();
+		    foreach ($trinamentos as $key => $value) {
 		        if ($value->redirect == 1) { ?>
 		            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 pb-3">
 		            	<div class="card h-100" style="max-width: 18rem;">
@@ -169,20 +169,20 @@ class MyHelper
 		        }else{ ?>
 		            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 pb-3">
 		            	<div class="card h-100" style="max-width: 26rem;">
-		            		<a class="img-card" target="<?php echo $value->target ?>" href="<?php echo 'projeto/'.$value->slug ?>">
+		            		<a class="img-card" target="<?php echo $value->target ?>" href="<?php echo 'treinamento/'.$value->slug ?>">
 		                        <img class="card-img-top img-fluid" src="uploads/images/<?php echo $value->image	?>" alt="<?php echo $value->title ?>">
 		                    </a>
 
 		                    <div class="card-body">
 	                            <h4 class="card-title text-center">
-	                                <a class="text-muted" target="<?php echo $value->target ?>" href="<?php echo 'projeto/'.$value->slug ?>"><?php echo $value->title ?></a>
+	                                <a class="text-muted" target="<?php echo $value->target ?>" href="<?php echo 'treinamento/'.$value->slug ?>"><?php echo $value->title ?></a>
 	                            </h4>
 	                            <!-- <p class="card-text">
 	                                <?php //echo $value->description; ?>
 	                            </p> -->
 	                        </div>
 		                    <!-- <div class="card-read-more">
-	                            <a target="<?php //echo $value->target ?>" href="<?php //echo 'projeto/'.$value->slug ?>" class="btn btn-link btn-block">
+	                            <a target="<?php //echo $value->target ?>" href="<?php //echo 'treinamento/'.$value->slug ?>" class="btn btn-link btn-block">
 	                                Lêr mais
 	                            </a>
 	                        </div> -->

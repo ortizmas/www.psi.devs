@@ -3,13 +3,13 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Page;
-use App\Menu;
+use App\Post;
 
 use App\Http\Requests\Site\StoreInscriptionRequest;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class StartController extends Controller
+class ContentController extends Controller
 {
     public function index()
     {
@@ -22,17 +22,16 @@ class StartController extends Controller
         
     }
 
-    public function show($slug = null)
+    public function treinamento(Request $request, $slug = null)
     {
 
     	if ($slug != null) {
-    		$career = Career::all();
-    		$trainees = Trainee::get();
+    		$post = Post::where('category_id', 3)->where('status', 1)->where('slug', $slug)->first();
+            $post = collect($post)->all();
+            $post = (object)$post;
 
-    		$trainee = Trainee::where('enabled', 1)->where('slug', $slug)->first();
-
-    		if ( $trainee->count() > 0 ) {
-    			return view('frontend.gestaot.show', compact('trainee', 'career', 'trainees'));
+    		if ( $post != '' ) {
+    			return view('frontend.content', compact('post'));
     		}
     		//abort(404);
     		return response()->view('errors.custom', [], 404);

@@ -77,7 +77,7 @@
                     <h2 class="line-one text-uppercase">Treinamentos</h2>
                 </div>
                 <div class="row justify-content-center">
-                    <?php MyHelper::projetos() ?>
+                    <?php MyHelper::treinamentos() ?>
                 </div>
             </div>
         </div>
