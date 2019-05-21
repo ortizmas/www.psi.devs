@@ -84,7 +84,7 @@
     </section>
     <!----//End-treinamentos----->
 
-    <!--Inicio treinamentos-->
+    <!--Inicio palestras-->
     <section class="palestras pt-4 pb-4" id="palestras">
         <div class="container-fluid">
             <div class="container-page">
@@ -92,12 +92,12 @@
                     <h2 class="pb-3 text-uppercase">Palestras</h2>
                 </div>
                 <div class="row justify-content-center">
-                    <?php MyHelper::palestras() ?>
+                    <?php MyHelper::palestras(); ?>
                 </div>
             </div>
         </div>
     </section>
-    <!----//End-treinamentos----->
+    <!----//End-palestras----->
 
     <!-- contact section starts here -->
     <section id="contato" class="bg-contact pb-5">

@@ -31,7 +31,7 @@ class ContentController extends Controller
             $post = (object)$post;
 
     		if ( $post != '' ) {
-    			return view('frontend.content', compact('post'));
+    			return view('frontend.treinamento', compact('post'));
     		}
     		//abort(404);
     		return response()->view('errors.custom', [], 404);
@@ -40,6 +40,26 @@ class ContentController extends Controller
 
     	return redirect()->route('inicio');
     	
+    }
+
+    public function palestra(Request $request, $slug = null)
+    {
+
+        if ($slug != null) {
+            $post = Post::where('category_id', 4)->where('status', 1)->where('slug', $slug)->first();
+
+            if ( $post != null ) {
+                $post = collect($post)->all();
+                $post = (object)$post;
+                return view('frontend.palestra', compact('post'));
+            }
+            //abort(404);
+            return response()->view('errors.custom', [], 404);
+            
+        }
+
+        return redirect()->route('inicio');
+        
     }
 
     public function faleconosco()
