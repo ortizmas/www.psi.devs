@@ -62,6 +62,24 @@ class ContentController extends Controller
         
     }
 
+    public function getPage(Request $request, $slug = null)
+    {
+        if ($slug != null) {
+            $page = Page::where('slug', $slug)->where('enabled', 1)->first();
+
+            if ( $page != null ) {
+                $page = collect($page)->all();
+                $page = (object)$page;
+                return view('frontend.page', compact('page'));
+            }
+            //abort(404);
+            return response()->view('errors.custom', [], 404);
+            
+        }
+
+        return redirect()->route('inicio');
+    }
+
     public function faleconosco()
     {
         return view('frontend.gestaot.faleconosco');

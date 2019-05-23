@@ -139,11 +139,14 @@ class PostController extends Controller
             $date_end = Carbon::now('America/Bahia')->subDay()->format('Y-m-d');
         }
 
+
         if ( $request->image != null ) {
             $imageName = time().'.'.request()->image->getClientOriginalExtension();
             $updload = request()->image->move(public_path('uploads/images'), $imageName);
         } else {
-            $imageName = $request['image'];
+            $image = $post->findOrFail($post->id);
+            $image = collect($image)->all();
+            $imageName = $image['image'];
         }
         
         $postUpdate = Post::find($post->id);

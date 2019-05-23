@@ -107,7 +107,7 @@
                     <div class="row">
                         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                             <div class="contact-info text-right">
-                                <h3>Informação de Contato</h3>
+                                <h3 class="text-light">Informação de Contato</h3>
                                 <div class="row">
                                     <div class="col-xs-10 col-sm-10 col-md-10">
                                         <div class="info pt-4">
@@ -143,7 +143,7 @@
 
                         <div class="col-xs-12 col-md-6 col-lg-6">
                             <div class="contact-form">
-                                <h3>Deixe-nos uma mensagem </h3>
+                                <h3 class="text-light">Deixe-nos uma mensagem </h3>
                                 <form class="form" action="contato" method="post">
                                     <input type="hidden" name="url" value="<?php echo $_SERVER['REQUEST_URI'] ?>" placeholder="">
                                     <input class="name" type="text" name="nome" placeholder="Digite seu Nome" required >
