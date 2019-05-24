@@ -1,4 +1,4 @@
-@extends('layouts.frontend.app') 
+@extends('layouts.frontend.psi') 
 
 @section('content')
 	<section class="content">

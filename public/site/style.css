@@ -393,8 +393,8 @@ a:hover, a:active {
 }
 
 .hero-show-wrap {
-    height: 250px;
-    padding-top: 130px;
+    height: 200px;
+    padding-top: 10px;
 }
 
 .hero-show-wrap h4 {
@@ -1034,7 +1034,8 @@ a.btn {
 
 a.btn:hover {
     color: #fff;
-    background: #fb5d5c;
+    background: #006583;
+    background: linear-gradient(90deg, #1CB5E0 0%, #006684 100%);
 }
 
 /*
@@ -2945,7 +2946,6 @@ ul.author-social-profile li:hover .fa {
     letter-spacing: 0.1rem;
     outline: none;
     cursor: pointer;
-    background: #fb5d5c;
 }
 
 .contact-info p {
@@ -2993,7 +2993,6 @@ ul.author-social-profile li:hover .fa {
     background: linear-gradient(90deg, #2483d0 20%, #49a7f3 45%, rgb(36, 131, 208) 75%);
 }
 .footer-widgets {
-    padding: 60px 0;
     background: rgb(251,93,92);
     /*background: linear-gradient(90deg, rgba(251,93,92,1) 20%, rgba(235,57,55,1) 45%, rgba(251,93,92,1) 75%);*/
     background: linear-gradient(90deg, #2483d0 20%, #49a7f3 45%, rgb(36, 131, 208) 75%);
@@ -3107,7 +3106,7 @@ p.footer-copyright {
 }
 
 /*mENU MEGA*/
-.menu-area{background: #fb5d5cc4}
+.menu-area{background: #fcffff}
 .dropdown-menu{
     padding:0;
     margin:0;
@@ -3120,7 +3119,7 @@ p.footer-copyright {
     color:#fff;
     font-size:16px;
     text-transform:capitalize;
-    padding:16px 15px;
+    padding:8px 15px;
     font-family:'Roboto',
     sans-serif;
     display: block !important;
@@ -3135,22 +3134,38 @@ p.footer-copyright {
 .navbar-default .navbar-nav>.show>a:hover{
     color: #fff;
     background: utline: 0;
-
     left: 100%;
 }
 /*==========Sub Menu=v==========*/
-.mainmenu .collapse ul > li:hover > a{background: #d61a5e;
+.mainmenu .collapse ul > li:hover > a{
+    background: #3E3848;
+    color: #fff !important;
+    text-decoration: none;
+}
+.mainmenu .collapse ul ul > li > a {
+    color: #fff !important;
 }
 .mainmenu .collapse ul ul > li:hover > a, 
 .navbar-default .navbar-nav .show .dropdown-menu > li > a:focus, 
-.navbar-default .navbar-nav .show .dropdown-menu > li > a:hover{background: #d61a5e;}
+.navbar-default .navbar-nav .show .dropdown-menu > li > a:hover{
+    background: #666071;
+}
 .mainmenu .collapse ul ul ul > li:hover > a{
-    background: #4CAF50;
+    background: #827B8D;
 }
 
-.mainmenu .collapse ul ul, .mainmenu .collapse ul ul.dropdown-menu{background:#1565C0;}
-.mainmenu .collapse ul ul ul, .mainmenu .collapse ul ul ul.dropdown-menu{background:#1E88E5}
-.mainmenu .collapse ul ul ul ul, .mainmenu .collapse ul ul ul ul.dropdown-menu{background:#64B5F6}
+.mainmenu .collapse ul ul, .mainmenu .collapse ul ul.dropdown-menu{
+    background:#3E3848;
+}
+.mainmenu .collapse ul ul ul, .mainmenu .collapse ul ul ul.dropdown-menu{
+    background:#666071;
+}
+.mainmenu .collapse ul ul ul ul, .mainmenu .collapse ul ul ul ul.dropdown-menu{
+    background:#827B8D;
+}
+.mainmenu .collapse ul ul ul ul, .mainmenu .collapse ul ul ul ul.dropdown-menu li:hover > a{
+    background:#A29BAE;
+}
 
 /******************************Drop-down menu work on hover**********************************/
 .mainmenu{background: none;border: 0 solid;margin: 0;padding: 0;min-height:20px;width: 100%;}

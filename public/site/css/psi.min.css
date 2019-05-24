@@ -144,7 +144,8 @@
 }
 /*TREINAMENTOS*/
 .treinamentos{
-    background: linear-gradient(270deg, #21abdf, #0e6f94);
+    /*background: linear-gradient(270deg, #21abdf, #0e6f94);*/
+    background-image: linear-gradient(to right top, #051937, #004d7a, #008793, #00bf72, #a8eb12);
     background-size: 400% 400%;
 
     -webkit-animation: treinamento 42s ease infinite;
@@ -210,6 +211,12 @@
 .treinamentos h2.line-one:after {
   position: absolute;
   top: 100%;
+}
+.treinamentos .card-title a {
+  color: #727272;
+}
+.treinamentos .card-title a:hover {
+  color: #051937 !important;
 }
 .line {
   position: relative;
@@ -278,7 +285,7 @@
 }
 .treinamentos .img-card img{
   width: 100%;
-  height: auto;
+  height: 250px;
   object-fit:cover; 
   transition: all .25s ease;
 } 
@@ -482,10 +489,10 @@
     padding-top: 50px;
     padding-bottom: 60px;
 }
+/*quem somos*/
 #quemsomos{
     display: block;
     clear: both;
-    padding-top: 8em;
 }
 #quemsomos-title{
     clear: both;
@@ -498,6 +505,19 @@
     padding: 1em;
     margin-bottom: 0px;
 }
+.bg-blue {
+    background-color: #EDF5F6 !important;
+    color: #2093BF !important;
+}
+.white-blue {
+    background-color: #EDF5F6 !important;
+    color: #2093BF !important;
+}
+.blue-light-2 {
+    background-color: #001B25 !important;
+    color: #EDF5F6 !important;
+}
+
 #lojavirtual{
     display: block;
     clear: both;
@@ -899,8 +919,8 @@
 /*END CSS ANHADIDO*/
 input[type="text"],input[type="email"],input[type="tel"], input[type="number"]{
   width: 100%;
-  height: 35px;
-  border: 2px solid #00A8B5;
+  /*height: 35px;
+  border: 2px solid #00A8B5;*/
   font-size: 16px;
   padding: 10px;
   color: #acacac;
@@ -1167,44 +1187,3 @@ input[type="tel"].error,textarea.error,input[type="email"].error, input[type="te
     padding:6px;
   }
 
-/*Extra small devices (portrait phones, less than 576px)*/
-@media (max-width: 575.98px) {
-    .container-page .carousel-control-prev {
-      color:#036;
-      margin-left: 0rem;
-      z-index: 10;
-    }
-    .treinamentos h2 {
-        font-size: 3em;
-    }
-    .section-slide {
-        padding-top: 11em;
-    }
-    .contact-form {
-        padding-right: 40px;
-        padding-left: 40px;
-    }
-}
-
-/*Small devices (landscape phones, 576px and up)*/
-@media (min-width: 576px) and (max-width: 767.98px) {
-    .contact-form {
-        padding-right: 40px;
-        padding-left: 40px;
-    }
-}
-
-/*Medium devices (tablets, 768px and up)*/
-@media (min-width: 768px) and (max-width: 991.98px) {
-
-}
-
-/*Large devices (desktops, 992px and up)*/
-@media (min-width: 992px) and (max-width: 1199.98px) {
-
-}
-
-/*Extra large devices (large desktops, 1200px and up)*/
-@media (min-width: 1200px) {
-
-}

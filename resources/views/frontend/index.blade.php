@@ -1,6 +1,7 @@
 @extends('layouts.frontend.psi')
 
 @section('content')
+
     @include('layouts.frontend.menu', ['some' => 'data'])
     
     <div class="clearfix"></div>
@@ -69,34 +70,34 @@
     </section> --}}
 
     <!--Inicio treinamentos style="background-image: url(/img/psi/bg/bg-4.jpg);"-->
-    <section class="treinamentos pt-2 pb-5">
+    <section class="treinamentos pt-2 pb-5" id="treinamentos">
         <div class="container-fluid">
             <div class="container-page">
                 <div class="text-center pb-4">
                     <h2 class="line-one text-uppercase">Treinamentos</h2>
                 </div>
                 <div class="row justify-content-center">
-                    <?php MyHelper::projetos() ?>
+                    <?php MyHelper::treinamentos() ?>
                 </div>
             </div>
         </div>
     </section>
     <!----//End-treinamentos----->
 
-    <!--Inicio treinamentos-->
-    <section class="palestras pt-4 pb-4">
+    <!--Inicio palestras-->
+    <section class="palestras pt-4 pb-4" id="palestras">
         <div class="container-fluid">
             <div class="container-page">
                 <div class="text-center">
                     <h2 class="pb-3 text-uppercase">Palestras</h2>
                 </div>
                 <div class="row justify-content-center">
-                    <?php MyHelper::palestras() ?>
+                    <?php MyHelper::palestras(); ?>
                 </div>
             </div>
         </div>
     </section>
-    <!----//End-treinamentos----->
+    <!----//End-palestras----->
 
     <!-- contact section starts here -->
     <section id="contato" class="bg-contact pb-5">
@@ -106,7 +107,7 @@
                     <div class="row">
                         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                             <div class="contact-info text-right">
-                                <h3>Informação de Contato</h3>
+                                <h3 class="text-light">Informação de Contato</h3>
                                 <div class="row">
                                     <div class="col-xs-10 col-sm-10 col-md-10">
                                         <div class="info pt-4">
@@ -142,7 +143,7 @@
 
                         <div class="col-xs-12 col-md-6 col-lg-6">
                             <div class="contact-form">
-                                <h3>Deixe-nos uma mensagem </h3>
+                                <h3 class="text-light">Deixe-nos uma mensagem </h3>
                                 <form class="form" action="contato" method="post">
                                     <input type="hidden" name="url" value="<?php echo $_SERVER['REQUEST_URI'] ?>" placeholder="">
                                     <input class="name" type="text" name="nome" placeholder="Digite seu Nome" required >
@@ -188,47 +189,8 @@
     </div>
 
 
-    <footer class="site-footer">
-        <div class="footer-widgets">
-            <div class="container">
-                <div class="row flex-wrap justify-content-center justify-content-lg-between align-items-center">
-                    <div class="col-12 col-lg-3">
-                        <div class="follow-us">
-                            <ul class="follow-us flex flex-wrap align-items-center">
-                                <li><a target="_blank" href="https://www.facebook.com/gtfadba/"><i class="fa fa-facebook"></i></a></li>
-                                <li><a target="_blank" href="https://www.instagram.com/gtfadba/"><i class="fa fa-instagram"></i></a></li>
-                            </ul>
-                        </div>
-
-                    </div>
-
-                    <div class="col-12 col-lg-9 mt-4 mt-lg-0">
-                        <div class="footer-bar-nav">
-                            <ul class="flex flex-wrap justify-content-center justify-content-lg-end align-items-center">
-                                <li><a href="#">SOBRE O PROGRAMA</a></li>
-                                <li><a href="#">INSCRIÇÕES</a></li>
-                                <li><a href="#">NOMINATA 2018</a></li>
-                                <li><a href="#">CURSOS PARTICIPANTES</a></li>
-                                <li><a href="#">ORGANIZAÇÃO</a></li>
-
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="footer-copy bg-dark">
-            <div class="container pt-3 pb-1">
-                <div class="row flex-wrap justify-content-center align-items-center">
-                    <div class="col-12 col-lg-8 align-items-center">
-                        <p class="text-muted text-center">FADBA - Faculdade Adventista da Bahia - © 2019 - Todos os direitos reservados.
-                            Uma instituição do Sistema Educacional Adventista - Igreja Adventista do Sétimo Dia</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
+    @include('frontend.partials.footer', ['some' => 'data'])
+    
 @endsection
 
 

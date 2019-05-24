@@ -46,7 +46,7 @@ class MyHelper
 			$c1=$menuHeader->where('parent_id', $menu->id)->count();
 			if ( $c1 == 0 ) {
 				if($menu->redirect==1)	{	?>
-			   		<li class="<?php echo ($key==0) ? 'active' : '' ?>"><a class="text-dark text-uppercase font-weight-bold" target="<?php echo $menu->target ?>" href="<?php echo $menu->external_url ?>" ><?php echo $menu->title ?><span class="sr-only"></span></a></li>
+			   		<li class="<?php echo ($key==0) ? 'active' : '' ?>"><a class="text-dark text-uppercase font-weight-bold js-scroll-trigger" target="<?php echo $menu->target ?>" href="<?php echo $menu->external_url ?>" ><?php echo $menu->title ?><span class="sr-only"></span></a></li>
 				<?php
 				} else { ?>
 					<li class="<?php echo ($key==0) ? 'active' : '' ?>"><a class="text-dark text-uppercase font-weight-bold" target="<?php echo $menu->target ?>" href="<?php echo $menu->slug ?>" ><?php echo $menu->title ?><span class="sr-only"></span></a></li>
@@ -61,10 +61,10 @@ class MyHelper
 				            $c2=$menuHeader->where('parent_id', $submenu->id)->where('enabled', 1)->count();
 				            if ( $c2 == 0 ) {
 				            	if($submenu->redirect==1){ ?>
-									<li><a target="<?php echo $submenu->target ?>" href="<?= $submenu->redirect ?>" title="Ir a <?= $submenu->title ?>"><?php echo $submenu->title ?></a></li>
+									<li><a target="<?php echo $submenu->target ?>" href="<?php echo $submenu->redirect ?>" title="Ir a <?php echo $submenu->title ?>"><?php echo $submenu->title ?></a></li>
 								<?php
 								}else{ ?>
-									<li><a target="<?php echo $submenu->target ?>" href="/<?=$menu->slug ?>/<?=$submenu->slug ?>" title="Ir a <?= $submenu->title ?>"><?php echo $submenu->title ?></a></li>
+									<li><a target="<?php echo $submenu->target ?>" href="/<?php echo $menu->slug ?>/<?php echo $submenu->slug ?>" title="Ir a <?php echo $submenu->title ?>"><?php echo $submenu->title ?></a></li>
 								<?php
 								}
 				            }else { ?>
@@ -76,10 +76,10 @@ class MyHelper
 					            			$c3=$menuHeader->where('parent_id', $treemenu->id)->where('enabled', 1)->count();
 					            			if  ($c3 == 0 ) {
 					            				if($treemenu->redireccionar==1){ ?>
-					            					<li><a tabindex="-1" target="<?php echo $treemenu->target ?>" href="<?= $treemenu->redirect ?>" title="Ir a <?= $treemenu->title ?>"><?php echo $treemenu->title ?></a></li>
+					            					<li><a tabindex="-1" target="<?php echo $treemenu->target ?>" href="<?php echo $treemenu->redirect ?>" title="Ir a <?php echo $treemenu->title ?>"><?php echo $treemenu->title ?></a></li>
 					            					<?php
 					            				}else{ ?>
-					            					<li><a tabindex="-1" target="<?php echo $treemenu->target ?>" href="/<?=$menu->slug ?>/<?=$submenu->slug ?>/<?=$treemenu->slug ?>" title="Ir a <?= $treemenu->title ?>"><?php echo $treemenu->title ?></a></li>
+					            					<li><a tabindex="-1" target="<?php echo $treemenu->target ?>" href="/<?=$menu->slug ?>/<?=$submenu->slug ?>/<?=$treemenu->slug ?>" title="Ir a <?php echo $treemenu->title ?>"><?php echo $treemenu->title ?></a></li>
 					            					<?php
 					            				}
 					            			} else { ?>
@@ -88,10 +88,10 @@ class MyHelper
 					            					<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
 							            				<?php foreach ($menuHeader->where('parent_id', $treemenu->id)->where('enabled', 1)->get() as $fourMenu): 
 							            					if($fourMenu->redireccionar==1){ ?>
-								            					<li><a tabindex="-1" target="<?php echo $fourMenu->target ?>" href="<?= $fourMenu->redirect ?>" title="Ir a <?= $fourMenu->title ?>"><?php echo $fourMenu->title ?></a></li>
+								            					<li><a tabindex="-1" target="<?php echo $fourMenu->target ?>" href="<?php echo $fourMenu->redirect ?>" title="Ir a <?php echo $fourMenu->title ?>"><?php echo $fourMenu->title ?></a></li>
 								            					<?php
 								            				}else{ ?>
-								            					<li><a tabindex="-1" target="<?php echo $fourMenu->target ?>" href="/<?=$menu->slug ?>/<?=$submenu->slug ?>/<?=$fourMenu->slug ?>" title="Ir a <?= $fourMenu->title ?>"><?php echo $fourMenu->title ?></a></li>
+								            					<li><a tabindex="-1" target="<?php echo $fourMenu->target ?>" href="/<?=$menu->slug ?>/<?=$submenu->slug ?>/<?=$fourMenu->slug ?>" title="Ir a <?php echo $fourMenu->title ?>"><?php echo $fourMenu->title ?></a></li>
 								            					<?php
 								            				}
 							            				endforeach ?>
@@ -138,65 +138,67 @@ class MyHelper
 	    } 
 	}
 
-	public static function projetos(){
-	        $projetos = Post::where('status', 1)->where('category_id', 3)->get();
-		    foreach ($projetos as $key => $value) {
-		        if ($value->redirect == 1) { ?>
-		            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 pb-3">
-		            	<div class="card h-100" style="max-width: 18rem;">
-			            	<a class="img-card" target="<?php echo $value->target ?>" href="<?php echo $value->external_url ?>">
-		                        <img class="card-img-top img-fluid" src="uploads/images/<?php echo $value->image	?>" alt="<?php echo $value->title ?>">
-		                    </a>
+	public static function treinamentos(){
+        $trinamentos = Post::where('status', 1)->where('category_id', 3)->get();
+	    foreach ($trinamentos as $key => $value) {
+	        if ($value->redirect == 1) { ?>
+	            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 pb-3">
+	            	<div class="card h-100" style="max-width: 18rem;">
+		            	<a class="img-card" target="<?php echo $value->target ?>" href="<?php echo $value->external_url ?>">
+	                        <img class="card-img-top img-fluid" src="uploads/images/<?php echo $value->image	?>" alt="<?php echo $value->title ?>">
+	                    </a>
 
-		                    <div class="card-body">
-	                            <h4 class="card-title">
-	                                <a target="<?php echo $value->target ?>" href="<?php echo $value->external_url ?>"><?php echo $value->title ?></a>
-	                            </h4>
-	                            <p class="">
-	                                <?php echo $value->description; ?>
-	                            </p>
-	                        </div>
+	                    <div class="card-body">
+                            <h4 class="card-title">
+                                <a target="<?php echo $value->target ?>" href="<?php echo $value->external_url ?>"><?php echo $value->title ?></a>
+                            </h4>
+                            <!-- <p class="">
+                                <?php //echo $value->description; ?>
+                            </p> -->
+                        </div>
 
-	                        <div class="card-read-more">
-	                            <a target="<?php echo $value->target ?>" href="<?php echo $value->external_url ?>"> class="btn btn-link btn-block">
-	                                Lêr mais
-	                            </a>
-	                        </div>
-						</div>
-						
+                        <!-- <div class="card-read-more">
+                            <a target="<?php //echo $value->target ?>" href="<?php //echo $value->external_url ?>"> class="btn btn-link btn-block">
+                                Lêr mais
+                            </a>
+                        </div> -->
 					</div>
-		        <?
-		        }else{ ?>
-		            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 pb-3">
-		            	<div class="card h-100" style="max-width: 26rem;">
-		            		<a class="img-card" target="<?php echo $value->target ?>" href="<?php echo 'projeto/'.$value->slug ?>">
-		                        <img class="card-img-top img-fluid" src="uploads/images/<?php echo $value->image	?>" alt="<?php echo $value->title ?>">
-		                    </a>
+					
+				</div>
+	        <?php
+	        }else{ ?>
+	            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 pb-3">
+	            	<div class="card h-100" style="max-width: 26rem;">
+	            		<a class="img-card" target="<?php echo $value->target ?>" href="<?php echo 'treinamento/'.$value->slug ?>">
+	                        <img class="card-img-top img-fluid" src="uploads/images/<?php echo $value->image	?>" alt="<?php echo $value->title ?>">
+	                    </a>
 
-		                    <div class="card-body">
-	                            <h4 class="card-title">
-	                                <a target="<?php echo $value->target ?>" href="<?php echo 'projeto/'.$value->slug ?>"><?php echo $value->title ?></a>
-	                            </h4>
-	                            <p class="card-text">
-	                                <?php echo $value->description; ?>
-	                            </p>
-	                        </div>
-		                    <div class="card-read-more">
-	                            <a target="<?php echo $value->target ?>" href="<?php echo 'projeto/'.$value->slug ?>" class="btn btn-link btn-block">
-	                                Lêr mais
-	                            </a>
-	                        </div>
-		            	</div>
-					</div>
+	                    <div class="card-body">
+                            <h4 class="card-title text-center">
+                                <a class="text-muted" target="<?php echo $value->target ?>" href="<?php echo 'treinamento/'.$value->slug ?>"><?php echo $value->title ?></a>
+                            </h4>
+                            <!-- <p class="card-text">
+                                <?php //echo $value->description; ?>
+                            </p> -->
+                        </div>
+	                    <!-- <div class="card-read-more">
+                            <a target="<?php //echo $value->target ?>" href="<?php //echo 'treinamento/'.$value->slug ?>" class="btn btn-link btn-block">
+                                Lêr mais
+                            </a>
+                        </div> -->
+	            	</div>
+				</div>
 
-		        <?
-		        }
-		    }
-		}
+	        <?php
+	        }
+	    }
+	}
 
-		public static function palestras(){
-	        $palestras = Post::where('status', 1)->where('category_id', 3)->get();;
-		    foreach ($palestras as $key => $value) {
+	public static function palestras(){
+        $palestras = Post::where('status', 1)->where('category_id', 4)->get();
+        if( $palestras->count() > 0 )
+        {
+        	foreach ($palestras as $key => $value) {
 		        if ($value->redirect == 1) { ?>
 		            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 pb-3">
 						<div class="card">
@@ -212,7 +214,7 @@ class MyHelper
 		            		</div>
 		            	</div>
 					</div>
-		        <?
+		        <?php
 		        }else{ ?>
 		            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 pb-3">
 		            	<div class="card">
@@ -228,9 +230,12 @@ class MyHelper
 		            		</div>
 		            	</div>
 					</div>
-		        <?
+		        <?php
 		        }
 		    }
-		}
+        } else {
+    		return false;
+    	}
+    }
 
 }
