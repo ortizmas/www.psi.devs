@@ -68,7 +68,8 @@ class PostController extends Controller
 
         if ( $request->image != null ) {
             $imageName = time().'.'.request()->image->getClientOriginalExtension();
-            $updload = request()->image->move(public_path('uploads/images'), $imageName);
+            $updload = request()->image->move(public_path('uploads/images'), $imageName); //local
+            //$updload = request()->image->move(('../public_html/uploads/images'), $imageName); //server
         } else {
             $imageName = $request['image'];
         }
@@ -142,7 +143,8 @@ class PostController extends Controller
 
         if ( $request->image != null ) {
             $imageName = time().'.'.request()->image->getClientOriginalExtension();
-            $updload = request()->image->move(public_path('uploads/images'), $imageName);
+            $updload = request()->image->move(public_path('uploads/images'), $imageName); //local
+            //$updload = request()->image->move(('../public_html/uploads/images'), $imageName); //server
         } else {
             $image = $post->findOrFail($post->id);
             $image = collect($image)->all();
