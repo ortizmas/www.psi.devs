@@ -138,7 +138,7 @@ class MyHelper
 	    } 
 	}
 
-	public static function treinamentos(){
+	public static function treinamentosOne(){
         $trinamentos = Post::where('status', 1)->where('category_id', 3)->get();
 	    foreach ($trinamentos as $key => $value) {
 	        if ($value->redirect == 1) { ?>
@@ -187,6 +187,30 @@ class MyHelper
                             </a>
                         </div> -->
 	            	</div>
+				</div>
+
+	        <?php
+	        }
+	    }
+	}
+
+	public static function treinamentosTwo(){
+        $trinamentos = Post::where('status', 1)->where('category_id', 3)->get();
+	    foreach ($trinamentos as $key => $value) {
+	        if ($value->redirect == 1) { ?>
+	            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 hover-mask">
+	            	<a class="img-card" target="<?php echo $value->target ?>" href="<?php echo $value->external_url ?>">
+                        <img class="img-fluid" src="uploads/images/<?php echo $value->image	?>" alt="<?php echo $value->title ?>">
+                        <h2 class="text-white"><span class="fas fa-search"></span></h2>
+                    </a>
+				</div>
+	        <?php
+	        }else{ ?>
+	            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 hover-mask">
+            		<a class="img-card" target="<?php echo $value->target ?>" href="<?php echo 'treinamento/'.$value->slug ?>">
+                        <img class="img-fluid" src="uploads/images/<?php echo $value->image	?>" alt="<?php echo $value->title ?>">
+                        <h2 class="text-white"><span class="fas fa-search"></span></h2>
+                    </a>
 				</div>
 
 	        <?php
