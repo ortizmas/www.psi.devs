@@ -399,7 +399,6 @@
   position: relative;
   width: 100%;
   height: 100%;
-  background: url("http://unsplash.it/1200x800") center center no-repeat;
   background-size: cover;
 }
 .bg-img:before {
@@ -607,6 +606,115 @@
     padding-top: 50px;
     padding-bottom: 60px;
 }
+/*Events*/
+.btn-events{
+  background: #11cbd7;
+  border-radius: 5px!important;
+  display: inline-block;
+  padding: 2px 15px;
+  color: #fff;
+}
+.btn-events:hover{
+  background: #f6d873;
+  text-decoration: none;
+}
+.events .owl-stage {
+  padding-bottom: 3em;
+}
+
+.events .owl-nav {
+  position: relative;
+  position: absolute;
+  bottom: -30px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+
+.events .owl-nav .owl-prev, .events .owl-nav .owl-next {
+  position: relative;
+  display: inline-block;
+  padding: 20px;
+  font-size: 30px;
+  margin: 0 10px;
+}
+
+.events .owl-nav .owl-prev:hover, .events .owl-nav .owl-prev:focus, .events .owl-nav .owl-prev:active, .events .owl-nav .owl-next:hover, .events .owl-nav .owl-next:focus, .events .owl-nav .owl-next:active {
+  outline: none;
+}
+
+.events .owl-nav .owl-prev span, .events .owl-nav .owl-next span {
+  font-size: 30px;
+}
+
+.events .owl-nav .owl-prev.disabled, .events .owl-nav .owl-next.disabled {
+  opacity: .2;
+}
+.events-box {
+  -webkit-box-shadow: 0 2px 20px -5px rgba(0, 0, 0, 0.07);
+  box-shadow: 0 2px 20px -5px rgba(0, 0, 0, 0.07);
+  -webkit-transition: .3s all ease;
+  -o-transition: .3s all ease;
+  transition: .3s all ease;
+  z-index: 1;
+  background: #fff;
+}
+
+.events-box:hover, .events-box:focus {
+  -webkit-box-shadow: 0 2px 90px -5px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 90px -5px rgba(0, 0, 0, 0.2);
+  z-index: 2;
+}
+
+.events-box .text {
+  padding: 20px;
+}
+
+.events-box .text .heading {
+  font-size: 20px;
+  font-weight: 300;
+  margin: 0 0 20px 0;
+  padding: 0;
+}
+
+.events-box .text .heading a {
+  color: #000;
+}
+
+.events-box .text .heading a:hover {
+  color: #11cbd7;
+}
+
+.events-box .text .meta .number, .events-box .text .meta .price {
+  width: 50%;
+}
+
+.events-box .text .meta .number span {
+  color: #11cbd7;
+}
+
+.events-box .text .meta .price del {
+  color: #b3b3b3;
+}
+
+.events-box .text .meta .price span {
+  background: #11cbd7;
+  border-radius: 4px;
+  display: inline-block;
+  padding: 1px 10px;
+  color: #fff;
+}
+
+/*Video section*/
+
+.video-section{
+  background: #fff;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+
 /*quem somos*/
 #quemsomos{
     display: block;

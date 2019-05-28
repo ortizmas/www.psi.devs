@@ -50,23 +50,6 @@
     </section>
     <!----//End-treinamentos----->
 
-    <!-- Start dores nas costas-->
-    <section class="dores-costas pb-5">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md">
-                    <div class="dc-box bg-img">
-                        <div class="content">
-                            <h2 class="text-white">title of the image</h2>
-                            <p class="text-white">content here</p>
-                        </div>
-                        <img class="img-fluid" src="{{ asset('site/images/bg/bg-dores-costas.jpg') }}" alt="Dores nas costas" />
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!--Inicio palestras-->
     <section class="palestras pt-5 pb-4" id="palestras">
         <div class="container-fluid">
@@ -81,6 +64,459 @@
         </div>
     </section>
     <!----//End-palestras----->
+
+    <!-- Start dores nas costas-->
+    <section class="dores-costas pb-5">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md">
+                    <div class="dc-box bg-img">
+                        <div class="content">
+                            <h2 class="text-white text-uppercase">Dores nas costas nunca mais!</h2>
+                            <a class="btn btn-primary btn-lg" href="#" title="Dores nas costas">SAIBA MAIS</a>
+                        </div>
+                        <img class="img-fluid" src="{{ asset('site/images/bg/bg-dores-costas.jpg') }}" alt="Dores nas costas" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="events-section">
+        <div class="pb-5 bg-light">
+            {{-- <div class="container">
+                <div class="row justify-content-center mb-5 element-animate">
+                    <div class="col-md-7 text-center section-heading">
+                        <h2 class="text-primary heading">Popular Courses</h2>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit qui neque sint eveniet tempore sapiente.</p>
+                        <p><a href="#" class="btn btn-primary py-2 px-4"><span class="ion-ios-book mr-2"></span>Enroll Now</a></p>
+                    </div>
+                </div>
+            </div> --}}
+            <div class="container-fluid events element-animate">
+                <div id="events" class="owl-carousel">
+                    <div class="item">
+                        <div class="events-box">
+                            <figure>
+                                <img src="site/images/events/img_1.jpg" alt="Image" class="img-fluid">
+                            </figure>
+                            <div class="text pt-1">
+                                {{-- <h2 class="heading"><a href="#">Advanced JavaScript Learning</a></h2>
+                                <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit qui neque sint eveniet tempore sapiente.</p> --}}
+                                <div class="meta text-center">
+                                    <a class="btn-events btn-xs font-weight-bold" href="#" title="">SAIBA MAIS</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                  <div class="item">
+                    <div class="events-box">
+                        <figure>
+                          <img src="site/images/events/img_3.jpg" alt="Image" class="img-fluid">
+                        </figure>
+                        <div class="text pt-1">
+                                {{-- <h2 class="heading"><a href="#">Advanced JavaScript Learning</a></h2>
+                                <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit qui neque sint eveniet tempore sapiente.</p> --}}
+                                <div class="meta text-center">
+                                    <a class="btn-events btn-xs font-weight-bold" href="#" title="">SAIBA MAIS</a>
+                                </div>
+                            </div>
+                      </div>
+                  </div>
+
+                    <div class="item">
+                        <div class="events-box">
+                          <figure>
+                            <img src="site/images/events/img_2.jpg" alt="Image" class="img-fluid">
+                          </figure>
+                          <div class="text pt-1">
+                                {{-- <h2 class="heading"><a href="#">Advanced JavaScript Learning</a></h2>
+                                <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit qui neque sint eveniet tempore sapiente.</p> --}}
+                                <div class="meta text-center">
+                                    <a class="btn-events btn-xs font-weight-bold" href="#" title="">SAIBA MAIS</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                  <div class="item">
+                    <div class="events-box">
+                      <figure>
+                        <img src="site/images/events/img_1.jpg" alt="Image" class="img-fluid">
+                      </figure>
+                      <div class="text pt-1">
+                                {{-- <h2 class="heading"><a href="#">Advanced JavaScript Learning</a></h2>
+                                <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit qui neque sint eveniet tempore sapiente.</p> --}}
+                                <div class="meta text-center">
+                                    <a class="btn-events btn-xs font-weight-bold" href="#" title="">SAIBA MAIS</a>
+                                </div>
+                            </div>
+                    </div>
+                  </div>
+
+                  <div class="item">
+                    <div class="events-box">
+                        <figure>
+                          <img src="site/images/events/img_1.jpg" alt="Image" class="img-fluid">
+                        </figure>
+                        <div class="text pt-1">
+                                {{-- <h2 class="heading"><a href="#">Advanced JavaScript Learning</a></h2>
+                                <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit qui neque sint eveniet tempore sapiente.</p> --}}
+                                <div class="meta text-center">
+                                    <a class="btn-events btn-xs font-weight-bold" href="#" title="">SAIBA MAIS</a>
+                                </div>
+                            </div>
+                      </div>
+                  </div>
+
+                    <div class="item">
+                        <div class="events-box">
+                            <figure>
+                              <img src="site/images/events/img_3.jpg" alt="Image" class="img-fluid">
+                            </figure>
+                            <div class="text pt-1">
+                                    {{-- <h2 class="heading"><a href="#">Advanced JavaScript Learning</a></h2>
+                                    <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit qui neque sint eveniet tempore sapiente.</p> --}}
+                                    <div class="meta text-center">
+                                        <a class="btn-events btn-xs font-weight-bold" href="#" title="">SAIBA MAIS</a>
+                                    </div>
+                                </div>
+                          </div>
+                    </div>
+
+                  <div class="item">
+                    <div class="events-box">
+                      <figure>
+                        <img src="site/images/events/img_2.jpg" alt="Image" class="img-fluid">
+                      </figure>
+                      <div class="text pt-1">
+                                {{-- <h2 class="heading"><a href="#">Advanced JavaScript Learning</a></h2>
+                                <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit qui neque sint eveniet tempore sapiente.</p> --}}
+                                <div class="meta text-center">
+                                    <a class="btn-events btn-xs font-weight-bold" href="#" title="">SAIBA MAIS</a>
+                                </div>
+                            </div>
+                    </div>
+                  </div>
+
+                  <div class="item">
+                    <div class="events-box">
+                      <figure>
+                        <img src="site/images/events/img_1.jpg" alt="Image" class="img-fluid">
+                      </figure>
+                      <div class="text pt-1">
+                            {{-- <h2 class="heading"><a href="#">Advanced JavaScript Learning</a></h2>
+                            <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit qui neque sint eveniet tempore sapiente.</p> --}}
+                            <div class="meta text-center">
+                                <a class="btn-events btn-xs font-weight-bold" href="#" title="">SAIBA MAIS</a>
+                            </div>
+                        </div>
+                    </div>
+                  </div>
+                  
+                </div>
+              </div>
+
+              
+            </div>
+            <!-- END section -->
+    </section>
+
+    <!-- Start dores nas costas-->
+    <section class="dores-costas pb-5 bg-white">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md">
+                    <div class="dc-box bg-img">
+                        <div class="content">
+                            {{-- <h2 class="text-white text-uppercase">Dores nas costas nunca mais!</h2>
+                            <a class="btn btn-warning btn-lg" href="#" title="Dores nas costas">SAIBA MAIS</a> --}}
+                        </div>
+                        <img class="img-fluid" src="{{ asset('site/images/bg/bg-events.jpg') }}" alt="Dores nas costas" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="latest-movies ptb100">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-md-8">
+                    <h2 class="title">Latest Movies</h2>
+                </div>
+                <div class="col-md-4 align-self-center text-right">
+                    <a href="#" class="btn btn-icon btn-main btn-effect">
+                        view all
+                        <i class="ti-angle-double-right"></i>
+                    </a>
+                </div>
+            </div>
+
+
+            <div class="owl-carousel latest-movies-slider mt20">
+
+                <div class="item active">
+
+                    <div class="movie-box-1">
+
+                        <div class="poster">
+                            <img src="site/images/posters/poster-1.jpg" alt="">
+                        </div>
+
+
+                        <div class="buttons">
+                            <a href="https://www.youtube.com/watch?v=Q0CbN8sfihY" class="play-video">
+                                <i class="fa fa-play"></i>
+                            </a>
+                        </div>
+
+
+                        <div class="movie-details">
+                            <h4 class="movie-title">
+                                <a href="movie-detail.html">Star Wars</a>
+                            </h4>
+                            <span class="released">14 Dec 2017</span>
+                        </div>
+
+
+                        <div class="stars">
+                            <div class="rating">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star-o"></i>
+                            </div>
+                            <span>7.5 / 10</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="item">
+                    <div class="movie-box-1">
+                        <div class="poster">
+                            <img src="site/images/posters/poster-2.jpg" alt="">
+                        </div>
+
+                        <div class="buttons">
+                            <a href="https://www.youtube.com/watch?v=Q0CbN8sfihY" class="play-video">
+                                <i class="fa fa-play"></i>
+                            </a>
+                        </div>
+
+                        <div class="movie-details">
+                            <h4 class="movie-title">
+                                <a href="movie-detail.html">The Brain 1</a>
+                            </h4>
+                            <span class="released">20 Dec 2017</span>
+                        </div>
+
+                        <div class="stars">
+                            <div class="rating">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star-half-o"></i>
+                                <i class="fa fa-star-o"></i>
+                            </div>
+                            <span>7.2 / 10</span>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="item">
+
+                    <div class="movie-box-1">
+
+                        <div class="poster">
+                            <img src="site/images/posters/poster-3.jpg" alt="">
+                        </div>
+
+
+                        <div class="buttons">
+                            <a href="https://www.youtube.com/watch?v=Q0CbN8sfihY" class="play-video">
+                                <i class="fa fa-play"></i>
+                            </a>
+                        </div>
+
+
+                        <div class="movie-details">
+                            <h4 class="movie-title">
+                                <a href="movie-detail.html">The Mummy</a>
+                            </h4>
+                            <span class="released">9 Jun 2017</span>
+                        </div>
+
+
+                        <div class="stars">
+                            <div class="rating">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star-o"></i>
+                                <i class="fa fa-star-o"></i>
+                            </div>
+                            <span>5.5 / 10</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="item">
+
+                    <div class="movie-box-1">
+
+                        <div class="poster">
+                            <img src="site/images/posters/poster-4.jpg" alt="">
+                        </div>
+
+
+                        <div class="buttons">
+                            <a href="https://www.youtube.com/watch?v=N9ozvjDzE4Y" class="play-video">
+                                <i class="fa fa-play"></i>
+                            </a>
+                        </div>
+
+
+                        <div class="movie-details">
+                            <h4 class="movie-title">
+                                <a href="movie-detail.html">The Parrot</a>
+                            </h4>
+                            <span class="released">20 Jan 2017</span>
+                        </div>
+
+
+                        <div class="stars">
+                            <div class="rating">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star-o"></i>
+                                <i class="fa fa-star-o"></i>
+                            </div>
+                            <span>5.2 / 10</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="item">
+
+                    <div class="movie-box-1">
+
+                        <div class="poster">
+                            <img src="site/images/posters/poster-1.jpg" alt="">
+                        </div>
+
+
+                        <div class="buttons">
+                            <a href="https://www.youtube.com/watch?v=Q0CbN8sfihY" class="play-video">
+                                <i class="fa fa-play"></i>
+                            </a>
+                        </div>
+
+
+                        <div class="movie-details">
+                            <h4 class="movie-title">
+                                <a href="movie-detail.html">Star Wars</a>
+                            </h4>
+                            <span class="released">14 Dec 2017</span>
+                        </div>
+
+
+                        <div class="stars">
+                            <div class="rating">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star-o"></i>
+                            </div>
+                            <span>7.5 / 10</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="item">
+                    <div class="movie-box-1">
+                        <div class="poster">
+                            <img src="site/images/posters/poster-2.jpg" alt="">
+                        </div>
+
+                        <div class="buttons">
+                            <a href="https://www.youtube.com/watch?v=N9ozvjDzE4Y" class="play-video">
+                                <i class="fa fa-play"></i>
+                            </a>
+                        </div>
+
+                        <div class="movie-details">
+                            <h4 class="movie-title">
+                                <a href="movie-detail.html">The Brain 3</a>
+                            </h4>
+                            <span class="released">20 Dec 2017</span>
+                        </div>
+
+                        <div class="stars">
+                            <div class="rating">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star-half-o"></i>
+                                <i class="fa fa-star-o"></i>
+                            </div>
+                            <span>7.2 / 10</span>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="item">
+                    <div class="movie-box-1">
+                        <div class="poster">
+                            <img src="site/images/posters/poster-2.jpg" alt="">
+                        </div>
+
+                        <div class="buttons">
+                            <a href="https://www.youtube.com/watch?v=Q0CbN8sfihY" class="play-video">
+                                <i class="fa fa-play"></i>
+                            </a>
+                        </div>
+
+                        <div class="movie-details">
+                            <h4 class="movie-title">
+                                <a href="movie-detail.html">The Brain</a>
+                            </h4>
+                            <span class="released">20 Dec 2017</span>
+                        </div>
+
+                        <div class="stars">
+                            <div class="rating">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star-half-o"></i>
+                                <i class="fa fa-star-o"></i>
+                            </div>
+                            <span>7.2 / 10</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
 
     <!-- contact section starts here -->
     <section id="contato" class="bg-contact pb-5">
@@ -174,6 +610,69 @@
 
     @include('frontend.partials.footer', ['some' => 'data'])
     
+@endsection
+
+@section('scripts')
+    <script>
+        (function($) {
+            'use strict';
+            $('#events').owlCarousel({
+                center: false,
+                items:1,
+                autoplay:true,
+                loop:false,
+                stagePadding: 10,
+                margin:0,
+                dots: false,
+                nav: true,
+                navText: ['<span class="fas fa-arrow-left">', '<span class="fas fa-arrow-right">'],
+                responsive:{
+                    600:{
+                        margin:20,
+                        stagePadding: 10,
+                        items:2
+                    },
+                    800:{
+                        margin:20,
+                        stagePadding: 10,
+                        items:2
+                    },
+                    1000:{
+                        margin:20,
+                        stagePadding: 10,
+                        items:3
+                    },
+                    1900:{
+                        margin:20,
+                        stagePadding: 200,
+                        items:4
+                    }
+                }
+            });
+
+            //Video owl
+            $('#videos-owl').owlCarousel({
+                items: 1,
+                merge: true,
+                loop: true,
+                margin: 10,
+                video: true,
+                lazyLoad: true,
+                center: true,
+                responsive: {
+                  320: {
+                    items: 1
+                  },
+                  560: {
+                    items: 2
+                  },
+                  992: {
+                    items: 3
+                  }
+                }
+            });
+        })(jQuery);
+    </script>
 @endsection
 
 

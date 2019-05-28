@@ -1028,15 +1028,15 @@ a.btn {
     line-height: 1;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    color: #383749;
+    color: #fcffff;
     text-decoration: none;
 }
 
-a.btn:hover {
+/*a.btn:hover {
     color: #fff;
     background: #006583;
     background: linear-gradient(90deg, #1CB5E0 0%, #006684 100%);
-}
+}*/
 
 /*
 # Featured Courses: Horizontal Column
