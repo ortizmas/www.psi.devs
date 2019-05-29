@@ -1,5 +1,5 @@
 <div id="menu_area" class="menu-area">
-    <div class="container-fluid">
+    <div class="container-fluid pl-4 pr-4">
         <div class="container-page">
             <div class="row">
                 <nav class="navbar navbar-light navbar-expand-lg mainmenu">

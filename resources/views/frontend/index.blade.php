@@ -82,17 +82,88 @@
         </div>
     </section>
 
-    <section class="events-section">
-        <div class="pb-5 bg-light">
-            {{-- <div class="container">
-                <div class="row justify-content-center mb-5 element-animate">
-                    <div class="col-md-7 text-center section-heading">
-                        <h2 class="text-primary heading">Popular Courses</h2>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit qui neque sint eveniet tempore sapiente.</p>
-                        <p><a href="#" class="btn btn-primary py-2 px-4"><span class="ion-ios-book mr-2"></span>Enroll Now</a></p>
+    <section class="consulting">
+        <div class="container-fluid bg-info pt-5 pb-5">
+            <div class="row">
+                <div class="col-md justify-content-center">
+                    <div class="card bg-dark text-white">
+                        <img src="site/images/events/img_1.jpg" class="card-img" alt="">
+                        <div class="card-img-overlay text-center justify-content-center">
+                            <h1>CONSULTORIAS</h1>
+                            <a class="btn btn-primary btn-lg" href="#" title="">SAIBA MAIS</a>
+                        </div>
                     </div>
                 </div>
-            </div> --}}
+                <div class="col-md">
+                    <div class="card bg-dark text-white">
+                        <img src="site/images/events/img_2.jpg" class="card-img" alt="">
+                        <div class="card-img-overlay text-center justify-content-center">
+                            <h1>CONSULTORIAS</h1>
+                            <a class="btn btn-primary btn-lg" href="#" title="">SAIBA MAIS</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="card bg-dark text-white">
+                        <img src="site/images/events/img_3.jpg" class="card-img" alt="">
+                        <div class="card-img-overlay text-center justify-content-center">
+                            <h1>CONSULTORIAS</h1>
+                            <a class="btn btn-primary btn-lg" href="#" title="">SAIBA MAIS</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+        <div class="container pt-5 pb-5">
+            <div class="row">
+                <div class="col-12 col-sm-8 col-md-6 col-lg-4">
+                    <div class="card">
+                       <img class="card-img" src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/bologna-3.jpg" alt="Bologna">
+                       <div class="card-img-overlay text-white d-flex flex-column justify-content-center align-items-center ">
+                            <h4 class="card-title">CONSULTORIAS</h4>
+                            {{-- <h6 class="card-subtitle mb-2">Emilia-Romagna Region, Italy</h6>
+                            <p class="card-text">It is the seventh most populous city in Italy, at the heart of a metropolitan area of about one million people. </p> --}}
+                            <div class="link d-flex">
+                                <a class="btn btn-primary btn-lg" href="#" title="">SAIBA MAIS</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-8 col-md-6 col-lg-4">
+                    <div class="card">
+                       <img class="card-img" src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/bologna-3.jpg" alt="Bologna">
+                       <div class="card-img-overlay text-white d-flex flex-column justify-content-center align-items-center ">
+                            <h4 class="card-title">CONSULTORIAS</h4>
+                            {{-- <h6 class="card-subtitle mb-2">Emilia-Romagna Region, Italy</h6>
+                            <p class="card-text">It is the seventh most populous city in Italy, at the heart of a metropolitan area of about one million people. </p> --}}
+                            <div class="link d-flex">
+                                <a class="btn btn-primary btn-lg" href="#" title="">SAIBA MAIS</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-8 col-md-6 col-lg-4">
+                    <div class="card">
+                       <img class="card-img" src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/bologna-3.jpg" alt="Bologna">
+                       <div class="card-img-overlay text-white d-flex flex-column justify-content-center align-items-center ">
+                            <h4 class="card-title">CONSULTORIAS</h4>
+                            {{-- <h6 class="card-subtitle mb-2">Emilia-Romagna Region, Italy</h6>
+                            <p class="card-text">It is the seventh most populous city in Italy, at the heart of a metropolitan area of about one million people. </p> --}}
+                            <div class="link d-flex">
+                                <a class="btn btn-primary btn-lg" href="#" title="">SAIBA MAIS</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="events-section">
+        <div class="pb-5 bg-light">
             <div class="container-fluid events element-animate">
                 <div id="events" class="owl-carousel">
                     <div class="item">
@@ -101,8 +172,6 @@
                                 <img src="site/images/events/img_1.jpg" alt="Image" class="img-fluid">
                             </figure>
                             <div class="text pt-1">
-                                {{-- <h2 class="heading"><a href="#">Advanced JavaScript Learning</a></h2>
-                                <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit qui neque sint eveniet tempore sapiente.</p> --}}
                                 <div class="meta text-center">
                                     <a class="btn-events btn-xs font-weight-bold" href="#" title="">SAIBA MAIS</a>
                                 </div>
@@ -116,8 +185,6 @@
                           <img src="site/images/events/img_3.jpg" alt="Image" class="img-fluid">
                         </figure>
                         <div class="text pt-1">
-                                {{-- <h2 class="heading"><a href="#">Advanced JavaScript Learning</a></h2>
-                                <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit qui neque sint eveniet tempore sapiente.</p> --}}
                                 <div class="meta text-center">
                                     <a class="btn-events btn-xs font-weight-bold" href="#" title="">SAIBA MAIS</a>
                                 </div>
@@ -131,8 +198,6 @@
                             <img src="site/images/events/img_2.jpg" alt="Image" class="img-fluid">
                           </figure>
                           <div class="text pt-1">
-                                {{-- <h2 class="heading"><a href="#">Advanced JavaScript Learning</a></h2>
-                                <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit qui neque sint eveniet tempore sapiente.</p> --}}
                                 <div class="meta text-center">
                                     <a class="btn-events btn-xs font-weight-bold" href="#" title="">SAIBA MAIS</a>
                                 </div>
@@ -146,12 +211,10 @@
                         <img src="site/images/events/img_1.jpg" alt="Image" class="img-fluid">
                       </figure>
                       <div class="text pt-1">
-                                {{-- <h2 class="heading"><a href="#">Advanced JavaScript Learning</a></h2>
-                                <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit qui neque sint eveniet tempore sapiente.</p> --}}
-                                <div class="meta text-center">
-                                    <a class="btn-events btn-xs font-weight-bold" href="#" title="">SAIBA MAIS</a>
-                                </div>
+                            <div class="meta text-center">
+                                <a class="btn-events btn-xs font-weight-bold" href="#" title="">SAIBA MAIS</a>
                             </div>
+                        </div>
                     </div>
                   </div>
 
@@ -161,8 +224,6 @@
                           <img src="site/images/events/img_1.jpg" alt="Image" class="img-fluid">
                         </figure>
                         <div class="text pt-1">
-                                {{-- <h2 class="heading"><a href="#">Advanced JavaScript Learning</a></h2>
-                                <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit qui neque sint eveniet tempore sapiente.</p> --}}
                                 <div class="meta text-center">
                                     <a class="btn-events btn-xs font-weight-bold" href="#" title="">SAIBA MAIS</a>
                                 </div>
@@ -176,12 +237,10 @@
                               <img src="site/images/events/img_3.jpg" alt="Image" class="img-fluid">
                             </figure>
                             <div class="text pt-1">
-                                    {{-- <h2 class="heading"><a href="#">Advanced JavaScript Learning</a></h2>
-                                    <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit qui neque sint eveniet tempore sapiente.</p> --}}
-                                    <div class="meta text-center">
-                                        <a class="btn-events btn-xs font-weight-bold" href="#" title="">SAIBA MAIS</a>
-                                    </div>
+                                <div class="meta text-center">
+                                    <a class="btn-events btn-xs font-weight-bold" href="#" title="">SAIBA MAIS</a>
                                 </div>
+                            </div>
                           </div>
                     </div>
 
@@ -191,12 +250,10 @@
                         <img src="site/images/events/img_2.jpg" alt="Image" class="img-fluid">
                       </figure>
                       <div class="text pt-1">
-                                {{-- <h2 class="heading"><a href="#">Advanced JavaScript Learning</a></h2>
-                                <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit qui neque sint eveniet tempore sapiente.</p> --}}
-                                <div class="meta text-center">
-                                    <a class="btn-events btn-xs font-weight-bold" href="#" title="">SAIBA MAIS</a>
-                                </div>
+                            <div class="meta text-center">
+                                <a class="btn-events btn-xs font-weight-bold" href="#" title="">SAIBA MAIS</a>
                             </div>
+                        </div>
                     </div>
                   </div>
 
@@ -206,8 +263,6 @@
                         <img src="site/images/events/img_1.jpg" alt="Image" class="img-fluid">
                       </figure>
                       <div class="text pt-1">
-                            {{-- <h2 class="heading"><a href="#">Advanced JavaScript Learning</a></h2>
-                            <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit qui neque sint eveniet tempore sapiente.</p> --}}
                             <div class="meta text-center">
                                 <a class="btn-events btn-xs font-weight-bold" href="#" title="">SAIBA MAIS</a>
                             </div>
@@ -217,10 +272,7 @@
                   
                 </div>
               </div>
-
-              
             </div>
-            <!-- END section -->
     </section>
 
     <!-- Start dores nas costas-->

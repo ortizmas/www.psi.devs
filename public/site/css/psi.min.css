@@ -706,6 +706,24 @@
   color: #fff;
 }
 
+/*Consulting*/
+.consulting{
+  width: 100%;
+  background: #fcffff;
+}
+/*.consulting .card-img-overlay {
+    position: absolute;
+    top: 2.5rem !important;
+    right: 0;
+    bottom: 0!important;
+    left: 0;
+    padding: 1.25rem;
+}*/
+.consulting .card-img-overlay {
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+
 /*Video section*/
 
 .video-section{

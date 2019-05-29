@@ -3117,11 +3117,10 @@ p.footer-copyright {
 }
 .mainmenu a, .navbar-default .navbar-nav > li > a, .mainmenu ul li a , .navbar-expand-lg .navbar-nav .nav-link{
     color:#fff;
-    font-size:16px;
-    text-transform:capitalize;
-    padding:8px 15px;
-    font-family:'Roboto',
-    sans-serif;
+    font-size: .8rem;
+    text-transform: none !important;
+    padding: 8px 11px;
+    font-family: 'Roboto',sans-serif;
     display: block !important;
 }
 .mainmenu .active a,
