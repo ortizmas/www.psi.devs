@@ -34,40 +34,6 @@
         </div>
     </section>
     <!--start-slide-->
-    
-    <!--- Sobre Nós -->
-    {{-- <section class="about-section bg-white pt-5 pb-5" id="sobre-programa">
-        <div class="container-fluid">
-            <div class="row justify-content-center">
-                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-7 align-content-lg-stretch">
-                    <header class="heading">
-                        <p class="text-justify">
-                            A Faculdade Adventista da Bahia está localizada no Recôncavo Baiano, oferece aos seus alunos modernas instalações, ensino de alta qualidade e uma experiência educacional excepcional. <br>
-
-                            A instituição tem um corpo discente diversificado, com uma perspectiva bastante singular, com alunos de todos os estados do Brasil e de vários países do mundo. Há um compromisso institucional forte com a qualidade, colocando a Faculdade em uma trajetória ambiciosa, que procura consolidar sua posição crescente, desenvolvendo um portfólio inovador e de forte presença social, baseado nos princípios cristãos.
-                            Em suma, ser um colaborador da Faculdade Adventista da Bahia é fazer parte de um mundo voltado à educação, sem esquecer das pessoas. Este é o principal diferencial daquele que está em nossas salas de aula, nos escritórios e oficinas. Aqui o funcionário tem a “missão no coração”. Se você deseja fazer parte deste grupo seleto, envie-nos seu currículo candidatando-se às vagas abertas.
-                            <br>
-                            O Sistema Adventista de Educação está presente em 115 países, representada por 7.883 instituições da educação infantil ao ensino superior, com aproximadamente 90 mil professores comprometidos na formação de aproximadamente 1,8 milhão de alunos. Na América do Sul, existem 888 instituições com 277 mil alunos ao todo, distribuídos no ensino fundamental, médio e superior. Atualmente no Brasil, a rede conta com mais de 450 unidades escolares, 10 mil professores e cerca de 180 mil alunos. Além dessas unidades, a organização mantém 15 colégios em regime de internato, sendo que sete deles oferecem da educação básica à graduação, na América do Sul são cerca de 26 mil estudantes da educação superior (EDUCAÇÃO ADVENTISTA, 2013).
-                        </p>
-                    </header>
-                </div>
-
-                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3 mt-5 mt-lg-0">
-                     <!-- Swiper -->
-                    <div class="swiper-container testimonial-slider">
-                        <div class="swiper-wrapper">
-                            <div class="swiper-slide"><img src="site/images/gt-slide-1.jpg" alt="" class="img-fluid"></div>
-                            <div class="swiper-slide"><img src="site/images/gt-slide-2.jpg" alt="" class="img-fluid"></div>
-                            <div class="swiper-slide"><img src="site/images/gt-slide-3.jpg" alt="" class="img-fluid"></div>
-                            <div class="swiper-slide"><img src="site/images/gt-slide-4.jpg" alt="" class="img-fluid"></div>
-                        </div>
-                        <!-- Add Pagination -->
-                        <div class="swiper-pagination"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> --}}
 
     <!--Inicio treinamentos style="background-image: url(/img/psi/bg/bg-4.jpg);"-->
     <section class="treinamentos pt-2 pb-5" id="treinamentos">
@@ -77,7 +43,7 @@
                     <h2 class="line-one text-uppercase">Treinamentos</h2>
                 </div>
                 <div class="row justify-content-center">
-                    <?php MyHelper::treinamentos() ?>
+                    <?php MyHelper::treinamentosTwo() ?>
                 </div>
             </div>
         </div>
@@ -85,7 +51,7 @@
     <!----//End-treinamentos----->
 
     <!--Inicio palestras-->
-    <section class="palestras pt-4 pb-4" id="palestras">
+    <section class="palestras pt-5 pb-4" id="palestras">
         <div class="container-fluid">
             <div class="container-page">
                 <div class="text-center">
@@ -98,6 +64,511 @@
         </div>
     </section>
     <!----//End-palestras----->
+
+    <!-- Start dores nas costas-->
+    <section class="dores-costas pb-5">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md">
+                    <div class="dc-box bg-img">
+                        <div class="content">
+                            <h2 class="text-white text-uppercase">Dores nas costas nunca mais!</h2>
+                            <a class="btn btn-primary btn-lg" href="#" title="Dores nas costas">SAIBA MAIS</a>
+                        </div>
+                        <img class="img-fluid" src="{{ asset('site/images/bg/bg-dores-costas.jpg') }}" alt="Dores nas costas" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="consulting">
+        <div class="container-fluid bg-info pt-5 pb-5">
+            <div class="row">
+                <div class="col-md justify-content-center">
+                    <div class="card bg-dark text-white">
+                        <img src="site/images/events/img_1.jpg" class="card-img" alt="">
+                        <div class="card-img-overlay text-center justify-content-center">
+                            <h1>CONSULTORIAS</h1>
+                            <a class="btn btn-primary btn-lg" href="#" title="">SAIBA MAIS</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="card bg-dark text-white">
+                        <img src="site/images/events/img_2.jpg" class="card-img" alt="">
+                        <div class="card-img-overlay text-center justify-content-center">
+                            <h1>CONSULTORIAS</h1>
+                            <a class="btn btn-primary btn-lg" href="#" title="">SAIBA MAIS</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="card bg-dark text-white">
+                        <img src="site/images/events/img_3.jpg" class="card-img" alt="">
+                        <div class="card-img-overlay text-center justify-content-center">
+                            <h1>CONSULTORIAS</h1>
+                            <a class="btn btn-primary btn-lg" href="#" title="">SAIBA MAIS</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+        <div class="container pt-5 pb-5">
+            <div class="row">
+                <div class="col-12 col-sm-8 col-md-6 col-lg-4">
+                    <div class="card">
+                       <img class="card-img" src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/bologna-3.jpg" alt="Bologna">
+                       <div class="card-img-overlay text-white d-flex flex-column justify-content-center align-items-center ">
+                            <h4 class="card-title">CONSULTORIAS</h4>
+                            {{-- <h6 class="card-subtitle mb-2">Emilia-Romagna Region, Italy</h6>
+                            <p class="card-text">It is the seventh most populous city in Italy, at the heart of a metropolitan area of about one million people. </p> --}}
+                            <div class="link d-flex">
+                                <a class="btn btn-primary btn-lg" href="#" title="">SAIBA MAIS</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-8 col-md-6 col-lg-4">
+                    <div class="card">
+                       <img class="card-img" src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/bologna-3.jpg" alt="Bologna">
+                       <div class="card-img-overlay text-white d-flex flex-column justify-content-center align-items-center ">
+                            <h4 class="card-title">CONSULTORIAS</h4>
+                            {{-- <h6 class="card-subtitle mb-2">Emilia-Romagna Region, Italy</h6>
+                            <p class="card-text">It is the seventh most populous city in Italy, at the heart of a metropolitan area of about one million people. </p> --}}
+                            <div class="link d-flex">
+                                <a class="btn btn-primary btn-lg" href="#" title="">SAIBA MAIS</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-8 col-md-6 col-lg-4">
+                    <div class="card">
+                       <img class="card-img" src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/bologna-3.jpg" alt="Bologna">
+                       <div class="card-img-overlay text-white d-flex flex-column justify-content-center align-items-center ">
+                            <h4 class="card-title">CONSULTORIAS</h4>
+                            {{-- <h6 class="card-subtitle mb-2">Emilia-Romagna Region, Italy</h6>
+                            <p class="card-text">It is the seventh most populous city in Italy, at the heart of a metropolitan area of about one million people. </p> --}}
+                            <div class="link d-flex">
+                                <a class="btn btn-primary btn-lg" href="#" title="">SAIBA MAIS</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="events-section">
+        <div class="pb-5 bg-light">
+            <div class="container-fluid events element-animate">
+                <div id="events" class="owl-carousel">
+                    <div class="item">
+                        <div class="events-box">
+                            <figure>
+                                <img src="site/images/events/img_1.jpg" alt="Image" class="img-fluid">
+                            </figure>
+                            <div class="text pt-1">
+                                <div class="meta text-center">
+                                    <a class="btn-events btn-xs font-weight-bold" href="#" title="">SAIBA MAIS</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                  <div class="item">
+                    <div class="events-box">
+                        <figure>
+                          <img src="site/images/events/img_3.jpg" alt="Image" class="img-fluid">
+                        </figure>
+                        <div class="text pt-1">
+                                <div class="meta text-center">
+                                    <a class="btn-events btn-xs font-weight-bold" href="#" title="">SAIBA MAIS</a>
+                                </div>
+                            </div>
+                      </div>
+                  </div>
+
+                    <div class="item">
+                        <div class="events-box">
+                          <figure>
+                            <img src="site/images/events/img_2.jpg" alt="Image" class="img-fluid">
+                          </figure>
+                          <div class="text pt-1">
+                                <div class="meta text-center">
+                                    <a class="btn-events btn-xs font-weight-bold" href="#" title="">SAIBA MAIS</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                  <div class="item">
+                    <div class="events-box">
+                      <figure>
+                        <img src="site/images/events/img_1.jpg" alt="Image" class="img-fluid">
+                      </figure>
+                      <div class="text pt-1">
+                            <div class="meta text-center">
+                                <a class="btn-events btn-xs font-weight-bold" href="#" title="">SAIBA MAIS</a>
+                            </div>
+                        </div>
+                    </div>
+                  </div>
+
+                  <div class="item">
+                    <div class="events-box">
+                        <figure>
+                          <img src="site/images/events/img_1.jpg" alt="Image" class="img-fluid">
+                        </figure>
+                        <div class="text pt-1">
+                                <div class="meta text-center">
+                                    <a class="btn-events btn-xs font-weight-bold" href="#" title="">SAIBA MAIS</a>
+                                </div>
+                            </div>
+                      </div>
+                  </div>
+
+                    <div class="item">
+                        <div class="events-box">
+                            <figure>
+                              <img src="site/images/events/img_3.jpg" alt="Image" class="img-fluid">
+                            </figure>
+                            <div class="text pt-1">
+                                <div class="meta text-center">
+                                    <a class="btn-events btn-xs font-weight-bold" href="#" title="">SAIBA MAIS</a>
+                                </div>
+                            </div>
+                          </div>
+                    </div>
+
+                  <div class="item">
+                    <div class="events-box">
+                      <figure>
+                        <img src="site/images/events/img_2.jpg" alt="Image" class="img-fluid">
+                      </figure>
+                      <div class="text pt-1">
+                            <div class="meta text-center">
+                                <a class="btn-events btn-xs font-weight-bold" href="#" title="">SAIBA MAIS</a>
+                            </div>
+                        </div>
+                    </div>
+                  </div>
+
+                  <div class="item">
+                    <div class="events-box">
+                      <figure>
+                        <img src="site/images/events/img_1.jpg" alt="Image" class="img-fluid">
+                      </figure>
+                      <div class="text pt-1">
+                            <div class="meta text-center">
+                                <a class="btn-events btn-xs font-weight-bold" href="#" title="">SAIBA MAIS</a>
+                            </div>
+                        </div>
+                    </div>
+                  </div>
+                  
+                </div>
+              </div>
+            </div>
+    </section>
+
+    <!-- Start dores nas costas-->
+    <section class="dores-costas pb-5 bg-white">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md">
+                    <div class="dc-box bg-img">
+                        <div class="content">
+                            {{-- <h2 class="text-white text-uppercase">Dores nas costas nunca mais!</h2>
+                            <a class="btn btn-warning btn-lg" href="#" title="Dores nas costas">SAIBA MAIS</a> --}}
+                        </div>
+                        <img class="img-fluid" src="{{ asset('site/images/bg/bg-events.jpg') }}" alt="Dores nas costas" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="latest-movies ptb100">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-md-8">
+                    <h2 class="title">Latest Movies</h2>
+                </div>
+                <div class="col-md-4 align-self-center text-right">
+                    <a href="#" class="btn btn-icon btn-main btn-effect">
+                        view all
+                        <i class="ti-angle-double-right"></i>
+                    </a>
+                </div>
+            </div>
+
+
+            <div class="owl-carousel latest-movies-slider mt20">
+
+                <div class="item active">
+
+                    <div class="movie-box-1">
+
+                        <div class="poster">
+                            <img src="site/images/posters/poster-1.jpg" alt="">
+                        </div>
+
+
+                        <div class="buttons">
+                            <a href="https://www.youtube.com/watch?v=Q0CbN8sfihY" class="play-video">
+                                <i class="fa fa-play"></i>
+                            </a>
+                        </div>
+
+
+                        <div class="movie-details">
+                            <h4 class="movie-title">
+                                <a href="movie-detail.html">Star Wars</a>
+                            </h4>
+                            <span class="released">14 Dec 2017</span>
+                        </div>
+
+
+                        <div class="stars">
+                            <div class="rating">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star-o"></i>
+                            </div>
+                            <span>7.5 / 10</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="item">
+                    <div class="movie-box-1">
+                        <div class="poster">
+                            <img src="site/images/posters/poster-2.jpg" alt="">
+                        </div>
+
+                        <div class="buttons">
+                            <a href="https://www.youtube.com/watch?v=Q0CbN8sfihY" class="play-video">
+                                <i class="fa fa-play"></i>
+                            </a>
+                        </div>
+
+                        <div class="movie-details">
+                            <h4 class="movie-title">
+                                <a href="movie-detail.html">The Brain 1</a>
+                            </h4>
+                            <span class="released">20 Dec 2017</span>
+                        </div>
+
+                        <div class="stars">
+                            <div class="rating">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star-half-o"></i>
+                                <i class="fa fa-star-o"></i>
+                            </div>
+                            <span>7.2 / 10</span>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="item">
+
+                    <div class="movie-box-1">
+
+                        <div class="poster">
+                            <img src="site/images/posters/poster-3.jpg" alt="">
+                        </div>
+
+
+                        <div class="buttons">
+                            <a href="https://www.youtube.com/watch?v=Q0CbN8sfihY" class="play-video">
+                                <i class="fa fa-play"></i>
+                            </a>
+                        </div>
+
+
+                        <div class="movie-details">
+                            <h4 class="movie-title">
+                                <a href="movie-detail.html">The Mummy</a>
+                            </h4>
+                            <span class="released">9 Jun 2017</span>
+                        </div>
+
+
+                        <div class="stars">
+                            <div class="rating">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star-o"></i>
+                                <i class="fa fa-star-o"></i>
+                            </div>
+                            <span>5.5 / 10</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="item">
+
+                    <div class="movie-box-1">
+
+                        <div class="poster">
+                            <img src="site/images/posters/poster-4.jpg" alt="">
+                        </div>
+
+
+                        <div class="buttons">
+                            <a href="https://www.youtube.com/watch?v=N9ozvjDzE4Y" class="play-video">
+                                <i class="fa fa-play"></i>
+                            </a>
+                        </div>
+
+
+                        <div class="movie-details">
+                            <h4 class="movie-title">
+                                <a href="movie-detail.html">The Parrot</a>
+                            </h4>
+                            <span class="released">20 Jan 2017</span>
+                        </div>
+
+
+                        <div class="stars">
+                            <div class="rating">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star-o"></i>
+                                <i class="fa fa-star-o"></i>
+                            </div>
+                            <span>5.2 / 10</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="item">
+
+                    <div class="movie-box-1">
+
+                        <div class="poster">
+                            <img src="site/images/posters/poster-1.jpg" alt="">
+                        </div>
+
+
+                        <div class="buttons">
+                            <a href="https://www.youtube.com/watch?v=Q0CbN8sfihY" class="play-video">
+                                <i class="fa fa-play"></i>
+                            </a>
+                        </div>
+
+
+                        <div class="movie-details">
+                            <h4 class="movie-title">
+                                <a href="movie-detail.html">Star Wars</a>
+                            </h4>
+                            <span class="released">14 Dec 2017</span>
+                        </div>
+
+
+                        <div class="stars">
+                            <div class="rating">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star-o"></i>
+                            </div>
+                            <span>7.5 / 10</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="item">
+                    <div class="movie-box-1">
+                        <div class="poster">
+                            <img src="site/images/posters/poster-2.jpg" alt="">
+                        </div>
+
+                        <div class="buttons">
+                            <a href="https://www.youtube.com/watch?v=N9ozvjDzE4Y" class="play-video">
+                                <i class="fa fa-play"></i>
+                            </a>
+                        </div>
+
+                        <div class="movie-details">
+                            <h4 class="movie-title">
+                                <a href="movie-detail.html">The Brain 3</a>
+                            </h4>
+                            <span class="released">20 Dec 2017</span>
+                        </div>
+
+                        <div class="stars">
+                            <div class="rating">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star-half-o"></i>
+                                <i class="fa fa-star-o"></i>
+                            </div>
+                            <span>7.2 / 10</span>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="item">
+                    <div class="movie-box-1">
+                        <div class="poster">
+                            <img src="site/images/posters/poster-2.jpg" alt="">
+                        </div>
+
+                        <div class="buttons">
+                            <a href="https://www.youtube.com/watch?v=Q0CbN8sfihY" class="play-video">
+                                <i class="fa fa-play"></i>
+                            </a>
+                        </div>
+
+                        <div class="movie-details">
+                            <h4 class="movie-title">
+                                <a href="movie-detail.html">The Brain</a>
+                            </h4>
+                            <span class="released">20 Dec 2017</span>
+                        </div>
+
+                        <div class="stars">
+                            <div class="rating">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star-half-o"></i>
+                                <i class="fa fa-star-o"></i>
+                            </div>
+                            <span>7.2 / 10</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
 
     <!-- contact section starts here -->
     <section id="contato" class="bg-contact pb-5">
@@ -191,6 +662,69 @@
 
     @include('frontend.partials.footer', ['some' => 'data'])
     
+@endsection
+
+@section('scripts')
+    <script>
+        (function($) {
+            'use strict';
+            $('#events').owlCarousel({
+                center: false,
+                items:1,
+                autoplay:true,
+                loop:false,
+                stagePadding: 10,
+                margin:0,
+                dots: false,
+                nav: true,
+                navText: ['<span class="fas fa-arrow-left">', '<span class="fas fa-arrow-right">'],
+                responsive:{
+                    600:{
+                        margin:20,
+                        stagePadding: 10,
+                        items:2
+                    },
+                    800:{
+                        margin:20,
+                        stagePadding: 10,
+                        items:2
+                    },
+                    1000:{
+                        margin:20,
+                        stagePadding: 10,
+                        items:3
+                    },
+                    1900:{
+                        margin:20,
+                        stagePadding: 200,
+                        items:4
+                    }
+                }
+            });
+
+            //Video owl
+            $('#videos-owl').owlCarousel({
+                items: 1,
+                merge: true,
+                loop: true,
+                margin: 10,
+                video: true,
+                lazyLoad: true,
+                center: true,
+                responsive: {
+                  320: {
+                    items: 1
+                  },
+                  560: {
+                    items: 2
+                  },
+                  992: {
+                    items: 3
+                  }
+                }
+            });
+        })(jQuery);
+    </script>
 @endsection
 
 
