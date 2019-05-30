@@ -201,7 +201,7 @@ class MyHelper
 	            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 hover-mask">
 	            	<a class="img-card" target="<?php echo $value->target ?>" href="<?php echo $value->external_url ?>">
                         <img class="img-fluid" src="uploads/images/<?php echo $value->image	?>" alt="<?php echo $value->title ?>">
-                        <h2 class="text-white"><span class="fas fa-search"></span></h2>
+                        <h2 class="text-white"><span class="fas fa-plus"></span></h2>
                     </a>
 				</div>
 	        <?php
@@ -209,7 +209,7 @@ class MyHelper
 	            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 hover-mask">
             		<a class="img-card" target="<?php echo $value->target ?>" href="<?php echo 'treinamento/'.$value->slug ?>">
                         <img class="img-fluid" src="uploads/images/<?php echo $value->image	?>" alt="<?php echo $value->title ?>">
-                        <h2 class="text-white"><span class="fas fa-search"></span></h2>
+                        <h2 class="text-white"><span class="fas fa-plus"></span></h2>
                     </a>
 				</div>
 
@@ -233,7 +233,7 @@ class MyHelper
 		            			<div class="center">
 		            				<a target="<?php echo $value->target ?>" href="<?php echo $value->external_url ?>"><h1><?php echo $value->title ?></h1></a>
 		            				<p><?php echo $value->description; ?></p>
-		            				<a class="btn btn-outline-dark btn-sm" target="<?php echo $value->target ?>" href="<?php echo $value->external_url ?>"><i class="fa fa-plus"> </i> INFO</a>
+		            				<a class="btn btn-outline-blue btn-sm" target="<?php echo $value->target ?>" href="<?php echo $value->external_url ?>"><i class="fa fa-plus"> </i> INFO</a>
 		            			</div>
 		            		</div>
 		            	</div>
@@ -249,7 +249,7 @@ class MyHelper
 		            			<div class="center">
 		            				<a target="<?php echo $value->target ?>" href="<?php echo 'palestra/'.$value->slug ?>"><h1><?php echo $value->title ?></h1></a>
 		            				<p><?php echo $value->description; ?></p>
-		            				<a class="btn btn-outline-dark btn-sm" target="<?php echo $value->target ?>" href="<?php echo 'palestra/'.$value->slug ?>"><i class="fa fa-plus"> </i> INFO</a>
+		            				<a class="btn btn-outline-blue btn-sm" target="<?php echo $value->target ?>" href="<?php echo 'palestra/'.$value->slug ?>"><i class="fa fa-plus"> </i> INFO</a>
 		            			</div>
 		            		</div>
 		            	</div>

@@ -51,7 +51,7 @@
     <!----//End-treinamentos----->
 
     <!--Inicio palestras-->
-    <section class="palestras pt-5 pb-4" id="palestras">
+    <section class="palestras pt-5 pb-5" id="palestras">
         <div class="container-fluid">
             <div class="container-page">
                 <div class="text-center">
@@ -66,22 +66,7 @@
     <!----//End-palestras----->
 
     <!-- Start dores nas costas-->
-    <section class="dores-costas pb-5">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md">
-                    <div class="dc-box bg-img">
-                        <div class="content">
-                            <h2 class="text-white text-uppercase">Dores nas costas nunca mais!</h2>
-                            <a class="btn btn-primary btn-lg" href="#" title="Dores nas costas">SAIBA MAIS</a>
-                        </div>
-                        <img class="img-fluid" src="{{ asset('site/images/bg/bg-dores-costas.jpg') }}" alt="Dores nas costas" />
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
+{{-- 
     <section class="consulting">
         <div class="container-fluid bg-info pt-5 pb-5">
             <div class="row">
@@ -115,17 +100,37 @@
                 </div>
             </div>
         </div>
+    </section> --}}
 
+    <section class="dores-costas pt-4 pb-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md">
+                    <div class="dc-box bg-img">
+                        <div class="content">
+                            <div class="bg-dark-opacy w-100 pt-3 pb-4">
+                                <h2 class="text-white text-uppercase">Dores nas costas nunca mais!</h2>
+                                <a class="btn-psi btn-green btn-round" href="#" title="Dores nas costas">SAIBA MAIS</a>
+                            </div>
+                        </div>
+                        <img class="img-fluid" src="{{ asset('site/images/bg/bg-dores-costas.jpg') }}" alt="Dores nas costas" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        <div class="container pt-5 pb-5">
+    
+    {{-- <section class="consulting">
+        <div class="container pt-3 pb-5">
             <div class="row">
                 <div class="col-12 col-sm-8 col-md-6 col-lg-4">
                     <div class="card">
                        <img class="card-img" src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/bologna-3.jpg" alt="Bologna">
                        <div class="card-img-overlay text-white d-flex flex-column justify-content-center align-items-center ">
                             <h4 class="card-title">CONSULTORIAS</h4>
-                            {{-- <h6 class="card-subtitle mb-2">Emilia-Romagna Region, Italy</h6>
-                            <p class="card-text">It is the seventh most populous city in Italy, at the heart of a metropolitan area of about one million people. </p> --}}
+                            <h6 class="card-subtitle mb-2">Emilia-Romagna Region, Italy</h6>
+                            <p class="card-text">It is the seventh most populous city in Italy, at the heart of a metropolitan area of about one million people. </p>
                             <div class="link d-flex">
                                 <a class="btn btn-primary btn-lg" href="#" title="">SAIBA MAIS</a>
                             </div>
@@ -137,8 +142,8 @@
                        <img class="card-img" src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/bologna-3.jpg" alt="Bologna">
                        <div class="card-img-overlay text-white d-flex flex-column justify-content-center align-items-center ">
                             <h4 class="card-title">CONSULTORIAS</h4>
-                            {{-- <h6 class="card-subtitle mb-2">Emilia-Romagna Region, Italy</h6>
-                            <p class="card-text">It is the seventh most populous city in Italy, at the heart of a metropolitan area of about one million people. </p> --}}
+                            <h6 class="card-subtitle mb-2">Emilia-Romagna Region, Italy</h6>
+                            <p class="card-text">It is the seventh most populous city in Italy, at the heart of a metropolitan area of about one million people. </p>
                             <div class="link d-flex">
                                 <a class="btn btn-primary btn-lg" href="#" title="">SAIBA MAIS</a>
                             </div>
@@ -150,8 +155,8 @@
                        <img class="card-img" src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/bologna-3.jpg" alt="Bologna">
                        <div class="card-img-overlay text-white d-flex flex-column justify-content-center align-items-center ">
                             <h4 class="card-title">CONSULTORIAS</h4>
-                            {{-- <h6 class="card-subtitle mb-2">Emilia-Romagna Region, Italy</h6>
-                            <p class="card-text">It is the seventh most populous city in Italy, at the heart of a metropolitan area of about one million people. </p> --}}
+                            <h6 class="card-subtitle mb-2">Emilia-Romagna Region, Italy</h6>
+                            <p class="card-text">It is the seventh most populous city in Italy, at the heart of a metropolitan area of about one million people. </p>
                             <div class="link d-flex">
                                 <a class="btn btn-primary btn-lg" href="#" title="">SAIBA MAIS</a>
                             </div>
@@ -160,20 +165,80 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
 
-    <section class="events-section">
+    <!------------------ Hover Effect Style : Demo - 16 --------------->
+   {{-- <div class="container mt-40">
+        <h3 class="text-center">Hover Effect Style : Demo - 16</h3>
+        <div class="row mt-30">
+            <div class="col-md-4 col-sm-6">
+                <div class="box16">
+                    <img src="http://bestjquery.com/tutorial/hover-effect/demo118/images/img-1.jpg">
+                    <div class="box-content">
+                        <h3 class="title">Williamson</h3>
+                        <span class="post">Web Developer</span>
+                        <ul class="social">
+                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                <div class="box16">
+                    <img src="http://bestjquery.com/tutorial/hover-effect/demo118/images/img-2.jpg">
+                    <div class="box-content">
+                        <h3 class="title">Kristiana</h3>
+                        <span class="post">Web Designer</span>
+                        <ul class="social">
+                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                <div class="box16">
+                    <img src="http://bestjquery.com/tutorial/hover-effect/demo118/images/img-3.jpg">
+                    <div class="box-content">
+                        <h3 class="title">Kristiana</h3>
+                        <span class="post">Web Designer</span>
+                        <ul class="social">
+                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> --}}
+
+    <section class="events-section pt-3">
         <div class="pb-5 bg-light">
-            <div class="container-fluid events element-animate">
+            <div class="container events element-animate">
                 <div id="events" class="owl-carousel">
                     <div class="item">
                         <div class="events-box">
-                            <figure>
-                                <img src="site/images/events/img_1.jpg" alt="Image" class="img-fluid">
-                            </figure>
-                            <div class="text pt-1">
-                                <div class="meta text-center">
-                                    <a class="btn-events btn-xs font-weight-bold" href="#" title="">SAIBA MAIS</a>
+                            <div class="box16">
+                                <img src="site/images/gt-slide-1.jpg">
+                                <div class="box-content">
+                                    <h3 class="title">CONSULTORIAS</h3>
+                                    {{-- <span class="post">Web Developer</span> --}}
+
+                                    <ul class="social pt-5">
+                                        <a class="btn btn-outline-blue rounded-0" href="" title="">SAIBA MAIS</a>
+                                        {{-- <li><a href="" title=""> <i class="fas fa-plus"></i></a></li> --}}
+                                        {{-- <li><a href="#"><i class="fab fa-facebook"></i></a></li>
+                                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                        <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                                        <li><a href="#"><i class="fab fa-google-plus"></i></a></li> --}}
+                                    </ul>
                                 </div>
                             </div>
                         </div>
@@ -181,51 +246,14 @@
 
                   <div class="item">
                     <div class="events-box">
-                        <figure>
-                          <img src="site/images/events/img_3.jpg" alt="Image" class="img-fluid">
-                        </figure>
-                        <div class="text pt-1">
-                                <div class="meta text-center">
-                                    <a class="btn-events btn-xs font-weight-bold" href="#" title="">SAIBA MAIS</a>
-                                </div>
-                            </div>
-                      </div>
-                  </div>
-
-                    <div class="item">
-                        <div class="events-box">
-                          <figure>
-                            <img src="site/images/events/img_2.jpg" alt="Image" class="img-fluid">
-                          </figure>
-                          <div class="text pt-1">
-                                <div class="meta text-center">
-                                    <a class="btn-events btn-xs font-weight-bold" href="#" title="">SAIBA MAIS</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                  <div class="item">
-                    <div class="events-box">
-                      <figure>
-                        <img src="site/images/events/img_1.jpg" alt="Image" class="img-fluid">
-                      </figure>
-                      <div class="text pt-1">
-                            <div class="meta text-center">
-                                <a class="btn-events btn-xs font-weight-bold" href="#" title="">SAIBA MAIS</a>
-                            </div>
-                        </div>
-                    </div>
-                  </div>
-
-                  <div class="item">
-                    <div class="events-box">
-                        <figure>
-                          <img src="site/images/events/img_1.jpg" alt="Image" class="img-fluid">
-                        </figure>
-                        <div class="text pt-1">
-                                <div class="meta text-center">
-                                    <a class="btn-events btn-xs font-weight-bold" href="#" title="">SAIBA MAIS</a>
+                            <div class="box16">
+                                <img src="site/images/gt-slide-2.jpg">
+                                <div class="box-content">
+                                    <h3 class="title">PROGRAMAS</h3>
+                                    {{-- <span class="post">Web Developer</span> --}}
+                                    <ul class="social pt-5">
+                                        <a class="btn btn-outline-blue rounded-0" href="" title="">SAIBA MAIS</a>
+                                    </ul>
                                 </div>
                             </div>
                       </div>
@@ -233,25 +261,32 @@
 
                     <div class="item">
                         <div class="events-box">
-                            <figure>
-                              <img src="site/images/events/img_3.jpg" alt="Image" class="img-fluid">
-                            </figure>
-                            <div class="text pt-1">
-                                <div class="meta text-center">
-                                    <a class="btn-events btn-xs font-weight-bold" href="#" title="">SAIBA MAIS</a>
+                            <div class="box16">
+                                <img src="site/images/gt-slide-3.jpg">
+                                <div class="box-content">
+                                    <h3 class="title">ESPECIALIDADE</h3>
+                                    {{-- <span class="post">Web Developer</span> --}}
+                                    <ul class="social pt-5">
+                                        <a class="btn btn-outline-blue rounded-0" href="" title="">SAIBA MAIS</a>
+                                    </ul>
                                 </div>
                             </div>
-                          </div>
+                        </div>
                     </div>
 
-                  <div class="item">
+                  {{-- <div class="item">
                     <div class="events-box">
-                      <figure>
-                        <img src="site/images/events/img_2.jpg" alt="Image" class="img-fluid">
-                      </figure>
-                      <div class="text pt-1">
-                            <div class="meta text-center">
-                                <a class="btn-events btn-xs font-weight-bold" href="#" title="">SAIBA MAIS</a>
+                        <div class="box16">
+                            <img src="site/images/gt-slide-4.jpg">
+                            <div class="box-content">
+                                <h3 class="title">Williamson</h3>
+                                <span class="post">Web Developer</span>
+                                <ul class="social">
+                                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                                </ul>
                             </div>
                         </div>
                     </div>
@@ -259,16 +294,21 @@
 
                   <div class="item">
                     <div class="events-box">
-                      <figure>
-                        <img src="site/images/events/img_1.jpg" alt="Image" class="img-fluid">
-                      </figure>
-                      <div class="text pt-1">
-                            <div class="meta text-center">
-                                <a class="btn-events btn-xs font-weight-bold" href="#" title="">SAIBA MAIS</a>
+                        <div class="box16">
+                            <img src="site/images/gt-slide-2.jpg">
+                            <div class="box-content">
+                                <h3 class="title">Williamson</h3>
+                                <span class="post">Web Developer</span>
+                                <ul class="social">
+                                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                                </ul>
                             </div>
                         </div>
-                    </div>
-                  </div>
+                      </div>
+                  </div> --}}
                   
                 </div>
               </div>
