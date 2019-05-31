@@ -43,6 +43,7 @@
     <link rel="stylesheet" href="{{ asset('site/style.css') }}">
     <link rel="stylesheet" href="{{ asset('site/css/video.css') }}">
     <link rel="stylesheet" href="{{ asset('site/css/psi.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('site/css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('site/css/responsive.css') }}">
     
     @yield('styles')

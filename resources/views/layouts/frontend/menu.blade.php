@@ -1,24 +1,26 @@
 <div id="menu_area" class="menu-area">
-    <div class="container-fluid pl-4 pr-4">
+    <div class="container-fluid">
         <div class="container-page">
             <div class="row">
-                <nav class="navbar navbar-light navbar-expand-lg mainmenu">
-                    <a class="navbar-brand d-none d-md-block" href="#"><img src="{{ asset('site/images/logo/logo-psi.png') }}" alt="Logo" class="img-fluid" ></a>
-                    <a class="navbar-brand" href="#"></a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
+                <div class="col-md">
+                    <nav class="navbar navbar-light navbar-expand-lg mainmenu">
+                        <a class="navbar-brand d-none d-md-block" href="#"><img src="{{ asset('site/images/logo/logo-psi.png') }}" alt="Logo" class="img-fluid" ></a>
+                        <a class="navbar-brand" href="#"></a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
 
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav mr-auto">
-                            <li></li>
-                        </ul>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav mr-auto">
+                                <li></li>
+                            </ul>
 
-                        <ul class="navbar-nav">
-                            {{ MyHelper::MenuHeader() }}
-                        </ul>
-                    </div>
-                </nav>
+                            <ul class="navbar-nav">
+                                {{ MyHelper::MenuHeader() }}
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
             </div>
         </div>        
     </div>
