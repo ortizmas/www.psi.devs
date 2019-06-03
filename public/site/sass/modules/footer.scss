@@ -1,0 +1,163 @@
+/*---------------------
+	Newsletter Section
+-----------------------*/
+.site-btn {
+	position: relative;
+	display: inline-block;
+	text-transform: uppercase;
+	background: $lilas;
+	color: #fff;
+	padding: 18px 30px;
+	font-size: 14px;
+	font-weight: 500;
+	line-height: 14px;
+	border-radius: 50px;
+	min-width: 170px;
+	text-align: center;
+	border: none;
+	cursor: pointer;
+}
+.newsletter-section {
+	background: #f7f7f7;
+	padding: 50px 0;
+}
+
+.newsletter-section .newsletter {
+	position: relative;
+	margin-top: 12px;
+}
+
+.newsletter-section .newsletter input {
+	width: 100%;
+	font-size: 14px;
+	padding: 18px 30px;
+	border: none;
+	border-radius: 50px;
+	padding-right: 170px;
+}
+
+.newsletter-section .newsletter .site-btn {
+	position: absolute;
+	right: 0;
+	top: 0;
+	height: 100%;
+	border-radius: 0px 50px 50px 0px;
+	min-width: 150px;
+}
+
+/*---------------------
+	Footer Section
+-----------------------*/
+
+.footer-section {
+	background-color: $lilas;
+	background-image: url("../images/bg/footer-bg.png");
+	background-repeat: no-repeat;
+	background-position: center 75px;
+}
+
+.footer-section .footer-top {
+	padding: 65px 15px;
+}
+
+.footer-section .copyright {
+	border-top: 1px solid #312f56;
+	padding: 27px 0;
+	text-align: center;
+}
+
+.footer-section .copyright p {
+	color: #b7b7b7;
+	margin-bottom: 0;
+}
+
+.footer-section .copyright p a {
+	color: #fff;
+	font-weight: 500;
+}
+
+.footer-section .copyright p a:hover {
+	color: #f6783a;
+}
+
+.footer-widget .fw-title {
+	text-transform: uppercase;
+	color: #fff;
+	margin-bottom: 25px;
+	padding-top: 10px;
+}
+
+.footer-widget p,
+.footer-widget span {
+	color: #b7b7b7;
+}
+
+.footer-widget ul {
+	list-style: none;
+}
+
+.footer-widget .about-widget img {
+	margin-bottom: 30px;
+}
+
+.footer-widget .about-widget p {
+	margin-bottom: 35px;
+}
+
+.footer-widget .social a {
+	color: #b7b7b7;
+	margin-right: 15px;
+}
+
+.footer-widget .dobule-link ul {
+	display: inline-block;
+}
+
+.footer-widget .dobule-link ul a {
+	display: block;
+	font-size: 14px;
+	color: #b7b7b7;
+	margin-bottom: 15px;
+}
+
+.footer-widget .dobule-link ul a:hover {
+	color: #f6783a;
+}
+
+.footer-widget .dobule-link ul li:last-child a {
+	margin-bottom: 0;
+}
+
+.footer-widget .dobule-link ul:last-child {
+	margin-left: 50px;
+}
+
+.footer-widget .recent-post li {
+	margin-bottom: 25px;
+}
+
+.footer-widget .recent-post p {
+	margin-bottom: 5px;
+}
+
+.footer-widget .recent-post span {
+	font-size: 12px;
+}
+
+.footer-widget .recent-post span i {
+	color: #f6783a;
+	margin-right: 5px;
+}
+
+.footer-widget .contact li {
+	margin-bottom: 15px;
+	display: block;
+}
+
+.footer-widget .contact li p {
+	margin-bottom: 0;
+}
+
+.footer-widget .contact i {
+	font-size: 12px;
+}

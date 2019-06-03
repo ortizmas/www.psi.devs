@@ -277,6 +277,27 @@
         padding-right: 40px;
         padding-left: 40px;
     }
+    .register_section,
+    .search_section
+    {
+        padding-top: 115px;
+        padding-bottom: 120px;
+    }
+    .register_content,
+    .search_content
+    {
+        width: 100%;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    .register_text
+    {
+        margin-top: 25px;
+    }
+    .register_button
+    {
+        margin-top: 53px;
+    }
 }
 
 /*Small devices (landscape phones, 576px and up)*/
@@ -284,6 +305,27 @@
     .contact-form {
         padding-right: 40px;
         padding-left: 40px;
+    }
+    .register_section,
+    .search_section
+    {
+        padding-top: 115px;
+        padding-bottom: 120px;
+    }
+    .register_content,
+    .search_content
+    {
+        width: 100%;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    .register_text
+    {
+        margin-top: 25px;
+    }
+    .register_button
+    {
+        margin-top: 53px;
     }
 }
 
@@ -298,14 +340,28 @@
     .intro-image img {
         width: 100%;
     }
+    .search_section
+    {
+        padding-top: 156px;
+        padding-bottom: 161px;
+    }
+    .register_content,
+    .search_content
+    {
+        width: 75%;
+    }
 }
 
 /*Large devices (desktops, 992px and up)*/
 @media (min-width: 992px) and (max-width: 1199.98px) {
-
+    
 }
 
 /*Extra large devices (large desktops, 1200px and up)*/
 @media (min-width: 1200px) {
-
+    .register_content,
+    .search_content
+    {
+        width: 450px;
+    }
 }

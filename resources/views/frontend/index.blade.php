@@ -336,7 +336,7 @@
 
     <!-- ***** Blog Area Start ***** -->
     <section class="mona-blog-area mb-50 section-padding-80-0">
-        <div class="container">
+        <div class="container-fluid">
             {{-- <div class="row">
                 <div class="col-12">
                   <div class="section-heading text-center">
@@ -364,7 +364,7 @@
               <div class="row">
 
                 <!-- Single Blog Post -->
-                <div class="col-12">
+                <div class="col-12 p-0">
                     <div class="single-blog-post featured-post mb-30 wow fadeInUp" data-wow-delay="300ms">
                         
                         <div class="post-content">
@@ -725,8 +725,49 @@
         </div>
     </section> --}}
 
+    <!-- Register -->
+
+    <div class="register">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-6 p-0">
+                    
+                    <!-- Register -->
+
+                    <div class="register_section d-flex flex-column align-items-center justify-content-center">
+                        <div class="register_content text-center">
+                            <h1 class="register_title">Register now and get a discount <span>50%</span> discount until 1 January</h1>
+                            <p class="register_text">In aliquam, augue a gravida rutrum, ante nisl fermentum nulla, vitae tempor nisl ligula vel nunc. Proin quis mi malesuada, finibus tortor fermentum. Aliquam, augue a gravida rutrum, ante nisl fermentum nulla, vitae tempo.</p>
+                            <div class="button button_1 register_button mx-auto trans_200"><a href="#">register now</a></div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-lg-6 p-0">
+                    
+                    <!-- Search -->
+
+                    <div class="search_section d-flex flex-column align-items-center justify-content-center">
+                        <div class="search_background" style="background-image:url(site/images/bg/search_background.jpg);"></div>
+                        <div class="search_content text-center">
+                            <h1 class="search_title">Deixe-nos uma mensagem</h1>
+                            <form id="search_form" class="search_form" action="post">
+                                <input id="search_form_name" class="input_field search_form_name" type="text" placeholder="Course Name" required="required" data-error="Course name is required.">
+                                <input id="search_form_category" class="input_field search_form_category" type="text" placeholder="Category">
+                                <input id="search_form_degree" class="input_field search_form_degree" type="text" placeholder="Degree">
+                                <button id="search_submit_button" type="submit" class="search_submit_button trans_200" value="Submit">search course</button>
+                            </form>
+                        </div> 
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- contact section starts here -->
-    <section id="contato" class="bg-contact pb-5">
+    <!--<section id="contato" class="bg-contact pb-5">
         <div class="container-fluid">
             <div class="container-page"> 
                 <div class="contact-caption">
@@ -785,10 +826,10 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
 
     <!-- end of contact section -->
-    <div id="newslleter" class="newsletter pt-4 pb-4">
+    <!--<div id="newslleter" class="newsletter pt-4 pb-4">
         <div class="container-fluid">
             <div class="contact-heading text-center">
                 <h3>TRABALHE CONOSCO</h3>
@@ -812,10 +853,105 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>-->
+    
+    <!-- Newsletter section -->
+    <section class="newsletter-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5 col-lg-7">
+                    <div class="section-title mb-md-0">
+                    <h3>NEWSLETTER</h3>
+                    <p>Subscribe and get the latest news and useful tips, advice and best offer.</p>
+                </div>
+                </div>
+                <div class="col-md-7 col-lg-5">
+                    <form class="newsletter">
+                        <input type="text" placeholder="Enter your email">
+                        <button class="site-btn">SUBSCRIBE</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Newsletter section end --> 
 
 
-    @include('frontend.partials.footer', ['some' => 'data'])
+    <!-- Footer section -->
+    <footer class="footer-section">
+        <div class="container footer-top">
+            <div class="row">
+                <!-- widget -->
+                <div class="col-sm-6 col-lg-3 footer-widget">
+                    <div class="about-widget">
+                        <img src="site/images/logo/logo-1.jpg" alt="" class="img-fluid">
+                        <p>orem ipsum dolor sit amet, consecter adipiscing elite. Donec minos varius, viverra justo ut, aliquet nisl.</p>
+                        <div class="social pt-1">
+                            <a href=""><i class="fa fa-twitter-square"></i></a>
+                            <a href=""><i class="fa fa-facebook-square"></i></a>
+                            <a href=""><i class="fa fa-google-plus-square"></i></a>
+                            <a href=""><i class="fa fa-linkedin-square"></i></a>
+                            <a href=""><i class="fa fa-rss-square"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <!-- widget -->
+                <div class="col-sm-6 col-lg-3 footer-widget">
+                    <h6 class="fw-title">USEFUL LINK</h6>
+                    <div class="dobule-link">
+                        <ul>
+                            <li><a href="">Home</a></li>
+                            <li><a href="">About us</a></li>
+                            <li><a href="">Services</a></li>
+                            <li><a href="">Events</a></li>
+                            <li><a href="">Features</a></li>
+                        </ul>
+                        <ul>
+                            <li><a href="">Policy</a></li>
+                            <li><a href="">Term</a></li>
+                            <li><a href="">Help</a></li>
+                            <li><a href="">FAQs</a></li>
+                            <li><a href="">Site map</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- widget -->
+                <div class="col-sm-6 col-lg-3 footer-widget">
+                    <h6 class="fw-title">RECENT POST</h6>
+                    <ul class="recent-post">
+                        <li>
+                            <p>Snackable study:How to break <br> up your master's degree</p>
+                            <span><i class="fa fa-clock-o"></i>24 Mar 2018</span>
+                        </li>
+                        <li>
+                            <p>Open University plans major <br> cuts to number of staff</p>
+                            <span><i class="fa fa-clock-o"></i>24 Mar 2018</span>
+                        </li>
+                    </ul>
+                </div>
+                <!-- widget -->
+                <div class="col-sm-6 col-lg-3 footer-widget">
+                    <h6 class="fw-title">CONTACT</h6>
+                    <ul class="contact">
+                        <li><p><i class="fa fa-map-marker"></i> 40 Baria Street 133/2, NewYork City,US</p></li>
+                        <li><p><i class="fa fa-phone"></i> (+88) 111 555 666</p></li>
+                        <li><p><i class="fa fa-envelope"></i> infodeercreative@gmail.com</p></li>
+                        <li><p><i class="fa fa-clock-o"></i> Monday - Friday, 08:00AM - 06:00 PM</p></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- copyright -->
+        <div class="copyright">
+            <div class="container">
+                <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+        Copyright &copy;<script>document.write(new Date().getFullYear());</script> Todos os direitos reservados | Pró Saúde Integral <i class="fa fa-heart-o" aria-hidden="true"></i> <a href="#" target="_blank">Projeto por Edessoft</a></p>
+            </div>      
+        </div>
+    </footer>
+    <!-- Footer section end-->
+
+    {{-- @include('frontend.partials.footer', ['some' => 'data']) --}}
     
 @endsection
 
