@@ -1,5 +1,3 @@
-@import url("https://fonts.googleapis.com/css?family=Nunito");
-@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700");
 /* Start section eventos */
 .events {
   background: #ffffff;
@@ -156,7 +154,7 @@
   position: absolute;
   width: 50%;
   height: 100%;
-  background-color: #30297af2;
+  background-color: #3C4298E6;
   top: 0;
   right: 0;
   z-index: 10;

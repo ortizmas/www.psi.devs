@@ -491,23 +491,23 @@
             }
         });
 
-        var recommended = $('section.recommended-movies .recommended-slider');
+        var recommended = $('.recommended-slider');
         recommended.owlCarousel({
             loop: true,
-            margin: 15,
+            margin: 10,
             autoplay: false,
             nav: false,
-            dots: false,
+            dots: true,
             responsive: {
                 0: {
                     items: 1,
                     stagePadding: 10
                 },
                 600: {
-                    items: 3
+                    items: 2
                 },
                 1000: {
-                    items: 4
+                    items: 3
                 }
             }
         });

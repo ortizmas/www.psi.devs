@@ -46,15 +46,15 @@ class MyHelper
 			$c1=$menuHeader->where('parent_id', $menu->id)->count();
 			if ( $c1 == 0 ) {
 				if($menu->redirect==1)	{	?>
-			   		<li class="<?php echo ($key==0) ? 'active' : '' ?>"><a class="text-dark text-uppercase font-weight-bold js-scroll-trigger" target="<?php echo $menu->target ?>" href="<?php echo $menu->external_url ?>" ><?php echo $menu->title ?><span class="sr-only"></span></a></li>
+			   		<li class="<?php echo ($key==0) ? 'active' : '' ?>"><a class="text-dark text-uppercase js-scroll-trigger" target="<?php echo $menu->target ?>" href="<?php echo $menu->external_url ?>" ><?php echo $menu->title ?><span class="sr-only"></span></a></li>
 				<?php
 				} else { ?>
-					<li class="<?php echo ($key==0) ? 'active' : '' ?>"><a class="text-dark text-uppercase font-weight-bold" target="<?php echo $menu->target ?>" href="<?php echo $menu->slug ?>" ><?php echo $menu->title ?><span class="sr-only"></span></a></li>
+					<li class="<?php echo ($key==0) ? 'active' : '' ?>"><a class="text-dark text-uppercase" target="<?php echo $menu->target ?>" href="<?php echo $menu->slug ?>" ><?php echo $menu->title ?><span class="sr-only"></span></a></li>
 				<?php
 				}
 			}else{ ?>
 				<li class="dropdown">
-					<a class="dropdown-toggle text-dark text-uppercase font-weight-bold" href="#" id="navbarDropdown" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo $menu->title ?><span class="caret"></span></a>
+					<a class="text-dark text-uppercase" href="#" id="navbarDropdown" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo $menu->title ?> <i class="fas fa-angle-down pl-2" style="float: right;padding-top: 5px;"> </i></a>
 					<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
 						<?php
 					 	foreach($menuHeader->where('parent_id', $menu->id)->where('enabled', 1)->get() as $submenu){
@@ -69,7 +69,7 @@ class MyHelper
 								}
 				            }else { ?>
 				            	<li class="dropdown">
-				            		<a class="dropdown-toggle text-dark text-uppercase font-weight-bold" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php echo $submenu->title ?></a>
+				            		<a class="text-dark text-uppercase" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php echo $submenu->title ?> <i class="fas fa-angle-down" style="float: right;padding-top: 8px;"> </i></a>
 				            		<ul class="dropdown-menu" role="navbarDropdown">
 				            			<?php
 					            		foreach($menuHeader->where('parent_id', $submenu->id)->where('enabled', 1)->get() as $treemenu){
@@ -84,7 +84,7 @@ class MyHelper
 					            				}
 					            			} else { ?>
 					            				<li class="dropdown">
-					            					<a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php echo $treemenu->title ?></a>
+					            					<a class="" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php echo $treemenu->title ?> <i class="fas fa-angle-down" style="float: right;padding-top: 8px;"> </i></a>
 					            					<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
 							            				<?php foreach ($menuHeader->where('parent_id', $treemenu->id)->where('enabled', 1)->get() as $fourMenu): 
 							            					if($fourMenu->redireccionar==1){ ?>

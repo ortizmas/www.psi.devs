@@ -1,9 +1,14 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700');
+
 body {
     color: #383749;
     font-size: 13px;
-    line-height: 1.8;
-    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    font-family: 'Open Sans', sans-serif;
+}
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    line-height: 1.2;
 }
 a {
     color: #383749;
@@ -3101,7 +3106,10 @@ p.footer-copyright {
 }
 
 /*mENU MEGA*/
-.menu-area{background: #fcffff}
+.bg-logo{
+    background: #3e4095;
+}
+.menu-area{background: #fff;box-shadow: 0px 3px 16px 0px rgba(0, 0, 0, 0.1);}
 .dropdown-menu{
     padding:0;
     margin:0;
@@ -3109,14 +3117,16 @@ p.footer-copyright {
     border:0 solid rgba(0,0,0,.15);
     border-radius:0;-webkit-box-shadow:none!important;
     box-shadow:none!important
+    right: 0 !important;
 }
 .mainmenu a, .navbar-default .navbar-nav > li > a, .mainmenu ul li a , .navbar-expand-lg .navbar-nav .nav-link{
     color:#fff;
-    font-size: .8rem;
+    font-size: 14px;
     text-transform: none !important;
     padding: 8px 11px;
-    font-family: 'Roboto',sans-serif;
+    font-family: 'Open Sans',sans-serif;
     display: block !important;
+    font-weight: 500;
 }
 .mainmenu .active a,
 .mainmenu .active a:focus,
@@ -3132,7 +3142,7 @@ p.footer-copyright {
 }
 /*==========Sub Menu=v==========*/
 .mainmenu .collapse ul > li:hover > a{
-    background: #3E3848;
+    background: #3C4298;
     color: #fff !important;
     text-decoration: none;
 }
@@ -3142,23 +3152,23 @@ p.footer-copyright {
 .mainmenu .collapse ul ul > li:hover > a, 
 .navbar-default .navbar-nav .show .dropdown-menu > li > a:focus, 
 .navbar-default .navbar-nav .show .dropdown-menu > li > a:hover{
-    background: #666071;
+    background: #4248AA;
 }
 .mainmenu .collapse ul ul ul > li:hover > a{
-    background: #827B8D;
+    background: #4B52B9;
 }
 
 .mainmenu .collapse ul ul, .mainmenu .collapse ul ul.dropdown-menu{
-    background:#3E3848;
+    background:#3C4298;
 }
 .mainmenu .collapse ul ul ul, .mainmenu .collapse ul ul ul.dropdown-menu{
-    background:#666071;
+    background:#4248AA;
 }
 .mainmenu .collapse ul ul ul ul, .mainmenu .collapse ul ul ul ul.dropdown-menu{
-    background:#827B8D;
+    background:#4B52B9;
 }
 .mainmenu .collapse ul ul ul ul, .mainmenu .collapse ul ul ul ul.dropdown-menu li:hover > a{
-    background:#A29BAE;
+    background:#5D63C0;
 }
 
 /******************************Drop-down menu work on hover**********************************/

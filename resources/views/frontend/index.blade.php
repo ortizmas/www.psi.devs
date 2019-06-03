@@ -40,7 +40,7 @@
         <div class="container-fluid">
             <div class="container-page">
                 <div class="text-center pb-4">
-                    <h2 class="line-one text-uppercase">Treinamentos</h2>
+                    <h2 class="line-one">Treinamentos</h2>
                 </div>
                 <div class="row justify-content-center">
                     <?php MyHelper::treinamentosTwo() ?>
@@ -55,7 +55,7 @@
         <div class="container-fluid">
             <div class="container-page">
                 <div class="text-center">
-                    <h2 class="pb-3 text-uppercase">Palestras</h2>
+                    <h2 class="pb-3">Palestras</h2>
                 </div>
                 <div class="row justify-content-center">
                     <?php MyHelper::palestras(); ?>
@@ -220,7 +220,7 @@
     </div> --}}
 
     <section class="events-section pt-3">
-        <div class="pb-5">
+        <div class="pb-0">
             <div class="container events element-animate">
                 <div id="events" class="owl-carousel">
                     <div class="item">
@@ -312,11 +312,11 @@
                   
                 </div>
               </div>
-            </div>
+        </div>
     </section>
 
     <!-- Start dores nas costas-->
-    <section class="events">
+    {{-- <section class="events">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-xs-12 col-md-6 p-0">
@@ -331,20 +331,19 @@
                 </div>
             </div>
         </div>
-    </section> 
+    </section>  --}}
     <!-- End dores nas costas-->
 
     <!-- ***** Blog Area Start ***** -->
     <section class="mona-blog-area mb-50 section-padding-80-0">
         <div class="container">
-            <div class="row">
-                <!-- Section Heading -->
+            {{-- <div class="row">
                 <div class="col-12">
                   <div class="section-heading text-center">
                     <h2>Latest News</h2>
                   </div>
                 </div>
-            </div>
+            </div> --}}
 
           <div class="row">
             <!-- Single Blog Post -->
@@ -375,7 +374,7 @@
                             </div>
                         </div>
                         <div class="post-thumbnail">
-                            <a href="#"><img src="{{ asset('site/images/bg/bg-events.jpg') }}" alt=""></a>
+                            <a href="#"><img src="{{ asset('site/images/bg/bg-events-1.jpg') }}" alt=""></a>
                         </div>
                     </div>
                 </div>
@@ -414,7 +413,7 @@
       <!-- ***** Blog Area End ***** -->
 
     <!--INFO AREA-->
-    <section class="info-area gray-bg mt-4 mb-4">
+    {{-- <section class="info-area gray-bg mt-4 mb-4">
         <div class="container">
             <div class="row flex-v-center">
                 <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
@@ -432,51 +431,107 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
     <!--INFO AREA END-->
-
-    <section class="latest-movies ptb100">
+    <section class="latest-movies pt-5 pb-5">
         <div class="container">
-
-            <div class="row">
-                <div class="col-md-8">
-                    <h2 class="title">Latest Movies</h2>
+            <div class="row justify-content-center pb-3">
+                <div class="col-md-5">
+                    <h2 class="title">VIDEOS </h2>
                 </div>
-                <div class="col-md-4 align-self-center text-right">
-                    <a href="#" class="btn btn-icon btn-main btn-effect">
-                        view all
+                <div class="col-md-5 align-self-center text-right">
+                    <a href="#" class="btn btn-icon btn-dark btn-effect">
+                        Ver todos
                         <i class="ti-angle-double-right"></i>
                     </a>
                 </div>
             </div>
 
+            <div class="row justify-content-center">
+                
+                <div class="col-md-10">
+                    <div class="owl-carousel recommended-slider mt20">
+
+                        <div class="item active">
+                            <div class="movie-box-1">
+                                <div class="embed-responsive embed-responsive-4by3">
+                                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/JCaAlBdcpew?rel=0" allowfullscreen></iframe>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <div class="movie-box-1">
+                                <div class="embed-responsive embed-responsive-4by3">
+                                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/pqG4ogW939M?rel=0" allowfullscreen></iframe>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="item">
+                            <div class="movie-box-1">
+                                <div class="embed-responsive embed-responsive-4by3">
+                                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/sH52ToZTRH8?rel=0" allowfullscreen></iframe>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="item">
+                            <div class="movie-box-1">
+                                <div class="embed-responsive embed-responsive-4by3">
+                                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/zjlbHrv-dE8?rel=0" allowfullscreen></iframe>
+                                </div>
+                            </div>
+                        </div>
+
+                {{-- <div class="item">
+                    <div class="movie-box-1">
+                        <div class="embed-responsive embed-responsive-16by9">
+                            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/JCaAlBdcpew?rel=0" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </div> --}}
+            </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    {{-- <section class="latest-movies pt-5">
+        <div class="container">
+            <div class="row pb-3">
+                <div class="col-md-8">
+                    <h2 class="title">VIDEOS </h2>
+                </div>
+                <div class="col-md-4 align-self-center text-right">
+                    <a href="#" class="btn btn-icon btn-main btn-effect">
+                        Ver todos
+                        <i class="ti-angle-double-right"></i>
+                    </a>
+                </div>
+            </div>
 
             <div class="owl-carousel latest-movies-slider mt20">
 
                 <div class="item active">
-
                     <div class="movie-box-1">
-
                         <div class="poster">
                             <img src="site/images/posters/poster-1.jpg" alt="">
                         </div>
-
-
                         <div class="buttons">
                             <a href="https://www.youtube.com/watch?v=Q0CbN8sfihY" class="play-video">
                                 <i class="fa fa-play"></i>
                             </a>
                         </div>
-
-
                         <div class="movie-details">
                             <h4 class="movie-title">
                                 <a href="movie-detail.html">Star Wars</a>
                             </h4>
                             <span class="released">14 Dec 2017</span>
                         </div>
-
-
                         <div class="stars">
                             <div class="rating">
                                 <i class="fa fa-star"></i>
@@ -487,9 +542,7 @@
                             </div>
                             <span>7.5 / 10</span>
                         </div>
-
                     </div>
-
                 </div>
 
                 <div class="item">
@@ -497,20 +550,17 @@
                         <div class="poster">
                             <img src="site/images/posters/poster-2.jpg" alt="">
                         </div>
-
                         <div class="buttons">
                             <a href="https://www.youtube.com/watch?v=Q0CbN8sfihY" class="play-video">
                                 <i class="fa fa-play"></i>
                             </a>
                         </div>
-
                         <div class="movie-details">
                             <h4 class="movie-title">
                                 <a href="movie-detail.html">The Brain 1</a>
                             </h4>
                             <span class="released">20 Dec 2017</span>
                         </div>
-
                         <div class="stars">
                             <div class="rating">
                                 <i class="fa fa-star"></i>
@@ -526,29 +576,21 @@
 
 
                 <div class="item">
-
                     <div class="movie-box-1">
-
                         <div class="poster">
                             <img src="site/images/posters/poster-3.jpg" alt="">
                         </div>
-
-
                         <div class="buttons">
                             <a href="https://www.youtube.com/watch?v=Q0CbN8sfihY" class="play-video">
                                 <i class="fa fa-play"></i>
                             </a>
                         </div>
-
-
                         <div class="movie-details">
                             <h4 class="movie-title">
                                 <a href="movie-detail.html">The Mummy</a>
                             </h4>
                             <span class="released">9 Jun 2017</span>
                         </div>
-
-
                         <div class="stars">
                             <div class="rating">
                                 <i class="fa fa-star"></i>
@@ -559,36 +601,26 @@
                             </div>
                             <span>5.5 / 10</span>
                         </div>
-
                     </div>
-
                 </div>
 
 
                 <div class="item">
-
                     <div class="movie-box-1">
-
                         <div class="poster">
                             <img src="site/images/posters/poster-4.jpg" alt="">
                         </div>
-
-
                         <div class="buttons">
                             <a href="https://www.youtube.com/watch?v=N9ozvjDzE4Y" class="play-video">
                                 <i class="fa fa-play"></i>
                             </a>
                         </div>
-
-
                         <div class="movie-details">
                             <h4 class="movie-title">
                                 <a href="movie-detail.html">The Parrot</a>
                             </h4>
                             <span class="released">20 Jan 2017</span>
                         </div>
-
-
                         <div class="stars">
                             <div class="rating">
                                 <i class="fa fa-star"></i>
@@ -599,36 +631,25 @@
                             </div>
                             <span>5.2 / 10</span>
                         </div>
-
                     </div>
-
                 </div>
 
-
                 <div class="item">
-
                     <div class="movie-box-1">
-
                         <div class="poster">
                             <img src="site/images/posters/poster-1.jpg" alt="">
                         </div>
-
-
                         <div class="buttons">
                             <a href="https://www.youtube.com/watch?v=Q0CbN8sfihY" class="play-video">
                                 <i class="fa fa-play"></i>
                             </a>
                         </div>
-
-
                         <div class="movie-details">
                             <h4 class="movie-title">
                                 <a href="movie-detail.html">Star Wars</a>
                             </h4>
                             <span class="released">14 Dec 2017</span>
                         </div>
-
-
                         <div class="stars">
                             <div class="rating">
                                 <i class="fa fa-star"></i>
@@ -639,9 +660,7 @@
                             </div>
                             <span>7.5 / 10</span>
                         </div>
-
                     </div>
-
                 </div>
 
                 <div class="item">
@@ -649,20 +668,17 @@
                         <div class="poster">
                             <img src="site/images/posters/poster-2.jpg" alt="">
                         </div>
-
                         <div class="buttons">
                             <a href="https://www.youtube.com/watch?v=N9ozvjDzE4Y" class="play-video">
                                 <i class="fa fa-play"></i>
                             </a>
                         </div>
-
                         <div class="movie-details">
                             <h4 class="movie-title">
                                 <a href="movie-detail.html">The Brain 3</a>
                             </h4>
                             <span class="released">20 Dec 2017</span>
                         </div>
-
                         <div class="stars">
                             <div class="rating">
                                 <i class="fa fa-star"></i>
@@ -682,20 +698,17 @@
                         <div class="poster">
                             <img src="site/images/posters/poster-2.jpg" alt="">
                         </div>
-
                         <div class="buttons">
                             <a href="https://www.youtube.com/watch?v=Q0CbN8sfihY" class="play-video">
                                 <i class="fa fa-play"></i>
                             </a>
                         </div>
-
                         <div class="movie-details">
                             <h4 class="movie-title">
                                 <a href="movie-detail.html">The Brain</a>
                             </h4>
                             <span class="released">20 Dec 2017</span>
                         </div>
-
                         <div class="stars">
                             <div class="rating">
                                 <i class="fa fa-star"></i>
@@ -709,9 +722,8 @@
                     </div>
                 </div>
             </div>
-
         </div>
-    </section>
+    </section> --}}
 
     <!-- contact section starts here -->
     <section id="contato" class="bg-contact pb-5">
