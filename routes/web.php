@@ -20,6 +20,7 @@
 */
 Route::get('/', 'Frontend\AppController@index')->name('inicio');
 Route::get('/quem-somos', 'Frontend\AppController@quemSomos')->name('quem.somos');
+Route::get('/destaque/{slug}', 'Frontend\ContentController@destaque')->name('content.destaque');
 Route::get('/treinamento/{slug}', 'Frontend\ContentController@treinamento')->name('content.treinamento');
 Route::get('/palestra/{slug}', 'Frontend\ContentController@palestra')->name('content.palestra');
 Route::get('/clinica/{slug}', 'Frontend\ContentController@getPage')->name('content.page');

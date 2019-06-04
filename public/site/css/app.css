@@ -90,6 +90,21 @@
 
 /* End section eventos */
 /* Blog CSS */
+.page-content p {
+  font-family: "Open Sans", sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+}
+.page-content p strong {
+  font-size: 16px;
+  font-weight: 600;
+}
+.page-content ul li {
+  font-family: "Open Sans", sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+}
+
 .single-blog-post {
   position: relative;
   z-index: 1;

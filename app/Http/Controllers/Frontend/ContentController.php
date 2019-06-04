@@ -22,6 +22,26 @@ class ContentController extends Controller
         
     }
 
+    public function destaque(Request $request, $slug = null)
+    {
+
+        if ($slug != null) {
+            $post = Post::where('category_id', 2)->where('status', 1)->where('slug', $slug)->first();
+            $post = collect($post)->all();
+            $post = (object)$post;
+
+            if ( $post != '' ) {
+                return view('frontend.destaque', compact('post'));
+            }
+            //abort(404);
+            return response()->view('errors.custom', [], 404);
+            
+        }
+
+        return redirect()->route('inicio');
+        
+    }
+
     public function treinamento(Request $request, $slug = null)
     {
 

@@ -128,10 +128,12 @@ class MyHelper
             <?php
             }else{ ?>
 				<div class="carousel-item  <?php echo ($key == 0) ? 'active' : '' ?>">
-	            	<a href="<?php echo '/destaque/'.$value->urlpath ?>" title=""><img class="img-fluid" src="uploads/images/<?php echo $value->image ?>" alt="<?php echo $value->title ?>"></a>
-	            	<a href="<?php echo '/destaque/'.$value->urlpath ?>" title=""><div class="carousel-caption">
-	            		<p><?php echo $value->description ?></p>
-	            	</div></a>
+	            	<a href="<?php echo '/destaque/'.$value->slug ?>" title=""><img class="img-fluid" src="uploads/images/<?php echo $value->image ?>" alt="<?php echo $value->title ?>"></a>
+	            	
+	            	<div class="carousel-caption">
+	            		<p><?php echo ($value->description != '') ? $value->description : '' ?></p>
+	            		<a class="btn btn-psi btn-lg" href="<?php echo '/destaque/'.$value->slug ?>" title="<?php echo $value->title; ?>">Saiba mais</a>
+	            	</div>
 	            </div>
             <?php
 	        }

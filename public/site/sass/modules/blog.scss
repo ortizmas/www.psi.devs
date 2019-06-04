@@ -1,4 +1,22 @@
 /* Blog CSS */
+.page-content{
+
+    p{
+        font-family: $open-sans;
+        font-size: 16px;
+        font-weight: 300;
+
+        strong{
+            font-size: 16px;
+            font-weight: 600;
+        }
+    }
+    ul li{
+        font-family: $open-sans;
+        font-size: 16px;
+        font-weight: 300;
+    }
+}
 .single-blog-post {
   position: relative;
   z-index: 1;
