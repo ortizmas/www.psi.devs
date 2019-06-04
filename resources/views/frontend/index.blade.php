@@ -91,7 +91,7 @@
                     <div class="item">
                         <div class="events-box">
                             <div class="box16">
-                                <img src="site/images/gt-slide-1.jpg">
+                                <img src="site/images/b-2.jpg">
                                 <div class="box-content">
                                     <h3 class="title">CONSULTORIAS</h3>
                                     <ul class="social pt-5">
@@ -105,7 +105,7 @@
                   <div class="item">
                     <div class="events-box">
                             <div class="box16">
-                                <img src="site/images/gt-slide-2.jpg">
+                                <img src="site/images/b-3.jpg">
                                 <div class="box-content">
                                     <h3 class="title">PROGRAMAS</h3>
                                     <ul class="social pt-5">
@@ -119,7 +119,7 @@
                     <div class="item">
                         <div class="events-box">
                             <div class="box16">
-                                <img src="site/images/gt-slide-3.jpg">
+                                <img src="site/images/b-4.jpg">
                                 <div class="box-content">
                                     <h3 class="title">ESPECIALIDADE</h3>
                                     <ul class="social pt-5">
@@ -148,7 +148,7 @@
                                 <a href="/destaque/seminario-saude-e-longevidade" class="post-title text-center"><h1>EVENTO</h1></a>
                                 <span class="post-date text-center pb-2">Seminário Saúde e Longevidade</span>
                                 <span class="post-date text-center pb-2">15 JUN | SALVADOR / BA</span>
-                                <a class="btn btn-info btn-sm" href="/destaque/seminario-saude-e-longevidade" title="psi"><i class="fas fa-plus" style="font-size: 18px;"></i></a>
+                                <a class="btn btn-dark btn-sm" href="/destaque/seminario-saude-e-longevidade" title="psi"><i class="fas fa-plus" style="font-size: 18px;"></i></a>
                             </div>
                         </div>
                         <div class="post-thumbnail">
@@ -248,7 +248,7 @@
                 <div class="col-lg-6 p-0">
 
                     <div class="search_section d-flex flex-column align-items-center justify-content-center">
-                        <div class="search_background" style="background-image:url(site/images/bg/search_background.jpg);"></div>
+                        <div class="search_background" style="background-image:url(site/images/bg/bg-inscrevase.jpg);"></div>
                         <div class="search_content text-center">
                             <h1 class="search_title">Prencha seus dados</h1>
                             <form id="search_form" class="search_form" action="post">
@@ -412,8 +412,8 @@
                     },
                     1900:{
                         margin:20,
-                        stagePadding: 200,
-                        items:4
+                        stagePadding: 10,
+                        items:3
                     }
                 }
             });

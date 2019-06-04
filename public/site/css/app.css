@@ -169,7 +169,7 @@
   position: absolute;
   width: 50%;
   height: 100%;
-  background-color: #3C4298E6;
+  background-color: #8FD068FA;
   top: 0;
   right: 0;
   z-index: 10;
@@ -672,7 +672,7 @@ input:last-of-type {
 -----------------------*/
 .footer-section {
   background-color: #3e4095;
-  background-image: url("../images/bg/footer-bg.png");
+  background-image: url("../images/bg/bg-footer.png");
   background-repeat: no-repeat;
   background-position: center 75px;
 }
@@ -698,7 +698,7 @@ input:last-of-type {
 }
 
 .footer-section .copyright p a:hover {
-  color: #f6783a;
+  color: #38c172;
 }
 
 .footer-widget .fw-title {
@@ -742,7 +742,7 @@ input:last-of-type {
 }
 
 .footer-widget .dobule-link ul a:hover {
-  color: #f6783a;
+  color: #38c172;
 }
 
 .footer-widget .dobule-link ul li:last-child a {
@@ -750,7 +750,7 @@ input:last-of-type {
 }
 
 .footer-widget .dobule-link ul:last-child {
-  margin-left: 50px;
+  margin-left: 20px;
 }
 
 .footer-widget .recent-post li {
@@ -766,7 +766,7 @@ input:last-of-type {
 }
 
 .footer-widget .recent-post span i {
-  color: #f6783a;
+  color: #38c172;
   margin-right: 5px;
 }
 
