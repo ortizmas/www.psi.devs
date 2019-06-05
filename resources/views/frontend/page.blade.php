@@ -4,7 +4,7 @@
 
     @include('layouts.frontend.menu', ['some' => 'data'])
     
-    <div class="container-fluid pb-5">
+    <div class="container-fluid">
         <div class="hero-show" id="home">
             <div class="hero-show-overlay ">
                 <div class="container">
@@ -22,11 +22,13 @@
         </div>
 
         
-        <div class="content-page pt-0">
+        <div class="content-page page-content pt-0">
             <div class="row justify-content-center">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                    <div class="shadow-lg p-4 mb-5 bg-white rounded">
-                        {!! $page->content !!}
+                    <div class="shadow-lg p-5  bg-white rounded">
+                        <div class="pl-5 pr-5">
+                            {!! $page->content !!}
+                        </div>
                     </div>
                 </div>
                 {{-- <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">

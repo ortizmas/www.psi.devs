@@ -65,7 +65,7 @@
     <!----End-palestras----->
 
     <!-- Start dores nas costas-->
-    <section class="dores-costas pt-4 pb-4">
+    {{-- <section class="dores-costas pt-4 pb-4">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md">
@@ -81,17 +81,36 @@
                 </div>
             </div>
         </div>
+    </section> --}}
+    <section class="info-area gray-bg mt-5 mb-5">
+        <div class="container">
+            <div class="row flex-v-center">
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                    <div class="intro-image">
+                        <img src="{{ asset('site/images/intro/libro.jpg') }}" alt="Dores nas costas nunca mais" class="img-fluid">
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                    <div class="p-5 wow fadeInRight">
+                        <h1 class="h1">Dores nas costas nunca mais!</h1>
+                        <p class="h6 text-justify">As dores nas costas acompanham a todos em fase produtiva ou não. Este Manual é uma grande arma na prevenção e tratamento das dores nas costas adquiridas no trabalho, em casa ou pelo avançar da idade.</p>
+                        <p class="h6 text-justify">Como uma linguagem clara e objetiva este Manual levar o leitor:</p>
+                        <a href="{{ url('/treinamento/dores-nas-costas') }}" class="btn btn-yellow">SAIBA MAIS <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
     <!------------------ Start section events --------------->
-    <section class="events-section pt-3">
+    <section class="events-section pt-5 pb-5">
         <div class="pb-0">
             <div class="container events element-animate">
                 <div id="events" class="owl-carousel">
                     <div class="item">
                         <div class="events-box">
                             <div class="box16">
-                                <img src="site/images/b-2.jpg">
+                                <img src="{{ asset('site/images/events/event-1.jpg') }}">
                                 <div class="box-content">
                                     <h3 class="title">CONSULTORIAS</h3>
                                     <ul class="social pt-5">
@@ -105,7 +124,7 @@
                   <div class="item">
                     <div class="events-box">
                             <div class="box16">
-                                <img src="site/images/b-3.jpg">
+                                <img src="{{ asset('site/images/events/event-2.jpg') }}">
                                 <div class="box-content">
                                     <h3 class="title">PROGRAMAS</h3>
                                     <ul class="social pt-5">
@@ -119,7 +138,7 @@
                     <div class="item">
                         <div class="events-box">
                             <div class="box16">
-                                <img src="site/images/b-4.jpg">
+                                <img src="{{ asset('site/images/events/event-3.jpg') }}">
                                 <div class="box-content">
                                     <h3 class="title">ESPECIALIDADE</h3>
                                     <ul class="social pt-5">
@@ -145,14 +164,14 @@
                         
                         <div class="post-content text-center">
                             <div class="w-100 justify-content-center align-content-center">
-                                <a href="/destaque/seminario-saude-e-longevidade" class="post-title text-center"><h1>EVENTO</h1></a>
-                                <span class="post-date text-center pb-2">Seminário Saúde e Longevidade</span>
-                                <span class="post-date text-center pb-2">15 JUN | SALVADOR / BA</span>
-                                <a class="btn btn-dark btn-sm" href="/destaque/seminario-saude-e-longevidade" title="psi"><i class="fas fa-plus" style="font-size: 18px;"></i></a>
+                                <a class="d-none d-md-block" href="/destaque/seminario-saude-e-longevidade" class="post-title text-center"><h1>EVENTO</h1></a>
+                                <span class="post-date text-center pb-2 d-none d-md-block">Seminário Saúde e Longevidade</span>
+                                <span class="post-date text-center pb-2 d-none d-md-block">15 JUN | SALVADOR / BA</span>
+                                <a class="btn btn-dark btn-sm" href="{{ url('/destaque/seminario-saude-e-longevidade') }}" title="psi">Ver evento</a>
                             </div>
                         </div>
                         <div class="post-thumbnail">
-                            <a href="#"><img src="{{ asset('site/images/bg/bg-events-1.jpg') }}" alt=""></a>
+                            <a href="{{ url('/destaque/seminario-saude-e-longevidade') }}"><img src="{{ asset('site/images/bg/bg-events-1.jpg') }}" alt=""></a>
                         </div>
                     </div>
                 </div>
@@ -165,10 +184,10 @@
 
     <!--Start videos youtube-->
     <section class="latest-movies pt-5 pb-5">
-        <div class="container">
+        <div class="container pt-5 pb-5">
             <div class="row justify-content-center pb-3">
                 <div class="col-md-5">
-                    <h2 class="title">VÍDEOS EM DESTAQUE</h2>
+                    <h2 class="title d-none d-md-block">VÍDEOS EM DESTAQUE</h2>
                 </div>
                 <div class="col-md-5 align-self-center text-right">
                     <a target="_blank" href="https://www.youtube.com/channel/UCaw-0bq4ykwbyoU0Y_T24TQ?view_as=subscriber" class="btn btn-icon btn-danger btn-effect">
@@ -182,10 +201,17 @@
                 
                 <div class="col-md-10">
                     <div class="owl-carousel recommended-slider mt20">
-
                         <div class="item active">
                             <div class="movie-box-1">
-                                <div class="embed-responsive embed-responsive-4by3">
+                                <div class="embed-responsive embed-responsive-16by9">
+                                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/mOTdQYqcY0M?rel=0" allowfullscreen></iframe>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <div class="movie-box-1">
+                                <div class="embed-responsive embed-responsive-16by9">
                                     <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/JCaAlBdcpew?rel=0" allowfullscreen></iframe>
                                 </div>
                             </div>
@@ -193,7 +219,7 @@
 
                         <div class="item">
                             <div class="movie-box-1">
-                                <div class="embed-responsive embed-responsive-4by3">
+                                <div class="embed-responsive embed-responsive-16by9">
                                     <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/pqG4ogW939M?rel=0" allowfullscreen></iframe>
                                 </div>
                             </div>
@@ -202,7 +228,7 @@
 
                         <div class="item">
                             <div class="movie-box-1">
-                                <div class="embed-responsive embed-responsive-4by3">
+                                <div class="embed-responsive embed-responsive-16by9">
                                     <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/sH52ToZTRH8?rel=0" allowfullscreen></iframe>
                                 </div>
                             </div>
@@ -211,7 +237,7 @@
 
                         <div class="item">
                             <div class="movie-box-1">
-                                <div class="embed-responsive embed-responsive-4by3">
+                                <div class="embed-responsive embed-responsive-16by9">
                                     <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/zjlbHrv-dE8?rel=0" allowfullscreen></iframe>
                                 </div>
                             </div>
@@ -272,39 +298,6 @@
                 <div class="contact-caption">
                     <div class="row">
                         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                            <div class="contact-info text-right">
-                                <h3 class="text-light">Informação de Contato</h3>
-                                <div class="row">
-                                    <div class="col-xs-10 col-sm-10 col-md-10">
-                                        <div class="info pt-4">
-                                            <h5>Ligue-nos</h5><br>
-                                            <dd>(75) 3414-2018</dd>
-                                        </div>
-                                        <div class="info">
-                                            <h5>Watsapp</h5><br>
-                                            <dd>(75) 9 91160476</dd>
-                                        </div>
-                                        <div class="info">
-                                            <h5>Encontre-nos</h5><br>
-                                            <dd>Rua Plácido Pita, 50 , Capoeirocu – Cachoeira-BA</dd>
-                                        </div>
-                                        <div class="info">
-                                            <h5>E-mail</h5><br>
-                                            <dd>contato@prosaudeintegral.com.br</dd>
-                                            <dd>secretaria@prosaudeintegral.com.br</dd>
-                                            <dd>administrativo@prosaudeintegral.com.br</dd>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-2 d-none d-md-block">
-                                        <div class="info-detail">
-                                            <ul><li><i class="fa fa-phone"></i></li></ul>
-                                            <ul><li><i class="fa fa-whatsapp"></i></li></ul>
-                                            <ul><li><i class="fa fa-map-marker"></i></li></ul>
-                                            <ul><li><i class="fa fa-envelope"></i></li></ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
 
                         <div class="col-xs-12 col-md-6 col-lg-6">

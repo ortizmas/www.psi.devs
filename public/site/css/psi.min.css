@@ -189,7 +189,7 @@
   content: '';
   width: 12px;
   height: 12px;
-  background-color: #308660;
+  background-color: #fff;
   position: relative;
   transform: rotate(45deg) translateX(-50%);
   left: 50%;
@@ -203,7 +203,7 @@
     width: 100%;
     max-width: 200px;
   height: 3px;
-  background: linear-gradient(to right, #20bc4c 0%, #6CC9A1 45%, rgba(0, 0, 0, 0) 45%, rgba(0, 0, 0, 0) 55%, #6CC9A1 55%, #20bc4c 100%);
+  background: linear-gradient(to right, #242a74 0%, #242A74B8 45%, rgba(0, 0, 0, 0) 45%, rgba(0, 0, 0, 0) 55%, #242A74B8 55%, #242a74 100%)
 
 }
 .treinamentos h2.line-one:before,

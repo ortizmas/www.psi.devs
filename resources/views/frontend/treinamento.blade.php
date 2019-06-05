@@ -4,14 +4,14 @@
 
     @include('layouts.frontend.menu', ['some' => 'data'])
     
-    <div class="container-fluid pb-5">
+    <div class="container-fluid pl-0 pb-5 pr-0">
         <div class="hero-show" id="home">
             <div class="hero-show-overlay ">
                 <div class="container">
                     <div class="row">
                         <div class="col-12">
                             <div class="hero-show-wrap flex-column justify-content-center align-items-start">
-                                <header class="entry-header pt-5">
+                                <header class="entry-header text-center pt-5">
                                     <h1>{{ $post->title }}</h1>
                                 </header>
                             </div>
@@ -22,20 +22,20 @@
         </div>
 
         
-        <div class="content-page pt-4">
-            <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 col-xl-9">
-                    <div class="shadow-lg p-3 mb-5 bg-white rounded">
+        <div class="container page-content">
+            <div class="row justify-content-center">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-10 col-xl-10">
+                    <div class="shadow-lg p-4 mb-5 bg-white rounded">
                         {!! $post->content !!}
 
                         <div class="row pt-4 justify-content-center">
-                            <div class="col-md-4">
+                            <div class="col-xs-12 col-md-5 text-center">
                                 <a class="btn btn-primary btn-lg text-white" href="#" title="Inscreva-se">CLICK AQUI <br> <h4>INSCREVA-SE</h4></a>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
+                <!--<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
                     <div class="card border-dark text-center mb-4">
                         <div class="card-header bg-dark pb-0">
                             <p class="text-white text-uppercase">LOGIN {!! $post->title !!}</p>
@@ -84,8 +84,7 @@
                             </ul>
                         </div>
                     </div>
-
-                </div>
+                </div>-->
             </div>
         </div>
     </div>
