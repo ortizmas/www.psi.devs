@@ -128,7 +128,7 @@
                                 <div class="box-content">
                                     <h3 class="title">PROGRAMAS</h3>
                                     <ul class="social pt-5">
-                                        <a class="btn btn-outline-blue rounded-0" href="" title="">SAIBA MAIS</a>
+                                        <a class="btn btn-outline-blue rounded-0" href="{{ url('/programas') }}" title="">SAIBA MAIS</a>
                                     </ul>
                                 </div>
                             </div>

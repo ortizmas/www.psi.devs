@@ -29,7 +29,7 @@ class StorePostRequest extends FormRequest
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'description' => 'max:1000',
             'content' => 'required',
-            'external_url' => 'nullable|url',
+            'external_url' => 'nullable',
             'category_id' => 'required|integer',
         ];
     }

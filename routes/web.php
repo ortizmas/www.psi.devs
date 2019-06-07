@@ -25,6 +25,8 @@ Route::get('/treinamento/{slug}', 'Frontend\ContentController@treinamento')->nam
 Route::get('/palestra/{slug}', 'Frontend\ContentController@palestra')->name('content.palestra');
 Route::get('/clinica/{slug}', 'Frontend\ContentController@getPage')->name('content.page');
 
+Route::get('/programas/{slug?}', 'Frontend\ProgramsController@index')->name('programs.index');
+
 
 
 Route::post('/send-email', 'MailController@sendemail')->name('send.email');
