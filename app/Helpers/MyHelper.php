@@ -42,7 +42,7 @@ class MyHelper
 
 	public static function MenuHeader(){
 		$menuHeader = new Page();
-		foreach ($menuHeader->where('parent_id', 0)->where('enabled', 1)->get() as $key => $menu) {
+		foreach ($menuHeader->where('parent_id', 0)->where('enabled', 1)->orderBy('order', 'ASC')->get() as $key => $menu) {
 			$c1=$menuHeader->where('parent_id', $menu->id)->count();
 			if ( $c1 == 0 ) {
 				if($menu->redirect==1)	{	?>
@@ -141,7 +141,7 @@ class MyHelper
 	}
 
 	public static function treinamentosOne(){
-        $trinamentos = Post::where('status', 1)->where('category_id', 3)->get();
+        $trinamentos = Post::where('status', 1)->where('category_id', 3)->orderBy('order', 'ASC')->get();
 	    foreach ($trinamentos as $key => $value) {
 	        if ($value->redirect == 1) { ?>
 	            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 pb-3">
@@ -197,7 +197,7 @@ class MyHelper
 	}
 
 	public static function treinamentosTwo(){
-        $trinamentos = Post::where('status', 1)->where('category_id', 3)->get();
+        $trinamentos = Post::where('status', 1)->where('category_id', 3)->orderBy('order', 'ASC')->limit(4)->get();
 	    foreach ($trinamentos as $key => $value) {
 	        if ($value->redirect == 1) { ?>
 	            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 hover-mask">

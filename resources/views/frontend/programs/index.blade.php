@@ -12,7 +12,7 @@
                         <div class="col-md-12 p-0">
                             <div class="hero-show-wrap flex-column justify-content-center align-items-start">
                                 <header class="entry-header pt-5">
-                                    <h1 class="text-white text-center">PROGRAMAS</h1>
+                                    <h1 class="text-white text-center">{{ $title }}</h1>
                                 </header>
                             </div>
                         </div>

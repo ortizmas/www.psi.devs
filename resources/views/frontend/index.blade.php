@@ -82,7 +82,7 @@
             </div>
         </div>
     </section> --}}
-    <section class="info-area gray-bg mt-5 mb-5">
+    <section class="info-area gray-bg mt-5 mb-5" id="produtos">
         <div class="container">
             <div class="row flex-v-center">
                 <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
@@ -95,7 +95,7 @@
                         <h1 class="h1">Dores nas costas nunca mais!</h1>
                         <p class="h6 text-justify">As dores nas costas acompanham a todos em fase produtiva ou não. Este Manual é uma grande arma na prevenção e tratamento das dores nas costas adquiridas no trabalho, em casa ou pelo avançar da idade.</p>
                         <p class="h6 text-justify">Como uma linguagem clara e objetiva este Manual levar o leitor:</p>
-                        <a href="{{ url('/treinamento/dores-nas-costas') }}" class="btn btn-yellow">SAIBA MAIS <i class="fas fa-arrow-right"></i></a>
+                        <a href="{{ url('/produtos') }}" class="btn btn-yellow">SAIBA MAIS <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
             </div>
@@ -103,7 +103,7 @@
     </section>
 
     <!------------------ Start section events --------------->
-    <section class="events-section pt-5 pb-5">
+    <section class="events-section pt-5 pb-5" id="programas">
         <div class="pb-0">
             <div class="container events element-animate">
                 <div id="events" class="owl-carousel">
@@ -114,7 +114,7 @@
                                 <div class="box-content">
                                     <h3 class="title">CONSULTORIAS</h3>
                                     <ul class="social pt-5">
-                                        <a class="btn btn-outline-blue rounded-0" href="" title="">SAIBA MAIS</a>
+                                        <a class="btn btn-outline-blue rounded-0" href="{{ url('/consultorias') }}" title="">SAIBA MAIS</a>
                                     </ul>
                                 </div>
                             </div>
@@ -140,9 +140,9 @@
                             <div class="box16">
                                 <img src="{{ asset('site/images/events/event-3.jpg') }}">
                                 <div class="box-content">
-                                    <h3 class="title">ESPECIALIDADE</h3>
+                                    <h3 class="title">ESPECIALIDADES</h3>
                                     <ul class="social pt-5">
-                                        <a class="btn btn-outline-blue rounded-0" href="" title="">SAIBA MAIS</a>
+                                        <a class="btn btn-outline-blue rounded-0" href="{{ url('/especialidades') }}" title="">SAIBA MAIS</a>
                                     </ul>
                                 </div>
                             </div>
@@ -154,7 +154,7 @@
     </section>
 
     <!-- ***** Events start ***** -->
-    <section class="mona-blog-area mb-50 section-padding-80-0">
+    <section class="mona-blog-area mb-50 section-padding-80-0" id="eventos">
         <div class="container-fluid">
           <div class="row">
             <div class="col-12 col-lg-12">
@@ -183,7 +183,7 @@
       <!-- ***** Blog Area End ***** -->
 
     <!--Start videos youtube-->
-    <section class="latest-movies pt-5 pb-5">
+    <section class="latest-movies pt-5 pb-5" id="dicas">
         <div class="container pt-5 pb-5">
             <div class="row justify-content-center pb-3">
                 <div class="col-md-5">
@@ -250,7 +250,7 @@
 
     <!-- Register -->
 
-    <div class="register">
+    <div class="register" id="contato">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-6 p-0">

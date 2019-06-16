@@ -26,6 +26,8 @@ Route::get('/palestra/{slug}', 'Frontend\ContentController@palestra')->name('con
 Route::get('/clinica/{slug}', 'Frontend\ContentController@getPage')->name('content.page');
 
 Route::get('/programas/{slug?}', 'Frontend\ProgramsController@index')->name('programs.index');
+Route::get('/consultorias/{slug?}', 'Frontend\ProgramsController@index')->name('consulting.index');
+Route::get('/especialidades/{slug?}', 'Frontend\ProgramsController@index')->name('especialities.index');
 
 
 
@@ -40,4 +42,6 @@ Auth::routes();
 Route::middleware(['auth'])->group(function(){
 	include (base_path('routes/admin.php'));
 });
+
+Route::get('/{slug}', 'Frontend\ContentController@getPage')->name('content.all');
 

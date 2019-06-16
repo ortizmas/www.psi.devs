@@ -171,7 +171,7 @@ class PostController extends Controller
             'user_id' => Auth::user()->id,
         ]);
 
-        return redirect()->route('posts.index')->with('success', 'Post alterado com sucesso!!');
+        return redirect()->route('posts.edit', $postUpdate->id)->with('success', 'Post alterado com sucesso!!');
     }
 
     /**
