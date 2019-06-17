@@ -27,14 +27,14 @@
                 @if ($value->redirect == 1)
                     <div class="card mb-3" >
                         <div class="row no-gutters">
-                            <div class="col-md-6 align-items-center pt-3 pl-3">
+                            <div class="col-md-6 d-flex align-items-center pt-3 pl-3">
                                 <img src="{{ asset('uploads/images/'.$value->image) }}" class="card-img rounded-0" alt="{{ $value->title }}">
                             </div>
                             <div class="col-md-6">
                                 <div class="card-body">
                                     <h5 class="card-title">{{ $value->title }}</h5>
                                     <p class="card-text">{!! $value->description !!}</p>
-                                    <a class="btn btn-yellow btn-xs pt-3 pl-4 pb-3 pr-4" href="{{ $value->external_url }}" title="{{ $value->title }}"> Saiba mais</a>
+                                    <a target="{{ $value->target }}" class="btn btn-yellow btn-xs pt-3 pl-4 pb-3 pr-4" href="{{ $value->external_url }}" title="{{ $value->title }}"> Saiba mais</a>
                                 </div>
                             </div>
                         </div>
@@ -42,14 +42,14 @@
                 @else
                     <div class="card mb-3" >
                         <div class="row no-gutters">
-                            <div class="col-md-6 align-items-center pt-3 pl-3">
+                            <div class="col-md-6 d-flex align-items-center pt-3 pl-3">
                                 <img src="{{ asset('uploads/images/'.$value->image) }}" class="card-img rounded-0" alt="{{ $value->title }}">
                             </div>
                             <div class="col-md-6">
                                 <div class="card-body">
                                     <h5 class="card-title">{{ $value->title }}</h5>
                                     <p class="card-text">{!! $value->description !!}</p>
-                                    <a class="btn btn-outline-info btn-xs" href="{{ route('programs.index', $value->slug) }}" title="{{ $value->title }}"> Saiba mais</a>
+                                    <a target="{{ $value->target }}"  class="btn btn-dark btn-sm" href="{{ route('programs.index', $value->slug) }}" title="{{ $value->title }}"> Saiba mais</a>
                                 </div>
                             </div>
                         </div>
