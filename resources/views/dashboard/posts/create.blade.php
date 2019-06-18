@@ -352,6 +352,7 @@
         tinymce.init({
             selector: "textarea#textarea-um",
             // theme: "modern",width: 1200,height: 60,
+            fontsize_formats: "8px 9px 10px 11px 12px 13px 14px 16px 18px 20px 22px 24px 28px 36px 40px",
             relative_urls: false,
             remove_script_host: false,
             plugins: [
@@ -359,7 +360,7 @@
             "searchreplace wordcount visualblocks visualchars insertdatetime media nonbreaking",
             "table contextmenu directionality emoticons paste responsivefilemanager textcolor code"
             ],
-            toolbar1: "undo redo | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | styleselect",
+            toolbar1: "undo redo | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | styleselect | fontsizeselect",
 
         });
 
