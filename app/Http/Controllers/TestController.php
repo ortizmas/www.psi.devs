@@ -11,7 +11,7 @@ class TestController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth');
+        //$this->middleware('auth');
     }
 
     public function index()
@@ -44,5 +44,10 @@ class TestController extends Controller
             'category_name' => $category->name,
             'redirect_url' => url('ajax-test-create-form')
         ]);
+    }
+
+    public function precing()
+    {
+        return view('tests.prescing');
     }
 }

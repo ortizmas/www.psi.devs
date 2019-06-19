@@ -43,5 +43,7 @@ Route::middleware(['auth'])->group(function(){
 	include (base_path('routes/admin.php'));
 });
 
+Route::get('/precing', 'TestController@precing')->name('precing');
+
 Route::get('/{slug}', 'Frontend\ContentController@getPage')->name('content.all');
 
