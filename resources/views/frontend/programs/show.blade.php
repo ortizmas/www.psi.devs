@@ -28,11 +28,11 @@
                     <div class="shadow-lg p-4 mb-5 bg-white rounded">
                         {!! $post->content !!}
 
-                        <div class="row pt-4 justify-content-center">
+                        {{-- <div class="row pt-4 justify-content-center">
                             <div class="col-xs-12 col-md-5 text-center">
                                 <a class="btn btn-primary btn-lg text-white" href="#" title="Inscreva-se">CLICK AQUI <br> <h4>INSCREVA-SE</h4></a>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
                 <!--<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
