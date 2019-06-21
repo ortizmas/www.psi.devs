@@ -273,80 +273,84 @@
 
                 <div class="col-lg-6 p-0">
 
-                    <div class="search_section d-flex flex-column align-items-center justify-content-center">
+                    {{-- <div class="search_section d-flex flex-column align-items-center justify-content-center">
                         <div class="search_background" style="background-image:url(site/images/bg/bg-inscrevase.jpg);"></div>
                         <div class="search_content text-center">
                             <h1 class="search_title">Prencha seus dados</h1>
-                            <form id="search_form" class="search_form" action="post">
+                            <form id="search_form" class="search_form" action="" method="post">
                                 <input id="search_form_name" class="input_field search_form_name" type="text" placeholder="Nome completo" required="required">
                                 <input id="search_form_category" class="input_field search_form_category" type="email" placeholder="E-mail" required="required">
                                 <input id="search_form_degree" class="input_field search_form_degree" type="tel" placeholder="Telefone" required="required">
                                 <button id="search_submit_button" type="submit" class="search_submit_button trans_200" value="Submit">Baxiar gratis</button>
                             </form>
                         </div> 
+                    </div> --}}
+
+                    <!-- Begin Mailchimp Signup Form -->
+                    {{-- <link href="//cdn-images.mailchimp.com/embedcode/classic-10_7.css" rel="stylesheet" type="text/css">
+                    <style type="text/css">
+                        #mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif; }
+                    </style> --}}
+                    <div class="search_section d-flex flex-column align-items-center justify-content-center">
+                        <div class="search_background" style="background-image:url(site/images/bg/bg-inscrevase.jpg);"></div>
+                        <div class="search_content text-center">
+                            <h1 class="search_title">Prencha seus dados</h1>
+                            <form action="https://prosaudeintegral.us3.list-manage.com/subscribe/post?u=ed8dc7ed5f0882737313c04a1&amp;id=41c0a84b65" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate search_form" target="_blank">
+                                    <input type="text" value="" name="FNAME" class="input_field search_form_name required" id="mce-FNAME" required="required" placeholder="Nome completo">
+                                    
+                                    <input type="email" value="" name="EMAIL" class="input_field search_form_category required email" id="mce-EMAIL" placeholder="E-mail" required="">
+                                    
+                                    <input type="text" name="PHONE" class="input_field search_form_degree required" value="" id="mce-PHONE" placeholder="Telefone" required="">
+                                    
+                                    <div id="mce-responses" class="clear">
+                                        <div class="response" id="mce-error-response" style="display:none"></div>
+                                        <div class="response" id="mce-success-response" style="display:none"></div>
+                                    </div>    
+                                    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                                    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                                        <input type="text" name="b_ed8dc7ed5f0882737313c04a1_41c0a84b65" tabindex="-1" value=""></div>
+                                    <div class="clear">
+                                        <input type="submit" value="Subscribe" name="Baxiar gratis" id="mc-embedded-subscribe" class="search_submit_button trans_200 button">
+                                    </div>
+                            </form>
+                        </div>
+                    {{-- <div id="mc_embed_signup">
+                    <form action="https://prosaudeintegral.us3.list-manage.com/subscribe/post?u=ed8dc7ed5f0882737313c04a1&amp;id=41c0a84b65" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+                        <div id="mc_embed_signup_scroll">
+                        <h2>Inscreva-se</h2>
+                    <div class="indicates-required"><span class="asterisk">*</span> indicates required</div>
+                    <div class="mc-field-group">
+                        <label for="mce-FNAME">Nome completo  <span class="asterisk">*</span>
+                    </label>
+                        <input type="text" value="" name="FNAME" class="required" id="mce-FNAME">
                     </div>
+                    <div class="mc-field-group">
+                        <label for="mce-EMAIL">E-mail  <span class="asterisk">*</span>
+                    </label>
+                        <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
+                    </div>
+                    <div class="mc-field-group size1of2">
+                        <label for="mce-PHONE">Telefone  <span class="asterisk">*</span>
+                    </label>
+                        <input type="text" name="PHONE" class="required" value="" id="mce-PHONE">
+                    </div>
+                        <div id="mce-responses" class="clear">
+                            <div class="response" id="mce-error-response" style="display:none"></div>
+                            <div class="response" id="mce-success-response" style="display:none"></div>
+                        </div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                        <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_ed8dc7ed5f0882737313c04a1_41c0a84b65" tabindex="-1" value=""></div>
+                        <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+                        </div>
+                    </form>
+                    </div> --}}
+
+                    <!--End mc_embed_signup-->
 
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- contact section starts here -->
-    <!--<section id="contato" class="bg-contact pb-5">
-        <div class="container-fluid">
-            <div class="container-page"> 
-                <div class="contact-caption">
-                    <div class="row">
-                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                        </div>
-
-                        <div class="col-xs-12 col-md-6 col-lg-6">
-                            <div class="contact-form">
-                                <h3 class="text-light">Deixe-nos uma mensagem </h3>
-                                <form class="form" action="contato" method="post">
-                                    <input type="hidden" name="url" value="<?php echo $_SERVER['REQUEST_URI'] ?>" placeholder="">
-                                    <input class="name" type="text" name="nome" placeholder="Digite seu Nome" required >
-                                    <input class="email" type="email" name="email" placeholder="Digite seu E-mail" required >
-                                    <input class="phone" type="text" name="phone" id="phone" placeholder="Telefone" width="20%" required >
-                                    <input class="watsap" type="text" name="whatsapp" placeholder="WhatsApp">
-                                    <textarea class="message" name="message" id="message" cols="30" rows="5" placeholder="Mensagem" required></textarea>
-                                    <input class="btn btn-dark" type="submit" value="ENVIAR" >
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> -->
-
-    <!-- end of contact section -->
-    <!--<div id="newslleter" class="newsletter pt-4 pb-4">
-        <div class="container-fluid">
-            <div class="contact-heading text-center">
-                <h3>TRABALHE CONOSCO</h3>
-                <span>Entre em contato para ver as condições.</span>
-                <hr>
-            </div>
-            <div class="row">
-                <div class="col-md d-flex justify-content-center">
-                    <form class="form-inline" action="contato" method="post">
-                        <input type="hidden" name="url" value="<?php echo $_SERVER['REQUEST_URI'] ?>" placeholder="">
-                        <div class="form-group pr-2">
-                            <input type="text" name="nome" value="" placeholder="Digite seu nome" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" name="email" value="" placeholder="Digite seu e-mail" class="form-control" required>
-                        </div>
-                        <div class="form-group pl-2">
-                            <input class="btn btn-dark btn-sm" type="submit" value="Enviar">
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>-->
-    
     <!-- Newsletter section -->
     <section class="newsletter-section">
         <div class="container">
@@ -358,10 +362,23 @@
                 </div>
                 </div>
                 <div class="col-md-7 col-lg-5">
-                    <form class="newsletter">
-                        <input type="text" placeholder="Seu melhor e-mail">
-                        <button class="site-btn">INSCREVA-SE</button>
+                    <form class="newsletter validate" action="https://prosaudeintegral.us3.list-manage.com/subscribe/post?u=ed8dc7ed5f0882737313c04a1&amp;id=41c0a84b65" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank">
+                        <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="Seu melhor e-mail" required>
+                        <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_ed8dc7ed5f0882737313c04a1_41c0a84b65" tabindex="-1" value=""></div>
+                        <button type="submit" value="INSCREVA-SE" name="subscribe" id="mc-embedded-subscribe" class="site-btn">INSCREVA-SE</button>
+
                     </form>
+
+                    {{-- <div id="mc_embed_signup">
+                    <form action="https://prosaudeintegral.us3.list-manage.com/subscribe/post?u=ed8dc7ed5f0882737313c04a1&amp;id=41c0a84b65" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+                        <div id="mc_embed_signup_scroll">
+                        <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_ed8dc7ed5f0882737313c04a1_41c0a84b65" tabindex="-1" value=""></div>
+                        <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+                        </div>
+                    </form>
+                    </div> --}}
+
+                    <!--End mc_embed_signup-->
                 </div>
             </div>
         </div>
