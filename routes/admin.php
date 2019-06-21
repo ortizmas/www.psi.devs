@@ -27,6 +27,7 @@ Route::resource('courses', 'CourseController');
 Route::resource('modules', 'ModuleController');
 Route::resource('classrooms', 'ClassroomController');
 Route::resource('trainees', 'TraineeController');
+Route::resource('inscriptions', 'InscriptionController');
 Route::resource('assignments', 'AssignmentController');
 Route::get('assignments/modules/{course_id}', 'AssignmentController@getModules')->name('assignments.modules');
 Route::get('assignments/classrooms/{module_id}', 'AssignmentController@getClassrooms')->name('assignments.classrooms');
