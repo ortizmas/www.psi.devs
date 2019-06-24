@@ -27,8 +27,8 @@ class CreatePostsTable extends Migration
             $table->string('external_url')->nullable();
             $table->char('redirect', 3)->nullable();
             $table->string('author')->nullable();
+            $table->string('payment_link')->nullable();
             $table->integer('order')->nullable();
-
             $table->unsignedInteger('category_id');
             $table->foreign('category_id')->references('id')->on('categories');
             $table->unsignedInteger('user_id');

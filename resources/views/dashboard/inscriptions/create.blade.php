@@ -22,7 +22,7 @@
     <!-- Main content -->
     <section class="content">
       	<div class="container-fluid">
-            <form action="{{ route('inscriptions.store') }}" method="post" novalidate="">
+            <form action="{{ route('inscriptions.store') }}" method="post">
                 @csrf
                 <div class="card">
                     <div class="card-body">
@@ -120,7 +120,7 @@
                         <div class="row">
                             <div class="col-md-8">
                                 <div class="form-group mb-3">
-                                    <input id="email" type="text" class="basic-usage form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" placeholder="E-MAIL" required autofocus> 
+                                    <input id="email" type="email" class="basic-usage form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" placeholder="E-MAIL" required autofocus> 
                                     @if ($errors->has('email'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('email') }}</strong>
@@ -131,7 +131,7 @@
 
                             <div class="col-md-4">
                                 <div class="form-group mb-3">
-                                    <input id="phone" type="text" class="basic-usage form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}" name="phone" value="{{ old('phone') }}" placeholder="TELEFONE" required autofocus> 
+                                    <input id="phone" type="tel" class="basic-usage form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}" name="phone" value="{{ old('phone') }}" placeholder="TELEFONE" required autofocus> 
                                     @if ($errors->has('phone'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('phone') }}</strong>
@@ -155,7 +155,7 @@
 
                             <div class="col-md-4">
                                 <div class="form-group mb-3">
-                                    <input id="company_phone" type="text" class="basic-usage form-control{{ $errors->has('company_phone') ? ' is-invalid' : '' }}" name="company_phone" value="{{ old('company_phone') }}" placeholder="TELEFONE DA EMPRESSA" required autofocus> 
+                                    <input id="company_phone" type="tel" class="basic-usage form-control{{ $errors->has('company_phone') ? ' is-invalid' : '' }}" name="company_phone" value="{{ old('company_phone') }}" placeholder="TELEFONE DA EMPRESSA" required autofocus> 
                                     @if ($errors->has('company_phone'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('company_phone') }}</strong>
@@ -227,6 +227,9 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
     <!-- Bootstrap 4 -->
     <script src="/dist/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!--Mask jQuery-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js" type="text/javascript"></script>
     
     <!-- AdminLTE App -->
     <script src="/dist/js/adminlte.js"></script>
@@ -235,6 +238,30 @@
 
     <script>
         $(document).ready(function() {
+            $(function() {
+                $("#phone").mask("(00) 90000-0000");
+                $("#company_phone").mask("(00) 90000-0000");
+                //$("#goal").mask("0000.00");
+                $("#data_of_birth").mask("99/99/9999");
+                $("#delivery_date").mask("99/99/9999");
+                $("#start_date").mask("99/99/9999");
+                $("#end_date").mask("99/99/9999");
+                //$("#phone").mask("(99) 999-9999");
+                $("#cep").mask("99.999-999");
+                //$("#cpf").mask("99.999.999-99");
+                //$("#txtCnpjPesquisa").mask("99.999.999/9999-99");
+                
+                $("#cpf").mask("999.999.999-99");
+                $('#cpf').blur(function () {
+                    var id=$(this).attr("id");
+                    var val=$(this).val();
+                    var pattern = new RegExp(/[0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2}/);
+
+                    if(val.match(pattern) == null){
+                        $("#"+id+"_error").html("Digite um CPF válido");
+                    }
+                });
+            });
 
             function limpa_formulário_cep() {
                 // Limpa valores do formulário de cep.

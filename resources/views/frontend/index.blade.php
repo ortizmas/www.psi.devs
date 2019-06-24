@@ -166,7 +166,7 @@
                             <div class="w-100 justify-content-center align-content-center">
                                 <a class="d-none d-md-block" href="/destaque/seminario-saude-e-longevidade" class="post-title text-center"><h1>EVENTO</h1></a>
                                 <span class="post-date text-center pb-2 d-none d-md-block">Seminário Saúde e Longevidade</span>
-                                <span class="post-date text-center pb-2 d-none d-md-block">15 JUN | SALVADOR / BA</span>
+                                <span class="post-date text-center pb-2 d-none d-md-block">06 JUL | PETROLINA/PE</span>
                                 <a class="btn btn-dark btn-sm" href="{{ url('/destaque/seminario-saude-e-longevidade') }}" title="psi">Ver evento</a>
                             </div>
                         </div>
@@ -190,7 +190,7 @@
                     <h2 class="title d-none d-md-block">VÍDEOS EM DESTAQUE</h2>
                 </div>
                 <div class="col-md-5 align-self-center text-right">
-                    <a target="_blank" href="https://www.youtube.com/channel/UCaw-0bq4ykwbyoU0Y_T24TQ?view_as=subscriber" class="btn btn-icon btn-danger btn-effect">
+                    <a target="_blank" href="https://www.youtube.com/channel/UCaw-0bq4ykwbyoU0Y_T24TQ?sub_confirmation=1" class="btn btn-icon btn-danger btn-effect">
                         INSCREVA-SE
                         <i class="ti-angle-double-right"></i>
                     </a>
@@ -202,6 +202,22 @@
                 <div class="col-md-10">
                     <div class="owl-carousel recommended-slider mt20">
                         <div class="item active">
+                            <div class="movie-box-1">
+                                <div class="embed-responsive embed-responsive-16by9">
+                                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/6ivwI9IYTgs?rel=0" allowfullscreen></iframe>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <div class="movie-box-1">
+                                <div class="embed-responsive embed-responsive-16by9">
+                                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/soKRnXKXkPw?rel=0" allowfullscreen></iframe>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="item">
                             <div class="movie-box-1">
                                 <div class="embed-responsive embed-responsive-16by9">
                                     <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/mOTdQYqcY0M?rel=0" allowfullscreen></iframe>
@@ -286,11 +302,7 @@
                         </div> 
                     </div> --}}
 
-                    <!-- Begin Mailchimp Signup Form -->
-                    {{-- <link href="//cdn-images.mailchimp.com/embedcode/classic-10_7.css" rel="stylesheet" type="text/css">
-                    <style type="text/css">
-                        #mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif; }
-                    </style> --}}
+                    
                     <div class="search_section d-flex flex-column align-items-center justify-content-center">
                         <div class="search_background" style="background-image:url(site/images/bg/bg-inscrevase.jpg);"></div>
                         <div class="search_content text-center">
@@ -306,7 +318,6 @@
                                         <div class="response" id="mce-error-response" style="display:none"></div>
                                         <div class="response" id="mce-success-response" style="display:none"></div>
                                     </div>    
-                                    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
                                     <div style="position: absolute; left: -5000px;" aria-hidden="true">
                                         <input type="text" name="b_ed8dc7ed5f0882737313c04a1_41c0a84b65" tabindex="-1" value=""></div>
                                     <div class="clear">
@@ -314,38 +325,6 @@
                                     </div>
                             </form>
                         </div>
-                    {{-- <div id="mc_embed_signup">
-                    <form action="https://prosaudeintegral.us3.list-manage.com/subscribe/post?u=ed8dc7ed5f0882737313c04a1&amp;id=41c0a84b65" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
-                        <div id="mc_embed_signup_scroll">
-                        <h2>Inscreva-se</h2>
-                    <div class="indicates-required"><span class="asterisk">*</span> indicates required</div>
-                    <div class="mc-field-group">
-                        <label for="mce-FNAME">Nome completo  <span class="asterisk">*</span>
-                    </label>
-                        <input type="text" value="" name="FNAME" class="required" id="mce-FNAME">
-                    </div>
-                    <div class="mc-field-group">
-                        <label for="mce-EMAIL">E-mail  <span class="asterisk">*</span>
-                    </label>
-                        <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
-                    </div>
-                    <div class="mc-field-group size1of2">
-                        <label for="mce-PHONE">Telefone  <span class="asterisk">*</span>
-                    </label>
-                        <input type="text" name="PHONE" class="required" value="" id="mce-PHONE">
-                    </div>
-                        <div id="mce-responses" class="clear">
-                            <div class="response" id="mce-error-response" style="display:none"></div>
-                            <div class="response" id="mce-success-response" style="display:none"></div>
-                        </div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-                        <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_ed8dc7ed5f0882737313c04a1_41c0a84b65" tabindex="-1" value=""></div>
-                        <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
-                        </div>
-                    </form>
-                    </div> --}}
-
-                    <!--End mc_embed_signup-->
-
                 </div>
             </div>
         </div>
@@ -377,7 +356,6 @@
                         </div>
                     </form>
                     </div> --}}
-
                     <!--End mc_embed_signup-->
                 </div>
             </div>

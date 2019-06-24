@@ -6,12 +6,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">VOVENS TALENTOS</h1>
+            <h1 class="m-0 text-dark">PRÓ-SAÚDE INTEGRAL</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Dashboard v2</li>
+              <li class="breadcrumb-item active">Dashboard</li>
             </ol>
           </div>
         </div>
@@ -27,10 +27,10 @@
               <span class="info-box-icon bg-info elevation-1"><i class="fas fa-user-graduate"></i></span>
 
               <div class="info-box-content">
-                <span class="info-box-text">Jovens talentos</span>
+                <span class="info-box-text">Cursos</span>
                 <span class="info-box-number">
                   {{ $trainees->count() }}
-                  <small>Sem emprego</small>
+                  <small>cursos</small>
                 </span>
               </div>
             </div>
@@ -41,10 +41,10 @@
               <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-graduation-cap"></i></span>
 
               <div class="info-box-content">
-                <span class="info-box-text">Jovens talentos</span>
+                <span class="info-box-text">Modulos</span>
                 <span class="info-box-number">
                   {{ $young_employees->count() }}
-                    <small>Empregados</small>
+                    <small>Modulos</small>
                 </span>
               </div>
             </div>
@@ -59,10 +59,10 @@
               <span class="info-box-icon bg-success elevation-1"><i class="fa fa-university"></i></span>
 
               <div class="info-box-content">
-                <span class="info-box-text">Carreiras</span>
+                <span class="info-box-text">Classes</span>
                 <span class="info-box-number">
                   {{ $careers->count() }}
-                  <small>Participando</small>
+                  <small>classes</small>
                 </span>
               </div>
             </div>
@@ -73,7 +73,7 @@
               <span class="info-box-icon bg-warning elevation-1"><i class="fa fa-users"></i></span>
 
               <div class="info-box-content">
-                <span class="info-box-text">Total Jovens Talentos</span>
+                <span class="info-box-text">Total Paginas</span>
                 <span class="info-box-number">
                   {{ $allJT->count() }}
                   <small>100%</small>
@@ -89,10 +89,10 @@
             <div class="col-md-8">
                 <div class="card">
                   <div class="card-header">
-                    <h3 class="card-title">Jovens Talentos</h3>
+                    <h3 class="card-title">Pró-Saúde Integral</h3>
 
                     <div class="card-tools">
-                      <span class="badge badge-danger">Total de {{ $allJT->count() }} participantes</span>
+                      <span class="badge badge-danger">Total de {{ $allJT->count() }} posts</span>
                       <button type="button" class="btn btn-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                       </button>
                       <button type="button" class="btn btn-tool" data-widget="remove"><i class="fa fa-times"></i>
@@ -116,7 +116,7 @@
                   </div>
                   <!-- /.card-body -->
                   <div class="card-footer text-center">
-                    <a href="javascript::">Todos os Jovens Talentos</a>
+                    <a href="javascript::">Todos os Posts</a>
                   </div>
                   <!-- /.card-footer -->
                 </div>
@@ -128,7 +128,7 @@
                             <span class="info-box-icon"><i class="fa fa-university"></i></span>
                             <div class="info-box-content">
                                 <span class="info-box-text">{{ $curso->name }}</span>
-                                <span class="info-box-number text-muted">{{ $curso->trainees->count() }} participantes</span>
+                                <span class="info-box-number text-muted">{{ $curso->trainees->count() }} posts</span>
                             </div>
                         </div>
                     @endforeach

@@ -138,8 +138,32 @@
                     </ul>
                 </li>
 
-                <li class="nav-header">SEÇÃO INSTITUIÇÕES</li>
+                <li class="nav-header">SEÇÕES INSCRIÇÕES</li>
+                <li class="nav-item has-treeview">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-book"></i>
+                        <p>
+                            Inscrições
+                            <i class="fa fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('inscriptions.index') }}" class="nav-link">
+                                <i class="fa fa-circle-o nav-icon"></i>
+                                <p>Todos os inscritos</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('inscriptions.create') }}" class="nav-link">
+                                <i class="fa fa-circle-o nav-icon"></i>
+                                <p>Adicionar novo</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
 
+                <li class="nav-header">SEÇÃO INSTITUIÇÕES</li>
                 <li class="nav-item has-treeview">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-university"></i>

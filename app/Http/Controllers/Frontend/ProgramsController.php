@@ -4,8 +4,11 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Page;
 use App\Post;
+use App\Category;
+use App\Inscription;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+//use Illuminate\Http\RedirectResponse;
 
 class ProgramsController extends Controller
 {
@@ -61,5 +64,36 @@ class ProgramsController extends Controller
     	} else {
     		return view('frontend.programs.index', compact('programs', 'title'));
     	}
+    }
+
+    public function create($slug = null)
+    {
+        //return  new RedirectResponse("http://www.google.com?andParams=yourParams"); 
+        $post = Post::where('slug', $slug)->first();
+        $payment_link = $post->payment_link;
+        return view('frontend.inscription', compact('slug', 'payment_link') );
+    }
+
+    public function store(Request $request)
+    {
+        $inscription = Inscription::create([
+            'name' => $request['name'],
+            'cpf' => $request['cpf'],
+            'cep' => $request['cep'],
+            'street' => $request['street'],
+            'neighborhood' => $request['neighborhood'],
+            'city' => $request['city'],
+            'state' => $request['state'],
+            'ibge' => $request['ibge'],
+            'email' => $request['email'],
+            'phone' => $request['phone'],
+            'company' => $request['company'],
+            'company_phone' => $request['company_phone'],
+            'program' => $request['program']
+        ]);
+
+        return redirect()->away($request['payment_link']);
+
+        //return redirect()->route('inscription.create', $request['program'] )->with('success', 'Seu cadastro foi realizado com sucesso!!');
     }
 }

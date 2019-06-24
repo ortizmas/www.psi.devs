@@ -8,11 +8,11 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Alterar Universidade</h1>
+            <h1 class="m-0 text-dark">Alterar Inscrito</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="{{ route('universities.index') }}" class="btn btn-info btn-sm">Lista de universidades</a></li>
+              <li class="breadcrumb-item"><a href="{{ route('inscriptions.index') }}" class="btn btn-info btn-sm">Lista de Inscritos</a></li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -23,60 +23,166 @@
     <!-- Main content -->
     <section class="content">
         <div class="container-fluid">
-            <form action="{{ route('universities.update', $university->id) }}" method="post" novalidate="">
+            <form action="{{ route('inscriptions.update', $inscription->id) }}" method="post" >
                 @csrf
                 @method('PUT')
                 <div class="card">
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-md-3">
+                            <div class="col-md-8">
                                 <div class="form-group mb-3">
-                                    <input id="initials" type="text" class="basic-usage form-control{{ $errors->has('initials') ? ' is-invalid' : '' }}" name="initials" value="{{ $university->initials }}" placeholder="SIGLA" required autofocus> 
-                                    @if ($errors->has('initials'))
+                                    <input id="name" type="text" class="basic-usage form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name', $inscription->name ) }}" placeholder="NOME" required autofocus> 
+                                    @if ($errors->has('name'))
                                         <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('initials') }}</strong>
+                                            <strong>{{ $errors->first('name') }}</strong>
                                         </span> 
                                     @endif
                                 </div>
                             </div>
-                            <div class="col-md-9">
+                            <div class="col-md-4">
                                 <div class="form-group mb-3">
-                                    <input id="title" type="text" class="basic-usage form-control{{ $errors->has('title') ? ' is-invalid' : '' }}" name="title" value="{{ $university->title }}" placeholder="UNIVERSIDADE" required autofocus> 
-                                    @if ($errors->has('title'))
+                                    <input id="cpf" type="text" class="basic-usage form-control{{ $errors->has('cpf') ? ' is-invalid' : '' }}" name="cpf" value="{{ old('cpf', $inscription->cpf) }}" placeholder="CPF" required autofocus> 
+                                    @if ($errors->has('cpf'))
                                         <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('title') }}</strong>
+                                            <strong>{{ $errors->first('cpf') }}</strong>
                                         </span> 
                                     @endif
                                 </div>
                             </div>
                         </div>
 
-                        <div class="form-group mb-3">
-                            <textarea id="tinymce_um" name="description" class="form-control{{ $errors->has('description') ? ' is-invalid' : '' }}" placeholder="Resumo...">{{ $university->description }}</textarea>
-                            @if ($errors->has('description'))
-                                <span class="invalid-feedback" role="alert" style="display: block;">
-                                    <strong>{{ $errors->first('description') }}</strong>
-                                </span> 
-                            @endif
-                            <samll id="edescriptionHelp" class="form-text text-muted">Resumos são pequenas descrições opcionais do conteúdo do seu post feitas manualmente, que podem ser usadas em seu tema. <a target="_blank" href="https://codex.wordpress.org/pt-br:Resumo" title="Resumo">Aprenda mais sobre resumos manuais.</a></small>
-                        </div>
-                        
                         <div class="row">
-                            <div class="col-md-10">
-                                <div class="input-group mb-3">
-                                    <input id="address" type="text" class="form-control{{ $errors->has('address') ? ' is-invalid' : '' }}" name="address" value="{{ $university->address }}" placeholder="address" required autofocus>
-                                    @if ($errors->has('address'))
+                            <div class="col-md-3">
+                                <div class="form-group mb-3">
+                                    <input id="cep" type="text" class="basic-usage form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="cep" value="{{ old('cep', $inscription->cep ) }}" placeholder="CEP" required autofocus> 
+                                    @if ($errors->has('cep'))
                                         <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('address') }}</strong>
+                                            <strong>{{ $errors->first('cep') }}</strong>
                                         </span> 
                                     @endif
                                 </div>
                             </div>
+                            <div class="col-md-9">
+                                <div class="form-group mb-3">
+                                    <input id="rua" type="text" class="basic-usage form-control{{ $errors->has('street') ? ' is-invalid' : '' }}" name="street" value="{{ old('street', $inscription->street ) }}" placeholder="ENDEREÇO" required autofocus> 
+                                    @if ($errors->has('street'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('street') }}</strong>
+                                        </span> 
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group mb-3">
+                                    <input id="bairro" type="text" class="basic-usage form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="neighborhood" value="{{ old('neighborhood', $inscription->neighborhood ) }}" placeholder="BAIRRO" required autofocus> 
+                                    @if ($errors->has('neighborhood'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('neighborhood') }}</strong>
+                                        </span> 
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group mb-3">
+                                    <input id="cidade" type="text" class="basic-usage form-control{{ $errors->has('city') ? ' is-invalid' : '' }}" name="city" value="{{ old('city', $inscription->city ) }}" placeholder="CIDADE" required autofocus> 
+                                    @if ($errors->has('city'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('city') }}</strong>
+                                        </span> 
+                                    @endif
+                                </div>
+                            </div>
+
                             <div class="col-md-2">
+                                <div class="form-group mb-3">
+                                    <input id="uf" type="text" class="basic-usage form-control{{ $errors->has('state') ? ' is-invalid' : '' }}" name="state" value="{{ old('state', $inscription->state ) }}" placeholder="UF" required autofocus> 
+                                    @if ($errors->has('state'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('state') }}</strong>
+                                        </span> 
+                                    @endif
+                                </div>
+                            </div>
+
+                            <div class="col-md-2">
+                                <div class="form-group mb-3">
+                                    <input id="ibge" type="text" class="basic-usage form-control{{ $errors->has('ibge') ? ' is-invalid' : '' }}" name="ibge" value="{{ old('ibge', $inscription->ibge ) }}" placeholder="IBGE" required autofocus> 
+                                    @if ($errors->has('ibge'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('ibge') }}</strong>
+                                        </span> 
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="form-group mb-3">
+                                    <input id="email" type="email" class="basic-usage form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="email" value="{{ old('email', $inscription->email ) }}" placeholder="E-MAIL" required autofocus> 
+                                    @if ($errors->has('email'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('email') }}</strong>
+                                        </span> 
+                                    @endif
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group mb-3">
+                                    <input id="phone" type="tel" class="basic-usage form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}" name="phone" value="{{ old('phone', $inscription->phone ) }}" placeholder="TELEFONE" required autofocus> 
+                                    @if ($errors->has('phone'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('phone') }}</strong>
+                                        </span> 
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="form-group mb-3">
+                                    <input id="company" type="text" class="basic-usage form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="company" value="{{ old('company', $inscription->company ) }}" placeholder="EMPRESA" required autofocus> 
+                                    @if ($errors->has('company'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('company') }}</strong>
+                                        </span> 
+                                    @endif
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group mb-3">
+                                    <input id="company_phone" type="tel" class="basic-usage form-control{{ $errors->has('company_phone') ? ' is-invalid' : '' }}" name="company_phone" value="{{ old('company_phone', $inscription->company_phone ) }}" placeholder="TELEFONE DA EMPRESSA" required autofocus> 
+                                    @if ($errors->has('company_phone'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('company_phone') }}</strong>
+                                        </span> 
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="input-group mb-3">
+                                    <input id="program" type="text" class="form-control{{ $errors->has('program') ? ' is-invalid' : '' }}" name="program" value="{{ old('program', $inscription->program ) }}" placeholder="PROGRAMA REFERENTE" required autofocus>
+                                    @if ($errors->has('program'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('program') }}</strong>
+                                        </span> 
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="col-md-4">
                                 <div class="input-group mb-3">
                                     <select id="status" name="status" class="form-control{{ $errors->has('status') ? ' is-invalid' : '' }}">
-                                        <option value="1" {{ ($university->status == 1) ? 'selected' : ''  }}>Ativo</option>
-                                        <option value="0" {{ ($university->status == 0) ? 'selected' : ''  }}>Inativo</option>
+                                        <option value="1" {{ old('status', $inscription->status )=='1' ? 'selected' : ''  }}>Ativo</option>
+                                        <option value="0" {{ old('status', $inscription->status)=='0' ? 'selected' : ''  }}>Inativo</option>
                                     </select>
                                     @if ($errors->has('status'))
                                         <span class="invalid-feedback" role="alert">
@@ -89,7 +195,7 @@
 
                             <div class="row">
                                 <div class="col-12">
-                                    <button type="submit" class="btn btn-primary btn-block btn-flat">Alterar Universidade</button>
+                                    <button type="submit" class="btn btn-primary btn-block btn-flat">Alterar</button>
                                 </div>
                             </div>
                     </div>

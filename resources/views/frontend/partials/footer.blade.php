@@ -16,18 +16,18 @@
                 <h6 class="fw-title">LINKS</h6>
                 <div class="dobule-link pl-0">
                     <ul class="pl-0">
-                        <li><a href="">Home</a></li>
-                        <li><a href="">Quem somos</a></li>
-                        <li><a href="">Treinamentos</a></li>
-                        <li><a href="">Consultorias</a></li>
-                        <li><a href="">Especialidades</a></li>
+                        <li><a href="/#inicio">Home</a></li>
+                        <li><a href="{{ url('/quem-somos') }}">Quem somos</a></li>
+                        <li><a href="/#treinamentos">Treinamentos</a></li>
+                        <li><a href="/#programas">Consultorias</a></li>
+                        <li><a href="/#programas">Especialidades</a></li>
                     </ul>
                     <ul class="pl-0">
-                        <li><a href="">Eventos</a></li>
-                        <li><a href="">Produtos</a></li>
-                        <li><a href="">Programas</a></li>
-                        <li><a href="">Dicas e ferramentas</a></li>
-                        <li><a href="">Contato</a></li>
+                        <li><a href="/#eventos">Eventos</a></li>
+                        <li><a href="/#produtos">Produtos</a></li>
+                        <li><a href="/#programas">Programas</a></li>
+                        <li><a href="/#dicas">Dicas e ferramentas</a></li>
+                        <li><a href="/#contato">Contato</a></li>
                     </ul>
                 </div>
             </div>
@@ -35,9 +35,9 @@
                 <h6 class="fw-title">CONTATOS</h6>
                 <ul class="contact pl-0">
                     <li><p><i class="fas fa-map-marker"></i> Rua Plácido Pita, 50 , Capoeirocu – Cachoeira-BA</p></li>
-                    <li><p><i class="fa fa-phone"></i> (75) 3414-2018</p></li>
+                    {{-- <li><p><i class="fa fa-phone"></i> (75) 3414-2018</p></li> --}}
                     <li><p><i class="fa fa-envelope"></i> contato@prosaudeintegral.com.br</p></li>
-                    <li><p><i class="fa fa-envelope"></i> secretaria@prosaudeintegral.com.b</p></li>
+                    <li><p><i class="fa fa-envelope"></i> suporte@prosaudeintegral.com.b</p></li>
                     <li><p><i class="fa fa-envelope"></i> administrativo@prosaudeintegral.com.br</p></li>
                 </ul>
             </div>

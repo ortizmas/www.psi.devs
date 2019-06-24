@@ -29,6 +29,8 @@ Route::get('/programas/{slug?}', 'Frontend\ProgramsController@index')->name('pro
 Route::get('/consultorias/{slug?}', 'Frontend\ProgramsController@index')->name('consulting.index');
 Route::get('/especialidades/{slug?}', 'Frontend\ProgramsController@index')->name('especialities.index');
 
+Route::get('/inscription/{slug}', 'Frontend\ProgramsController@create')->name('inscription.create');
+Route::post('/inscription', 'Frontend\ProgramsController@store')->name('inscription.store');
 
 
 Route::post('/send-email', 'MailController@sendemail')->name('send.email');

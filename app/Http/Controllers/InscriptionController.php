@@ -14,7 +14,8 @@ class InscriptionController extends Controller
      */
     public function index()
     {
-        //
+        $inscriptions = Inscription::paginate();
+        return view('dashboard.inscriptions.index', compact('inscriptions'));
     }
 
     /**
@@ -35,7 +36,23 @@ class InscriptionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $inscription = Inscription::create([
+            'name' => $request['name'],
+            'cpf' => $request['cpf'],
+            'cep' => $request['cep'],
+            'street' => $request['street'],
+            'neighborhood' => $request['neighborhood'],
+            'city' => $request['city'],
+            'state' => $request['state'],
+            'ibge' => $request['ibge'],
+            'email' => $request['email'],
+            'phone' => $request['phone'],
+            'company' => $request['company'],
+            'company_phone' => $request['company_phone'],
+            'program' => $request['program']
+        ]);
+
+        return redirect()->route('inscriptions.index')->with('success', 'Inscrito cadastrado com sucesso!!');
     }
 
     /**
@@ -57,7 +74,7 @@ class InscriptionController extends Controller
      */
     public function edit(Inscription $inscription)
     {
-        //
+        return view('dashboard.inscriptions.edit', compact('inscription'));
     }
 
     /**
@@ -69,7 +86,25 @@ class InscriptionController extends Controller
      */
     public function update(Request $request, Inscription $inscription)
     {
-        //
+        $inscriptionUpdate = Inscription::find($inscription->id);
+
+        $inscription = $inscriptionUpdate->update([
+            'name' => $request['name'],
+            'cpf' => $request['cpf'],
+            'cep' => $request['cep'],
+            'street' => $request['description'],
+            'neighborhood' => $request['neighborhood'],
+            'city' => $request['city'],
+            'state' => $request['state'],
+            'ibge' => $request['ibge'],
+            'email' => $request['email'],
+            'phone' => $request['phone'],
+            'company' => $request['company'],
+            'company_phone' => $request['company_phone'],
+            'program' => $request['program']
+        ]);
+
+        return redirect()->route('inscriptions.index')->with('success', 'Inscrição alterado com sucesso!!');
     }
 
     /**
@@ -80,6 +115,6 @@ class InscriptionController extends Controller
      */
     public function destroy(Inscription $inscription)
     {
-        //
+        return Inscription::destroy($inscription->id);
     }
 }

@@ -182,6 +182,15 @@
                                     @endif
                                 </div>
 
+                                <div class="input-group mb-3">
+                                    <input id="payment_link" type="text" class="form-control{{ $errors->has('payment_link') ? ' is-invalid' : '' }}" name="payment_link" value="{{ old('payment_link') }}" placeholder="Url PagSeguro se tiver (opcional)" required autofocus> 
+                                    @if ($errors->has('payment_link'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('payment_link') }}</strong>
+                                        </span> 
+                                    @endif
+                                </div>
+
                                 <div class="input-group mb-3 w-25">
                                     <input id="order" type="text" class="form-control{{ $errors->has('order') ? ' is-invalid' : '' }}" name="order" value="{{ old('order') }}" placeholder="Ordem" required autofocus> 
                                     @if ($errors->has('order'))
