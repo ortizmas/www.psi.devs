@@ -154,7 +154,7 @@ return [
         //Harimayco\Menu\MenuServiceProvider::class,
         //UniSharp\LaravelFilemanager\LaravelFilemanagerServiceProvider::class,
         //Intervention\Image\ImageServiceProvider::class,
-        
+        LaravelLegends\PtBrValidator\ValidatorProvider::class,
         // Laravel collective
         Collective\Html\HtmlServiceProvider::class,
 

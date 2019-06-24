@@ -30,7 +30,7 @@
 
                         <div class="row pt-4 justify-content-center">
                             <div class="col-xs-12 col-md-5 text-center">
-                                <a class="btn btn-primary btn-lg text-white" href="{{ route('inscription.create', $post->slug ) }}" title="Inscreva-se">CLICK AQUI <br> <h4>INSCREVA-SE</h4></a>
+                                <a target="_blank" class="btn btn-primary btn-lg text-white" href="{{ route('inscription.create', $post->slug ) }}" title="Inscreva-se"><h4>ADQUIRIR</h4></a>
                             </div>
                         </div>
                     </div>

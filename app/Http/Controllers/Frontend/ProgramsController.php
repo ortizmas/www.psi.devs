@@ -7,6 +7,7 @@ use App\Post;
 use App\Category;
 use App\Inscription;
 use Illuminate\Http\Request;
+use App\Http\Requests\Inscriptions\InscriptionRequest;
 use App\Http\Controllers\Controller;
 //use Illuminate\Http\RedirectResponse;
 
@@ -69,13 +70,14 @@ class ProgramsController extends Controller
     public function create($slug = null)
     {
         //return  new RedirectResponse("http://www.google.com?andParams=yourParams"); 
-        $post = Post::where('slug', $slug)->first();
-        $payment_link = $post->payment_link;
-        return view('frontend.inscription', compact('slug', 'payment_link') );
+        return view('frontend.inscription', compact('slug') );
     }
 
-    public function store(Request $request)
+    public function store(InscriptionRequest $request)
     {
+        $post = Post::where('slug', $request['program'])->first();
+        $payment_link = $post->payment_link;
+        
         $inscription = Inscription::create([
             'name' => $request['name'],
             'cpf' => $request['cpf'],
@@ -92,7 +94,7 @@ class ProgramsController extends Controller
             'program' => $request['program']
         ]);
 
-        return redirect()->away($request['payment_link']);
+        return redirect()->away($payment_link );
 
         //return redirect()->route('inscription.create', $request['program'] )->with('success', 'Seu cadastro foi realizado com sucesso!!');
     }

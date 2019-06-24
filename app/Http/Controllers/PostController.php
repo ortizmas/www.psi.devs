@@ -29,7 +29,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::paginate();
+        $posts = Post::paginate(100);
         return view('dashboard.posts.index', compact('posts'));
     }
 
