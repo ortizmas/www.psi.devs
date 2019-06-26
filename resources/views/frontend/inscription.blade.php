@@ -12,7 +12,7 @@
                         <div class="col-12">
                             <div class="hero-show-wrap flex-column justify-content-center align-items-start">
                                 <header class="entry-header text-center pt-5">
-                                    <h1>INSCREVA-SE</h1>
+                                    <h1>{{ $post->title }}</h1>
                                 </header>
                             </div>
                         </div>
@@ -37,6 +37,9 @@
                         <form action="{{ route('inscription.store') }}" method="post" novalidate="">
                             @csrf
                             <div class="card">
+                                <div class="card-header">
+                                    <h4 class="card-title">INFORMAÇÕES DE PAGAMENTO</h4>
+                                </div>
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-md-8">
@@ -182,7 +185,7 @@
                                         </div>
                                     </div>
 
-                                    <input id="program" type="hidden" name="program" value="{{ old('program', $slug) }}" >
+                                    <input id="program" type="hidden" name="program" value="{{ old('program', $post->slug) }}" >
 
                                     <div class="row justify-content-center">
                                         <div class="col-4">

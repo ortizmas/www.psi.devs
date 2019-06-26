@@ -2,6 +2,7 @@
 
 namespace App;
 
+use DB;
 use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
@@ -18,5 +19,17 @@ class Post extends Model
     public function user()
     {
     	return $this->belongsTo('App\User');
+    }
+
+    public function getCategoriesForPosts()
+    {
+        $categories = DB::table('categories AS c')
+            ->join('posts', 'c.id', '=', 'posts.category_id')
+            ->select('c.id', 'c.name', 'c.slug')
+            ->groupBy('c.name')
+            ->orderBy('c.name', 'asc')
+            ->get();
+
+        return $categories;
     }
 }

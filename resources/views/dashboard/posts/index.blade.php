@@ -8,11 +8,21 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Posts</h1>
+            <h1 class="m-0 text-dark float-left">Posts</h1>
+            <form class="form-inline float-right" action="{{ route('posts.index') }}" method="get" accept-charset="utf-8">
+                @csrf
+                <select id="search" class="form-control" name="category_id" required>
+                    <option value="">Selecionar categoria</option>
+                    @foreach ($categories as $category)
+                        <option value="{{ $category->id }}" >{{ $category->name }}</option>
+                    @endforeach
+                </select>
+                <button type="submit" name="search" class="btn btn-success ml-2"><i class="fa fa-search"></i></button>
+            </form>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="{{ route('posts.create') }}"><i class="fas fa-plus-square" style="font-size: 48px;"></i></a></li>
+              <li class="breadcrumb-item"><a href="{{ route('posts.create') }}"><i class="fas fa-plus-square" style="font-size: 36px;"></i></a></li>
               {{-- <li class="breadcrumb-item active">Dashboard v2</li> --}}
             </ol>
           </div><!-- /.col -->
@@ -90,7 +100,20 @@
     {{-- <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> --}}
 
     <script src="/dist/js/demo.js"></script>
-		
+	
+    <script type=text/javascript>
+        $('#search').on('keyup',function(){
+            $value=$(this).val();
+            $.ajax({
+                type : 'get',
+                url : '{{URL::to('posts/index')}}',
+                data:{'search':$value},
+                success:function(data){
+                    $('tbody').html(data);
+                }
+            });
+        })
+    </script>
     <script>
       $('body').on('click', '.btn-delete', function (event) {
           event.preventDefault();

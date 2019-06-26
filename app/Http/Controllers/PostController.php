@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Post;
 use App\Category;
 use Auth;
+use DB;
 use Illuminate\Support\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Requests\Posts\StorePostRequest;
@@ -27,10 +28,18 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request, Post $post)
     {
-        $posts = Post::paginate(100);
-        return view('dashboard.posts.index', compact('posts'));
+
+        if ($request->category_id != null) {
+            $posts = Post::where('category_id', $request->category_id)->get();
+        } else {
+            $posts = Post::paginate(100);
+        }
+        
+        $categories = $post->getCategoriesForPosts();
+        
+        return view('dashboard.posts.index', compact('posts', 'categories'));
     }
 
     /**

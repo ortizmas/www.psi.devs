@@ -11,7 +11,7 @@ use App\Http\Requests\Inscriptions\InscriptionRequest;
 use App\Http\Controllers\Controller;
 //use Illuminate\Http\RedirectResponse;
 
-class ProgramsController extends Controller
+class ProductController extends Controller
 {
     public function index(Request $request, $slug = null)
     {
@@ -22,33 +22,17 @@ class ProgramsController extends Controller
             case 'consultorias':
                 $id = 6;
                 $title = 'CONSULTORIAS';
-                $programs = Post::where('category_id', 6)->where('status', 1)->get();
-                $programs = collect($programs)->all();
-                $programs = (object)$programs;
-                break;
-
-            case 'programas':
-                $id = 5;
-                $title = 'PROGRAMAS';
-                $programs = Post::where('category_id', 5)->where('status', 1)->get();
-                $programs = collect($programs)->all();
-                $programs = (object)$programs;
-                break;
-
-            case 'especialidades':
-                $id = 7;
-                $title = 'ESPECIALIDADES';
-                $programs = Post::where('category_id', 7)->where('status', 1)->get();
-                $programs = collect($programs)->all();
-                $programs = (object)$programs;
+                $products = Post::where('category_id', 6)->where('status', 1)->get();
+                $products = collect($products)->all();
+                $products = (object)$products;
                 break;
             
             default:
                 $id = 8;
-                $title = 'PRODUTOS';
-                $programs = Post::where('category_id', 8)->where('status', 1)->get();
-                $programs = collect($programs)->all();
-                $programs = (object)$programs;
+                $title = 'TODOS OS PRODUTOS';
+                $products = Post::where('category_id', 8)->where('status', 1)->get();
+                $products = collect($products)->all();
+                $products = (object)$products;
                 break;
         }
 
@@ -58,12 +42,12 @@ class ProgramsController extends Controller
             $post = (object)$post;
 
             if ( $post != '' ) {
-                return view('frontend.programs.show', compact('post'));
+                return view('frontend.products.show', compact('post'));
             }
             //abort(404);
             return response()->view('errors.custom', [], 404);
     	} else {
-    		return view('frontend.programs.index', compact('programs', 'title'));
+    		return view('frontend.products.index', compact('products', 'title'));
     	}
     }
 
