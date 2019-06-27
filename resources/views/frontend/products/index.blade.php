@@ -22,62 +22,57 @@
         </div>
 
         
-        <div class="container page-content pt-5">
-            <div class="row">            
-                @foreach ($products as $value)
-                    <div class="col-xs-12 col-md-6 col-lg-6">
-                        @if ($value->payment_link === null)
-                            @if ($value->redirect == 1)
-                                <div class="card mb-3" >
-                                    <div class="row no-gutters">
-                                        <div class="col-md-6 d-flex align-items-center pt-3 pl-3">
-                                            <img src="{{ asset('uploads/images/'.$value->image) }}" class="card-img rounded-0" alt="{{ $value->title }}">
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="card-body">
-                                                <h5 class="card-title">{{ $value->title }}</h5>
-                                                <p class="card-text">{!! $value->description !!}</p>
-                                                <a target="{{ $value->target }}" class="btn btn-yellow btn-xs pt-3 pl-4 pb-3 pr-4" href="{{ $value->external_url }}" title="{{ $value->title }}"> Saiba mais</a>
-                                            </div>
-                                        </div>
-                                    </div>
+        <div class="container page-content pt-5">           
+            @foreach ($products as $value)
+                @if ($value->payment_link === null)
+                    @if ($value->redirect == 1)
+                        <div class="card mb-3" >
+                            <div class="row no-gutters">
+                                <div class="col-md-6 d-flex align-items-center pt-3 pl-3">
+                                    <img src="{{ asset('uploads/images/'.$value->image) }}" class="card-img rounded-0" alt="{{ $value->title }}">
                                 </div>
-                            @else
-                                <div class="card mb-3" >
-                                    <div class="row no-gutters">
-                                        <div class="col-md-6 d-flex align-items-center pt-3 pl-3">
-                                            <img src="{{ asset('uploads/images/'.$value->image) }}" class="card-img rounded-0" alt="{{ $value->title }}">
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="card-body">
-                                                <h5 class="card-title">{{ $value->title }}</h5>
-                                                <p class="card-text">{!! $value->description !!}</p>
-                                                <a target="{{ $value->target }}"  class="btn btn-dark btn-sm" href="{{ url($value->category->slug .'/' .$value->slug ) }}" title="{{ $value->title }}"> Saiba mais</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            @endif
-                        @else
-                            <div class="card mb-3" >
-                                <div class="row no-gutters">
-                                    <div class="col-md-6 d-flex align-items-center pt-3 pl-3">
-                                        <img src="{{ asset('uploads/images/'.$value->image) }}" class="card-img rounded-0" alt="{{ $value->title }}">
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="card-body">
-                                            <h5 class="card-title">{{ $value->title }}</h5>
-                                            <p class="card-text">{!! $value->description !!}</p>
-                                            <a target="_blank"  class="btn btn-success btn-sm" href="{{ route('inscription.create', $value->slug ) }}" title="{{ $value->title }}"> ADQUIRIR </a>
-                                        </div>
+                                <div class="col-md-6">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ $value->title }}</h5>
+                                        <p class="card-text">{!! $value->description !!}</p>
+                                        <a target="{{ $value->target }}" class="btn btn-yellow btn-xs pt-3 pl-4 pb-3 pr-4" href="{{ $value->external_url }}" title="{{ $value->title }}"> Saiba mais</a>
                                     </div>
                                 </div>
                             </div>
-                        @endif
+                        </div>
+                    @else
+                        <div class="card mb-3" >
+                            <div class="row no-gutters">
+                                <div class="col-md-6 d-flex align-items-center pt-3 pl-3">
+                                    <img src="{{ asset('uploads/images/'.$value->image) }}" class="card-img rounded-0" alt="{{ $value->title }}">
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ $value->title }}</h5>
+                                        <p class="card-text">{!! $value->description !!}</p>
+                                        <a target="{{ $value->target }}"  class="btn btn-dark btn-sm" href="{{ url($value->category->slug .'/' .$value->slug ) }}" title="{{ $value->title }}"> Saiba mais</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endif
+                @else
+                    <div class="card mb-3" >
+                        <div class="row no-gutters">
+                            <div class="col-md-6 d-flex align-items-center pt-3 pl-3">
+                                <img src="{{ asset('uploads/images/'.$value->image) }}" class="card-img rounded-0" alt="{{ $value->title }}">
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ $value->title }}</h5>
+                                    <p class="card-text">{!! $value->description !!}</p>
+                                    <a target="_blank"  class="btn btn-success btn-sm" href="{{ route('inscription.create', $value->slug ) }}" title="{{ $value->title }}"> ADQUIRIR </a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                @endforeach
-            </div>
-                        
+                @endif
+            @endforeach   
         </div>
     </div>
 
