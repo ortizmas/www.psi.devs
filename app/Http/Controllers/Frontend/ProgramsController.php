@@ -95,6 +95,10 @@ class ProgramsController extends Controller
             'program' => $request['program']
         ]);
 
+        if ($request['program'] === 'clube-de-vantagens') {
+            return redirect()->route('products.items');   
+        }
+
         return redirect()->away($payment_link );
 
         //return redirect()->route('inscription.create', $request['program'] )->with('success', 'Seu cadastro foi realizado com sucesso!!');

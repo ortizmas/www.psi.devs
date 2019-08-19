@@ -148,7 +148,7 @@
                                     </div>
 
                                     <div class="row">
-                                        <div class="col-md-4">
+                                        <div class="col-md-8">
                                             <div class="form-group mb-3">
                                                 <input id="company" type="text" class="basic-usage form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="company" value="{{ old('company') }}" placeholder="EMPRESA" autofocus> 
                                                 @if ($errors->has('company'))
@@ -165,20 +165,6 @@
                                                 @if ($errors->has('company_phone'))
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $errors->first('company_phone') }}</strong>
-                                                    </span> 
-                                                @endif
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-4">
-                                            <div class="input-group mb-3">
-                                                <select id="status" name="status" class="form-control{{ $errors->has('status') ? ' is-invalid' : '' }}">
-                                                    <option value="1" {{ old('status')=='1' ? 'selected' : ''  }}>Ativo</option>
-                                                    <option value="0" {{ old('status')=='0' ? 'selected' : ''  }}>Inativo</option>
-                                                </select>
-                                                @if ($errors->has('status'))
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $errors->first('status') }}</strong>
                                                     </span> 
                                                 @endif
                                             </div>

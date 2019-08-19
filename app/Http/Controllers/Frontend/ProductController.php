@@ -83,4 +83,9 @@ class ProductController extends Controller
 
         //return redirect()->route('inscription.create', $request['program'] )->with('success', 'Seu cadastro foi realizado com sucesso!!');
     }
+
+    public function items()
+    {
+        return view('frontend.products.items');
+    }
 }
