@@ -40,11 +40,16 @@ class MyHelper
 	<?php
 	}
 
+	
+
 	public static function MenuHeader(){
 		$menuHeader = new Page();
-		foreach ($menuHeader->where('parent_id', 0)->where('enabled', 1)->orderBy('order', 'ASC')->get() as $key => $menu) {
-			$c1=$menuHeader->where('parent_id', $menu->id)->count();
-			if ( $c1 == 0 ) {
+		$menus = $menuHeader->where('parent_id', 0)->where('enabled', 1)->orderBy('order', 'ASC')->get(['id', 'parent_id', 'title', 'slug']);
+
+		foreach ($menus as $key => $menu) {
+			//$count_1 = $menuHeader->where('parent_id', $menu->id)->count();
+			
+			if ( count($menu->childs)== 0 ) {
 				if($menu->redirect==1)	{	?>
 			   		<li class="<?php echo ($key==0) ? 'active' : '' ?>"><a class="text-dark text-uppercase js-scroll-trigger" target="<?php echo $menu->target ?>" href="<?php echo $menu->external_url ?>" ><?php echo $menu->title ?><span class="sr-only"></span></a></li>
 				<?php
@@ -58,8 +63,8 @@ class MyHelper
 					<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
 						<?php
 					 	foreach($menuHeader->where('parent_id', $menu->id)->where('enabled', 1)->get() as $submenu){
-				            $c2=$menuHeader->where('parent_id', $submenu->id)->where('enabled', 1)->count();
-				            if ( $c2 == 0 ) {
+					 		//$c2=$menuHeader->where('parent_id', $submenu->id)->where('enabled', 1)->count();
+				            if ( count($submenu->childs) == 0 ) {
 				            	if($submenu->redirect==1){ ?>
 									<li><a target="<?php echo $submenu->target ?>" href="<?php echo $submenu->redirect ?>" title="Ir a <?php echo $submenu->title ?>"><?php echo $submenu->title ?></a></li>
 								<?php
@@ -73,8 +78,8 @@ class MyHelper
 				            		<ul class="dropdown-menu" role="navbarDropdown">
 				            			<?php
 					            		foreach($menuHeader->where('parent_id', $submenu->id)->where('enabled', 1)->get() as $treemenu){
-					            			$c3=$menuHeader->where('parent_id', $treemenu->id)->where('enabled', 1)->count();
-					            			if  ($c3 == 0 ) {
+					            			//$c3=$menuHeader->where('parent_id', $treemenu->id)->where('enabled', 1)->count();
+					            			if  (count($treemenu->childs) == 0 ) {
 					            				if($treemenu->redireccionar==1){ ?>
 					            					<li><a tabindex="-1" target="<?php echo $treemenu->target ?>" href="<?php echo $treemenu->redirect ?>" title="Ir a <?php echo $treemenu->title ?>"><?php echo $treemenu->title ?></a></li>
 					            					<?php
