@@ -17,9 +17,8 @@
                             <ul class="navbar-nav mr-auto">
                                 <li></li>
                             </ul>
-
                             <ul class="navbar-nav">
-                                {{ MyHelper::MenuHeader() }}
+                                {{ MyHelper::menuTestTwo() }}
                             </ul>
                         </div>
                     </nav>

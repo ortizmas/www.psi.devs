@@ -29,7 +29,7 @@ class PageController extends Controller
      */
     public function index()
     {
-        $pages = Page::get();
+        $pages = Page::get()->load('section');
         return view('dashboard.pages.index', compact('pages'));
     }
 

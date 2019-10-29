@@ -6,7 +6,7 @@ use App\Post;
 
 class MyHelper
 {
-	public function menuTest() 
+	public static function menuTest() 
 	{ ?>
 		<ul class="navbar-nav">
             <li class="active"><a href="#">Home <span class="sr-only">(current)</span></a></li>
@@ -40,7 +40,82 @@ class MyHelper
 	<?php
 	}
 
-	
+	public static function menuTestTwo() 
+	{ 
+		$page = Page::with('ds')->where('parent_id', 0)->where('enabled', 1)->orderBy('order', 'ASC')
+		->select('id', 'parent_id', 'title', 'slug')
+		->get(); ?>
+
+		<?php foreach ($page as $key => $firstmenu): ?>
+			
+			<?php if ( count($firstmenu->ds) == 0): ?>
+				<li class="active"><a class="text-dark text-uppercase" href="#"><?php echo $firstmenu->title ?></a></li>
+			<?php else: ?>
+				<li class="dropdown">
+                	<a class="dropdown-toggle text-dark text-uppercase" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php echo $firstmenu->title ?></a>
+                	<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                		<?php foreach ($firstmenu->ds as $key => $secondmenu): ?>
+                			
+                			<?php if ( count($secondmenu->ds) == 0): ?>
+                				<li><a href="#"><?php echo $secondmenu->title ?></a></li>
+                			<?php else: ?>
+                				<li class="dropdown">
+			                        <a class="dropdown-toggle text-dark text-uppercase" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php echo $secondmenu->title ?></a>
+			                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+			                            <?php foreach ($secondmenu->ds as $key => $thirdmenu): ?>
+				                			<?php if ( $thirdmenu->redirect == 1): ?>
+				                				<li><a href="#"><?php echo $thirdmenu->title ?></a></li>
+				                			<?php else: ?>
+				                				<li><a href="#"><?php echo $thirdmenu->title ?></a></li>
+				                			<?php endif ?>
+				                		<?php endforeach ?>
+			                        </ul>
+			                    </li>
+                			<?php endif ?>
+                		<?php endforeach ?>
+                	</ul>
+                </li>
+			<?php endif ?>
+		<?php endforeach ?>
+
+            <!-- <li class="active"><a class="text-dark text-uppercase" href="#">Home <span class="sr-only">(current)</span></a></li>
+            <li><a class="text-dark text-uppercase js-scroll-trigger" href="#">Link</a></li>
+            <li class="dropdown">
+                <a class="dropdown-toggle text-dark text-uppercase" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a href="#">Action</a></li>
+                    <li><a href="#">Another action</a></li>
+                    <li><a href="#">Something else here</a></li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle text-dark text-uppercase" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown2</a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li class="dropdown">
+                                <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown3</a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li><a href="#">Action</a></li>
+                                    <li><a href="#">Another action</a></li>
+                                    <li><a href="#">Something else here</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li><a class="text-dark text-uppercase" href="#">Service</a></li> -->
+        
+	<?php
+	}
+
+	public static function globalMenu()
+	{
+		$menuHeader = new Page();
+		$page = Page::with('ds')->where('parent_id', 0)->where('enabled', 1)->orderBy('order', 'ASC')->get(['id', 'parent_id', 'title', 'slug']);
+
+		return $page;
+	}
 
 	public static function MenuHeader(){
 		$menuHeader = new Page();
@@ -92,6 +167,80 @@ class MyHelper
 					            					<a class="" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php echo $treemenu->title ?> <i class="fas fa-angle-down" style="float: right;padding-top: 8px;"> </i></a>
 					            					<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
 							            				<?php foreach ($menuHeader->where('parent_id', $treemenu->id)->where('enabled', 1)->get() as $fourMenu): 
+							            					if($fourMenu->redireccionar==1){ ?>
+								            					<li><a tabindex="-1" target="<?php echo $fourMenu->target ?>" href="<?php echo $fourMenu->redirect ?>" title="Ir a <?php echo $fourMenu->title ?>"><?php echo $fourMenu->title ?></a></li>
+								            					<?php
+								            				}else{ ?>
+								            					<li><a tabindex="-1" target="<?php echo $fourMenu->target ?>" href="/<?=$menu->slug ?>/<?=$submenu->slug ?>/<?=$fourMenu->slug ?>" title="Ir a <?php echo $fourMenu->title ?>"><?php echo $fourMenu->title ?></a></li>
+								            					<?php
+								            				}
+							            				endforeach ?>
+					            					</ul>
+					            				</li>
+					            			<?php
+					            			}
+					            		}
+					            		?>
+				            		</ul>
+				            	</li>
+				            <?php
+				            }
+				        }
+			        	?>
+					</ul>
+				</li>
+			<?php
+			}
+		}
+	}
+
+	public static function MenuHeaderOne(){
+		$menuHeader = new Page();
+		$menus = $menuHeader->with('ds')->where('parent_id', 0)->where('enabled', 1)->orderBy('order', 'ASC')->get(['id', 'parent_id', 'title', 'slug']);
+
+		foreach ($menus as $key => $menu) {
+			if ( count($menu->ds)== 0 ) {
+				if($menu->redirect==1)	{	?>
+			   		<li class="<?php echo ($key==0) ? 'active' : '' ?>"><a class="text-dark text-uppercase js-scroll-trigger" target="<?php echo $menu->target ?>" href="<?php echo $menu->external_url ?>" ><?php echo $menu->title ?><span class="sr-only"></span></a></li>
+				<?php
+				} else { ?>
+					<li class="<?php echo ($key==0) ? 'active' : '' ?>"><a class="text-dark text-uppercase" target="<?php echo $menu->target ?>" href="<?php echo $menu->slug ?>" ><?php echo $menu->title ?><span class="sr-only"></span></a></li>
+				<?php
+				}
+			}else{ ?>
+				<li class="dropdown">
+					<a href="#" id="navbarDropdown" class="dropdown-toggle text-dark text-uppercase" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo $menu->title ?> <i class="fas fa-angle-down pl-2" style="float: right;padding-top: 5px;"> </i></a>
+					<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+						<?php
+					 	foreach($menu->ds as $submenu){
+				            if ( count($submenu->ds) == 0 ) {
+				            	if($submenu->redirect==1){ ?>
+									<li><a target="<?php echo $submenu->target ?>" href="<?php echo $submenu->redirect ?>" title="Ir a <?php echo $submenu->title ?>"><?php echo $submenu->title ?></a></li>
+								<?php
+								}else{ ?>
+									<li><a target="<?php echo $submenu->target ?>" href="/<?php echo $menu->slug ?>/<?php echo $submenu->slug ?>" title="Ir a <?php echo $submenu->title ?>"><?php echo $submenu->title ?></a></li>
+								<?php
+								}
+				            }else { ?>
+				            	<li class="dropdown">
+				            		<a class="text-dark text-uppercase" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php echo $submenu->title ?> <i class="fas fa-angle-down" style="float: right;padding-top: 8px;"> </i></a>
+				            		<ul class="dropdown-menu" role="navbarDropdown">
+				            			<?php
+					            		foreach($submenu->ds as $treemenu){
+					            			//$c3=$menuHeader->where('parent_id', $treemenu->id)->where('enabled', 1)->count();
+					            			if  (count($treemenu->ds) == 0 ) {
+					            				if($treemenu->redireccionar==1){ ?>
+					            					<li><a tabindex="-1" target="<?php echo $treemenu->target ?>" href="<?php echo $treemenu->redirect ?>" title="Ir a <?php echo $treemenu->title ?>"><?php echo $treemenu->title ?></a></li>
+					            					<?php
+					            				}else{ ?>
+					            					<li><a tabindex="-1" target="<?php echo $treemenu->target ?>" href="/<?=$menu->slug ?>/<?=$submenu->slug ?>/<?=$treemenu->slug ?>" title="Ir a <?php echo $treemenu->title ?>"><?php echo $treemenu->title ?></a></li>
+					            					<?php
+					            				}
+					            			} else { ?>
+					            				<li class="dropdown">
+					            					<a class="" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php echo $treemenu->title ?> <i class="fas fa-angle-down" style="float: right;padding-top: 8px;"> </i></a>
+					            					<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+							            				<?php foreach ($treemenu->ds  as $fourMenu): 
 							            					if($fourMenu->redireccionar==1){ ?>
 								            					<li><a tabindex="-1" target="<?php echo $fourMenu->target ?>" href="<?php echo $fourMenu->redirect ?>" title="Ir a <?php echo $fourMenu->title ?>"><?php echo $fourMenu->title ?></a></li>
 								            					<?php

@@ -20,15 +20,23 @@ class Page extends Model
     	return $this->belongsTo('App\User');
     }
 
-    public function parent() {
-        return $this->hasOne('App\Page', 'id', 'parent_id');
+    /**
+     * [us Parent]
+     * @return [type] [self relationship]
+     */
+    public function us()
+    {
+        return $this->belongsTo(Self::class, 'id', 'parent_id');
     }
 
-    public function childs() {
-        return $this->hasMany('App\Page','parent_id','id') ;
+    /**
+     * [ds Childs]
+     * @return [type] [self relationship um a muitos]
+     */
+    public function ds()
+    {
+        return $this->hasMany(Self::class, 'parent_id', 'id');
     }
 
-    public static function tree() {
-        return static::with(implode('.', array_fill(0, 100, 'children')))->where('parent_id', '=', '0')->orderBy('order')->get();
-    }
 }
+
