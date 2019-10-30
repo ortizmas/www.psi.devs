@@ -38,5 +38,10 @@ class Page extends Model
         return $this->hasMany(Self::class, 'parent_id', 'id');
     }
 
+    public function childs()
+    {
+        return $this->hasMany(Self::class, 'parent_id', 'id');
+    }
+
 }
 

@@ -18,7 +18,7 @@
                                 <li></li>
                             </ul>
                             <ul class="navbar-nav">
-                                {{ MyHelper::menuTestTwo() }}
+                                {{ MyHelper::MenuHeaderOne() }}
                             </ul>
                         </div>
                     </nav>

@@ -42,9 +42,11 @@ class MyHelper
 
 	public static function menuTestTwo() 
 	{ 
-		$page = Page::with('ds')->where('parent_id', 0)->where('enabled', 1)->orderBy('order', 'ASC')
-		->select('id', 'parent_id', 'title', 'slug')
-		->get(); ?>
+		$page = Page::with('ds')
+					->where('parent_id', 0)
+					->where('enabled', 1)->orderBy('order', 'ASC')
+					->select('id', 'parent_id', 'title', 'slug')
+					->get(); ?>
 
 		<?php foreach ($page as $key => $firstmenu): ?>
 			
@@ -196,11 +198,11 @@ class MyHelper
 
 	public static function MenuHeaderOne(){
 		$menuHeader = new Page();
-		$menus = $menuHeader->with('ds')->where('parent_id', 0)->where('enabled', 1)->orderBy('order', 'ASC')->get(['id', 'parent_id', 'title', 'slug']);
+		$menus = $menuHeader->with('ds')->where('parent_id', 0)->where('enabled', 1)->orderBy('order', 'ASC')->get(['id', 'parent_id', 'title', 'slug', 'enabled', 'redirect', 'external_url', 'target', 'order']);
 
 		foreach ($menus as $key => $menu) {
 			if ( count($menu->ds)== 0 ) {
-				if($menu->redirect==1)	{	?>
+				if($menu->redirect == 1)	{	?>
 			   		<li class="<?php echo ($key==0) ? 'active' : '' ?>"><a class="text-dark text-uppercase js-scroll-trigger" target="<?php echo $menu->target ?>" href="<?php echo $menu->external_url ?>" ><?php echo $menu->title ?><span class="sr-only"></span></a></li>
 				<?php
 				} else { ?>
