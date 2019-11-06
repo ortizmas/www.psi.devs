@@ -12,6 +12,7 @@ Route::group(['middleware' => ['role:super-admin']], function() {
 //Route::resource('users', 'UserController');
 Route::resource('sections', 'SectionController');
 Route::resource('categories', 'CategoryController');
+Route::get('cursos/categories', 'CategoryController@getCategoriesByCourses')->name('categories.courses');
 
 //Ajax para categoria
 Route::post('categories/create-ajax', 'CategoryController@ajaxCreate')->name('ajax.create');

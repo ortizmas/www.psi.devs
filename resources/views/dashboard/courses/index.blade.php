@@ -39,7 +39,7 @@
       						<th>#</th>
       						<th>Nome</th>
       						<th>Slug</th>
-                  <th>Universidade</th>
+                  <th>Categoria</th>
                   <th>Estado</th>
       						<th colspan="2" rowspan="">Ações</th>
       					</tr>

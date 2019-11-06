@@ -246,7 +246,7 @@
                 <li class="nav-header">SEÇÃO CURSOS ONLINE</li>
 
                 <li class="nav-item">
-                    <a href="{{ route('categories.index') }}" class="nav-link">
+                    <a href="{{ route('categories.courses') }}" class="nav-link">
                         <i class="fa fa-circle-o nav-icon"></i>
                         <p>Categorias</p>
                     </a>

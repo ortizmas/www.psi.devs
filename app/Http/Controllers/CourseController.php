@@ -47,7 +47,7 @@ class CourseController extends Controller
 
     public function create(Request $request)
     {
-        $categories = Category::all();
+        $categories = Category::where('section', 'course')->get();
         return view('dashboard.courses.create', compact('categories'));
     }
 
@@ -80,7 +80,7 @@ class CourseController extends Controller
 
     public function edit(Course $course)
     {
-        $categories = Category::all();
+        $categories = Category::where('section', 'course')->get();
         $course = Course::findOrFail($course->id);
         return view('dashboard.courses.edit', compact('course', 'categories'));
     }

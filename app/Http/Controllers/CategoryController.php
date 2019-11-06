@@ -27,7 +27,13 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::get();
+        $categories = Category::where('section', 'page')->get();
+        return view('dashboard.categories.index', compact('categories'));
+    }
+
+    public function getCategoriesByCourses()
+    {
+        $categories = Category::where('section', 'course')->get();
         return view('dashboard.categories.index', compact('categories'));
     }
 
@@ -52,6 +58,7 @@ class CategoryController extends Controller
         $category = Category::create([
             'name' => $request['name'],
             'slug' => $request['slug'],
+            'section' => $request['section'],
             'enabled' => $request['enabled'],
         ]);
 
@@ -74,6 +81,7 @@ class CategoryController extends Controller
         $category = new Category();
         $category->name = $request->name;
         $category->slug = $request->slug;
+        $category->section = $request->section;
         $category->enabled = $request->enabled;
         $category->save();
         return response()->json([
@@ -119,6 +127,7 @@ class CategoryController extends Controller
 
         $categoryUpdate->name = $request->get('name');
         $categoryUpdate->slug = $request->get('slug');
+        $categoryUpdate->section = $request->get('section');
         $categoryUpdate->enabled = $request->get('enabled');
         $categoryUpdate->save();
 

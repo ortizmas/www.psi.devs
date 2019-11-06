@@ -13,6 +13,7 @@ class CategoryTableSeeder extends Seeder
     {
         App\Category::create([
             'name' => 'Programação',
+            'section' => 'course',
             'slug' => 'programacao',
         ]);
     }
