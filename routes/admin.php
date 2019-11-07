@@ -26,6 +26,7 @@ Route::resource('periods', 'PeriodController');
 Route::resource('careers', 'CareerController');
 Route::resource('courses', 'CourseController');
 Route::resource('modules', 'ModuleController');
+Route::get('modules/{idCourse}/index', 'ModuleController@index')->name('modules.index.param');
 Route::resource('classrooms', 'ClassroomController');
 Route::resource('trainees', 'TraineeController');
 Route::resource('inscriptions', 'InscriptionController');

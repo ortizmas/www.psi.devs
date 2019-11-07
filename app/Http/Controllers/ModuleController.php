@@ -17,8 +17,9 @@ class ModuleController extends Controller
         $this->module = $module;
     }
 
-    public function index(Request $request)
+    public function index(Request $request, $idCourse = null)
     {
+        $request['course_id'] = $idCourse;
         $modules = $this->module->getResults($request->all(), $this->totalPage);
 
         return view('dashboard.modules.index', compact('modules'));

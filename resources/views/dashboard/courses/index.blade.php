@@ -49,7 +49,7 @@
                         @foreach ($courses as $key => $value)
                         <tr>
                            <td>{{ $key + 1 }}</td>
-                           <td>{{ $value->name }}</td>
+                           <td><a href="{{ route('modules.index.param', $value->id) }}">{{ $value->name }}</a></td>
                            <td>{{ $value->url }}</td>
                            <td>{{ $value->category->name }}</td>
                            {{-- @foreach ($value->modules  as $value)
