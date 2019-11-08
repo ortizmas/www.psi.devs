@@ -14,7 +14,7 @@ class Module extends Model
             return $this->with('course')->paginate($total);
         
         
-        return $this->where(function($query) use ($data){
+        $modules = $this->where(function($query) use ($data){
 
             if(isset($data['filter'])){
                 $filter = $data['filter'];
@@ -35,6 +35,12 @@ class Module extends Model
                 $query->where('description', 'LIKE', '%{$description}%');
             }
         })->with('course')->paginate($total);
+
+        if (count($modules) > 0) {
+            return $modules;
+        } else {
+            return false;
+        }
         
     }
 

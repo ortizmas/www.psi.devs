@@ -11,7 +11,13 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Sala de Aula</h1>
+                @if (Session::has('idModule'))
+                    <h4 class="m-0 text-dark">
+                        <strong>Modulo: </strong> {{ $modules->name }}
+                    </h4>
+                @else
+                    <h4 class="m-0 text-dark">CRIAR AULA </h4>
+                @endif
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -69,22 +75,23 @@
                         
                         <div class="row">
                             <div class="col-md-6">
+                                @if (session()->has('idModule'))
+                                    <input type="text" name="module_id" value="{{ Session::get('idModule') }}">
+                                @else
                                 <div class="input-group mb-3">
                                     <select id="ModuleId" name="module_id" class="form-control{{ $errors->has('module_id') ? ' is-invalid' : '' }}">
                                         <option value="">Selecionar Modulo</option>
                                         @foreach ($modules as $value)
-                                            <option value="{{ $value->id }}" {{ old('module_id')== $value->id ? 'selected' : ''  }}>{{ $value->name }}</option>
+                                        <option value="{{ $value->id }}" {{ old('module_id')== $value->id ? 'selected' : ''  }}>{{ $value->name }}</option>
                                         @endforeach
                                     </select>
-                                    {{-- <span class="input-group-btn">
-                                        <button class="category-modal btn btn-outline-dark" type="button" data-toggle="modal" data-target="#modalForm"><i class="fa fa-plus fa-fw"></i></button>
-                                    </span> --}}
                                     @if ($errors->has('module_id'))
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('module_id') }}</strong>
-                                        </span> 
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('module_id') }}</strong>
+                                    </span> 
                                     @endif
                                 </div>
+                                @endif
                             </div>
                             <div class="col-md-6">
                                 <div class="input-group mb-3">

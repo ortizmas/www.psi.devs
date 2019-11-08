@@ -23,15 +23,22 @@ class ClassroomController extends Controller
 
     public function index(Request $request)
     {
+        $request['module_id'] = $request->get('idModule');
         $classrooms = $this->classroom->getResults($request->all(), $this->totalPage);
+        $request->session()->put('idModule', $request->get('idModule'));
 
         //return response()->json($classroom);
         return view('dashboard.classrooms.index', compact('classrooms'));
     }
 
-    public function create()
+    public function create(Request $request)
     {
-        $modules = Module::get();
+        dd($request->get('idModule'));
+        if ($request->get('idModule')) {
+            $modules = Module::findOrFail($request->get('idModule'));
+        } else {
+            $modules = Module::get();
+        }
         return view('dashboard.classrooms.create', compact('modules'));
     }
 

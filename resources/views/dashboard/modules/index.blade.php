@@ -8,11 +8,22 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Modulos</h1>
+            @if (Session()->has('idCourse'))
+               
+                <h4><strong>Curso: </strong>{!! (empty($modules)) ? "<b class='text-danger'>Cadastrar modulos para este curso</b>" : $modules[0]->course->name !!}</h4>
+            @else
+              <h1 class="m-0 text-dark">Modulos</h1>
+            @endif
+            
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="{{ route('modules.create') }}"><i class="fas fa-plus-square" style="font-size: 48px;"></i></a></li>
+              @if (Session()->has('idCourse'))
+                <li class="breadcrumb-item"><a href="{{ route('modules.create') }}?idCourse={{ Session()->get('idCourse') }}"><i class="fas fa-plus-square" style="font-size: 48px;"></i></a></li>
+              @else
+                <li class="breadcrumb-item"><a href="{{ route('modules.create') }}"><i class="fas fa-plus-square" style="font-size: 48px;"></i></a></li>
+              @endif
+              
               {{-- <li class="breadcrumb-item active">Dashboard v2</li> --}}
             </ol>
           </div><!-- /.col -->
@@ -44,11 +55,11 @@
       					</tr>
       				</thead>
       				<tbody>
-      					
+      					     @if ($modules)
                         @foreach ($modules as $key => $value)
                         <tr>
                            <td>{{ $key + 1 }}</td>
-                           <td>{{ $value->name }}</td>
+                           <td><a href="{{ route('classrooms.index') }}?idModule={{ $value->id }}" title="Criar aula">{{ $value->name }}</a></td>
                            <td>{{ $value->description }}</td>
                            <td>{{ ( $value->status == 1 ) ? 'Ativo' : 'Inativo' }}</td>
                            <td><a href="{{ route('modules.edit', $value->id) }}" title="Alterar"><i class="fas fa-edit"></i></a></td>
@@ -59,6 +70,7 @@
                           </td>
                     </tr>
                     @endforeach
+                  @endif
               </tbody>
       			</table>
       		</div>

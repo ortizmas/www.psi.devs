@@ -8,11 +8,20 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Sala de Aula</h1>
+            @if (Session::has('idModule'))
+              <h4><strong>Modulo: </strong>{!! (empty($classrooms)) ? "<b class='text-danger'>Cadastrar aulas para este modulo</b>" : $classrooms[0]->module->name !!}</h4>
+            @else
+              <h1 class="m-0 text-dark">Criar nova Aula</h1>
+            @endif
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="{{ route('classrooms.create') }}"><i class="fas fa-plus-square" style="font-size: 48px;"></i></a></li>
+              @if (Session::has('idModule'))
+                  <li class="breadcrumb-item"><a href="{{ route('classrooms.create') }}?idModule={{ Session::get('idModule') }}"><i class="fas fa-plus-square" style="font-size: 48px;"></i></a></li>
+              @else
+                  <li class="breadcrumb-item"><a href="{{ route('classrooms.create') }}"><i class="fas fa-plus-square" style="font-size: 48px;"></i></a></li>
+              @endif
+              
               {{-- <li class="breadcrumb-item active">Dashboard v2</li> --}}
             </ol>
           </div><!-- /.col -->
@@ -46,7 +55,8 @@
       				</thead>
       				<tbody>
       					
-                        @foreach ($classrooms as $key => $value)
+                  @if ($classrooms)
+                    @foreach ($classrooms as $key => $value)
                         <tr>
                            <td>{{ $key + 1 }}</td>
                            <td>{{ $value->name }}</td>
@@ -59,8 +69,9 @@
                                   <i class="fas fa-trash" style="color:red;"></i>
                               </a>        
                           </td>
-                    </tr>
+                      </tr>
                     @endforeach
+                  @endif
               </tbody>
       			</table>
       		</div>

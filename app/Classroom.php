@@ -14,7 +14,7 @@ class Classroom extends Model
             return $this->with('module')->paginate($total);
         
         
-        return $this->where(function($query) use ($data){
+        $classrooms = $this->where(function($query) use ($data){
 
             if(isset($data['filter'])){
                 $filter = $data['filter'];
@@ -36,6 +36,12 @@ class Classroom extends Model
             }
             
         })->with('module')->paginate($total);
+
+        if (count($classrooms) > 0) {
+            return $classrooms;
+        } else {
+            return false;
+        }
         
     }
 
