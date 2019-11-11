@@ -21,11 +21,14 @@ class ClassroomController extends Controller
         // ]);
     }
 
-    public function index(Request $request)
+    public function index(Request $request, $idModule = null)
     {
-        $request['module_id'] = $request->get('idModule');
+        
+        //$request['module_id'] = $request->get('idModule');
+        $request['module_id'] = $idModule;
         $classrooms = $this->classroom->getResults($request->all(), $this->totalPage);
-        $request->session()->put('idModule', $request->get('idModule'));
+        //dd($classrooms[0]->module->course_id);
+        $request->session()->put('idModule', $idModule);
 
         //return response()->json($classroom);
         return view('dashboard.classrooms.index', compact('classrooms'));
@@ -33,7 +36,6 @@ class ClassroomController extends Controller
 
     public function create(Request $request)
     {
-        dd($request->get('idModule'));
         if ($request->get('idModule')) {
             $modules = Module::findOrFail($request->get('idModule'));
         } else {
@@ -56,7 +58,7 @@ class ClassroomController extends Controller
         $classroom = $this->classroom->create($request->all());
 
         //return response()->json($classroom, 201);
-        return redirect()->route('classrooms.index')->with('success', 'Aula cadastrada com sucesso!!');
+        return redirect()->route('classrooms.index.param', $request->get('module_id'))->with('success', 'Aula cadastrada com sucesso!!');
     }
 
     public function edit(Classroom $classroom)

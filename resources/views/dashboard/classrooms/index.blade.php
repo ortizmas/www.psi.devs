@@ -10,6 +10,10 @@
           <div class="col-sm-6">
             @if (Session::has('idModule'))
               <h4><strong>Modulo: </strong>{!! (empty($classrooms)) ? "<b class='text-danger'>Cadastrar aulas para este modulo</b>" : $classrooms[0]->module->name !!}</h4>
+              @if (Session::has('idCourse'))
+                <a class="btn btn-success btn-sm" href="{{ route('modules.index.param', Session::get('idCourse')) }}" title="">Listar modulos do curso <i class="fas fa-arrow-alt-circle-up"></i></a>
+              @endif
+                
             @else
               <h1 class="m-0 text-dark">Criar nova Aula</h1>
             @endif
@@ -42,7 +46,9 @@
 	      				</button>
 	      			</div>
       			@endif
+            <b class="pl-4 pb-5">Todas as aulas</b>
       			<table class="table table-striped">
+              
       				<thead>
       					<tr>
       						<th>#</th>

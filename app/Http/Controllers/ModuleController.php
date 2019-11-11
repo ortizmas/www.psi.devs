@@ -29,6 +29,8 @@ class ModuleController extends Controller
 
     public function create(Request $request)
     {
+        $request->session()->put('idCourse', $request->get('idCourse'));
+
         if ($request->get('idCourse') != null) {
             $courses = Course::findOrFail($request->get('idCourse'));
         } else {

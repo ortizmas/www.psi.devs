@@ -49,4 +49,10 @@ class Classroom extends Model
     {
         return $this->belongsTo(Module::class);
     }
+
+    public function assignments()
+    {
+        //return $this->hasMany(Assignment::class, 'classroom_id', 'id')
+        return $this->hasMany(Assignment::class);
+    }
 }

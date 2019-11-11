@@ -26,6 +26,10 @@ class AssignmentController extends Controller
      */
     public function index(Request $request)
     {
+        //$assignments = Assignment::with(['user', 'classroom'])->get();
+
+        //$assignments = collect($assignments->where('user_id', Auth::user()->id))->all();
+
         $course = new Course();
         $courses = $course->getResults($request->all(), $this->totalPage);
         return view('dashboard.assignments.index', compact('courses'));

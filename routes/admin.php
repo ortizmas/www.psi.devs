@@ -28,6 +28,7 @@ Route::resource('courses', 'CourseController');
 Route::resource('modules', 'ModuleController');
 Route::get('modules/{idCourse}/index', 'ModuleController@index')->name('modules.index.param');
 Route::resource('classrooms', 'ClassroomController');
+Route::get('classrooms/{idModule}/index', 'ClassroomController@index')->name('classrooms.index.param');
 Route::resource('trainees', 'TraineeController');
 Route::resource('inscriptions', 'InscriptionController');
 Route::resource('assignments', 'AssignmentController');

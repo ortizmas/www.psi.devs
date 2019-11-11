@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use App\User;
 use App\Page;
 use App\Post;
 use App\Category;
 use App\Inscription;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\Inscriptions\InscriptionRequest;
 use App\Http\Controllers\Controller;
 //use Illuminate\Http\RedirectResponse;
@@ -78,22 +80,30 @@ class ProgramsController extends Controller
     {
         $post = Post::where('slug', $request['program'])->first();
         $payment_link = $post->payment_link;
-        
-        $inscription = Inscription::create([
-            'name' => $request['name'],
-            'cpf' => $request['cpf'],
-            'cep' => $request['cep'],
-            'street' => $request['street'],
-            'neighborhood' => $request['neighborhood'],
-            'city' => $request['city'],
-            'state' => $request['state'],
-            'ibge' => $request['ibge'],
+
+        $user = User::create([
+            'name' => $request['name_user'],
             'email' => $request['email'],
-            'phone' => $request['phone'],
-            'company' => $request['company'],
-            'company_phone' => $request['company_phone'],
-            'program' => $request['program']
+            'password' => Hash::make($request['password']),
         ]);
+
+        if ($user) {
+            $inscription = Inscription::create([
+                'name' => $request['name'],
+                'cpf' => $request['cpf'],
+                'cep' => $request['cep'],
+                'street' => $request['street'],
+                'neighborhood' => $request['neighborhood'],
+                'city' => $request['city'],
+                'state' => $request['state'],
+                'ibge' => $request['ibge'],
+                'email_inscription' => $request['email_inscription'],
+                'phone' => $request['phone'],
+                'company' => $request['company'],
+                'company_phone' => $request['company_phone'],
+                'program' => $request['program']
+            ]);
+        } 
 
         if ($request['program'] === 'clube-de-vantagens') {
             return redirect()->route('products.items');   

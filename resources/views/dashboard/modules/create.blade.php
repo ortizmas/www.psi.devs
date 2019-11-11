@@ -21,7 +21,7 @@
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="{{ route('modules.index') }}" class="btn btn-info btn-sm">Lista de odulos</a></li>
+              <li class="breadcrumb-item"><a href="{{ route('modules.index') }}" class="btn btn-info btn-sm">Listar modulos</a></li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->

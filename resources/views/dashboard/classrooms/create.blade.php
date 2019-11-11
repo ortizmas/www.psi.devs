@@ -21,7 +21,12 @@
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="{{ route('classrooms.index') }}" class="btn btn-info btn-sm">Lista de sala de aulas</a></li>
+                @if (Session::has('idModule'))
+                    <li class="breadcrumb-item"><a href="{{ route('classrooms.index.param', Session::get('idModule')) }}" class="btn btn-info btn-sm">Listar aulas</a></li>
+                @else
+                    <li class="breadcrumb-item"><a href="{{ route('classrooms.index') }}" class="btn btn-info btn-sm">Listar aulas</a></li>
+                @endif
+              
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->

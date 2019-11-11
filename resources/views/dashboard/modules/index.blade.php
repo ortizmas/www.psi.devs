@@ -9,7 +9,6 @@
         <div class="row mb-2">
           <div class="col-sm-6">
             @if (Session()->has('idCourse'))
-               
                 <h4><strong>Curso: </strong>{!! (empty($modules)) ? "<b class='text-danger'>Cadastrar modulos para este curso</b>" : $modules[0]->course->name !!}</h4>
             @else
               <h1 class="m-0 text-dark">Modulos</h1>
@@ -59,7 +58,7 @@
                         @foreach ($modules as $key => $value)
                         <tr>
                            <td>{{ $key + 1 }}</td>
-                           <td><a href="{{ route('classrooms.index') }}?idModule={{ $value->id }}" title="Criar aula">{{ $value->name }}</a></td>
+                           <td><a href="{{ route('classrooms.index.param', $value->id) }}" title="Criar aula">{{ $value->name }}</a></td>
                            <td>{{ $value->description }}</td>
                            <td>{{ ( $value->status == 1 ) ? 'Ativo' : 'Inativo' }}</td>
                            <td><a href="{{ route('modules.edit', $value->id) }}" title="Alterar"><i class="fas fa-edit"></i></a></td>

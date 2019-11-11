@@ -42,5 +42,10 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Trainee');
     }
+
+    public function assignment()
+    {
+        return $this->hasMany(Assignment::class);
+    }
     
 }
