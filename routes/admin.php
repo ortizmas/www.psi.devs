@@ -5,8 +5,14 @@ Route::get('/dashboard/v2', 'DashboardController@versiontwo')->name('v2');
 Route::get('/dashboard/v3', 'DashboardController@versionthree')->name('v3');
 
 
-Route::group(['middleware' => ['role:super-admin']], function() {
+Route::group(['middleware' => ['role:super-admin|editor']], function() {
 	Route::resource('users', 'UserController');
+	Route::resource('roles', 'RoleController');
+	Route::resource('permissions', 'PermissionController');
+	Route::get('permissions/assign/{role_id}', 'PermissionController@assignPermission')->name('permissions.assign');
+
+
+
 });
 
 //Route::resource('users', 'UserController');
@@ -24,6 +30,7 @@ Route::resource('posts', 'PostController');
 Route::resource('universities', 'UniversityController');
 Route::resource('periods', 'PeriodController');
 Route::resource('careers', 'CareerController');
+
 Route::resource('courses', 'CourseController');
 Route::resource('modules', 'ModuleController');
 Route::get('modules/{idCourse}/index', 'ModuleController@index')->name('modules.index.param');

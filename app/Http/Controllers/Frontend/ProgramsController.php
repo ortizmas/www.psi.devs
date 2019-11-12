@@ -7,6 +7,7 @@ use App\Page;
 use App\Post;
 use App\Category;
 use App\Inscription;
+use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\Inscriptions\InscriptionRequest;
@@ -105,11 +106,15 @@ class ProgramsController extends Controller
             ]);
         } 
 
-        if ($request['program'] === 'clube-de-vantagens') {
-            return redirect()->route('products.items');   
-        }
+        auth()->login($user);
+        
+        return redirect()->to('/home');
 
-        return redirect()->away($payment_link );
+        /*if ($request['program'] === 'clube-de-vantagens') {
+            return redirect()->route('products.items');   
+        }*/
+
+        //return redirect()->away($payment_link );
 
         //return redirect()->route('inscription.create', $request['program'] )->with('success', 'Seu cadastro foi realizado com sucesso!!');
     }

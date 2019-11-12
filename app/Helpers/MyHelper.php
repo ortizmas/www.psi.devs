@@ -211,7 +211,7 @@ class MyHelper
 				}
 			}else{ ?>
 				<li class="dropdown">
-					<a href="#" id="navbarDropdown" class="dropdown-toggle text-dark text-uppercase" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo $menu->title ?> <i class="fas fa-angle-down pl-2" style="float: right;padding-top: 5px;"> </i></a>
+					<a href="#" id="navbarDropdown" class="text-dark text-uppercase" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo $menu->title ?> <i class="fas fa-angle-down pl-2" style="float: right;padding-top: 5px;"> </i></a>
 					<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
 						<?php
 					 	foreach($menu->ds as $submenu){

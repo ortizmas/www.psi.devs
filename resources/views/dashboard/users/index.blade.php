@@ -12,7 +12,10 @@
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="{{ route('users.create') }}"><i class="fas fa-plus-square" style="font-size: 48px;"></i></a></li>
+              @can('create users', User::class)
+                  <li class="breadcrumb-item"><a href="{{ route('users.create') }}"><i class="fas fa-plus-square" style="font-size: 48px;"></i></a></li>
+              @endcan
+              
               {{-- <li class="breadcrumb-item active">Dashboard v2</li> --}}
             </ol>
           </div><!-- /.col -->
@@ -133,7 +136,7 @@
                             swal({
                                 type: 'error',
                                 title: 'Oops...',
-                                text: 'Algo deu errado!'
+                                text: 'Você não esta autorizado para excluir ou Algo deu errado!'
                             });
                       }
                   });

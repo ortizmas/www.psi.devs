@@ -17,7 +17,14 @@ class UserController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        //$this->middleware('auth')->except(['index', 'show']);
+        //$this->authorizeResource('post');
+        
+        //$this->middleware('auth');
+        $this->middleware(['permission:create user'], ['only' => ['create', 'store']]);
+        $this->middleware(['permission:read users'], ['only' => 'index']);
+        $this->middleware(['permission:update user'], ['only' => ['edit', 'update']]);
+        $this->middleware(['permission:delete user'], ['only' => 'destroy']);
     }
 
     /**
@@ -27,6 +34,15 @@ class UserController extends Controller
      */
     public function index()
     {
+        // get logged-in user
+        $user = auth()->user();
+
+        // get all inherited permissions for that user
+        $permissions = $user->getAllPermissions();
+
+        //dd($permissions);
+        //$conn = $this->checkInternetConnection();
+
         $title = 'Usuarios';
         $users = User::get();
         return view('dashboard.users.index', compact('users', 'title'));
@@ -39,6 +55,7 @@ class UserController extends Controller
      */
     public function create()
     {
+        //$this->authorize('create', User::class); //Validation em cada função
         $title = 'Novo usuario';
         return view('dashboard.users.create', compact('title'));
     }
@@ -98,13 +115,6 @@ class UserController extends Controller
         return view('dashboard.users.edit', ['user' => User::findOrFail($id)]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         //$this->validator($request->all())->validate();
@@ -127,20 +137,27 @@ class UserController extends Controller
 
         $user->save();
 
-
         return redirect()->route('users.index')->with('success', 'Usuario alterado com sucesso!!');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         $model = User::findOrFail($id);
         $model->delete();
         return redirect()->route('users.index')->with('success', 'Usuario excluido com sucesso!!');
+    }
+
+    public function checkInternetConnection()
+    {
+        $connected = @fsockopen("www.google.com", 80, $iErrno, $sErrStr, 5);
+        if ($connected) {
+            fclose($connected);
+            return true; //action when connected
+        }
+
+        exit(json_encode([
+            'connected' => false,
+            'data' => []
+        ]));
     }
 }
