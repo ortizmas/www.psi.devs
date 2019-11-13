@@ -12,7 +12,7 @@
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              @can('create users', User::class)
+              @can('create user', User::class)
                   <li class="breadcrumb-item"><a href="{{ route('users.create') }}"><i class="fas fa-plus-square" style="font-size: 48px;"></i></a></li>
               @endcan
               
@@ -42,6 +42,7 @@
       						<th>#</th>
       						<th>Nome</th>
       						<th>E-mail</th>
+                  <th>Usre roles</th>
       						<th colspan="2" rowspan="">Ações</th>
       					</tr>
       				</thead>
@@ -52,6 +53,7 @@
 	      						    <td>{{ $key + 1 }}</td>
 	      							<td>{{ $value->name }}</td>
 	      							<td>{{ $value->email }}</td>
+                      <td>{{ $value->roles()->pluck('name')->implode(' ') }}</td>
 	      							<td><a href="{{ route('users.edit', $value->id) }}" title="Alterar"><i class="fas fa-edit"></i></a></td>
 	      							<td>
                                         <a href="{{ route('users.destroy', $value->id) }}" class="btn-delete" title="{{ $value->name }}">

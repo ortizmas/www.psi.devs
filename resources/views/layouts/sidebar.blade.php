@@ -1,8 +1,8 @@
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
-        <img src="/img/logo-brando-61x61.png" alt="Laravel Starter" class="brand-image elevation-3" style="opacity: .8" width="100%">
+    <a href="{{ route('home') }}" class="brand-link">
+        <img src="/img/logo-brando-61x61.png" class="brand-image elevation-3" style="opacity: .8" width="100%">
         <span class="brand-text font-weight-light"><strong>TRAINEE</strong></span>
     </a>
 
@@ -21,6 +21,7 @@
         <!-- Sidebar Menu -->
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                @role('super-admin')
                 <li class="nav-item has-treeview {!! classActivePath(1,'dashboard') !!}">
                     <a href="{!! route('home') !!}" class="nav-link {!! classActiveSegment(1, 'dashboard') !!}">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -31,46 +32,53 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{ route('home') }}" class="nav-link {!! classActiveSegment(2, 'home') !!}">
-                                <i class="fas fa-circle"></i>
-                                <p>Inicio</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="nav-header">PAGES</li>
-                
-                @role('super-admin')
-                <li class="nav-item has-treeview">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-users"></i>
-                        <p>
-                          Usuários
-                          <i class="fa fa-angle-left right"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="{{ route('users.index') }}" class="nav-link">
-                                <i class="fa fa-circle-o nav-icon"></i>
-                                <p>Todos os usuários</p>
+                            <a href="{{ route('roles.index') }}" class="nav-link">
+                                <i class="fas fa-user-tag"></i>
+                                <p>Roles</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('users.create') }}" class="nav-link">
-                                <i class="fa fa-circle-o nav-icon"></i>
-                                <p>Adicionar usuario</p>
+                            <a href="{{ route('permissions.index') }}" class="nav-link">
+                                <i class="fas fa-tasks"></i>
+                                <p>Permisos</p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="{{ route('users.show', Auth::id()) }}" class="nav-link">
-                                <i class="fa fa-circle-o nav-icon"></i>
-                                <p>Seu perfil</p>
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-users"></i>
+                                <p>
+                                  Usuários
+                                  <i class="fa fa-angle-left right"></i>
+                                </p>
                             </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{ route('users.index') }}" class="nav-link">
+                                        <i class="fa fa-circle-o nav-icon"></i>
+                                        <p>Todos os usuários</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('users.create') }}" class="nav-link">
+                                        <i class="fa fa-circle-o nav-icon"></i>
+                                        <p>Adicionar usuario</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('users.show', Auth::id()) }}" class="nav-link">
+                                        <i class="fa fa-circle-o nav-icon"></i>
+                                        <p>Seu perfil</p>
+                                    </a>
+                                </li>
+                            </ul>
                         </li>
+                    
                     </ul>
                 </li>
                 @endrole
+                
+                @role('super-admin|admin')
+                <li class="nav-header">PAGES</li>
 
                 <li class="nav-item has-treeview">
                     <a href="#" class="nav-link">
@@ -137,7 +145,9 @@
                         </li>
                     </ul>
                 </li>
+                @endrole
 
+                @role('super-admin|admin|teacher')
                 <li class="nav-header">SEÇÃO CURSOS ONLINE</li>
 
                 <li class="nav-item">
@@ -347,7 +357,9 @@
                         </li>
                     </ul>
                 </li>
+                @endrole
 
+                @role('super-admin')
                 <li class="nav-header">MISCELLANEOUS</li>
                 <li class="nav-item">
                     <a href="https://adminlte.io/docs" class="nav-link">
@@ -374,6 +386,16 @@
                         <p>Informational</p>
                     </a>
                 </li>
+                @endrole
+
+                 @role('subscriptor')
+                <li class="nav-item">
+                    <a href="{{ route('users.show.edit', Auth::id()) }}" class="nav-link">
+                        <i class="fa fa-circle-o nav-icon"></i>
+                        <p>Seu perfil</p>
+                    </a>
+                </li>
+                 @endrole
 
                 @if (auth()->user()->name!=null)
                     <li class="nav-item">

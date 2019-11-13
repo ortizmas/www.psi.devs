@@ -28,6 +28,11 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public function setPasswordAttribute($password)
+    {   if ($password)
+            $this->attributes['password'] = bcrypt($password);
+    }
+
     public function pages()
     {
         return $this->hasMany('App\Page');
@@ -47,5 +52,6 @@ class User extends Authenticatable
     {
         return $this->hasMany(Assignment::class);
     }
+
     
 }

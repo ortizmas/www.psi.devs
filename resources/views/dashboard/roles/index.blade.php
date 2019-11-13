@@ -25,6 +25,14 @@
             <div class="row justify-content-center">
                 <div class="col-md-12">
                     <div class="card">
+                        @if (Session::has('success'))
+                          <div class="alert alert-success">
+                              <strong>Oooh!</strong> {{ Session::get('success') }}
+                              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                              </button>
+                          </div>
+                        @endif
                         <div class="card-header">
                             Roles
                             @can('create role')
@@ -59,7 +67,7 @@
                                             
                                             <td class="float-right">
                                                 
-                                                <a href="{{ route('roles.show', $role->id) }}" class="btn btn-outline-success btn-sm"><i class="fa fa-eye"></i></a>
+                                                <a href="#" class="btn btn-outline-success btn-sm"><i class="fa fa-eye"></i></a>
                                                 
                                             </td>
                                             <td class="float-right">
@@ -69,9 +77,12 @@
                                             </td>
                                             @can('delete role')
                                             <td class="float-right">
-                                                {!! Form::open(['route' => ['roles.destroy', $role->id] , 'method' => 'DELETE']) !!}
+                                                {{-- {!! Form::open(['route' => ['roles.destroy', $role->id] , 'method' => 'DELETE']) !!}
                                                 <button class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button>
-                                                {!! Form::close() !!}
+                                                {!! Form::close() !!} --}}
+                                                <a href="{{ route('roles.destroy', $role->id) }}" class="btn-delete btn btn-outline-danger btn-sm" title="{{ $role->name }}">
+                                                  <i class="fas fa-trash" style="color:red;"></i>
+                                                </a> 
                                                 
                                             </td>
                                             @endcan

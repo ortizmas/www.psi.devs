@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Role;
 use Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -21,10 +22,7 @@ class UserController extends Controller
         //$this->authorizeResource('post');
         
         //$this->middleware('auth');
-        $this->middleware(['permission:create user'], ['only' => ['create', 'store']]);
-        $this->middleware(['permission:read users'], ['only' => 'index']);
-        $this->middleware(['permission:update user'], ['only' => ['edit', 'update']]);
-        $this->middleware(['permission:delete user'], ['only' => 'destroy']);
+        
     }
 
     /**
@@ -57,7 +55,8 @@ class UserController extends Controller
     {
         //$this->authorize('create', User::class); //Validation em cada função
         $title = 'Novo usuario';
-        return view('dashboard.users.create', compact('title'));
+        $roles = Role::all();
+        return view('dashboard.users.create', compact('title', 'roles'));
     }
 
     protected function validator(array $data)
@@ -66,85 +65,63 @@ class UserController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
+            'roles' => 'required'
         ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $this->validator($request->all())->validate();
-        // $request->validate([
-        //     'name' => 'required|string|max:255',
-        //     'email' => 'required|string|email|max:255|unique:users',
-        //     'password' => 'required|string|min:6|confirmed',
-        // ]);
-
-        $user = User::create([
-            'name' => $request['name'],
-            'email' => $request['email'],
-            'password' => Hash::make($request['password']),
-        ]);
-
-        return redirect()->route('users.index')->with('success', 'Usuario cadastrado com sucesso!!');
+        $user = User::create($request->except('roles'));
+        
+        if($request->roles <> ''){
+            //$user->roles()->attach($request->roles);
+            $user->assignRole($request->roles);
+        }
+        return redirect()->route('users.index')->with('success','Usuario cadastrado com sucesso!!');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         return view('dashboard.users.show', ['user' => User::findOrFail($id)]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        return view('dashboard.users.edit', ['user' => User::findOrFail($id)]);
+    public function edit($id) {
+        $user = User::findOrFail($id);
+        $roles = Role::get(); 
+        return view('dashboard.users.edit', compact('user', 'roles')); 
     }
 
-    public function update(Request $request, $id)
-    {
-        //$this->validator($request->all())->validate();
-        
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:users,email,'.$id,
-            'password' => 'confirmed'
+    public function update(Request $request, $id) {
+
+        $user = User::findOrFail($id);   
+
+        $this->validate($request, [
+            'name'=>'required|max:120',
+            'email'=>'required|email|unique:users,email,'.$id,
+            'password' => ($request['password'] ? 'required|string|min:6|confirmed' : 'nullable')  
         ]);
 
-        $user = User::find($id);
+        $input = $request->except('roles');
+        $user->fill($input)->save();
 
-        $user->name = $request->get('name');
-        $user->email = $request->get('email');
-
-        if ( ! $request->get('password') == '')
-        {
-            $user->password = Hash::make($request['password']);
+        if ($request->roles <> '') {
+            //$user->roles()->sync($request->roles);
+            $user->syncRoles($request->roles);       
+        }        
+        else {
+            $user->roles()->detach();
         }
-
-        $user->save();
-
-        return redirect()->route('users.index')->with('success', 'Usuario alterado com sucesso!!');
+        return redirect()->route('users.index')->with('success',
+             'Usuario altedado com sucesso.');
     }
 
-    public function destroy($id)
-    {
-        $model = User::findOrFail($id);
-        $model->delete();
-        return redirect()->route('users.index')->with('success', 'Usuario excluido com sucesso!!');
+    public function destroy($id) {
+        $user = User::findOrFail($id); 
+        $user->delete();
+
+        return redirect()->route('dashboard.users.index')->with('success',
+             'User successfully deleted.');
     }
 
     public function checkInternetConnection()

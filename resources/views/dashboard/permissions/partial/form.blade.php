@@ -1,18 +1,24 @@
 <div class="form-group">
-	{{ Form::label('name', 'Permiso') }}
-	{{ Form::text('name', null, ['class' => 'form-control']) }}
+	{{ Form::label('name', 'Nome (Exemplo: create user)') }}
+	{{ Form::text('name', null, ['class' => $errors->has('name') ? 'form-control is-invalid' : 'form-control' ]) }}
+	@if ($errors->has('name'))
+        <span class="invalid-feedback" role="alert" style="display: block;">
+            <strong>{{ $errors->first('name') }}</strong>
+        </span> 
+    @endif
 </div>
 
-<div class="form-group">
-	{{ Form::label('slug', 'Slug') }}
-	{{ Form::text('slug', null, ['class' => 'form-control']) }}
-</div>
+@if(!$roles->isEmpty()) 
+    <h4>Assign Permission to Roles</h4>
 
-<div class="form-group">
-	{{ Form::label('description', 'Descrição') }}
-	{{ Form::text('description', null, ['class' => 'form-control']) }}
-</div>
-<hr>
+    @foreach ($roles as $role) 
+        {{ Form::checkbox('roles[]',  $role->id ) }}
+        {{ Form::label($role->name, ucfirst($role->name)) }}<br>
+
+    @endforeach
+@endif
+<br>
+
 {{-- <h3>Permiso especial</h3>
 <div class="form-group">
 	<label>{{ Form::radio('special', 'all-access') }} Acesso total</label>

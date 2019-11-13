@@ -39,30 +39,54 @@
                             </div>
                             @endif
                             
-                            <form action="" method="post">
+                            <form action="{{ route('permissions.assign.store') }}" method="post">
+                                @csrf
+                                
+                                
                                 <div class="table-responsive">
                                   <table class="table table-striped table-sm">
                                       <thead class="thead-dark">
                                           <tr>
-                                              <th scope="col">#</th>
+                                              <th scope="col"><input type="checkbox" id="select_all"/> Selecct All</th>
                                               <th scope="col">Nome</th>
+                                              <th scope="col">Roles</th>
                                           </tr>
                                       </thead>
                                       <tbody>
-                                          @foreach ($permissions as $value)
-                                          <tr>
-                                              <th scope="row">
+                                        @if (!$permissions->isEmpty() )
+                                            
+
+                                          @foreach ($permissions as  $key =>$permission)
+                                            <tr>
+                                                <td scope="row">
                                                     <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                                                        <input class="form-check-inpu checkbox" type="checkbox" name="permissions[]" value="{{ $permission->id }}" @if($oldPermissions->contains($permission->id)) checked=checked @endif>
                                                     </div>
-                                              </th>
-                                              <td>{{ $value->name }}</td>
-                                              <td>{{ $value->slug }}</td>
-                                          </tr>
-                                          @endforeach
+                                                </td>
+                                                <td>{{ $permission->name }}</td>
+                                                <td class="">
+                                                @foreach ($permission->roles as $role)
+                                                    @if ($role->name == 'super-admin')
+                                                        <span class="badge badge-pill badge-danger">{{ $role->name }}</span>
+                                                    @elseif ($role->name == 'moderador')
+                                                        <span class="badge badge-pill badge-info">{{ $role->name }}</span>
+                                                    @else
+                                                        <span class="badge badge-pill badge-warning">{{ $role->name }}</span>
+                                                    @endif
+                                                @endforeach
+                                                </td>
+                                            </tr>
+                                            @endforeach
+                                        @endif
                                       </tbody>
                                   </table>
-                              </div>
+                                </div>
+                                <input type="hidden" name="role_id" value="{{ $role_id }}">
+                                <div class="row justify-content-start">
+                                    <div class="col-md-4">
+                                        <button type="submit" class="btn btn-success btn-sm w-50">Asignar permisos</button>
+                                    </div>
+                                </div>
                             </form>
                             
                         </div>
@@ -138,6 +162,25 @@
               }
           });
       });
+    </script>
+
+    <script>
+        //select all checkboxes
+        $("#select_all").change(function(){  //"select all" change 
+            $(".checkbox").prop('checked', $(this).prop("checked")); //change all ".checkbox" checked status
+        });
+
+        //".checkbox" change 
+        $('.checkbox').change(function(){ 
+            //uncheck "select all", if one of the listed checkbox item is unchecked
+            if(false == $(this).prop("checked")){ //if this item is unchecked
+                $("#select_all").prop('checked', false); //change "select all" checked status to false
+            }
+            //check "select all" if all checkbox items are checked
+            if ($('.checkbox:checked').length == $('.checkbox').length ){
+                $("#select_all").prop('checked', true);
+            }
+        });
     </script>
 @stop
 

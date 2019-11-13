@@ -27,65 +27,60 @@
                     <div class="col-md-6">
                         <div class="card">
                             <div class="card-body register-card-body">
-                                <p class="login-box-msg">{{ __('Register') }}</p>
-                                <form action="{{ route('users.update', $user->id) }}" method="post" novalidate="">
-                                    @csrf
-                                    @method('PUT')
-                                    <div class="input-group mb-3">
-                                        <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ $user->name }}" placeholder="Enter Your Full Name" required autofocus> 
+                                <p class="login-box-msg"><i class='fa fa-user-plus'></i> Update {{$user->name}}</p>
+
+                                {{ Form::model($user, array('route' => array('users.update', $user->id), 'method' => 'PUT')) }}{{-- Form model binding to automatically populate our fields with user data --}}
+
+                                    <div class="form-group @if ($errors->has('name')) is-invalid @endif">
+                                        {{ Form::label('name', 'Name') }}
+                                        {{ Form::text('name', null, array('class' => 'form-control')) }}
                                         @if ($errors->has('name'))
-                                            <span class="invalid-feedback" role="alert">
+                                            <span class="invalid-feedback" role="alert" style="display: block;">
                                                 <strong>{{ $errors->first('name') }}</strong>
                                             </span> 
                                         @endif
-                                        <div class="input-group-append">
-                                            <span class="fa fa-user input-group-text"></span>
-                                        </div>
                                     </div>
 
-                                    <div class="input-group mb-3">
-                                        <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ $user->email }}" placeholder="Your E Mail Address" required autofocus>
+                                    <div class="form-group @if ($errors->has('email')) is-invalid @endif">
+                                        {{ Form::label('email', 'Email') }}
+                                        {{ Form::email('email', null, array('class' => 'form-control')) }}
                                         @if ($errors->has('email'))
-                                            <span class="invalid-feedback" role="alert">
+                                            <span class="invalid-feedback" role="alert" style="display: block;">
                                                 <strong>{{ $errors->first('email') }}</strong>
                                             </span> 
                                         @endif
-                                        <div class="input-group-append">
-                                            <span class="fa fa-envelope input-group-text"></span> 
-                                        </div>
                                     </div>
 
-                                    <div class="input-group mb-3">
-                                        <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" placeholder="Password" required>
+                                    <h5><b>Assignar Rol para usuario</b></h5>
+
+                                    <div class="form-group @if ($errors->has('roles')) is-invalid @endif">
+                                        @foreach ($roles as $role)
+                                            {{ Form::checkbox('roles[]',  $role->id, $user->roles ) }}
+                                            {{ Form::label($role->name, ucfirst($role->name)) }}<br>
+
+                                        @endforeach
+
+                                    </div>
+
+                                    <div class="form-group @if ($errors->has('password')) is-invalid @endif">
+                                        {{ Form::label('password', 'Password') }}<br>
+                                        {{ Form::password('password', array('class' => 'form-control')) }}
+
+                                    </div>
+
+                                    <div class="form-group @if ($errors->has('password')) is-invalid @endif">
+                                        {{ Form::label('password', 'Confirm Password') }}<br>
+                                        {{ Form::password('password_confirmation', array('class' => 'form-control')) }}
                                         @if ($errors->has('password'))
-                                            <span class="invalid-feedback" role="alert">
+                                            <span class="invalid-feedback" role="alert" style="display: block;">
                                                 <strong>{{ $errors->first('password') }}</strong>
                                             </span> 
                                         @endif
-                                        <div class="input-group-append">
-                                            <span class="fa fa-lock input-group-text"></span>
-                                        </div>
                                     </div>
 
-                                    <div class="input-group mb-3">
-                                        <input id="password-confirm" type="password" class="form-control" name="password_confirmation" placeholder="Confirmation Password" required>
-                                        {{-- @if ($errors->has('password'))
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $errors->first('password') }}</strong>
-                                            </span> 
-                                        @endif --}}
-                                        <div class="input-group-append">
-                                            <span class="fa fa-lock input-group-text"></span> 
-                                        </div>
-                                    </div>
+                                    {{ Form::submit('Alterar', array('class' => 'btn btn-primary')) }}
 
-                                    <div class="row">
-                                        <div class="col-6">
-                                            <button type="submit" class="btn btn-primary btn-block btn-flat">Register</button>
-                                        </div>
-                                        <!-- /.col -->
-                                    </div>
-                                </form>
+                                {{ Form::close() }}
                             </div>
                         </div>
                     </div>

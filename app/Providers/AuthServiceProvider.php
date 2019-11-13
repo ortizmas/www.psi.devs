@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Role;
+use App\User;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
@@ -25,9 +27,11 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        // Grant "Super Admin" users all permissions (assuming they are verified using can() and other gate-related functions):
         Gate::before(function ($user, $ability) {
-            return $user->hasRole('Super Admin') ? true : null;
+            if ($user->hasRole('super-admin')) {
+                return true;
+            }
         });
     }
 }

@@ -23,58 +23,41 @@ class RoleController extends Controller
         $user = auth()->user();
         // get all inherited permissions for that user
         $permissions = $user->getAllPermissions();
-        //dd($permissions);
-        //dd($user->can('create role'));
-        
-        /*$permission = Permission::create(['name' => 'create roles']);
-        $role = Role::findById(1);
-        $role->givePermissionTo($permission);*/
 
         $roles = Role::paginate();
         return view('dashboard.roles.index', compact('roles'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
+        $permissions = Permission::all();
+        return view('dashboard.roles.create', compact('permissions'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name'=>'required|unique:roles|max:20',
+            'permissions' =>'required',
+            ]
+        );
+        
+        $role = new Role();
+        $role->name = $request->name;
+        $role->save();
+
+        if($request->permissions <> ''){
+            //$role->permissions()->attach($request->permissions);
+            $role->givePermissionTo($request->permissions);
+        }
+
+        return redirect()->route('roles.index')->with('success','Roles anhadido com sucesso');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Role  $role
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Role $role)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Role  $role
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Role $role)
-    {
-        //
+    public function edit($id) {
+        $role = Role::findOrFail($id);
+        $permissions = Permission::all();
+        return view('dashboard.roles.edit', compact('role', 'permissions'));
     }
 
     /**
@@ -84,9 +67,24 @@ class RoleController extends Controller
      * @param  \App\Role  $role
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Role $role)
+    public function update(Request $request,$id)
     {
-        //
+        $role = Role::findOrFail($id);//Get role with the given id
+        //Validate name and permission fields
+        $this->validate($request, [
+            'name'=>'required|max:20|unique:roles,name,'.$id,
+            'permissions' =>'required',
+        ]);
+
+        $input = $request->except(['permissions']);
+
+        $role->fill($input)->save();
+        if($request->permissions <> ''){
+            //$role->permissions()->sync($request->permissions);
+            $role->syncPermissions($request->permissions);
+        }
+        return redirect()->route('roles.index')->with('success','Rol atualizado co sucesso!');
+
     }
 
     /**
@@ -95,8 +93,13 @@ class RoleController extends Controller
      * @param  \App\Role  $role
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Role $role)
+    public function destroy($id)
     {
-        //
+        $role = Role::findOrFail($id);
+        $role->delete();
+
+        return redirect()->route('roles.index')
+            ->with('success',
+             'Role excluido com sucesso!');
     }
 }

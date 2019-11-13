@@ -5,42 +5,53 @@ Route::get('/dashboard/v2', 'DashboardController@versiontwo')->name('v2');
 Route::get('/dashboard/v3', 'DashboardController@versionthree')->name('v3');
 
 
-Route::group(['middleware' => ['role:super-admin|editor']], function() {
+Route::group(['middleware' => ['role:super-admin']], function() {
 	Route::resource('users', 'UserController');
 	Route::resource('roles', 'RoleController');
 	Route::resource('permissions', 'PermissionController');
 	Route::get('permissions/assign/{role_id}', 'PermissionController@assignPermission')->name('permissions.assign');
-
-
+	Route::post('permissions/assign', 'PermissionController@assignPermissionStore')->name('permissions.assign.store');
 
 });
 
-//Route::resource('users', 'UserController');
-Route::resource('sections', 'SectionController');
-Route::resource('categories', 'CategoryController');
-Route::get('cursos/categories', 'CategoryController@getCategoriesByCourses')->name('categories.courses');
+Route::group(['middleware' => ['role:super-admin|admin']], function() {
+	//Route::resource('users', 'UserController');
+	Route::resource('sections', 'SectionController');
+	Route::resource('categories', 'CategoryController');
+	Route::get('cursos/categories', 'CategoryController@getCategoriesByCourses')->name('categories.courses');
 
-//Ajax para categoria
-Route::post('categories/create-ajax', 'CategoryController@ajaxCreate')->name('ajax.create');
-Route::group(['prefix' => 'laravel-crud-search-sort-ajax-modal-form'], function () {
-    Route::get('/', 'CategoryController@index');
+	//Ajax para categoria
+	Route::post('categories/create-ajax', 'CategoryController@ajaxCreate')->name('ajax.create');
+	Route::group(['prefix' => 'laravel-crud-search-sort-ajax-modal-form'], function () {
+	    Route::get('/', 'CategoryController@index');
+	});
+	Route::resource('pages', 'PageController');
+	Route::resource('posts', 'PostController');
 });
-Route::resource('pages', 'PageController');
-Route::resource('posts', 'PostController');
-Route::resource('universities', 'UniversityController');
-Route::resource('periods', 'PeriodController');
-Route::resource('careers', 'CareerController');
 
-Route::resource('courses', 'CourseController');
-Route::resource('modules', 'ModuleController');
-Route::get('modules/{idCourse}/index', 'ModuleController@index')->name('modules.index.param');
-Route::resource('classrooms', 'ClassroomController');
-Route::get('classrooms/{idModule}/index', 'ClassroomController@index')->name('classrooms.index.param');
-Route::resource('trainees', 'TraineeController');
-Route::resource('inscriptions', 'InscriptionController');
-Route::resource('assignments', 'AssignmentController');
-Route::get('assignments/modules/{course_id}', 'AssignmentController@getModules')->name('assignments.modules');
-Route::get('assignments/classrooms/{module_id}', 'AssignmentController@getClassrooms')->name('assignments.classrooms');
+Route::group(['middleware' => ['role:super-admin|admin|teachers']], function() {
+	Route::resource('universities', 'UniversityController');
+	Route::resource('periods', 'PeriodController');
+	Route::resource('careers', 'CareerController');
+
+	Route::resource('courses', 'CourseController');
+	Route::resource('modules', 'ModuleController');
+	Route::get('modules/{idCourse}/index', 'ModuleController@index')->name('modules.index.param');
+	Route::resource('classrooms', 'ClassroomController');
+	Route::get('classrooms/{idModule}/index', 'ClassroomController@index')->name('classrooms.index.param');
+
+	Route::resource('trainees', 'TraineeController');
+	Route::resource('inscriptions', 'InscriptionController');
+	Route::resource('assignments', 'AssignmentController');
+	Route::get('assignments/modules/{course_id}', 'AssignmentController@getModules')->name('assignments.modules');
+	Route::get('assignments/classrooms/{module_id}', 'AssignmentController@getClassrooms')->name('assignments.classrooms');
+
+});
+
+Route::group(['middleware' => ['role:subscriptor']], function() {
+	Route::get('users/show/{id}', 'UserController@show')->name('users.show.edit');
+});
+
 
 //Tests
 Route::resource('tests', 'TestController');

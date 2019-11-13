@@ -7,12 +7,11 @@
       <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1 class="m-0 text-dark">Lista de Roles</h1>
+                <h1 class="m-0 text-dark">Lista de permisos</h1>
             </div><!-- /.col -->
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                  <li class="breadcrumb-item"><a href="{{ route('roles.create') }}"><i class="fas fa-plus-square" style="font-size: 48px;"></i></a></li>
-                  {{-- <li class="breadcrumb-item active">Dashboard v2</li> --}}
+                  <li class="breadcrumb-item"><a href="{{ route('permissions.create') }}"><i class="fas fa-plus-square" style="font-size: 48px;"></i></a></li>
                 </ol>
             </div><!-- /.col -->
         </div><!-- /.row -->
@@ -26,7 +25,7 @@
                     <div class="card">
                         <div class="card-header">
                             Permisos
-                            @can('create permissions', Model::class)
+                            @can('create permission')
                             <a href="{{ route('permissions.create') }}" title="Cadastrar permissions" class="btn btn-outline-info btn-sm w-25 float-right">Novo Permiso</a>
                             @endcan
                         </div>
@@ -39,40 +38,51 @@
                             </div>
                             @endif
 
+                            @if (Session::has('success'))
+                              <div class="alert alert-success">
+                                  <strong>Oooh!</strong> {{ Session::get('success') }}
+                                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                      <span aria-hidden="true">&times;</span>
+                                  </button>
+                              </div>
+                            @endif
+
                             <div class="table-responsive">
                                 <table class="table table-striped table-sm">
                                     <thead class="thead-dark">
                                         <tr>
                                             <th scope="col">#</th>
                                             <th scope="col">Nome</th>
-                                            <th scope="col">Slug</th>
                                             <th scope="col" colspan="3">Opções</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($permissions as $role)
+                                        @foreach ($permissions as $permission)
                                         <tr>
-                                            <th scope="row">{{ $role->id }}</th>
-                                            <td>{{ $role->name }}</td>
-                                            <td>{{ $role->slug }}</td>
+                                            <th scope="row">{{ $permission->id }}</th>
+                                            <td>{{ $permission->name }}</td>
+                                            <td>{{ $permission->slug }}</td>
 
                                             <td class="float-right">
                                                 @can('delete permission', Model::class)
-                                                {!! Form::open(['route' => ['permissions.destroy', $role->id] , 'method' => 'DELETE']) !!}
+                                                {{-- {!! Form::open(['route' => ['permissions.destroy', $permission->id] , 'method' => 'DELETE']) !!}
                                                 <button class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button>
-                                                {!! Form::close() !!}
+                                                {!! Form::close() !!} --}}
+                                                <a href="{{ route('permissions.destroy', $permission->id) }}" class="btn-delete btn btn-outline-danger btn-sm" title="{{ $permission->title }}">
+                                                  <i class="fas fa-trash" style="color:red;"></i>
+                                                </a> 
                                                 @endcan
                                             </td>
 
                                             <td class="float-right">
                                                 @can('update permission', Model::class)
-                                                <a href="{{ route('permissions.edit', $role->id) }}" class="btn btn-outline-info btn-sm"><i class="fa fa-edit"></i></a>
+                                                <a href="{{ route('permissions.edit', $permission->id) }}" class="btn btn-outline-info btn-sm"><i class="fa fa-edit"></i></a>
                                                 @endcan
                                             </td>
 
                                             <td class="float-right">
                                                 @can('read permissions', Model::class)
-                                                <a href="{{ route('permissions.show', $role->id) }}" class="btn btn-outline-success btn-sm"><i class="fa fa-eye"></i></a>
+                                                <a href="#" class="btn btn-outline-success btn-sm"><i class="fa fa-eye"></i></a>
                                                 @endcan
                                             </td>
                                         </tr>
