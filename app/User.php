@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Auth;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Spatie\Permission\Traits\HasRoles;
@@ -31,6 +32,18 @@ class User extends Authenticatable
     public function setPasswordAttribute($password)
     {   if ($password)
             $this->attributes['password'] = bcrypt($password);
+    }
+
+    public function isSuperAdmin()
+    {
+        $user = Auth::user();
+        foreach ($user->getRoleNames() as $value) {
+            if ($value === 'super-admin') {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     public function pages()

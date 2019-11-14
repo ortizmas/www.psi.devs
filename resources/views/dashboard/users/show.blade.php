@@ -12,7 +12,9 @@
               </div><!-- /.col -->
               <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                  <li class="breadcrumb-item"><a href="{{ route('users.index') }}" class="btn btn-info btn-sm">Lista de usuarios</a></li>
+                    @role('super-admin|admin')
+                    <li class="breadcrumb-item"><a href="{{ route('users.index') }}" class="btn btn-info btn-sm">Lista de usuarios</a></li>
+                    @endrole
                 </ol>
               </div><!-- /.col -->
             </div><!-- /.row -->
@@ -54,7 +56,9 @@
                             </div>
                             <!-- /.card-body -->
                             <div class="card-footer text-center">
+                                @role('super-admin|admin')
                                 <a href="{{ route('users.index') }}" class="uppercase">Listado de Usuarios</a>
+                                @endrole
                             </div>
                             <!-- /.card-footer -->
                         </div>

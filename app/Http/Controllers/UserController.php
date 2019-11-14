@@ -21,7 +21,10 @@ class UserController extends Controller
         //$this->middleware('auth')->except(['index', 'show']);
         //$this->authorizeResource('post');
         
-        //$this->middleware('auth');
+        $this->middleware(['permission:create user'], ['only' => ['create', 'store']]);
+        $this->middleware(['permission:read users'], ['only' => 'index']);
+        $this->middleware(['permission:update user'], ['only' => ['edit', 'update']]);
+        $this->middleware(['permission:delete user'], ['only' => 'destroy']);
         
     }
 
@@ -83,11 +86,16 @@ class UserController extends Controller
 
     public function show($id)
     {
+        $user = User::findOrFail($id);
+        $this->authorize('update', $user);
         return view('dashboard.users.show', ['user' => User::findOrFail($id)]);
     }
 
     public function edit($id) {
+
         $user = User::findOrFail($id);
+        $this->authorize('update', $user);
+
         $roles = Role::get(); 
         return view('dashboard.users.edit', compact('user', 'roles')); 
     }
@@ -95,6 +103,7 @@ class UserController extends Controller
     public function update(Request $request, $id) {
 
         $user = User::findOrFail($id);   
+        $this->authorize('update', $user);
 
         $this->validate($request, [
             'name'=>'required|max:120',

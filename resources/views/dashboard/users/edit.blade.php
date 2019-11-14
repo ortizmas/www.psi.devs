@@ -11,9 +11,11 @@
                 <h1 class="m-0 text-dark">Alterar Usuario</h1>
               </div><!-- /.col -->
               <div class="col-sm-6">
+                @role('super-admin|admin')
                 <ol class="breadcrumb float-sm-right">
                   <li class="breadcrumb-item"><a href="{{ route('users.index') }}" class="btn btn-info btn-sm">Lista de usuarios</a></li>
                 </ol>
+                @endrole
               </div><!-- /.col -->
             </div><!-- /.row -->
           </div><!-- /.container-fluid -->

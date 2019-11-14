@@ -18,30 +18,36 @@
 | Route::get('/users/{user}', 'UserController@destroy')->name('users.destroy'); //DELETE
 |
 */
-Route::get('/', 'Frontend\AppController@index')->name('inicio');
-Route::get('/quem-somos', 'Frontend\AppController@quemSomos')->name('quem.somos');
-Route::get('/destaque/{slug}', 'Frontend\ContentController@destaque')->name('content.destaque');
-Route::get('/treinamento/{slug}', 'Frontend\ContentController@treinamento')->name('content.treinamento');
-Route::get('/palestra/{slug}', 'Frontend\ContentController@palestra')->name('content.palestra');
-Route::get('/clinica/{slug}', 'Frontend\ContentController@getPage')->name('content.page');
-
-Route::get('/produtos/{slug?}', 'Frontend\ProductController@index')->name('products.index');
-Route::get('/items-clube', 'Frontend\ProductController@items')->name('products.items');
 
 
 
-Route::get('/programas/{slug?}', 'Frontend\ProgramsController@index')->name('programs.index');
-Route::get('/consultorias/{slug?}', 'Frontend\ProgramsController@index')->name('consulting.index');
-Route::get('/especialidades/{slug?}', 'Frontend\ProgramsController@index')->name('especialities.index');
+Route::namespace('Frontend')->group(function () {
+	Route::get('/', 'AppController@index')->name('inicio');
+	Route::get('/quem-somos', 'AppController@quemSomos')->name('quem.somos');
+	Route::get('/destaque/{slug}', 'ContentController@destaque')->name('content.destaque');
+	Route::get('/treinamento/{slug}', 'ContentController@treinamento')->name('content.treinamento');
+	Route::get('/palestra/{slug}', 'ContentController@palestra')->name('content.palestra');
+	Route::get('/clinica/{slug}', 'ContentController@getPage')->name('content.page');
 
-Route::get('/inscription/{slug}', 'Frontend\ProgramsController@create')->name('inscription.create');
-Route::post('/inscription', 'Frontend\ProgramsController@store')->name('inscription.store');
+	Route::get('/produtos/{slug?}', 'ProductController@index')->name('products.index');
+	Route::get('/items-clube', 'ProductController@items')->name('products.items');
 
+
+
+	Route::get('/programas/{slug?}', 'ProgramsController@index')->name('programs.index');
+	Route::get('/consultorias/{slug?}', 'ProgramsController@index')->name('consulting.index');
+	Route::get('/especialidades/{slug?}', 'ProgramsController@index')->name('especialities.index');
+
+	Route::get('/inscription/{slug}', 'ProgramsController@create')->name('inscription.create');
+	Route::post('/inscription', 'ProgramsController@store')->name('inscription.store');
+
+	Route::get('/pre-matricula', 'PreRegisterController@create')->name('preregister.create');
+	Route::post('/pre-matricula', 'PreRegisterController@store')->name('preregister.store');
+});
 
 Route::post('/send-email', 'MailController@sendemail')->name('send.email');
-Route::get('/fale-conosco', 'Frontend\GtalentosController@faleconosco')->name('fale.conosco');
+Route::get('/fale-conosco', 'GtalentosController@faleconosco')->name('fale.conosco');
 Route::post('/fale-conosco', 'MailController@faleconoscoemail')->name('faleconosco.email');
-
 
 Auth::routes();
 
@@ -52,5 +58,5 @@ Route::middleware(['auth'])->group(function(){
 
 Route::get('/precing', 'TestController@precing')->name('precing');
 
-Route::get('/{slug}', 'Frontend\ContentController@getPage')->name('content.all');
+Route::get('/{slug}', 'ContentController@getPage')->name('content.all');
 

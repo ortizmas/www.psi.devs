@@ -388,9 +388,9 @@
                 </li>
                 @endrole
 
-                 @role('subscriptor')
+                 @unlessrole('super-admin')
                 <li class="nav-item">
-                    <a href="{{ route('users.show.edit', Auth::id()) }}" class="nav-link">
+                    <a href="{{ route('profiles.show', Auth::id()) }}" class="nav-link">
                         <i class="fa fa-circle-o nav-icon"></i>
                         <p>Seu perfil</p>
                     </a>

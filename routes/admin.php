@@ -48,10 +48,7 @@ Route::group(['middleware' => ['role:super-admin|admin|teachers']], function() {
 
 });
 
-Route::group(['middleware' => ['role:subscriptor']], function() {
-	Route::get('users/show/{id}', 'UserController@show')->name('users.show.edit');
-});
-
+Route::resource('profiles', 'ProfileController')->only(['show', 'edit', 'update']);
 
 //Tests
 Route::resource('tests', 'TestController');
