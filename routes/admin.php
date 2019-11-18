@@ -48,7 +48,10 @@ Route::group(['middleware' => ['role:super-admin|admin|teachers']], function() {
 
 });
 
-Route::resource('profiles', 'ProfileController')->only(['show', 'edit', 'update']);
+Route::resource('profiles', 'ProfileController');
+Route::get('profiles/edit/{iscriptionId}', 'ProfileController@editPerfil')->name('profiles.inscription.edit');
+Route::put('profiles/atualizar/{iscriptionId}', 'ProfileController@updatePerfil')->name('profiles.inscription.update');
+
 
 //Tests
 Route::resource('tests', 'TestController');

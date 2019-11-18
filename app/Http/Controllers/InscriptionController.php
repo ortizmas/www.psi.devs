@@ -16,12 +16,14 @@ class InscriptionController extends Controller
 
     public function create()
     {
+        
         return view('dashboard.inscriptions.create');
     }
 
     public function store(Request $request)
     {
         $inscription = Inscription::create([
+            'user_id' => (Auth::user()->id) ? Auth::user()->id : '',
             'name' => $request['name'],
             'cpf' => $request['cpf'],
             'cep' => $request['cep'],
@@ -55,6 +57,7 @@ class InscriptionController extends Controller
         $inscriptionUpdate = Inscription::find($inscription->id);
 
         $inscription = $inscriptionUpdate->update([
+            'user_id' => (Auth::user()->id) ? Auth::user()->id : '',
             'name' => $request['name'],
             'cpf' => $request['cpf'],
             'cep' => $request['cep'],

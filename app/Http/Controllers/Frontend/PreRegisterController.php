@@ -48,14 +48,15 @@ class PreRegisterController extends Controller
         $user = User::create([
             'name' => $request['name_user'],
             'email' => $request['email_user'],
-            'password' => Hash::make($request['password_user']),
+            'password' => $request['password_user'],
         ]);
 
         $user->assignRole(['student']);
 
         auth()->login($user);
         
-        return redirect()->to('/home');
+        //return redirect()->to('/home');
+        return redirect()->route('profiles.create');
     }
 
     public function show($id)

@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Inscription extends Model
 {
     protected $fillable = [
+        'user_id',
     	'name',
     	'cpf',
     	'cep',
@@ -15,10 +16,12 @@ class Inscription extends Model
     	'city',
     	'state',
     	'ibge',
-    	'email',
+    	'email_inscription',
     	'phone',
     	'company',
     	'company_phone',
     	'program',
     ];
+
+    
 }
