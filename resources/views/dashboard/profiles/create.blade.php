@@ -8,7 +8,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Inscrição</h1>
+            <h1 class="m-0 text-dark">INFORMAÇÕES DE PAGAMENTO</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -193,7 +193,7 @@
 
                             <div class="row justify-content-center">
                                 <div class="col-4">
-                                    <button type="submit" class="btn btn-success btn-block btn-flat">CONTINUAR A COMPRA <i class="fas fa-arrow-circle-right"></i></button>
+                                    <button type="submit" class="btn btn-success btn-block btn-flat">Ir para o pagamento <i class="fas fa-arrow-circle-right"></i></button>
                                 </div>
                             </div>
                     </div>

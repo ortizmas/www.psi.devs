@@ -28,7 +28,8 @@ class ProfileController extends Controller
         $inscription = Inscription::where('user_id', $user->id)->first();
 
         if ($inscription) {
-            return redirect()->route('profiles.inscription.edit', $inscription->id);
+            //return redirect()->route('profiles.inscription.edit', $inscription->id);
+            return $this->editPerfil($inscription->id);
         }
 
         return view('dashboard.profiles.create', compact('user'));

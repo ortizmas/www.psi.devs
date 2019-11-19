@@ -58,13 +58,13 @@
                                     <div class="col-12">
                                         <div class="checkbox icheck">
                                             <label>
-                                                <input type="checkbox"> Remember Me
+                                                <input type="checkbox"> Lembrar acesso
                                             </label>
                                         </div>
                                     </div>
                                     <!-- /.col -->
                                     <div class="col-12">
-                                        <button type="submit" class="btn btn-primary btn-block btn-flat">Acessar</button>
+                                        <button type="submit" class="btn btn-primary btn-block btn-flat">ENTRAR</button>
                                     </div>
                                     <!-- /.col -->
                                 </div>
@@ -139,7 +139,7 @@
                                 <br>
                                 <div class="row justify-content-center">
                                     <div class="col-4">
-                                        <button type="submit" class="btn btn-success btn-block btn-flat">Ir para o pagamento <i class="fas fa-angle-double-right"></i></button>
+                                        <button type="submit" class="btn btn-success btn-block btn-flat">REGISTRAR <i class="fas fa-angle-double-right"></i></button>
                                     </div>
                                 </div>
                             </div>
