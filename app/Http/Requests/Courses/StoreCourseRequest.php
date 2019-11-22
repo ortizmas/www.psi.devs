@@ -26,7 +26,7 @@ class StoreCourseRequest extends FormRequest
         return [
             'name' => "required|min:3|max:50|unique:courses,name",
             'url' => 'required|unique:courses,url|max:255',
-            'description' => 'max:1000',
+            'description' => 'required',
             'category_id' => 'required',
             'image' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg|max:2048',
         ];
