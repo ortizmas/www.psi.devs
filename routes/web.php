@@ -39,8 +39,8 @@ Route::namespace('Frontend')->group(function () {
 	Route::get('/inscription/{slug}', 'ProgramsController@create')->name('inscription.create');
 	Route::post('/inscription', 'ProgramsController@store')->name('inscription.store');
 
-	Route::get('cursos-e-treinamentos', 'CursoController@index')->name('cursos.index');
-	Route::get('cursos-e-treinamentos/{url}', 'CursoController@show')->name('cursos.show');
+	Route::get('treinamentos', 'CursoController@index')->name('cursos.index');
+	Route::get('treinamentos/{url}', 'CursoController@show')->name('cursos.show');
 
 	Route::get('/pre-matricula', 'PreRegisterController@create')->name('preregister.create');
 	Route::post('/pre-matricula', 'PreRegisterController@store')->name('preregister.store');

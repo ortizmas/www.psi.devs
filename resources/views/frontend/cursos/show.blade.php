@@ -28,15 +28,25 @@
 
     <div class="site-section">
         <div class="container">
+            <div class="row mb-5">
+                <div class="col-lg-8 mb-5">
+                    <h2 class="section-title-underline mb-3">
+                        <span>{{$course->name}}</span>
+                    </h2>
+                    <p class="text-justify">{!! $course->description !!}</p>
+                </div>
 
+                <div class="col-lg-4"> 
+                    <h2 class="section-title-underline mb-3">
+                        <span>Detalhes do curso</span>
+                    </h2>
+                    <p><strong>Duração do curso: </strong> 15 horas</p>
 
-            <div class="row mb-5 justify-content-center text-center">
-            <div class="col-lg-6 mb-5">
-                <h2 class="section-title-underline mb-3">
-                <span>Cursos e Treinamentos</span>
-                </h2>
-                <p>{!! $course->description !!}</p>
-            </div>
+                    <a href="{{ route('preregister.create') }}" class="btn btn-outline-dark text-dark btn-sm w-100">Comprar agora</a>
+                    <div class="text-center">
+                        <span class="text-muted">Garantia de devolução do dinheiro em 30 dias</span>
+                    </div>
+                </div>
             </div>
 
             <div class="row">
@@ -65,6 +75,126 @@
                             </div>
                         @endforeach
                     @endif
+
+                    <div class="course-1-item">
+                        <figure class="thumnail">
+                        <a href="course-single.html"><img src="/cursos/images/course_1.jpg" alt="Image" class="img-fluid"></a>
+                        <div class="price">$99.00</div>
+                        <div class="category"><h3>Mobile Application</h3></div>  
+                        </figure>
+                        <div class="course-1-content pb-4">
+                        <h2>How To Create Mobile Apps Using Ionic</h2>
+                        <div class="rating text-center mb-3">
+                            <span class="icon-star2 text-warning"></span>
+                            <span class="icon-star2 text-warning"></span>
+                            <span class="icon-star2 text-warning"></span>
+                            <span class="icon-star2 text-warning"></span>
+                            <span class="icon-star2 text-warning"></span>
+                        </div>
+                        <p class="desc mb-4">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Similique accusantium ipsam.</p>
+                        <p><a href="course-single.html" class="btn btn-primary rounded-0 px-4">Enroll In This Course</a></p>
+                        </div>
+                    </div>
+        
+                    <div class="course-1-item">
+                        <figure class="thumnail">
+                        <a href="course-single.html"><img src="/cursos/images/course_2.jpg" alt="Image" class="img-fluid"></a>
+                        <div class="price">$99.00</div>
+                        <div class="category"><h3>Web Design</h3></div>  
+                        </figure>
+                        <div class="course-1-content pb-4">
+                        <h2>How To Create Mobile Apps Using Ionic</h2>
+                        <div class="rating text-center mb-3">
+                            <span class="icon-star2 text-warning"></span>
+                            <span class="icon-star2 text-warning"></span>
+                            <span class="icon-star2 text-warning"></span>
+                            <span class="icon-star2 text-warning"></span>
+                            <span class="icon-star2 text-warning"></span>
+                        </div>
+                        <p class="desc mb-4">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Similique accusantium ipsam.</p>
+                        <p><a href="course-single.html" class="btn btn-primary rounded-0 px-4">Enroll In This Course</a></p>
+                        </div>
+                    </div>
+        
+                    <div class="course-1-item">
+                        <figure class="thumnail">
+                        <a href="course-single.html"><img src="/cursos/images/course_3.jpg" alt="Image" class="img-fluid"></a>
+                        <div class="price">$99.00</div>
+                        <div class="category"><h3>Arithmetic</h3></div>  
+                        </figure>
+                        <div class="course-1-content pb-4">
+                        <h2>How To Create Mobile Apps Using Ionic</h2>
+                        <div class="rating text-center mb-3">
+                            <span class="icon-star2 text-warning"></span>
+                            <span class="icon-star2 text-warning"></span>
+                            <span class="icon-star2 text-warning"></span>
+                            <span class="icon-star2 text-warning"></span>
+                            <span class="icon-star2 text-warning"></span>
+                        </div>
+                        <p class="desc mb-4">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Similique accusantium ipsam.</p>
+                        <p><a href="courses-single.html" class="btn btn-primary rounded-0 px-4">Enroll In This Course</a></p>
+                        </div>
+                    </div>
+
+                    <div class="course-1-item">
+                        <figure class="thumnail">
+                            <a href="course-single.html"><img src="/cursos/images/course_4.jpg" alt="Image" class="img-fluid"></a>
+                        <div class="price">$99.00</div>
+                        <div class="category"><h3>Mobile Application</h3></div>  
+                        </figure>
+                        <div class="course-1-content pb-4">
+                        <h2>How To Create Mobile Apps Using Ionic</h2>
+                        <div class="rating text-center mb-3">
+                            <span class="icon-star2 text-warning"></span>
+                            <span class="icon-star2 text-warning"></span>
+                            <span class="icon-star2 text-warning"></span>
+                            <span class="icon-star2 text-warning"></span>
+                            <span class="icon-star2 text-warning"></span>
+                        </div>
+                        <p class="desc mb-4">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Similique accusantium ipsam.</p>
+                        <p><a href="course-single.html" class="btn btn-primary rounded-0 px-4">Enroll In This Course</a></p>
+                        </div>
+                    </div>
+        
+                    <div class="course-1-item">
+                        <figure class="thumnail">
+                            <a href="course-single.html"><img src="/cursos/images/course_5.jpg" alt="Image" class="img-fluid"></a>
+                        <div class="price">$99.00</div>
+                        <div class="category"><h3>Web Design</h3></div>  
+                        </figure>
+                        <div class="course-1-content pb-4">
+                        <h2>How To Create Mobile Apps Using Ionic</h2>
+                        <div class="rating text-center mb-3">
+                            <span class="icon-star2 text-warning"></span>
+                            <span class="icon-star2 text-warning"></span>
+                            <span class="icon-star2 text-warning"></span>
+                            <span class="icon-star2 text-warning"></span>
+                            <span class="icon-star2 text-warning"></span>
+                        </div>
+                        <p class="desc mb-4">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Similique accusantium ipsam.</p>
+                        <p><a href="course-single.html" class="btn btn-primary rounded-0 px-4">Enroll In This Course</a></p>
+                        </div>
+                    </div>
+        
+                    <div class="course-1-item">
+                        <figure class="thumnail">
+                            <a href="course-single.html"><img src="/cursos/images/course_6.jpg" alt="Image" class="img-fluid"></a>
+                        <div class="price">$99.00</div>
+                        <div class="category"><h3>Mobile Application</h3></div>  
+                        </figure>
+                        <div class="course-1-content pb-4">
+                        <h2>How To Create Mobile Apps Using Ionic</h2>
+                        <div class="rating text-center mb-3">
+                            <span class="icon-star2 text-warning"></span>
+                            <span class="icon-star2 text-warning"></span>
+                            <span class="icon-star2 text-warning"></span>
+                            <span class="icon-star2 text-warning"></span>
+                            <span class="icon-star2 text-warning"></span>
+                        </div>
+                        <p class="desc mb-4">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Similique accusantium ipsam.</p>
+                        <p><a href="course-single.html" class="btn btn-primary rounded-0 px-4">Enroll In This Course</a></p>
+                        </div>
+                    </div>
         
                 </div>
         
