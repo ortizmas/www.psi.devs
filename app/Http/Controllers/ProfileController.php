@@ -22,8 +22,9 @@ class ProfileController extends Controller
         return view('dashboard.profiles.show', ['user' => User::findOrFail($id)]);
     }
 
-    public function create()
+    public function create(Request $request)
     {
+
         $user = Auth::user();
         $inscription = Inscription::where('user_id', $user->id)->first();
 
@@ -57,14 +58,15 @@ class ProfileController extends Controller
         return redirect()->route('profiles.index')->with('success', 'Seus dados foram cadastrados!!');
     }
 
-    public function edit($id) {
+    public function edit($id)
+    {
 
         $user = User::findOrFail($id);
 
         $this->authorize('update', $user);
 
-        $roles = Role::get(); 
-        return view('dashboard.profiles.edit', compact('user', 'roles')); 
+        $roles = Role::get();
+        return view('dashboard.profiles.edit', compact('user', 'roles'));
     }
 
     public function editPerfil($inscriptionId)
@@ -100,15 +102,16 @@ class ProfileController extends Controller
         return redirect()->route('profiles.inscription.edit', $inscriptionId)->with('success', 'Dados alterado com sucesso!!');
     }
 
-    public function update(Request $request, $id) {
+    public function update(Request $request, $id)
+    {
 
-        $user = User::findOrFail($id);   
+        $user = User::findOrFail($id);
         $this->authorize('update', $user);
 
         $this->validate($request, [
-            'name'=>'required|max:120',
-            'email'=>'required|email|unique:users,email,'.$id,
-            'password' => ($request['password'] ? 'required|string|min:6|confirmed' : 'nullable')  
+            'name' => 'required|max:120',
+            'email' => 'required|email|unique:users,email,' . $id,
+            'password' => ($request['password'] ? 'required|string|min:6|confirmed' : 'nullable')
         ]);
 
         $input = $request->except('roles');
@@ -120,7 +123,9 @@ class ProfileController extends Controller
         else {
             $user->roles()->detach();
         }*/
-        return redirect()->route('profiles.show', $user->id)->with('success',
-             'Seus dados foram alterados com sucesso!.');
+        return redirect()->route('profiles.show', $user->id)->with(
+            'success',
+            'Seus dados foram alterados com sucesso!.'
+        );
     }
 }

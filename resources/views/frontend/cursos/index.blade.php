@@ -59,7 +59,7 @@
 
                 @foreach ($courses as $course)
                     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3 col-xl-3">
-                        <div class="course-1-item">
+                        <div class="course-1-item h-100">
                             <figure class="thumnail">
                                 <a href="{{ route('cursos.show', $course->url) }}">
                                     <img src="{{ asset('storage/courses/' . $course->image) }}" alt="Image" class="img-fluid">
@@ -78,7 +78,7 @@
                     </div>
                 @endforeach
 
-                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3 col-xl-3">
+                {{-- <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3 col-xl-3">
                     <div class="course-1-item">
                         <figure class="thumnail">
                         <a href="course-single.html"><img src="/cursos/images/course_1.jpg" alt="Image" class="img-fluid"></a>
@@ -118,7 +118,7 @@
                         <p><a href="course-single.html" class="btn btn-primary rounded-0 px-4">SAIBA MASI</a></p>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>

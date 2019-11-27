@@ -42,7 +42,7 @@ Route::namespace('Frontend')->group(function () {
 	Route::get('treinamentos', 'CursoController@index')->name('cursos.index');
 	Route::get('treinamentos/{url}', 'CursoController@show')->name('cursos.show');
 
-	Route::get('/pre-matricula', 'PreRegisterController@create')->name('preregister.create');
+	Route::get('/pre-matricula/{slug?}', 'PreRegisterController@create')->name('preregister.create');
 	Route::post('/pre-matricula', 'PreRegisterController@store')->name('preregister.store');
 });
 

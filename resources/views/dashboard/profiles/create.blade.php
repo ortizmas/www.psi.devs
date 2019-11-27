@@ -168,7 +168,7 @@
                         <div class="row">
                             <div class="col-md-8">
                                 <div class="input-group mb-3">
-                                    <input id="program" type="text" class="form-control{{ $errors->has('program') ? ' is-invalid' : '' }}" name="program" value="{{ old('program') }}" placeholder="PROGRAMA REFERENTE" required autofocus>
+                                    <input id="program" type="text" class="form-control{{ $errors->has('program') ? ' is-invalid' : '' }}" name="program" value="{{ old('program', session('program', 'default')) }}" placeholder="PROGRAMA REFERENTE" required autofocus>
                                     @if ($errors->has('program'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('program') }}</strong>

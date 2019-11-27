@@ -8,15 +8,15 @@
 
     @include('layouts.frontend.menu', ['some' => 'data'])
     
-    {{-- <div class="container-fluid pl-0 pb-5 pr-0">
+    <div class="container-fluid pl-0 pb-5 pr-0">
         <div class="hero-show" id="home">
-            <div class="hero-show-overlay ">
+            <div class="hero-show-overlay full-width-streamer">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12 p-0">
                             <div class="hero-show-wrap flex-column justify-content-center align-items-start">
                                 <header class="entry-header pt-5">
-                                    <h1 class="text-white text-center">{{ $title }}</h1>
+                                    <h1 class="text-white">{{$course->name}}</h1>
                                 </header>
                             </div>
                         </div>
@@ -24,25 +24,28 @@
                 </div>
             </div>
         </div>
-    </div> --}}
+    </div>
 
-    <div class="site-section">
+    <div class="site-section pt-0">
         <div class="container">
             <div class="row mb-5">
                 <div class="col-lg-8 mb-5">
-                    <h2 class="section-title-underline mb-3">
-                        <span>{{$course->name}}</span>
-                    </h2>
-                    <p class="text-justify">{!! $course->description !!}</p>
+                    <div class="shadow-sm p-3 mb-5 bg-white rounded">
+                        {{-- <h2 class="section-title-underline mb-3">
+                            <span>{{$course->name}}</span>
+                        </h2> --}}
+                        <p class="text-justify">{!! $course->description !!}</p>
+                        <a href="{{ route('preregister.create', $course->url) }}" class="btn btn-outline-dark text-dark btn-sm w-100">Adquerir agora</a>
+                    </div>
                 </div>
 
                 <div class="col-lg-4"> 
-                    <h2 class="section-title-underline mb-3">
+                    <h3 class="mb-3 text-grey">
                         <span>Detalhes do curso</span>
-                    </h2>
+                    </h3>
                     <p><strong>Duração do curso: </strong> 15 horas</p>
 
-                    <a href="{{ route('preregister.create') }}" class="btn btn-outline-dark text-dark btn-sm w-100">Comprar agora</a>
+                    <a href="{{ route('preregister.create', $course->url) }}" class="btn btn-outline-dark text-dark btn-sm w-100">Comprar agora</a>
                     <div class="text-center">
                         <span class="text-muted">Garantia de devolução do dinheiro em 30 dias</span>
                     </div>

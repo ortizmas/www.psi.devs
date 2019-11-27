@@ -82,11 +82,13 @@ class CourseController extends Controller
     {
         $categories = Category::where('section', 'course')->get();
         $course = Course::findOrFail($course->id);
+
         return view('dashboard.courses.edit', compact('course', 'categories'));
     }
 
     public function update(UpdateCourseRequest $request, Course $course)
     {
+        //dd($request->price);
         $course = $this->course->find($course->id);
 
         if(!$course)            

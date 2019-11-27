@@ -413,7 +413,7 @@ a:hover, a:active {
 
 .hero-show-wrap h1 {
     margin-top: 12px;
-    font-size: 52px;
+    font-size: 42px;
     font-weight: 500;
     color: #fff;
 }
@@ -3287,6 +3287,39 @@ p.footer-copyright {
 
 /*Section cursos*/
 
+.text-grey {
+    color: #686f7a !important;
+}
+
+.site-section {
+    padding: 2.5em 0;
+}
+
+.site-section p {
+    font-size: 15px;
+}
+
+.site-section ul li, ol li {
+    font-size: 15px;
+}
+
+@media (min-width: 768px) {
+    .site-section {
+        padding: 5em 0;
+    }
+}
+
+.full-width-streamer {
+    background: linear-gradient( #29303B, #29303B, #29303B);
+    color: #fff;
+}
+
+.box-grey {
+    background-color: #f9f9f9;
+    border: 1px solid #dedfe0;
+    padding: 10px 15px;
+}
+
 .section-title-underline {
     color: #000;
 }
@@ -3302,16 +3335,6 @@ p.footer-copyright {
 
 .section-title-underline.style-2 span {
     border-color: #51be78;
-}
-
-.site-section {
-    padding: 2.5em 0;
-}
-
-@media (min-width: 768px) {
-    .site-section {
-        padding: 5em 0;
-    }
 }
 
 .site-section.site-section-sm {

@@ -136,6 +136,7 @@
                                     </div>
 
                                 </div>
+                                <input type="text" name="program" value="{{$slug}}">
                                 <br>
                                 <div class="row justify-content-center">
                                     <div class="col-4">

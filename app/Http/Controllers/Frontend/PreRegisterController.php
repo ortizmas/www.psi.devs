@@ -20,9 +20,9 @@ class PreRegisterController extends Controller
         //
     }
 
-    public function create()
+    public function create($slug = null)
     {
-        return view('frontend.prematriculas.create');
+        return view('frontend.prematriculas.create', compact('slug'));
     }
 
     protected function validator(array $data)
@@ -42,7 +42,7 @@ class PreRegisterController extends Controller
 
     public function store(Request $request)
     {
-        
+
         $this->validator($request->all())->validate();
 
         $user = User::create([
@@ -54,7 +54,10 @@ class PreRegisterController extends Controller
         $user->assignRole(['student']);
 
         auth()->login($user);
-        
+
+        //Session do programa de interese do cliente
+        session(['program' => $request->program]);
+
         //return redirect()->to('/home');
         return redirect()->route('profiles.create');
     }

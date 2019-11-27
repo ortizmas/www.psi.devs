@@ -24,6 +24,7 @@ class CreateCoursesTable extends Migration
             $table->boolean('published')->nullable();
             $table->boolean('free')->default(false);
             $table->double('price', 10, 2)->nullable();
+            $table->double('price_old', 10, 2)->nullable();
             $table->double('price_plots', 10, 2)->nullable();
             $table->integer('total_plots')->nullable();
             $table->string('link_buy')->nullable();
