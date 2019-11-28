@@ -184,11 +184,14 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-12">
-                                <button type="submit" class="btn btn-primary btn-block btn-flat">Alterar dados</button>
+
+                        <input id="program" type="hidden" name="program" value="{{ old('program', session()->get('item_buy')) }}" >
+
+                            <div class="row">
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-primary btn-block btn-flat">Alterar dados</button>
+                                </div>
                             </div>
-                        </div>
                     </div>
                 </div>
             </form>

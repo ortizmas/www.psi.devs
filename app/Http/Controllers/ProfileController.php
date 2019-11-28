@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Course;
 use App\User;
 use App\Role;
 use App\Inscription;
@@ -38,6 +39,8 @@ class ProfileController extends Controller
 
     public function store(Request $request)
     {
+        $idCourse = decrypt($request->program);
+
         $inscription = Inscription::create([
             'user_id' => (Auth::user()->id) ? Auth::user()->id : '',
             'name' => $request['name'],
@@ -51,9 +54,16 @@ class ProfileController extends Controller
             'email_inscription' => $request['email_inscription'],
             'phone' => $request['phone'],
             'company' => $request['company'],
-            'company_phone' => $request['company_phone'],
-            'program' => $request['program']
+            'company_phone' => $request['company_phone']
         ]);
+
+        if ($inscription) {
+            $course = Course::findOrFail($idCourse);
+            $amount = 1;
+            $price = onlyNumbers($course->price)  / 100;
+            $subtotal = $amount * $price;
+            $inscription->courses()->attach($idCourse, ['course' => $course->name, 'amount' => $amount, 'price' => $price, 'subtotal' => $subtotal]);
+        }
 
         return redirect()->route('profiles.index')->with('success', 'Seus dados foram cadastrados!!');
     }
@@ -75,7 +85,11 @@ class ProfileController extends Controller
         $this->authorize('update', $inscription);
 
         $inscription = Inscription::findOrFail($inscriptionId);
-        return view('dashboard.profiles.inscription-edit', compact('inscription'));
+        if (session()->has('item_buy')) {
+            return view('dashboard.profiles.edit-and-buy', compact('inscription'));
+        } else {
+            return view('dashboard.profiles.inscription-edit', compact('inscription'));
+        }
     }
 
     public function updatePerfil(Request $request, $inscriptionId)
@@ -96,7 +110,8 @@ class ProfileController extends Controller
             'phone' => $request['phone'],
             'company' => $request['company'],
             'company_phone' => $request['company_phone'],
-            'program' => $request['program']
+            'program' => ($request['program']) ? $request['program'] : $inscriptionUpdate->program,
+            'status' => ($request['status']) ? 1 : 0,
         ]);
 
         return redirect()->route('profiles.inscription.edit', $inscriptionId)->with('success', 'Dados alterado com sucesso!!');

@@ -63,6 +63,16 @@ class Course extends Model
         $this->attributes['price_old'] = str_replace(',', '.', $value);
     }
 
+    public function scopeOfUrl($query, $url)
+    {
+        return $query->where('url', $url);
+    }
+
+    public function scopeStatus($query)
+    {
+        return $query->where('status', 1);
+    }
+
     public function getMyCourse(array $data)
     {
         return $this->with(array('modules' => function ($query) use ($data) {
@@ -85,5 +95,12 @@ class Course extends Model
     public function sales()
     {
         return $this->hasMany(Sale::class);
+    }
+
+    public function inscriptions()
+    {
+        return $this->belongsToMany(Inscription::class)
+            ->withPivot('course', 'amount', 'price', 'subtotal')
+            ->withTimestamps();
     }
 }

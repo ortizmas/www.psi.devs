@@ -35,7 +35,13 @@ class DashboardController extends Controller
                 break;
 
             case 'student':
-                    return $this->student();
+                    //Item selecionado por o cliente que deseja comprar 
+                    $item_carrinho = session()->get('item_buy');
+                    if ($item_carrinho != null) {
+                        return redirect()->route('profiles.create');
+                    } else {
+                        return $this->student($item_carrinho);
+                    }                    
                 break;
             
             default:
@@ -66,9 +72,10 @@ class DashboardController extends Controller
         return view('dashboard.v2', compact('careers', 'trainees', 'young_employees', 'allJT'));
     }
 
-    public function student()
+    public function student($item_carrinho)
     {
         return view('dashboard.student');
+        
     }
 
     public function default()

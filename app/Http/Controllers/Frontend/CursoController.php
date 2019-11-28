@@ -22,10 +22,10 @@ class CursoController extends Controller
 
     public function show($url)
     {
-        $courses = new Course();
+        $course = new Course();
         $category = Category::where('slug', 'cursos-e-treinamentos')->firstOrFail(['id']);
-        $courses = $courses->where('category_id', $category->id)->where('status', 1)->get();
-        $course = $courses->where('url', $url)->first();
+        $courses = $course->where('category_id', $category->id)->where('status', 1)->get();
+        $course = $course->where('url', $url)->firstOrFail();
 
         return view('frontend.cursos.show', compact('courses', 'course'));
     }

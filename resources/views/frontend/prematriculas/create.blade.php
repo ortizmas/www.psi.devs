@@ -23,6 +23,14 @@
 
         
         <div class="container">
+            @if (session('error'))
+                <div class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
+                    <strong>{{ session('error') }}</strong>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            @endif
             <div class="row justify-content-center">
                 <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
                     <form action="{{ route('login') }}" method="post" novalidate="">
@@ -62,6 +70,7 @@
                                             </label>
                                         </div>
                                     </div>
+                                    <input type="hidden" name="program" value="{{$slug}}">
                                     <!-- /.col -->
                                     <div class="col-12">
                                         <button type="submit" class="btn btn-primary btn-block btn-flat">ENTRAR</button>
@@ -73,6 +82,7 @@
                     </form>
                 </div>
                 <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 col-xl-9">
+
                     <form action="{{ route('preregister.store') }}" method="post" novalidate="">
                         @csrf
                         <div class="card mt-4">
@@ -136,7 +146,7 @@
                                     </div>
 
                                 </div>
-                                <input type="text" name="program" value="{{$slug}}">
+                                <input type="hidden" name="program" value="{{$slug}}">
                                 <br>
                                 <div class="row justify-content-center">
                                     <div class="col-4">

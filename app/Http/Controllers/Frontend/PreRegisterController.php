@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use App\Course;
 use App\User;
+//use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\Controller;
@@ -20,8 +22,14 @@ class PreRegisterController extends Controller
         //
     }
 
-    public function create($slug = null)
+    public function create($url = null)
     {
+        $course = Course::ofUrl($url)->status()->firstOrFail(['id']);
+
+        //$encrypted = Crypt::encryptString('Hello world.');
+        //$decrypted = Crypt::decryptString($encrypted);
+        $slug = encrypt($course->id);
+        //$slug = decrypt($slug);
         return view('frontend.prematriculas.create', compact('slug'));
     }
 
@@ -42,7 +50,7 @@ class PreRegisterController extends Controller
 
     public function store(Request $request)
     {
-
+        $request->session()->flash('error', 'O email já existe, faça login para continuar, ou cadastre um novo e-mail!!');
         $this->validator($request->all())->validate();
 
         $user = User::create([

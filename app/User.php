@@ -66,5 +66,10 @@ class User extends Authenticatable
         return $this->hasMany(Assignment::class);
     }
 
+    public function inscriptions()
+    {
+        return $this->hasMany(Inscription::class);
+    }
+
     
 }

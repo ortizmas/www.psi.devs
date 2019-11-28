@@ -94,7 +94,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-2">
+                            <div class="col-md-4">
                                 <div class="form-group mb-3">
                                     <input id="uf" type="text" class="basic-usage form-control{{ $errors->has('state') ? ' is-invalid' : '' }}" name="state" value="{{ old('state') }}" placeholder="UF" required autofocus> 
                                     @if ($errors->has('state'))
@@ -104,8 +104,9 @@
                                     @endif
                                 </div>
                             </div>
+                             <input id="ibge" type="hidden" name="ibge" value="{{ old('ibge') }}" > 
 
-                            <div class="col-md-2">
+                            {{-- <div class="col-md-2">
                                 <div class="form-group mb-3">
                                     <input id="ibge" type="text" class="basic-usage form-control{{ $errors->has('ibge') ? ' is-invalid' : '' }}" name="ibge" value="{{ old('ibge') }}" placeholder="IBGE" required autofocus> 
                                     @if ($errors->has('ibge'))
@@ -114,7 +115,7 @@
                                         </span> 
                                     @endif
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
 
                         <div class="row">
@@ -166,16 +167,17 @@
                         </div>
                         
                         <div class="row">
-                            <div class="col-md-8">
+                            {{-- <div class="col-md-8">
                                 <div class="input-group mb-3">
-                                    <input id="program" type="text" class="form-control{{ $errors->has('program') ? ' is-invalid' : '' }}" name="program" value="{{ old('program', session('program', 'default')) }}" placeholder="PROGRAMA REFERENTE" required autofocus>
+                                    <input id="program" type="text" class="form-control{{ $errors->has('program') ? ' is-invalid' : '' }}" name="program" value="{{ old('program', session('program', 'default')) }}" placeholder="PROGRAMA REFERENTE" required autofocus style="background: #EEE; cursor: not-allowed; color: #777" readonly="">
                                     @if ($errors->has('program'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('program') }}</strong>
                                         </span> 
                                     @endif
                                 </div>
-                            </div>
+                            </div> --}}
+                            <input id="program" type="hidden" name="program" value="{{ old('program', session('item_buy', 'default')) }}" readonly="">
                             <div class="col-md-4">
                                 <div class="input-group mb-3">
                                     <select id="status" name="status" class="form-control{{ $errors->has('status') ? ' is-invalid' : '' }}">
