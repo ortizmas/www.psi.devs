@@ -64,7 +64,7 @@ class PreRegisterController extends Controller
         auth()->login($user);
 
         //Session do programa de interese do cliente
-        session(['program' => $request->program]);
+        session(['item_buy' => $request->program]);
 
         //return redirect()->to('/home');
         return redirect()->route('profiles.create');
