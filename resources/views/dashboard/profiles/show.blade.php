@@ -70,7 +70,7 @@
                         </div>
                     </div>
 
-                    @if ($user->inscription)
+                    @if ($user->inscriptions)
                         <div class="col-md-6">
                             <!-- ENDEREÇO LIST -->
                             <div class="card">
