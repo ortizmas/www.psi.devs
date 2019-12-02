@@ -29,6 +29,8 @@ class PreRegisterController extends Controller
         //$encrypted = Crypt::encryptString('Hello world.');
         //$decrypted = Crypt::decryptString($encrypted);
         $slug = encrypt($course->id);
+        //Session para usar depois de fazer login
+        session(['item_buy' => $slug]);
         //$slug = decrypt($slug);
         return view('frontend.prematriculas.create', compact('slug'));
     }

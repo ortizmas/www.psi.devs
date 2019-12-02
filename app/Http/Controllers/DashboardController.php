@@ -37,7 +37,7 @@ class DashboardController extends Controller
             case 'student':
                     //Item selecionado por o cliente que deseja comprar 
                     $item_carrinho = session()->get('item_buy');
-                    dd($item_carrinho);
+                    
                     if ($item_carrinho != null) {
                         return redirect()->route('profiles.create');
                     } else {

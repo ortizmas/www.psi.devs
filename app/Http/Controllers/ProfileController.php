@@ -94,6 +94,7 @@ class ProfileController extends Controller
 
     public function updatePerfil(Request $request, $inscriptionId)
     {
+        $idCourse = decrypt($request->program);
         $inscriptionUpdate = Inscription::find($inscriptionId);
 
         $inscription = $inscriptionUpdate->update([
@@ -110,9 +111,16 @@ class ProfileController extends Controller
             'phone' => $request['phone'],
             'company' => $request['company'],
             'company_phone' => $request['company_phone'],
-            'program' => ($request['program']) ? $request['program'] : $inscriptionUpdate->program,
             'status' => ($request['status']) ? 1 : 0,
         ]);
+
+        if ($inscription) {
+            $course = Course::findOrFail($idCourse);
+            $amount = 1;
+            $price = onlyNumbers($course->price)  / 100;
+            $subtotal = $amount * $price;
+            $inscriptionUpdate->courses()->sync($idCourse, ['course' => $course->name, 'amount' => $amount, 'price' => $price, 'subtotal' => $subtotal]);
+        }
 
         return redirect()->route('profiles.inscription.edit', $inscriptionId)->with('success', 'Dados alterado com sucesso!!');
     }

@@ -50,7 +50,7 @@
                             </div>
                             <div class="card-body">
                                 <div class="row">
-                                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-4">
+                                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                                         <div class="form-group mb-3">
                                             <input id="name" type="text" class="basic-usage form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name', $inscription->name ) }}" placeholder="NOME" required autofocus> 
                                             @if ($errors->has('name'))
@@ -60,7 +60,7 @@
                                             @endif
                                         </div>
                                     </div>
-                                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-4">
+                                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                                         <div class="form-group mb-3">
                                             <input id="email_inscription" type="email" class="basic-usage form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="email_inscription" value="{{ old('email_inscription', $inscription->email_inscription ) }}" placeholder="E-MAIL" required autofocus> 
                                             @if ($errors->has('email_inscription'))
@@ -70,7 +70,7 @@
                                             @endif
                                         </div>
                                     </div>
-                                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-2 col-xl-2">
+                                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                                         <div class="form-group mb-3">
                                             <input id="cpf" type="text" class="basic-usage form-control{{ $errors->has('cpf') ? ' is-invalid' : '' }}" name="cpf" value="{{ old('cpf', $inscription->cpf) }}" placeholder="CPF" required autofocus> 
                                             @if ($errors->has('cpf'))
@@ -81,7 +81,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-2 col-xl-2">
+                                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                                         <div class="form-group mb-3">
                                             <input id="phone" type="tel" class="basic-usage form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}" name="phone" value="{{ old('phone', $inscription->phone ) }}" placeholder="TELEFONE" required autofocus> 
                                             @if ($errors->has('phone'))
@@ -94,7 +94,7 @@
                                 </div>
 
                                 <div class="row">
-                                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-1 col-xl-1">
+                                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                                         <div class="form-group mb-3">
                                             <input id="cep" type="text" class="basic-usage form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="cep" value="{{ old('cep', $inscription->cep ) }}" placeholder="CEP" required autofocus> 
                                             @if ($errors->has('cep'))
@@ -104,8 +104,8 @@
                                             @endif
                                         </div>
                                     </div>
-                                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-2 col-xl-2 pt-2"><a target="_blank" href="http://www.buscacep.correios.com.br/sistemas/buscacep/default.cfm" title="Não sei meu CEP" class="text-primary"><b>Não sei meu CEP</b></a></div>
-                                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 col-xl-3">
+                                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 pt-2"><a target="_blank" href="http://www.buscacep.correios.com.br/sistemas/buscacep/default.cfm" title="Não sei meu CEP" class="text-primary"><b>Não sei meu CEP</b></a></div>
+                                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                                         <div class="form-group mb-3">
                                             <input id="rua" type="text" class="basic-usage form-control{{ $errors->has('street') ? ' is-invalid' : '' }}" name="street" value="{{ old('street', $inscription->street ) }}" placeholder="ENDEREÇO" required autofocus> 
                                             @if ($errors->has('street'))
@@ -116,7 +116,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 col-xl-3">
+                                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                                         <div class="form-group mb-3">
                                             <input id="bairro" type="text" class="basic-usage form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="neighborhood" value="{{ old('neighborhood', $inscription->neighborhood ) }}" placeholder="BAIRRO" required autofocus> 
                                             @if ($errors->has('neighborhood'))
@@ -127,7 +127,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-2 col-xl-2">
+                                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                                         <div class="form-group mb-3">
                                             <input id="cidade" type="text" class="basic-usage form-control{{ $errors->has('city') ? ' is-invalid' : '' }}" name="city" value="{{ old('city', $inscription->city ) }}" placeholder="CIDADE" required autofocus> 
                                             @if ($errors->has('city'))
@@ -138,7 +138,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-1 col-xl-1">
+                                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                                         <div class="form-group mb-3">
                                             <input id="uf" type="text" class="basic-usage form-control{{ $errors->has('state') ? ' is-invalid' : '' }}" name="state" value="{{ old('state', $inscription->state ) }}" placeholder="UF" required autofocus> 
                                             @if ($errors->has('state'))
@@ -153,7 +153,7 @@
                                 <input id="ibge" type="hidden" name="ibge" value="{{ old('ibge') }}">
 
                                 <div class="row">
-                                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-4">
+                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                                         <div class="form-group mb-3">
                                             <input id="company" type="text" class="basic-usage form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="company" value="{{ old('company', $inscription->company ) }}" placeholder="EMPRESA" required autofocus> 
                                             @if ($errors->has('company'))
@@ -164,7 +164,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-4">
+                                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                                         <div class="form-group mb-3">
                                             <input id="company_phone" type="tel" class="basic-usage form-control{{ $errors->has('company_phone') ? ' is-invalid' : '' }}" name="company_phone" value="{{ old('company_phone', $inscription->company_phone ) }}" placeholder="TELEFONE DA EMPRESSA" required autofocus> 
                                             @if ($errors->has('company_phone'))
@@ -175,7 +175,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-4">
+                                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                                         <div class="input-group mb-3">
                                             <select id="status" name="status" class="form-control{{ $errors->has('status') ? ' is-invalid' : '' }}">
                                                 <option value="1" {{ old('status', $inscription->status )=='1' ? 'selected' : ''  }}>Ativo</option>
