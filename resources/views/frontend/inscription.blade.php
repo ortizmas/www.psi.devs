@@ -173,69 +173,6 @@
 
                                     <input id="program" type="hidden" name="program" value="{{ old('program', $post->slug) }}" >
 
-                                    
-                                </div>
-                                <div class="card-header bg-warning pt-3 pb-1">
-                                    <h5 class="card-title">INFORMAÇÕES DE ACESSO</h5>
-                                </div>
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="input-group mb-3">
-                                                <input id="name_user" type="text" class="form-control{{ $errors->has('name_user') ? ' is-invalid' : '' }}" name="name_user" value="{{ old('name_user') }}" placeholder="Nome completo"
-                                                required autofocus> 
-                                                <div class="input-group-append">
-                                                    <span class="fas fa-user input-group-text" style="font-weight: 900;"></span>
-                                                </div>
-                                                @if ($errors->has('name_user'))
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $errors->first('name_user') }}</strong>
-                                                    </span> 
-                                                @endif
-                                          </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="input-group mb-3">
-                                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" placeholder="E-mail">
-                                                <div class="input-group-append">
-                                                    <span class="fas fa-envelope input-group-text" style="font-weight: 900;"></span> 
-                                                </div>
-                                                @if ($errors->has('email'))
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $errors->first('email') }}</strong>
-                                                    </span>
-                                                @endif
-                                          </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="input-group mb-3">
-                                                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" placeholder="Senha" required>
-                                                <div class="input-group-append">
-                                                  <span class="fas fa-lock input-group-text" style="font-weight: 900;"></span>
-                                                </div>
-                                            </div>
-                                            <b class="text-info">* Senha minimo 6 carateres</b>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="input-group mb-3">
-                                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" placeholder="Confirmar Senha" required>
-                                                <div class="input-group-append">
-                                                    <span class="fas fa-lock input-group-text" style="font-weight: 900;"></span> 
-                                                </div>
-                                            </div>
-                                            @if ($errors->has('password'))
-                                                <span class="invalid-feedback" role="alert" style="display: block;">
-                                                    <strong>{{ $errors->first('password') }}</strong>
-                                                </span>
-                                            @endif
-
-                                        </div>
-
-                                    </div>
-                                    <br>
                                     <div class="row justify-content-center">
                                         <div class="col-4">
                                             <button type="submit" class="btn btn-success btn-block btn-flat">Ir para o pagamento <i class="fas fa-angle-double-right"></i></button>

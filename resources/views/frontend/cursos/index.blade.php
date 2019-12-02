@@ -58,7 +58,7 @@
             <div class="row">
 
                 @foreach ($courses as $course)
-                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3 col-xl-3">
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 mb-4">
                         <div class="course-1-item h-100">
                             <figure class="thumnail">
                                 <a href="{{ route('cursos.show', $course->url) }}">
@@ -70,55 +70,13 @@
                                     <h2 class="mt-2 mb-2">{{ $course->name }}</h2>
                                 </a>
                                 <p>
-                                    <span class="text-muted font-italic float-right pb-3 pr-2"><s>R$ 199.00</s> <b>R$ {{ $course->price }}</b></span>
+                                    <span class="text-muted font-italic float-right pb-3 pr-2"><s>{{ ($course->price_old > 0) ? 'R$ ' . $course->price_old : '' }}</s> <b>R$ {{ $course->price }}</b></span>
                                     <a href="{{ route('cursos.show', $course->url) }}" class="btn btn-primary rounded-0 w-100">SAIBA MASI</a>
                                 </p>
                             </div>
                         </div>
                     </div>
                 @endforeach
-
-                {{-- <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3 col-xl-3">
-                    <div class="course-1-item">
-                        <figure class="thumnail">
-                        <a href="course-single.html"><img src="/cursos/images/course_1.jpg" alt="Image" class="img-fluid"></a>
-                        <div class="price">$99.00</div>
-                        <div class="category"><h3>Mobile Application</h3></div>  
-                        </figure>
-                        <div class="course-1-content pb-4">
-                        <h2>How To Create Mobile Apps Using Ionic</h2>
-                        <p><a href="course-single.html" class="btn btn-primary rounded-0 px-4">SAIBA MASI</a></p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3 col-xl-3">
-                    <div class="course-1-item">
-                        <figure class="thumnail">
-                        <a href="course-single.html"><img src="/cursos/images/course_1.jpg" alt="Image" class="img-fluid"></a>
-                        <div class="price">$99.00</div>
-                        <div class="category"><h3>Mobile Application</h3></div>  
-                        </figure>
-                        <div class="course-1-content pb-4">
-                        <h2>How To Create Mobile Apps Using Ionic</h2>
-                        <p><a href="course-single.html" class="btn btn-primary rounded-0 px-4">SAIBA MASI</a></p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3 col-xl-3">
-                    <div class="course-1-item">
-                        <figure class="thumnail">
-                        <a href="course-single.html"><img src="/cursos/images/course_1.jpg" alt="Image" class="img-fluid"></a>
-                        <div class="price">$99.00</div>
-                        <div class="category"><h3>Mobile Application</h3></div>  
-                        </figure>
-                        <div class="course-1-content pb-4">
-                        <h2>How To Create Mobile Apps Using Ionic</h2>
-                        <p><a href="course-single.html" class="btn btn-primary rounded-0 px-4">SAIBA MASI</a></p>
-                        </div>
-                    </div>
-                </div> --}}
             </div>
         </div>
     </div>
