@@ -35,7 +35,7 @@
                             <span>{{$course->name}}</span>
                         </h2> --}}
                         <p class="text-justify">{!! $course->description !!}</p>
-                        <a href="{{ route('preregister.create', $course->url) }}" class="btn btn-outline-dark text-dark btn-sm w-100">Adquerir agora</a>
+                        <a href="{{ route('preregister.create', $course->url) }}" class="btn btn-outline-dark text-dark btn-sm w-100">Adquirir agora</a>
                     </div>
                 </div>
 
@@ -65,7 +65,7 @@
                                 </figure>
                                 <div class="course-1-content pb-4">
                                 <h2>{{$course->name}}</h2>
-                                <p><a href="{{ route('cursos.show', $course->url) }}" class="btn btn-primary rounded-0 px-4">Mais detalher</a></p>
+                                <p><a href="{{ route('cursos.show', $course->url) }}" class="btn btn-primary rounded-0 px-4">Mais detalhes</a></p>
                                 </div>
                             </div>
                         @endforeach
