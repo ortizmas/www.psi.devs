@@ -19,11 +19,6 @@ class AssignmentController extends Controller
         $this->middleware('auth');
     }
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index(Request $request)
     {
         //$assignments = Assignment::with(['user', 'classroom'])->get();
@@ -45,74 +40,58 @@ class AssignmentController extends Controller
 
     public function getClassrooms(Request $request, $module_id)
     {
-        dd($request);
         $classroom = new Classroom();
         //$classrooms = $classrooms = $classroom->getResults($request->all(), $this->totalPage);
         $classrooms = Classroom::where('module_id', $module_id)->get();
         return view('dashboard.assignments.classrooms', compact('classrooms'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function assignCourses(Request $request, $userId)
+    {
+        $course = new Course();
+        $courses = $course->getResults($request->all(), $this->totalPage);
+        return view('dashboard.assignments.courses', compact('courses', 'userId'));
+    }
+
+    public function assignModules(Request $request, $course_id, $userId)
+    {
+        $module = new Module();
+        $modules = Module::where('course_id', $course_id)->get()->load('course', 'classrooms');
+        
+        $count = 0;
+        foreach ($modules as $key => $value) {
+            $countClasses = Classroom::where('module_id', $value->id)->get()->count();
+            $count = $count + $countClasses;
+        }
+
+        return view('dashboard.assignments.assign-modules', compact('modules', 'count'));
+    }
+
     public function create()
     {
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         //
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Assignment  $assignment
-     * @return \Illuminate\Http\Response
-     */
     public function show(Assignment $assignment)
     {
         dd($assignment);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Assignment  $assignment
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Assignment $assignment)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Assignment  $assignment
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, Assignment $assignment)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Assignment  $assignment
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Assignment $assignment)
     {
         //

@@ -28,7 +28,7 @@ class CreateInscriptionsTable extends Migration
             $table->string('phone');
             $table->string('company');
             $table->string('company_phone');
-            $table->char('status', 1);
+            $table->char('status', 1)->default(1);
             $table->timestamps();
         });
     }

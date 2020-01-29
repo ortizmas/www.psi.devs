@@ -39,8 +39,10 @@
       						<th>#</th>
       						<th>Nome</th>
       						<th>CPF</th>
-                  <th>E-mail</th>
-                  <th>Programa</th>
+                            <th>E-mail</th>
+                            <th>Programa</th>
+                            <th>Preço</th>
+                            <th>Estado</th>
       						<th colspan="2" rowspan="">Ações</th>
       					</tr>
       				</thead>
@@ -51,8 +53,11 @@
                            <td>{{ $key + 1 }}</td>
                            <td>{{ $value->name }}</td>
                            <td>{{ $value->cpf }}</td>
-                           <td>{{ $value->email }}</td>
-                           <td>{{ $value->program }}</td>
+                           <td>{{ $value->email_inscription }}</td>
+                           <td>{{ $value->courses[0]->pivot->course }}</td>
+                           <td>{{ $value->courses[0]->pivot->subtotal }}</td>
+                           <td><span class="badge badge-pill badge-{{ ($value->status == 1) ?  'warning text-white' : 'danger' }}">{{ getStatusInscription($value->status) }}</span></td>
+
                            <td><a href="{{ route('inscriptions.edit', $value->id) }}" title="Alterar"><i class="fas fa-edit"></i></a></td>
                            <td>
                                 <a href="{{ route('inscriptions.destroy', $value->id) }}" class="btn-delete" title="{{ $value->name }}">

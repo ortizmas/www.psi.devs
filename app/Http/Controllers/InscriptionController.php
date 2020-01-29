@@ -11,8 +11,14 @@ class InscriptionController extends Controller
 
     public function index()
     {
-        $inscriptions = Inscription::paginate();
+        $inscriptions = Inscription::where('status', '!=', 2)->paginate()->load('courses');
         return view('dashboard.inscriptions.index', compact('inscriptions'));
+    }
+
+    public function getInscriptionPaid()
+    {
+        $inscriptions = Inscription::where('status', 2)->paginate()->load('courses');
+        return view('dashboard.inscriptions.paid', compact('inscriptions'));
     }
 
     public function create()

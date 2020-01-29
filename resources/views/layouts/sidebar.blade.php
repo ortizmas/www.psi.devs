@@ -266,13 +266,13 @@
                         <li class="nav-item">
                             <a href="{{ route('inscriptions.index') }}" class="nav-link">
                                 <i class="fa fa-circle-o nav-icon"></i>
-                                <p>Todos os inscritos</p>
+                                <p>Inscrições</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('inscriptions.create') }}" class="nav-link">
+                            <a href="{{ route('inscriptions.paid') }}" class="nav-link">
                                 <i class="fa fa-circle-o nav-icon"></i>
-                                <p>Adicionar novo</p>
+                                <p>Alunos</p>
                             </a>
                         </li>
                     </ul>

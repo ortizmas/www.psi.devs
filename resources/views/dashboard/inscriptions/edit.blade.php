@@ -12,7 +12,7 @@
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="{{ route('inscriptions.index') }}" class="btn btn-info btn-sm">Lista de Inscritos</a></li>
+              <li class="breadcrumb-item"><a href="javascript:history.back()" class="btn btn-info btn-sm">Lista de Inscritos</a></li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -181,7 +181,8 @@
                             <div class="col-md-4">
                                 <div class="input-group mb-3">
                                     <select id="status" name="status" class="form-control{{ $errors->has('status') ? ' is-invalid' : '' }}">
-                                        <option value="1" {{ old('status', $inscription->status )=='1' ? 'selected' : ''  }}>Ativo</option>
+                                        <option value="1" {{ old('status', $inscription->status )=='1' ? 'selected' : ''  }}>Pendente</option>
+                                        <option value="2" {{ old('status', $inscription->status )=='2' ? 'selected' : ''  }}>Pagou</option>
                                         <option value="0" {{ old('status', $inscription->status)=='0' ? 'selected' : ''  }}>Inativo</option>
                                     </select>
                                     @if ($errors->has('status'))

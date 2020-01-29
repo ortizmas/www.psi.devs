@@ -45,11 +45,11 @@ function checkPermission($permissions){
       }
     }
     return false;
-  }
+}
 
 
-  function getMyPermission($id)
-  {
+function getMyPermission($id)
+{
     switch ($id) {
       case 1:
         return 'admin';
@@ -61,4 +61,21 @@ function checkPermission($permissions){
         return 'user';
         break;
     }
-  }
+}
+
+if (!function_exists('getStatusInscription')) {
+    function getStatusInscription($status)
+    {
+        switch ($status) {
+            case 1:
+                return 'Pendente';
+                break;
+            case 2:
+                return 'Pagou';
+                break;
+            case 0:
+                return 'Inativo';
+                break;
+        }
+    }
+}

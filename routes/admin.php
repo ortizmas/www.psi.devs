@@ -42,9 +42,14 @@ Route::group(['middleware' => ['role:super-admin|admin|teachers']], function() {
 
 	Route::resource('trainees', 'TraineeController');
 	Route::resource('inscriptions', 'InscriptionController');
+	Route::get('alunos', 'InscriptionController@getInscriptionPaid')->name('inscriptions.paid');
+
 	Route::resource('assignments', 'AssignmentController');
 	Route::get('assignments/modules/{course_id}', 'AssignmentController@getModules')->name('assignments.modules');
 	Route::get('assignments/classrooms/{module_id}', 'AssignmentController@getClassrooms')->name('assignments.classrooms');
+
+	Route::get('assignments/{userId}/courses', 'AssignmentController@assignCourses')->name('assign.courses');
+	Route::get('assignments/{course_id}/user/{userId}', 'AssignmentController@assignModules')->name('assignments.modules.user');
 
 });
 
