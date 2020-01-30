@@ -170,7 +170,14 @@
                         <div class="row">
                             <div class="col-md-8">
                                 <div class="input-group mb-3">
-                                    <input id="program" type="text" class="form-control{{ $errors->has('program') ? ' is-invalid' : '' }}" name="program" value="{{ old('program', $inscription->program ) }}" placeholder="PROGRAMA REFERENTE" required autofocus>
+                                    {{-- <input id="program" type="text" class="form-control{{ $errors->has('program') ? ' is-invalid' : '' }}" name="program" value="{{ old('program', $inscription->program ) }}" placeholder="PROGRAMA REFERENTE" required autofocus> --}}
+                                    <select id="course_id" name="course_id" class="form-control{{ $errors->has('course_id') ? ' is-invalid' : '' }}">
+                                        <option value=""> -- SELECIONAR UM CURSO --</option>}
+                                        option
+                                        @foreach ($courses as $course)
+                                            <option value="{{ $course->id }}" {{ old('course_id', $course->id )=='1' ? 'selected' : ''  }}>{{ $course->name }}</option>
+                                        @endforeach
+                                    </select>
                                     @if ($errors->has('program'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('program') }}</strong>

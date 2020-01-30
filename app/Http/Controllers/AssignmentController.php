@@ -8,6 +8,7 @@ use App\Course;
 use App\Module;
 use App\Classroom;
 use App\Assignment;
+use App\User;
 use Illuminate\Http\Request;
 
 class AssignmentController extends Controller
@@ -57,6 +58,11 @@ class AssignmentController extends Controller
     {
         $module = new Module();
         $modules = Module::where('course_id', $course_id)->get()->load('course', 'classrooms');
+
+        $classromId = Assignment::where('user_id', $userId)->get()->pluck('classroom_id')->toArray();
+
+        //dd($classromId);
+        //$classromId = array_pluck($classes, 'classroom_id');
         
         $count = 0;
         foreach ($modules as $key => $value) {
@@ -64,7 +70,7 @@ class AssignmentController extends Controller
             $count = $count + $countClasses;
         }
 
-        return view('dashboard.assignments.assign-modules', compact('modules', 'count'));
+        return view('dashboard.assignments.assign-modules', compact('modules', 'count', 'userId', 'classromId'));
     }
 
     public function create()
@@ -72,9 +78,47 @@ class AssignmentController extends Controller
         //
     }
 
+    
+
     public function store(Request $request)
     {
-        //
+        //$this->validateData($request);
+
+        $assignment = new Assignment();
+
+        foreach ($request->class_id as $key => $value) {
+            $assignmentsId = Assignment::where('user_id', $request->user_id)->where('classroom_id', $value)->get()->pluck('id');
+            $assignment->destroy($assignmentsId);
+        }
+
+        if ($request->classroom_id != null) {
+            foreach ($request->classroom_id as $key => $value) {
+                $ifExistData = Assignment::where('user_id', $request->user_id)->where('classroom_id', $value)->first();
+                
+                if ($ifExistData != null) {
+                    continue;
+                } else {
+                    $assignment->create(['user_id' => $request->user_id, 'classroom_id' => $value]);
+                }
+            }
+        }
+        
+        return redirect()->back()->with('success', 'As aulas foram assignado com successo');
+    }
+
+    public function validateData($request)
+    {
+        return $request->validate([
+            'user_id' => 'required',
+            'classroom_id' => 'required',
+        ],[
+            'user_id.required' => 'O usuario não é valido',
+            'classroom_id.required'  => 'Deve selecionar minimo uma aula',
+        ],[
+            'user_id'  => 'Usuario',
+            'classroom_id'              => 'Aula',
+        ]);
+
     }
 
     public function show(Assignment $assignment)

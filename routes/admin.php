@@ -49,7 +49,7 @@ Route::group(['middleware' => ['role:super-admin|admin|teachers']], function() {
 	Route::get('assignments/classrooms/{module_id}', 'AssignmentController@getClassrooms')->name('assignments.classrooms');
 
 	Route::get('assignments/{userId}/courses', 'AssignmentController@assignCourses')->name('assign.courses');
-	Route::get('assignments/{course_id}/user/{userId}', 'AssignmentController@assignModules')->name('assignments.modules.user');
+	Route::get('assignments/module/{course_id}/user/{userId}', 'AssignmentController@assignModules')->name('assignments.modules.user');
 
 });
 

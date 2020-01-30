@@ -71,5 +71,10 @@ class User extends Authenticatable
         return $this->hasMany(Inscription::class);
     }
 
+    // public function classrooms()
+    // {
+    //     return $this->belongsToMany(Classroom::class);
+    // }
+
     
 }

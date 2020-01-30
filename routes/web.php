@@ -50,6 +50,8 @@ Route::post('/send-email', 'MailController@sendemail')->name('send.email');
 Route::get('/fale-conosco', 'GtalentosController@faleconosco')->name('fale.conosco');
 Route::post('/fale-conosco', 'MailController@faleconoscoemail')->name('faleconosco.email');
 
+Route::get('/session', 'SessionController@session');
+
 Auth::routes();
 
 //Rotas do andmin geral

@@ -394,6 +394,10 @@
                         <i class="fa fa-circle-o nav-icon"></i>
                         <p>Seu perfil</p>
                     </a>
+                    <a href="{{ route('courses.index') }}" class="nav-link">
+                        <i class="fa fa-circle-o nav-icon"></i>
+                        <p>Meus cursos</p>
+                    </a>
                 </li>
                  @endrole
 

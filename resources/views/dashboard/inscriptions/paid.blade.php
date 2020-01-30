@@ -39,8 +39,9 @@
       						<th>#</th>
       						<th>Nome</th>
       						<th>CPF</th>
-                  <th>E-mail</th>
-                  <th>Programa</th>
+                            <th>E-mail</th>
+                            <th>Programa</th>
+                            <th>Preço</th>
       						<th colspan="3" rowspan="">Ações</th>
       					</tr>
       				</thead>
@@ -48,20 +49,21 @@
       					
                         @foreach ($inscriptions as $key => $value)
                         <tr>
-                           <td>{{ $key + 1 }}</td>
-                           <td>{{ $value->name }}</td>
-                           <td>{{ $value->cpf }}</td>
-                           <td>{{ $value->email_inscription }}</td>
-                           <td>{{ $value->program }}</td>
-                           <td><span class="badge badge-pill badge-success">{{ getStatusInscription($value->status) }}</span></td>
+                            <td>{{ $key + 1 }}</td>
+                            <td>{{ $value->name }}</td>
+                            <td>{{ $value->cpf }}</td>
+                            <td>{{ $value->email_inscription }}</td>
+                            <td>{{ $value->courses[0]->pivot->course }}</td>
+                            <td>{{ $value->courses[0]->pivot->subtotal }}</td>
+                            <td><span class="badge badge-pill badge-success">{{ getStatusInscription($value->status) }}</span></td>
 
-                           <td><a href="{{ route('assign.courses', $value->user_id) }}" title="Alterar" class="badge badge-pill badge-primary pt-1 pb-1 pl-2 pr-2"><i class="fas fa-edit"></i> Assignar aulas</a></td>
-                           <td><a href="{{ route('inscriptions.edit', $value->id) }}" title="Alterar"><i class="fas fa-edit"></i></a></td>
-                           <td>
+                            <td><a href="{{ route('assign.courses', $value->user_id) }}" title="Alterar" class="badge badge-pill badge-primary pt-1 pb-1 pl-2 pr-2"><i class="fas fa-edit"></i> Assignar aulas</a></td>
+                            <td><a href="{{ route('inscriptions.edit', $value->id) }}" title="Alterar"><i class="fas fa-edit"></i></a></td>
+                            <td>
                                 <a href="{{ route('inscriptions.destroy', $value->id) }}" class="btn-delete" title="{{ $value->name }}">
-                                  <i class="fas fa-trash" style="color:red;"></i>
-                              </a>        
-                          </td>
+                                    <i class="fas fa-trash" style="color:red;"></i>
+                                </a>        
+                           </td>
                     </tr>
                     @endforeach
               </tbody>

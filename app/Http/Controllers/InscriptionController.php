@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Course;
 use App\Inscription;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -56,7 +57,8 @@ class InscriptionController extends Controller
 
     public function edit(Inscription $inscription)
     {
-        return view('dashboard.inscriptions.edit', compact('inscription'));
+        $courses = Course::all();
+        return view('dashboard.inscriptions.edit', compact('inscription', 'courses'));
     }
 
     public function update(Request $request, Inscription $inscription)
@@ -77,8 +79,35 @@ class InscriptionController extends Controller
             'phone' => $request['phone'],
             'company' => $request['company'],
             'company_phone' => $request['company_phone'],
-            'program' => $request['program']
+            'status' => $request['status']
+
         ]);
+
+        /*$idCourse = decrypt($request->program);
+
+        $inscription = Inscription::create([
+            'user_id' => (Auth::user()->id) ? Auth::user()->id : '',
+            'name' => $request['name'],
+            'cpf' => $request['cpf'],
+            'cep' => $request['cep'],
+            'street' => $request['street'],
+            'neighborhood' => $request['neighborhood'],
+            'city' => $request['city'],
+            'state' => $request['state'],
+            'ibge' => $request['ibge'],
+            'email_inscription' => $request['email_inscription'],
+            'phone' => $request['phone'],
+            'company' => $request['company'],
+            'company_phone' => $request['company_phone']
+        ]);
+
+        if ($inscription) {
+            $course = Course::findOrFail($idCourse);
+            $amount = 1;
+            $price = onlyNumbers($course->price)  / 100;
+            $subtotal = $amount * $price;
+            $inscription->courses()->attach($idCourse, ['course' => $course->name, 'amount' => $amount, 'price' => $price, 'subtotal' => $subtotal]);
+        }*/
 
         return redirect()->route('inscriptions.index')->with('success', 'Inscrição alterado com sucesso!!');
     }

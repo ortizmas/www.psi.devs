@@ -63,7 +63,7 @@ class ProgramsController extends Controller
             if ( $post != '' ) {
                 return view('frontend.programs.show', compact('post'));
             }
-            //abort(404);
+            
             return response()->view('errors.custom', [], 404);
     	} else {
     		return view('frontend.programs.index', compact('programs', 'title'));
