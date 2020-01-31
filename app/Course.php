@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Course extends Model
 {
@@ -75,11 +76,26 @@ class Course extends Model
 
     public function getMyCourse(array $data)
     {
-        return $this->with(array('modules' => function ($query) use ($data) {
+        /*return $this->with(array('modules' => function ($query) use ($data) {
             $query->with('classrooms');
         }))->whereHas('sales', function ($query) use ($data) {
             $query->where('user_id', $data['user_id']);
-        })->where('url', $data['url'])->first();
+        })->where('url', $data['url'])->first();*/
+        return $this->with(array('modules' => function ($query) use ($data) {
+            $query->with('classrooms');
+        }))->where('url', $data['url'])->first();
+    }
+
+    public function getMyCourses(Type $var = null)
+    {
+        return  DB::table('courses')
+                    ->join('modules', 'modules.course_id', 'courses.id')
+                    ->join('classrooms', 'classrooms.module_id', 'modules.id')
+                    ->join('assignments', 'assignments.classroom_id', 'classrooms.id')
+                    ->where('assignments.user_id', Auth()->user()->id)
+                    ->select('courses.*')
+                    ->groupBy('courses.url')
+                    ->get();
     }
 
     public function category()

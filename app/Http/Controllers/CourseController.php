@@ -147,7 +147,7 @@ class CourseController extends Controller
 
         $course = $this->course->getMyCourse($data);
 
-        if(!$course)            
+        if (!$course)
             return response()->json(['error' => 'Not found'], 404);
 
         return response()->json($course, 201);

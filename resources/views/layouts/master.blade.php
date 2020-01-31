@@ -50,7 +50,19 @@ scratch. This page gets rid of all links and provides the needed markup only.
             @include('layouts.header')
 
             <!-- Sidebar -->
-            @include('layouts.sidebar') @yield('content')
+            @role('super-admin')
+            @include('layouts.sidebar') 
+            @endrole
+
+            @role('admin')
+            @include('layouts.sidebar') 
+            @endrole
+
+            @role('student')
+            @include('layouts.partials.sidebar-student') 
+            @endrole
+
+            @yield('content')
             
             <!-- Footer -->
             @include('layouts.footer')
