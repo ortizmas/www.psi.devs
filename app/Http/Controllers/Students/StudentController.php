@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Students;
 use App\Assignment;
 use App\Classroom;
 use App\Course;
+use App\Module;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -14,7 +15,7 @@ class StudentController extends Controller
 {
     private $course;
 
-    public function __constructor(Course $course)
+    public function __construct(Course $course)
     {
         $this->course = $course;
     }
@@ -31,16 +32,11 @@ class StudentController extends Controller
     {
         $data['user_id'] = Auth::id();
         $data['url'] = $url;
-        $data['module_id'] = 23;
+        $data['course_id'] = $id;
 
-        $course = $this->course->getMyCourse($data);
+        $courses = $this->course->getCoursesByUser($data);
 
-        dd($course);
-
-        if (!$course)
-            return response()->json(['error' => 'Not found'], 404);
-
-        return response()->json($course, 201);
+        return view('student.classrooms', compact('courses'));
 
     }
 }

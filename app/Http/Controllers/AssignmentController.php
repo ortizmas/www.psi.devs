@@ -61,7 +61,6 @@ class AssignmentController extends Controller
 
         $classromId = Assignment::where('user_id', $userId)->get()->pluck('classroom_id')->toArray();
 
-        //dd($classromId);
         //$classromId = array_pluck($classes, 'classroom_id');
         
         $count = 0;

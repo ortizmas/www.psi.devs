@@ -19,4 +19,5 @@ class Assignment extends Model
     	//return $this->belongsTo(Classroom::class, 'classroom_id', 'id')
     	return $this->belongsTo(Classroom::class);
     }
+
 }
