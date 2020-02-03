@@ -86,23 +86,22 @@ class Course extends Model
     public function getCoursesByUser(array $data)
     {
         $courseId = $data['course_id'];
-        //$moduleId = $data['modulo_id'];
         $userId = $data['user_id'];
-        
-        $modules = Module::with(['classrooms' => function ($q) use ($userId) {
-            $q->with(['assignments' => function ($query) use ($userId) {
-                $query->where('user_id', $userId);
-            }]);
-        }])->where('course_id', $courseId)->get();
 
-        /*$modules = DB::table('courses')
-                    ->join('modules', 'modules.course_id', 'courses.id')
-                    ->join('classrooms', 'classrooms.module_id', 'modules.id')
-                    ->join('assignments', 'assignments.classroom_id', 'classrooms.id')
-                    ->where('modules.course_id', $courseId)
-                    ->where('assignments.user_id', Auth()->user()->id)
-                    ->get();*/
-        return $modules;
+        $assignmentsByUser = Assignment::where('user_id', $userId)->count();
+
+        if ($assignmentsByUser > 0) {
+            $modules = Module::with(['classrooms' => function ($query) use ($userId) {
+                $query->with(['assignments' => function ($q) use ($userId) {
+                    $q->where('user_id', $userId)->count();
+                }]);
+            }])->where('course_id', $courseId)->get();
+
+            return $modules;
+        } else {
+            return array();
+        }
+
     }
 
     public function getMyCourses(Type $var = null)

@@ -14,17 +14,22 @@
             </div>
         </div>
 
-        <div class="container bg-content">
+        <div class="container-fluid bg-content">
             <div class="row pt-5 pb-5">
                 <div class="col-md-8">
-
+                    <div class="card">
+                        <div class="card-header">
+                            <h1 class="card-title">Titulo da aula</h1>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="col-md-4">
                     @if (isset($courses))
-                        @foreach ($courses as $module)
+                        @foreach ($courses as $key => $module)
+                            
                             @if ($module->classrooms->count() > 0)
-                                <div class="card mb-0 pb-0">
+                                <div class="card mb-0 pb-0 {{ ($key == 0) ? '' : 'collapsed-card' }}">
                                     <div class="card-header bg-dark">
                                         <h3 class="card-title">{{ $module->name }}</h3>
                                         <div class="card-tools">
