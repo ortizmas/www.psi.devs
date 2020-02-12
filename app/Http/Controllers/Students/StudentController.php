@@ -3,13 +3,16 @@
 namespace App\Http\Controllers\Students;
 
 use App\Assignment;
+use App\Category;
 use App\Classroom;
 use App\Course;
 use App\Module;
 use App\Http\Controllers\Controller;
+use App\Post;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Eloquent\Builder;
 
 class StudentController extends Controller
 {
@@ -22,6 +25,37 @@ class StudentController extends Controller
 
     public function index()
     {
+        //$user = User::find(3);
+        /*$post = $user->posts()->where('status', 1)->get();
+        $post = $user->posts()
+                        ->where('status', 2)
+                        ->orWhere('author', '=', 'Eber')
+                        ->get();
+        $query = $user->posts()
+                        ->where(function (Builder $query) {
+                            return $query->where('status', 2)
+                                         ->orWhere('author', '=', 'Eber');
+                        })
+                        ->get();*/
+        //$query = Post::has('user')->get();
+        //$query = Post::has('user', '=', 'admin')->get();
+        //$query = Post::select(['title', 'slug'])->withCount('user')->get();
+
+        //$query = Category::find(8);
+        // $query->loadCount('posts')
+        /*$query = $query->loadCount(['posts' => function ($query) {
+            $query->where('enabled', 1);
+        }]);*/
+
+        //$query = Post::with('category')->get();
+        $query = Category::with(['posts' => function ($query) {
+            $query->where('title', 'like', '%Programas%');
+        }])
+        ->where('name', 'Destaque')
+        ->get();
+
+        return $query;
+
         $course = new Course();
         $courses = $course->getMyCourses();
         
@@ -38,5 +72,11 @@ class StudentController extends Controller
 
         return view('student.classrooms', compact('courses'));
 
+    }
+
+    public function hasManyThrough()
+    {
+        $course = Course::find(3);
+        return $course->classrooms->count();
     }
 }

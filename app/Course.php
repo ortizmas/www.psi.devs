@@ -126,6 +126,10 @@ class Course extends Model
         return $this->hasMany(Module::class);
     }
 
+    public function classrooms() {
+        return $this->hasManyThrough(Classroom::class, Module::class);
+    }
+
     public function sales()
     {
         return $this->hasMany(Sale::class);
