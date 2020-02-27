@@ -24,12 +24,12 @@ class RolesAndPermissions extends Seeder
         Permission::create(['name' => 'delete user']);
 
         Permission::create(['name' => 'create role']);
-        Permission::create(['name' => 'read role']);
+        Permission::create(['name' => 'read roles']);
         Permission::create(['name' => 'update role']);
         Permission::create(['name' => 'delete role']);
 
         Permission::create(['name' => 'create permission']);
-        Permission::create(['name' => 'read permission']);
+        Permission::create(['name' => 'read permissions']);
         Permission::create(['name' => 'update permission']);
         Permission::create(['name' => 'delete permission']);
 

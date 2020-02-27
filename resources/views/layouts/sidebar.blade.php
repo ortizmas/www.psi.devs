@@ -1,8 +1,8 @@
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
-        <img src="/img/logo-brando-61x61.png" alt="Laravel Starter" class="brand-image elevation-3" style="opacity: .8" width="100%">
+    <a href="{{ route('home') }}" class="brand-link">
+        <img src="/img/logo-brando-61x61.png" class="brand-image elevation-3" style="opacity: .8" width="100%">
         <span class="brand-text font-weight-light"><strong>TRAINEE</strong></span>
     </a>
 
@@ -21,6 +21,7 @@
         <!-- Sidebar Menu -->
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                @role('super-admin')
                 <li class="nav-item has-treeview {!! classActivePath(1,'dashboard') !!}">
                     <a href="{!! route('home') !!}" class="nav-link {!! classActiveSegment(1, 'dashboard') !!}">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -31,46 +32,53 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{ route('home') }}" class="nav-link {!! classActiveSegment(2, 'home') !!}">
-                                <i class="fas fa-circle"></i>
-                                <p>Inicio</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="nav-header">PAGES</li>
-                
-                @role('super-admin')
-                <li class="nav-item has-treeview">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-users"></i>
-                        <p>
-                          Usuários
-                          <i class="fa fa-angle-left right"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="{{ route('users.index') }}" class="nav-link">
-                                <i class="fa fa-circle-o nav-icon"></i>
-                                <p>Todos os usuários</p>
+                            <a href="{{ route('roles.index') }}" class="nav-link">
+                                <i class="fas fa-user-tag"></i>
+                                <p>Roles</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('users.create') }}" class="nav-link">
-                                <i class="fa fa-circle-o nav-icon"></i>
-                                <p>Adicionar usuario</p>
+                            <a href="{{ route('permissions.index') }}" class="nav-link">
+                                <i class="fas fa-tasks"></i>
+                                <p>Permisos</p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="{{ route('users.show', Auth::id()) }}" class="nav-link">
-                                <i class="fa fa-circle-o nav-icon"></i>
-                                <p>Seu perfil</p>
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-users"></i>
+                                <p>
+                                  Usuários
+                                  <i class="fa fa-angle-left right"></i>
+                                </p>
                             </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{ route('users.index') }}" class="nav-link">
+                                        <i class="fa fa-circle-o nav-icon"></i>
+                                        <p>Todos os usuários</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('users.create') }}" class="nav-link">
+                                        <i class="fa fa-circle-o nav-icon"></i>
+                                        <p>Adicionar usuario</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('users.show', Auth::id()) }}" class="nav-link">
+                                        <i class="fa fa-circle-o nav-icon"></i>
+                                        <p>Seu perfil</p>
+                                    </a>
+                                </li>
+                            </ul>
                         </li>
+                    
                     </ul>
                 </li>
                 @endrole
+                
+                @role('super-admin|admin')
+                <li class="nav-header">PAGES</li>
 
                 <li class="nav-item has-treeview">
                     <a href="#" class="nav-link">
@@ -137,6 +145,113 @@
                         </li>
                     </ul>
                 </li>
+                @endrole
+
+                @role('super-admin|admin|teacher')
+                <li class="nav-header">SEÇÃO CURSOS ONLINE</li>
+
+                <li class="nav-item">
+                    <a href="{{ route('categories.courses') }}" class="nav-link">
+                        <i class="fa fa-circle-o nav-icon"></i>
+                        <p>Categorias</p>
+                    </a>
+                </li>
+
+                <li class="nav-item has-treeview">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-address-book"></i>
+                        <p>
+                          Cursos
+                          <i class="fa fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('courses.index') }}" class="nav-link">
+                                <i class="fa fa-circle-o nav-icon"></i>
+                                <p>Todos os cursos</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('courses.create') }}" class="nav-link">
+                                <i class="fa fa-circle-o nav-icon"></i>
+                                <p>Adicionar novo</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="nav-item has-treeview">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-address-book"></i>
+                        <p>
+                          Modulos
+                          <i class="fa fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('modules.index') }}" class="nav-link">
+                                <i class="fa fa-circle-o nav-icon"></i>
+                                <p>Todos os modulos</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('modules.create') }}" class="nav-link">
+                                <i class="fa fa-circle-o nav-icon"></i>
+                                <p>Adicionar novo</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="nav-item has-treeview">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-address-book"></i>
+                        <p>
+                          Aulas
+                          <i class="fa fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('classrooms.index') }}" class="nav-link">
+                                <i class="fa fa-circle-o nav-icon"></i>
+                                <p>Todas as aulas</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('classrooms.create') }}" class="nav-link">
+                                <i class="fa fa-circle-o nav-icon"></i>
+                                <p>Nova aula</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="nav-item has-treeview">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-address-book"></i>
+                        <p>
+                          Assignar aulas
+                          <i class="fa fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('assignments.index') }}" class="nav-link">
+                                <i class="fa fa-circle-o nav-icon"></i>
+                                <p>Lista de Aulas</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('assignments.create') }}" class="nav-link">
+                                <i class="fa fa-circle-o nav-icon"></i>
+                                <p>Adicionar novo</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
 
                 <li class="nav-header">SEÇÕES INSCRIÇÕES</li>
                 <li class="nav-item has-treeview">
@@ -151,13 +266,13 @@
                         <li class="nav-item">
                             <a href="{{ route('inscriptions.index') }}" class="nav-link">
                                 <i class="fa fa-circle-o nav-icon"></i>
-                                <p>Todos os inscritos</p>
+                                <p>Inscrições</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('inscriptions.create') }}" class="nav-link">
+                            <a href="{{ route('inscriptions.paid') }}" class="nav-link">
                                 <i class="fa fa-circle-o nav-icon"></i>
-                                <p>Adicionar novo</p>
+                                <p>Alunos</p>
                             </a>
                         </li>
                     </ul>
@@ -242,112 +357,9 @@
                         </li>
                     </ul>
                 </li>
+                @endrole
 
-                <li class="nav-header">SEÇÃO CURSOS ONLINE</li>
-
-                <li class="nav-item">
-                    <a href="{{ route('categories.index') }}" class="nav-link">
-                        <i class="fa fa-circle-o nav-icon"></i>
-                        <p>Categorias</p>
-                    </a>
-                </li>
-
-                <li class="nav-item has-treeview">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-address-book"></i>
-                        <p>
-                          Cursos
-                          <i class="fa fa-angle-left right"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="{{ route('courses.index') }}" class="nav-link">
-                                <i class="fa fa-circle-o nav-icon"></i>
-                                <p>Todos os cursos</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('courses.create') }}" class="nav-link">
-                                <i class="fa fa-circle-o nav-icon"></i>
-                                <p>Adicionar novo</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-
-                <li class="nav-item has-treeview">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-address-book"></i>
-                        <p>
-                          Modulos
-                          <i class="fa fa-angle-left right"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="{{ route('modules.index') }}" class="nav-link">
-                                <i class="fa fa-circle-o nav-icon"></i>
-                                <p>Todos os modulos</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('modules.create') }}" class="nav-link">
-                                <i class="fa fa-circle-o nav-icon"></i>
-                                <p>Adicionar novo</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-
-                <li class="nav-item has-treeview">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-address-book"></i>
-                        <p>
-                          Salas de Aula
-                          <i class="fa fa-angle-left right"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="{{ route('classrooms.index') }}" class="nav-link">
-                                <i class="fa fa-circle-o nav-icon"></i>
-                                <p>Todos os modulos</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('classrooms.create') }}" class="nav-link">
-                                <i class="fa fa-circle-o nav-icon"></i>
-                                <p>Adicionar novo</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-
-                <li class="nav-item has-treeview">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-address-book"></i>
-                        <p>
-                          Assignar aulas
-                          <i class="fa fa-angle-left right"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="{{ route('assignments.index') }}" class="nav-link">
-                                <i class="fa fa-circle-o nav-icon"></i>
-                                <p>Lista de Aulas</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('assignments.create') }}" class="nav-link">
-                                <i class="fa fa-circle-o nav-icon"></i>
-                                <p>Adicionar novo</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-
+                @role('super-admin')
                 <li class="nav-header">MISCELLANEOUS</li>
                 <li class="nav-item">
                     <a href="https://adminlte.io/docs" class="nav-link">
@@ -374,6 +386,20 @@
                         <p>Informational</p>
                     </a>
                 </li>
+                @endrole
+
+                 @unlessrole('super-admin')
+                <li class="nav-item">
+                    <a href="{{ route('profiles.show', Auth::id()) }}" class="nav-link">
+                        <i class="fa fa-circle-o nav-icon"></i>
+                        <p>Seu perfil</p>
+                    </a>
+                    <a href="{{ route('courses.index') }}" class="nav-link">
+                        <i class="fa fa-circle-o nav-icon"></i>
+                        <p>Meus cursos</p>
+                    </a>
+                </li>
+                 @endrole
 
                 @if (auth()->user()->name!=null)
                     <li class="nav-item">

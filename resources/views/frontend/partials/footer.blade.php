@@ -4,7 +4,7 @@
         <div class="row justify-content-center">
             <div class="col-sm-6 col-lg-4 footer-widget">
                 <div class="about-widget">
-                    <img src="{{ asset('site/images/logo/logo-1.jpg') }}" alt="" class="img-fluid" width="80%">
+                    <img src="{{ asset('site/images/logo/logo-bottom.png') }}" alt="" class="img-fluid" width="80%">
                     <div class="social pt-1">
                         <a target="_blank" href="https://www.youtube.com/channel/UCaw-0bq4ykwbyoU0Y_T24TQ"><i class="fab fa-instagram" style="font-size: 42px;"></i></a>
                         <a target="_blank" href="https://www.facebook.com/prosaude.integral"><i class="fab fa-facebook-square" style="font-size: 42px;"></i></a>

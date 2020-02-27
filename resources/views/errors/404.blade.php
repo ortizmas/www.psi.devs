@@ -8,7 +8,7 @@
 					<h1>Erro 404</h1>
 					<h2>{{ __('Page Not Found') }}</h2>
 					<p>{{ __('Sorry, the page you are looking for could not be found.') }}</p>
-					<a href="{{ route('home') }}" title="Home" class="btn btn-info btn-lg">Voltar para Inicio</a>
+					<a href="javascript:history.back()" title="Home" class="btn btn-info btn-lg">Voltar para Inicio</a>
 				</div>
 				<div class="col-6 pr-0">
 					{{-- <div style="background-image: url({{ asset('/svg/404.svg') }});" class="img-fluid"></div> --}}

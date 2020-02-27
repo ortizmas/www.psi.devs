@@ -15,6 +15,7 @@ class CreateInscriptionsTable extends Migration
     {
         Schema::create('inscriptions', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->integer('user_id')->nullable();
             $table->string('name');
             $table->string('cpf');
             $table->string('cep');
@@ -23,12 +24,11 @@ class CreateInscriptionsTable extends Migration
             $table->string('city');
             $table->string('state');
             $table->integer('ibge');
-            $table->string('email');
+            $table->string('email_inscription');
             $table->string('phone');
             $table->string('company');
             $table->string('company_phone');
-            $table->string('program');
-            $table->char('status', 1);
+            $table->char('status', 1)->default(1);
             $table->timestamps();
         });
     }

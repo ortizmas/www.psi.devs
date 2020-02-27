@@ -47,7 +47,7 @@ class CourseController extends Controller
 
     public function create(Request $request)
     {
-        $categories = Category::all();
+        $categories = Category::where('section', 'course')->get();
         return view('dashboard.courses.create', compact('categories'));
     }
 
@@ -80,13 +80,15 @@ class CourseController extends Controller
 
     public function edit(Course $course)
     {
-        $categories = Category::all();
+        $categories = Category::where('section', 'course')->get();
         $course = Course::findOrFail($course->id);
+
         return view('dashboard.courses.edit', compact('course', 'categories'));
     }
 
     public function update(UpdateCourseRequest $request, Course $course)
     {
+        //dd($request->price);
         $course = $this->course->find($course->id);
 
         if(!$course)            
@@ -145,7 +147,7 @@ class CourseController extends Controller
 
         $course = $this->course->getMyCourse($data);
 
-        if(!$course)            
+        if (!$course)
             return response()->json(['error' => 'Not found'], 404);
 
         return response()->json($course, 201);

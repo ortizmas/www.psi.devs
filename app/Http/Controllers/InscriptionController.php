@@ -2,41 +2,36 @@
 
 namespace App\Http\Controllers;
 
+use App\Course;
 use App\Inscription;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class InscriptionController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
-        $inscriptions = Inscription::paginate();
+        $inscriptions = Inscription::where('status', '!=', 2)->paginate()->load('courses');
         return view('dashboard.inscriptions.index', compact('inscriptions'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function getInscriptionPaid()
+    {
+        $inscriptions = Inscription::where('status', 2)->paginate()->load('courses');
+        return view('dashboard.inscriptions.paid', compact('inscriptions'));
+    }
+
     public function create()
     {
+        
         return view('dashboard.inscriptions.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $inscription = Inscription::create([
+            'user_id' => (Auth::user()->id) ? Auth::user()->id : '',
             'name' => $request['name'],
             'cpf' => $request['cpf'],
             'cep' => $request['cep'],
@@ -55,40 +50,23 @@ class InscriptionController extends Controller
         return redirect()->route('inscriptions.index')->with('success', 'Inscrito cadastrado com sucesso!!');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Inscription  $inscription
-     * @return \Illuminate\Http\Response
-     */
     public function show(Inscription $inscription)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Inscription  $inscription
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Inscription $inscription)
     {
-        return view('dashboard.inscriptions.edit', compact('inscription'));
+        $courses = Course::all();
+        return view('dashboard.inscriptions.edit', compact('inscription', 'courses'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Inscription  $inscription
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, Inscription $inscription)
     {
         $inscriptionUpdate = Inscription::find($inscription->id);
 
         $inscription = $inscriptionUpdate->update([
+            'user_id' => (Auth::user()->id) ? Auth::user()->id : '',
             'name' => $request['name'],
             'cpf' => $request['cpf'],
             'cep' => $request['cep'],
@@ -101,18 +79,39 @@ class InscriptionController extends Controller
             'phone' => $request['phone'],
             'company' => $request['company'],
             'company_phone' => $request['company_phone'],
-            'program' => $request['program']
+            'status' => $request['status']
+
         ]);
+
+        /*$idCourse = decrypt($request->program);
+
+        $inscription = Inscription::create([
+            'user_id' => (Auth::user()->id) ? Auth::user()->id : '',
+            'name' => $request['name'],
+            'cpf' => $request['cpf'],
+            'cep' => $request['cep'],
+            'street' => $request['street'],
+            'neighborhood' => $request['neighborhood'],
+            'city' => $request['city'],
+            'state' => $request['state'],
+            'ibge' => $request['ibge'],
+            'email_inscription' => $request['email_inscription'],
+            'phone' => $request['phone'],
+            'company' => $request['company'],
+            'company_phone' => $request['company_phone']
+        ]);
+
+        if ($inscription) {
+            $course = Course::findOrFail($idCourse);
+            $amount = 1;
+            $price = onlyNumbers($course->price)  / 100;
+            $subtotal = $amount * $price;
+            $inscription->courses()->attach($idCourse, ['course' => $course->name, 'amount' => $amount, 'price' => $price, 'subtotal' => $subtotal]);
+        }*/
 
         return redirect()->route('inscriptions.index')->with('success', 'Inscrição alterado com sucesso!!');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Inscription  $inscription
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Inscription $inscription)
     {
         return Inscription::destroy($inscription->id);

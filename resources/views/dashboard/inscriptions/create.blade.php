@@ -179,7 +179,8 @@
                             <div class="col-md-4">
                                 <div class="input-group mb-3">
                                     <select id="status" name="status" class="form-control{{ $errors->has('status') ? ' is-invalid' : '' }}">
-                                        <option value="1" {{ old('status')=='1' ? 'selected' : ''  }}>Ativo</option>
+                                        <option value="1" {{ old('status')=='1' ? 'selected' : ''  }}>Pendente</option>
+                                        <option value="2" {{ old('status')=='2' ? 'selected' : ''  }}>Pagou</option>
                                         <option value="0" {{ old('status')=='0' ? 'selected' : ''  }}>Inativo</option>
                                     </select>
                                     @if ($errors->has('status'))
@@ -199,25 +200,9 @@
                     </div>
                 </div>
             </form>
-            {{-- <form method="get" action=".">
-                <label>Cep:
-                <input name="cep" type="text" id="cep" value="" size="10" maxlength="9" /></label><br />
-                <label>Rua:
-                <input name="rua" type="text" id="rua" size="60" /></label><br />
-                <label>Bairro:
-                <input name="bairro" type="text" id="bairro" size="40" /></label><br />
-                <label>Cidade:
-                <input name="cidade" type="text" id="cidade" size="40" /></label><br />
-                <label>Estado:
-                <input name="uf" type="text" id="uf" size="2" /></label><br />
-                <label>IBGE:
-                <input name="ibge" type="text" id="ibge" size="8" /></label><br />
-            </form> --}}
       	</div>
     </section>
-    <!-- /.content -->
     </div>
-    <!-- /.content-wrapper -->
 @endsection
 
 @section('javascript')

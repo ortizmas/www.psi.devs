@@ -17,6 +17,7 @@ class CreateCategoriesTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('slug')->unique();
+            $table->enum('section', ['page', 'course']);
             $table->boolean('enabled')->default(1);
             $table->timestamps();
         });

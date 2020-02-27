@@ -33,9 +33,12 @@ class InscriptionRequest extends FormRequest
                 $rules = [
                     'name' => 'required',
                     'cep' => 'required',
-                    'email' => 'email|max:200|required',
+                    'email_inscription' => 'email|max:200|required',
                     'cpf' => 'required|cpf|max:14',
-                    'phone' => 'required'
+                    'phone' => 'required',
+                    'name_user' => 'required|string|max:255',
+                    'email' => 'required|string|email|max:255|unique:users',
+                    'password' => 'required|string|min:6|confirmed',
                 ];
 
                 return $rules;

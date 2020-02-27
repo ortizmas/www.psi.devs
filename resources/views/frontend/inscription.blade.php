@@ -126,10 +126,10 @@
                                     <div class="row">
                                         <div class="col-md-8">
                                             <div class="form-group mb-3">
-                                                <input id="email" type="email" class="basic-usage form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" placeholder="E-MAIL" required autofocus> 
-                                                @if ($errors->has('email'))
+                                                <input id="email_inscription" type="email" class="basic-usage form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="email_inscription" value="{{ old('email_inscription') }}" placeholder="E-MAIL" required autofocus> 
+                                                @if ($errors->has('email_inscription'))
                                                     <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $errors->first('email') }}</strong>
+                                                        <strong>{{ $errors->first('email_inscription') }}</strong>
                                                     </span> 
                                                 @endif
                                             </div>
@@ -281,6 +281,14 @@
                     //cep sem valor, limpa formulário.
                     limpa_formulário_cep();
                 }
+            });
+
+            $(document).on('keyup', '#name', function() {
+                $('#name_user').val($(this).val());
+            });
+
+            $(document).on('keyup', '#email_inscription', function() {
+                $('#email').val($(this).val());
             });
         })(jQuery);
     </script>

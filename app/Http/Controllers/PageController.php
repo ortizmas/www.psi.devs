@@ -19,7 +19,10 @@ class PageController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware(['permission:create page'], ['only' => ['create', 'store']]);
+        $this->middleware(['permission:read pages'], ['only' => 'index']);
+        $this->middleware(['permission:update page'], ['only' => ['edit', 'update']]);
+        $this->middleware(['permission:delete page'], ['only' => 'destroy']);
     }
 
     /**

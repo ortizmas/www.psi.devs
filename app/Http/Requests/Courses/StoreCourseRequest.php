@@ -26,7 +26,8 @@ class StoreCourseRequest extends FormRequest
         return [
             'name' => "required|min:3|max:50|unique:courses,name",
             'url' => 'required|unique:courses,url|max:255',
-            'description' => 'max:1000',
+            'description' => 'required',
+            'price' => 'required',
             'category_id' => 'required',
             'image' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg|max:2048',
         ];
@@ -37,7 +38,8 @@ class StoreCourseRequest extends FormRequest
         return [
             'category_id.required' => 'O campo categoria é obrigatório.',
             'url.required'  => 'A url do post é obrigatório.',
-            'url.unique' => 'A url já está sendo utilizado, altere manualmente.'
+            'url.unique' => 'A url já está sendo utilizado, altere manualmente.',
+            'price.required'  => 'O preço é obrigatório.'
         ];
     }
 }

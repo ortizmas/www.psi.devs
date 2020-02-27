@@ -9,9 +9,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="csrf-token" content={{csrf_token()}}>
 
-    <title>TRAINEE FADBA</title>
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <title>{{ config('app.name', 'Laravel') }}</title>
+    
     <link rel="stylesheet" href="/css/app.css"></link>
     <link rel="stylesheet" href="/dist/plugins/font-awesome/css/font-awesome.min.css">
     <!-- Ionicons -->
@@ -47,7 +50,19 @@ scratch. This page gets rid of all links and provides the needed markup only.
             @include('layouts.header')
 
             <!-- Sidebar -->
-            @include('layouts.sidebar') @yield('content')
+            @role('super-admin')
+            @include('layouts.sidebar') 
+            @endrole
+
+            @role('admin')
+            @include('layouts.sidebar') 
+            @endrole
+
+            @role('student')
+            @include('layouts.partials.sidebar-student') 
+            @endrole
+
+            @yield('content')
             
             <!-- Footer -->
             @include('layouts.footer')

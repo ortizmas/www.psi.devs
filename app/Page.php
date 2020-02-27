@@ -38,6 +38,11 @@ class Page extends Model
         return $this->hasMany(Self::class, 'parent_id', 'id');
     }
 
+    public function parent()
+    {
+        return $this->belongsTo(Self::class, 'id', 'parent_id');
+    }
+
     public function childs()
     {
         return $this->hasMany(Self::class, 'parent_id', 'id');

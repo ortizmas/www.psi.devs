@@ -8,6 +8,7 @@ use App\Course;
 use App\Module;
 use App\Classroom;
 use App\Assignment;
+use App\User;
 use Illuminate\Http\Request;
 
 class AssignmentController extends Controller
@@ -19,13 +20,12 @@ class AssignmentController extends Controller
         $this->middleware('auth');
     }
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index(Request $request)
     {
+        //$assignments = Assignment::with(['user', 'classroom'])->get();
+
+        //$assignments = collect($assignments->where('user_id', Auth::user()->id))->all();
+
         $course = new Course();
         $courses = $course->getResults($request->all(), $this->totalPage);
         return view('dashboard.assignments.index', compact('courses'));
@@ -41,74 +41,100 @@ class AssignmentController extends Controller
 
     public function getClassrooms(Request $request, $module_id)
     {
-        dd($request);
         $classroom = new Classroom();
         //$classrooms = $classrooms = $classroom->getResults($request->all(), $this->totalPage);
         $classrooms = Classroom::where('module_id', $module_id)->get();
         return view('dashboard.assignments.classrooms', compact('classrooms'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function assignCourses(Request $request, $userId)
+    {
+        $course = new Course();
+        $courses = $course->getResults($request->all(), $this->totalPage);
+        return view('dashboard.assignments.courses', compact('courses', 'userId'));
+    }
+
+    public function assignModules(Request $request, $course_id, $userId)
+    {
+        $module = new Module();
+        $modules = Module::where('course_id', $course_id)->get()->load('course', 'classrooms');
+
+        $classromId = Assignment::where('user_id', $userId)->get()->pluck('classroom_id')->toArray();
+
+        //$classromId = array_pluck($classes, 'classroom_id');
+        
+        $count = 0;
+        foreach ($modules as $key => $value) {
+            $countClasses = Classroom::where('module_id', $value->id)->get()->count();
+            $count = $count + $countClasses;
+        }
+
+        return view('dashboard.assignments.assign-modules', compact('modules', 'count', 'userId', 'classromId'));
+    }
+
     public function create()
     {
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    
+
     public function store(Request $request)
     {
-        //
+        //$this->validateData($request);
+
+        $assignment = new Assignment();
+
+        foreach ($request->class_id as $key => $value) {
+            $assignmentsId = Assignment::where('user_id', $request->user_id)->where('classroom_id', $value)->get()->pluck('id');
+            $assignment->destroy($assignmentsId);
+        }
+
+        if ($request->classroom_id != null) {
+            foreach ($request->classroom_id as $key => $value) {
+                $ifExistData = Assignment::where('user_id', $request->user_id)->where('classroom_id', $value)->first();
+                
+                if ($ifExistData != null) {
+                    continue;
+                } else {
+                    $assignment->create(['user_id' => $request->user_id, 'classroom_id' => $value]);
+                }
+            }
+        }
+        
+        return redirect()->back()->with('success', 'As aulas foram assignado com successo');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Assignment  $assignment
-     * @return \Illuminate\Http\Response
-     */
+    public function validateData($request)
+    {
+        return $request->validate([
+            'user_id' => 'required',
+            'classroom_id' => 'required',
+        ],[
+            'user_id.required' => 'O usuario não é valido',
+            'classroom_id.required'  => 'Deve selecionar minimo uma aula',
+        ],[
+            'user_id'  => 'Usuario',
+            'classroom_id'              => 'Aula',
+        ]);
+
+    }
+
     public function show(Assignment $assignment)
     {
         dd($assignment);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Assignment  $assignment
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Assignment $assignment)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Assignment  $assignment
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, Assignment $assignment)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Assignment  $assignment
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Assignment $assignment)
     {
         //

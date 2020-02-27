@@ -17,17 +17,26 @@ class ModuleController extends Controller
         $this->module = $module;
     }
 
-    public function index(Request $request)
+    public function index(Request $request, $idCourse = null)
     {
+        $request['course_id'] = $idCourse;
         $modules = $this->module->getResults($request->all(), $this->totalPage);
+        $request->session()->put('idCourse', $idCourse);
 
         return view('dashboard.modules.index', compact('modules'));
         //return response()->json($module);
     }
 
-    public function create()
+    public function create(Request $request)
     {
-        $courses = Course::get();
+        $request->session()->put('idCourse', $request->get('idCourse'));
+
+        if ($request->get('idCourse') != null) {
+            $courses = Course::findOrFail($request->get('idCourse'));
+        } else {
+            $courses = Course::get();
+        }
+
         return view('dashboard.modules.create', compact('courses'));
     }
 
@@ -45,7 +54,8 @@ class ModuleController extends Controller
         $module = $this->module->create($request->all());
 
         //return response()->json($module, 201);
-        return redirect()->route('modules.index')->with('success', 'Modulo cadastrado com sucesso!!');
+        return redirect()->route('modules.index.param', $request['course_id'])
+            ->with('success', 'Modulo cadastrado com sucesso!!');
     }
 
     public function edit(Module $module)
@@ -64,7 +74,7 @@ class ModuleController extends Controller
         $module->update($request->all());
         
         //return response()->json($module);
-        return redirect()->route('modules.index')->with('success', 'Modulo alterado com sucesso!!');
+        return redirect()->route('modules.index.param', $request['course_id'])->with('success', 'Modulo alterado com sucesso!!');
     }
 
     public function destroy($id)

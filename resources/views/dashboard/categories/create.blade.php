@@ -46,6 +46,20 @@
                                         </span> 
                                     @endif
                                 </div>
+
+                                <div class="input-group mb-3">
+                                    <select id="section" name="section" class="form-control{{ $errors->has('section') ? ' is-invalid' : '' }}">
+                                        <option value="">Selecione uma seção</option>
+                                        <option value="page" {{ old('section')=='page' ? 'selected' : ''  }}>Pagina</option>
+                                        <option value="course" {{ old('section')=='course' ? 'selected' : ''  }}>Cursos</option>
+                                    </select>
+                                    @if ($errors->has('section'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('section') }}</strong>
+                                        </span> 
+                                    @endif
+                                </div>
+
                                 <div class="input-group mb-3">
                                     <select id="enabled" name="enabled" class="form-control{{ $errors->has('enabled') ? ' is-invalid' : '' }}">
                                         <option value="">Estado da categoria</option>

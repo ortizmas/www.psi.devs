@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Auth;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Spatie\Permission\Traits\HasRoles;
@@ -28,6 +29,23 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public function setPasswordAttribute($password)
+    {   if ($password)
+            $this->attributes['password'] = bcrypt($password);
+    }
+
+    public function isSuperAdmin()
+    {
+        $user = Auth::user();
+        foreach ($user->getRoleNames() as $value) {
+            if ($value === 'super-admin') {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     public function pages()
     {
         return $this->hasMany('App\Page');
@@ -42,5 +60,21 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Trainee');
     }
+
+    public function assignments()
+    {
+        return $this->hasMany(Assignment::class);
+    }
+
+    public function inscriptions()
+    {
+        return $this->hasMany(Inscription::class);
+    }
+
+    // public function classrooms()
+    // {
+    //     return $this->belongsToMany(Classroom::class);
+    // }
+
     
 }

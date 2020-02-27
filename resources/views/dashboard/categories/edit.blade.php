@@ -49,6 +49,19 @@
                                     </div>
 
                                     <div class="input-group mb-3">
+                                        <select id="section" name="section" class="form-control{{ $errors->has('section') ? ' is-invalid' : '' }}">
+                                            <option value="{{ $category->section }}" selected="">{{ ($category->section == 'page') ? 'Pagina' : 'Cursos' }}</option>
+                                            <option value="page">Pagina</option>
+                                            <option value="course">Cursos</option>
+                                        </select>
+                                        @if ($errors->has('section'))
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $errors->first('section') }}</strong>
+                                            </span> 
+                                        @endif
+                                    </div>
+
+                                    <div class="input-group mb-3">
                                         <select id="enabled" name="enabled" class="form-control{{ $errors->has('enabled') ? ' is-invalid' : '' }}">
                                             <option value="{{ $category->enabled }}" selected="">{{ ($category->enabled == 1) ? 'Ativo' : 'Inativo' }}</option>
                                             <option value="1">Ativo</option>
@@ -59,7 +72,6 @@
                                                 <strong>{{ $errors->first('enabled') }}</strong>
                                             </span> 
                                         @endif
-                                        
                                     </div>
 
                                     <div class="row">

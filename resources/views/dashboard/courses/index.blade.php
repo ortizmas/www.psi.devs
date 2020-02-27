@@ -38,8 +38,8 @@
       					<tr>
       						<th>#</th>
       						<th>Nome</th>
-      						<th>Slug</th>
-                  <th>Universidade</th>
+      						<th>Preço</th>
+                  <th>Categoria</th>
                   <th>Estado</th>
       						<th colspan="2" rowspan="">Ações</th>
       					</tr>
@@ -49,8 +49,8 @@
                         @foreach ($courses as $key => $value)
                         <tr>
                            <td>{{ $key + 1 }}</td>
-                           <td>{{ $value->name }}</td>
-                           <td>{{ $value->url }}</td>
+                           <td><a href="{{ route('modules.index.param', $value->id) }}">{{ $value->name }}</a></td>
+                           <td>{{ $value->price }}</td>
                            <td>{{ $value->category->name }}</td>
                            {{-- @foreach ($value->modules  as $value)
                              <td>|{{ $value->name  }} |</td>

@@ -11,11 +11,17 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Modulos</h1>
+                @if (Session::has('idCourse'))
+                    <h4 class="m-0 text-dark">
+                        <strong>Cursos: </strong> {{ $courses->name }}
+                    </h4>
+                @else
+                    <h4 class="m-0 text-dark">CRIAR MODULO </h4>
+                @endif
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="{{ route('modules.index') }}" class="btn btn-info btn-sm">Lista de odulos</a></li>
+              <li class="breadcrumb-item"><a href="{{ route('modules.index') }}" class="btn btn-info btn-sm">Listar modulos</a></li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -33,7 +39,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group mb-3">
-                                    <input id="name" type="text" class="basic-usage form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" placeholder="Modulo" required autofocus> 
+                                    <input id="name" type="text" class="basic-usage form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" placeholder="Titulo do Modulo" required autofocus> 
                                     @if ($errors->has('name'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('name') }}</strong>
@@ -59,23 +65,25 @@
                         
                         <div class="row">
                             <div class="col-md-6">
-                                <div class="input-group mb-3">
-                                    <select id="CourseId" name="course_id" class="form-control{{ $errors->has('course_id') ? ' is-invalid' : '' }}">
-                                        <option value="">Selecionar curso</option>
-                                        @foreach ($courses as $value)
-                                            <option value="{{ $value->id }}" {{ old('course_id')== $value->id ? 'selected' : ''  }}>{{ $value->name }}</option>
-                                        @endforeach
-                                    </select>
-                                    {{-- <span class="input-group-btn">
-                                        <button class="category-modal btn btn-outline-dark" type="button" data-toggle="modal" data-target="#modalForm"><i class="fa fa-plus fa-fw"></i></button>
-                                    </span> --}}
-                                    @if ($errors->has('course_id'))
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('course_id') }}</strong>
-                                        </span> 
-                                    @endif
-                                </div>
+                                @if ( Session::has('idCourse') )
+                                    <input type="text" name="course_id" value="{{ Session::get('idCourse') }}" placeholder="">
+                                @else
+                                    <div class="input-group mb-3">
+                                        <select id="CourseId" name="course_id" class="form-control{{ $errors->has('course_id') ? ' is-invalid' : '' }}">
+                                            <option value="">Selecionar curso</option>
+                                            @foreach ($courses as $value)
+                                                <option value="{{ $value->id }}" {{ old('course_id')== $value->id ? 'selected' : ''  }}>{{ $value->name }}</option>
+                                            @endforeach
+                                        </select>
+                                        @if ($errors->has('course_id'))
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $errors->first('course_id') }}</strong>
+                                            </span> 
+                                        @endif
+                                    </div>
+                                @endif
                             </div>
+
                             <div class="col-md-6">
                                 <div class="input-group mb-3">
                                     <select id="status" name="status" class="form-control{{ $errors->has('status') ? ' is-invalid' : '' }}">
