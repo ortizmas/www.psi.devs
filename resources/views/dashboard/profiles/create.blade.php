@@ -21,6 +21,14 @@
 
     <!-- Main content -->
     <section class="content">
+        @if (session('warning'))
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong>{{ session('warning') }}</strong>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        @endif
         <div class="container-fluid">
             <form action="{{ route('profiles.store') }}" method="post">
                 @csrf
@@ -145,7 +153,7 @@
                         <div class="row">
                             <div class="col-md-8">
                                 <div class="form-group mb-3">
-                                    <input id="company" type="text" class="basic-usage form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="company" value="{{ old('company') }}" placeholder="EMPRESA" required autofocus> 
+                                    <input id="company" type="text" class="basic-usage form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="company" value="{{ old('company') }}" placeholder="EMPRESA" autofocus> 
                                     @if ($errors->has('company'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('company') }}</strong>
@@ -156,7 +164,7 @@
 
                             <div class="col-md-4">
                                 <div class="form-group mb-3">
-                                    <input id="company_phone" type="tel" class="basic-usage form-control{{ $errors->has('company_phone') ? ' is-invalid' : '' }}" name="company_phone" value="{{ old('company_phone') }}" placeholder="TELEFONE DA EMPRESSA" required autofocus> 
+                                    <input id="company_phone" type="tel" class="basic-usage form-control{{ $errors->has('company_phone') ? ' is-invalid' : '' }}" name="company_phone" value="{{ old('company_phone') }}" placeholder="TELEFONE DA EMPRESSA" autofocus> 
                                     @if ($errors->has('company_phone'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('company_phone') }}</strong>
@@ -178,6 +186,7 @@
                                 </div>
                             </div> --}}
                             <input id="program" type="hidden" name="program" value="{{ old('program', session('item_buy', 'default')) }}" readonly="">
+                            @role('super-admin')
                             <div class="col-md-4">
                                 <div class="input-group mb-3">
                                     <select id="status" name="status" class="form-control{{ $errors->has('status') ? ' is-invalid' : '' }}">
@@ -191,6 +200,8 @@
                                     @endif
                                 </div>
                             </div>
+                            @endrole
+
                         </div>
 
                             <div class="row justify-content-center">

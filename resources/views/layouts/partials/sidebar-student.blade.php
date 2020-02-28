@@ -24,14 +24,14 @@
 
                 <li class="nav-item">
                     <a href="{{ route('profiles.show', Auth::id()) }}" class="nav-link">
-                        <i class="fa fa-circle-o nav-icon"></i>
+                        <i class="fa fa-user-o nav-icon"></i>
                         <p>Seu perfil</p>
                     </a>
                 </li>
                 
                 <li class="nav-item">
                     <a href="{{ route('my.courses') }}" class="nav-link">
-                        <i class="fa fa-circle-o nav-icon"></i>
+                        <i class="fa fa-book nav-icon"></i>
                         <p>Meus cursos</p>
                     </a>
                 </li>

@@ -18,9 +18,16 @@ class ProfileController extends Controller
 
     public function show($id)
     {
-        $user = User::findOrFail($id);
+        $user = User::findOrFail($id)->load('inscriptions');
         $this->authorize('update', $user);
-        return view('dashboard.profiles.show', ['user' => User::findOrFail($id)]);
+
+        if (collect($user->inscriptions)->isEmpty()) {
+            return redirect()->route('profiles.create')
+                    ->with('warning', 'Ainda não completou seu cadastro!!');
+        }
+
+        return view('dashboard.profiles.show', ['user' => $user]);
+        
     }
 
     public function create(Request $request)
