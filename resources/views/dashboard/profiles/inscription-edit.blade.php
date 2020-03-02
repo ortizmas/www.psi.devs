@@ -148,7 +148,7 @@
                         <input id="ibge" type="hidden" name="ibge" value="{{ old('ibge') }}">
 
                         <div class="row">
-                            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-4">
+                            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                                 <div class="form-group mb-3">
                                     <input id="company" type="text" class="basic-usage form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="company" value="{{ old('company', $inscription->company ) }}" placeholder="EMPRESA" required autofocus> 
                                     @if ($errors->has('company'))
@@ -159,7 +159,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-4">
+                            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                                 <div class="form-group mb-3">
                                     <input id="company_phone" type="tel" class="basic-usage form-control{{ $errors->has('company_phone') ? ' is-invalid' : '' }}" name="company_phone" value="{{ old('company_phone', $inscription->company_phone ) }}" placeholder="TELEFONE DA EMPRESSA" required autofocus> 
                                     @if ($errors->has('company_phone'))
@@ -170,6 +170,27 @@
                                 </div>
                             </div>
 
+                            {{-- @if (session()->has('item_buy'))
+                                <input id="program" type="hidden" name="program_session" value="{{ old('program', session('item_buy', 'default')) }}" readonly="">
+                            @else
+                                <div class="col-md-4">
+                                    <div class="input-group mb-3">
+                                        <select id="program" name="program" class="form-control{{ $errors->has('program') ? ' is-invalid' : '' }}" required="required">
+                                            <option value="" >-- Selecionar um curso --</option>
+                                            @foreach ($programs as $program)
+                                                <option value="{{ $program->id }}" {{ old('program', $inscription->courses[0]->id)==$program->id  ? 'selected' : ''  }}>{{ $program->name }}</option>
+                                            @endforeach
+                                        </select>
+                                        @if ($errors->has('program'))
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $errors->first('program') }}</strong>
+                                            </span> 
+                                        @endif
+                                    </div>
+                                </div>
+                            @endif --}}
+
+                            @role('super-admin')
                             <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-4">
                                 <div class="input-group mb-3">
                                     <select id="status" name="status" class="form-control{{ $errors->has('status') ? ' is-invalid' : '' }}">
@@ -183,6 +204,7 @@
                                     @endif
                                 </div>
                             </div>
+                            @endrole
                         </div>
                         <div class="row">
                             <div class="col-12">
@@ -206,37 +228,102 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
     <!-- Bootstrap 4 -->
     <script src="/dist/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!--Mask jQuery-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js" type="text/javascript"></script>
     
     <!-- AdminLTE App -->
     <script src="/dist/js/adminlte.js"></script>
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
     <script src="/dist/js/demo.js"></script>
 
-    <script src="/vendor/filemanagerjs/tinymce/tinymce.min.js" type="text/javascript"></script>
     <script>
-        var BASE_URL = "/"; // use your own base url
-        tinymce.init({
-            selector: "textarea#tinymce_um",
-            // theme: "modern",width: 1200,height: 60,
-            relative_urls: false,
-            remove_script_host: false,
-            plugins: [
-            "advlist autolink link image lists charmap print preview hr anchor pagebreak",
-            "searchreplace wordcount visualblocks visualchars insertdatetime media nonbreaking",
-            "table contextmenu directionality emoticons paste responsivefilemanager textcolor code"
-            ],
-            toolbar1: "undo redo | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | styleselect",
-            toolbar2: "| link unlink anchor | responsivefilemanager | image media | forecolor backcolor  | print preview code ",
-            image_advtab: true,
-            relative_urls: false,
+        $(document).ready(function() {
+            $(function() {
+                $("#phone").mask("(00) 90000-0000");
+                $("#company_phone").mask("(00) 90000-0000");
+                //$("#goal").mask("0000.00");
+                $("#data_of_birth").mask("99/99/9999");
+                $("#delivery_date").mask("99/99/9999");
+                $("#start_date").mask("99/99/9999");
+                $("#end_date").mask("99/99/9999");
+                //$("#phone").mask("(99) 999-9999");
+                $("#cep").mask("99.999-999");
+                //$("#cpf").mask("99.999.999-99");
+                //$("#txtCnpjPesquisa").mask("99.999.999/9999-99");
+                
+                $("#cpf").mask("999.999.999-99");
+                $('#cpf').blur(function () {
+                    var id=$(this).attr("id");
+                    var val=$(this).val();
+                    var pattern = new RegExp(/[0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2}/);
 
-            external_filemanager_path: BASE_URL + "vendor/filemanagerjs/filemanager/",
-            filemanager_title: "Media Gallery",
-            external_plugins: { "filemanager": BASE_URL + "vendor/filemanagerjs/filemanager/plugin.min.js" }
+                    if(val.match(pattern) == null){
+                        $("#"+id+"_error").html("Digite um CPF válido");
+                    }
+                });
+            });
 
+            function limpa_formulário_cep() {
+                // Limpa valores do formulário de cep.
+                $("#rua").val("");
+                $("#bairro").val("");
+                $("#cidade").val("");
+                $("#uf").val("");
+                $("#ibge").val("");
+            }
+            
+            //Quando o campo cep perde o foco.
+            $("#cep").blur(function() {
+
+                //Nova variável "cep" somente com dígitos.
+                var cep = $(this).val().replace(/\D/g, '');
+
+                //Verifica se campo cep possui valor informado.
+                if (cep != "") {
+
+                    //Expressão regular para validar o CEP.
+                    var validacep = /^[0-9]{8}$/;
+
+                    //Valida o formato do CEP.
+                    if(validacep.test(cep)) {
+
+                        //Preenche os campos com "..." enquanto consulta webservice.
+                        $("#rua").val("...");
+                        $("#bairro").val("...");
+                        $("#cidade").val("...");
+                        $("#uf").val("...");
+                        $("#ibge").val("...");
+
+                        //Consulta o webservice viacep.com.br/
+                        $.getJSON("https://viacep.com.br/ws/"+ cep +"/json/?callback=?", function(dados) {
+
+                            if (!("erro" in dados)) {
+                                //Atualiza os campos com os valores da consulta.
+                                $("#rua").val(dados.logradouro);
+                                $("#bairro").val(dados.bairro);
+                                $("#cidade").val(dados.localidade);
+                                $("#uf").val(dados.uf);
+                                $("#ibge").val(dados.ibge);
+                            } //end if.
+                            else {
+                                //CEP pesquisado não foi encontrado.
+                                limpa_formulário_cep();
+                                alert("CEP não encontrado.");
+                            }
+                        });
+                    } //end if.
+                    else {
+                        //cep é inválido.
+                        limpa_formulário_cep();
+                        alert("Formato de CEP inválido.");
+                    }
+                } //end if.
+                else {
+                    //cep sem valor, limpa formulário.
+                    limpa_formulário_cep();
+                }
+            });
         });
-        
-    </script> 
-
-  
+    </script>
 @stop

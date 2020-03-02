@@ -185,7 +185,27 @@
                                     @endif
                                 </div>
                             </div> --}}
-                            <input id="program" type="hidden" name="program" value="{{ old('program', session('item_buy', 'default')) }}" readonly="">
+                            @if (session()->has('item_buy'))
+                                <input id="program" type="hidden" name="program_session" value="{{ old('program', session('item_buy', 'default')) }}" readonly="">
+                            @else
+                                <div class="col-md-4">
+                                    <div class="input-group mb-3">
+                                        <select id="program" name="program" class="form-control{{ $errors->has('program') ? ' is-invalid' : '' }}" required="required">
+                                            <option value="" >-- Selecionar um curso --</option>
+                                            @foreach ($programs as $program)
+                                                <option value="{{ $program->id }}" {{ old('program')==$program->id  ? 'selected' : ''  }}>{{ $program->name }}</option>
+                                            @endforeach
+                                        </select>
+                                        @if ($errors->has('program'))
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $errors->first('program') }}</strong>
+                                            </span> 
+                                        @endif
+                                    </div>
+                                </div>
+                            @endif
+                            
+
                             @role('super-admin')
                             <div class="col-md-4">
                                 <div class="input-group mb-3">

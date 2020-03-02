@@ -19,18 +19,13 @@
                 @foreach ($courses as $course)
                     <div class="col-md-3">
                         <div class="card">
-                            {{-- <svg class="bd-placeholder-img card-img-top" width="100%" height="200" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Image cap">
-                                <title>Placeholder</title>
-                                <rect width="100%" height="100%" fill="#868e96"></rect>
-                                <text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text>
-                            </svg> --}}
                             <a href="{{ route('learn.lecture', [$course->url, $course->id]) }}" title="{{ $course->name }}">
                                 <img src="{{ asset('storage/courses/' . $course->image) }}" class="card-img-top" alt="{{ $course->name }}">
                             </a>
                             <div class="card-body">
                                 <h5 class="card-title">{{ $course->name }}</h5>
-                                <p class="card-text">{{ $course->description }}</p>
-                                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                {{-- <p class="card-text">{{ $course->description }}</p> --}}
+                                <a class="btn btn-link float-left" href="{{ route('learn.lecture', [$course->url, $course->id]) }}">INICIAR CURSO</a>
                             </div>
                         </div>
                     </div>

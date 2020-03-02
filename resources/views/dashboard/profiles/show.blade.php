@@ -54,7 +54,7 @@
                                         </div>
                                         <div class="product-info">
                                           <a href="javascript:void(0)" class="product-title">{{ $user->name }}</a>
-                                            <a href="{{ route('profiles.edit', $user->id) }}" title="Alterar Usuario"><span class="badge badge-warning float-right">Altera usuario <i class="fas fa-edit"></i></span></a>
+                                            <a href="{{ route('profiles.edit', $user->id) }}" title="Alterar Usuario"><span class="btn btn-sm btn-outline-primary float-right">Altera usuario <i class="fas fa-edit"></i></span></a>
                                             <span class="product-description">
                                                 {{ $user->email }}
                                             </span>
@@ -91,7 +91,7 @@
                                             </div>
                                             <div class="product-info">
                                             <a href="javascript:void(0)" class="product-title">{{ $user->inscriptions[0]->name }}</a>
-                                                <a href="{{ route('profiles.inscription.edit', $user->inscriptions[0]->id) }}" title="Alterar Usuario"><span class="badge badge-warning float-right">Alterar dados <i class="fas fa-edit"></i></span></a>
+                                                <a href="{{ route('profiles.inscription.edit', $user->inscriptions[0]->id) }}" title="Alterar Usuario"><span class="btn btn-sm btn-outline-primary float-right">Alterar dados <i class="fas fa-edit"></i></span></a>
                                                 <span class="product-description">
                                                     <b>CPF: </b>{{ $user->inscriptions[0]->cpf}} - 
                                                     <b>Telefone: </b>{{ $user->inscriptions[0]->cpf}}

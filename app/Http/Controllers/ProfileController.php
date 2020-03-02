@@ -41,13 +41,19 @@ class ProfileController extends Controller
             return $this->editPerfil($inscription->id);
         }
 
-        return view('dashboard.profiles.create', compact('user'));
+        $programs = Course::all();
+
+        return view('dashboard.profiles.create', compact('user', 'programs'));
     }
 
     public function store(Request $request)
     {
-        $idCourse = decrypt($request->program);
-
+        if ($request->has('program_session')) {
+            $idCourse = decrypt($request->program_session);
+        } else {
+            $idCourse = $request->program;
+        }
+        
         $inscription = Inscription::create([
             'user_id' => (Auth::user()->id) ? Auth::user()->id : '',
             'name' => $request['name'],
@@ -91,17 +97,26 @@ class ProfileController extends Controller
         $inscription = Inscription::where('id', $inscriptionId)->firstOrFail();
         $this->authorize('update', $inscription);
 
-        $inscription = Inscription::findOrFail($inscriptionId);
-        if (session()->has('item_buy')) {
-            return view('dashboard.profiles.edit-and-buy', compact('inscription'));
+        $inscription = Inscription::findOrFail($inscriptionId)->load('courses');
+
+        $programs = Course::all();
+
+        if ($inscription->status == 0 || $inscription->status == 1) {
+            return view('dashboard.profiles.edit-and-buy', compact('inscription', 'programs'));
         } else {
-            return view('dashboard.profiles.inscription-edit', compact('inscription'));
+            return view('dashboard.profiles.inscription-edit', compact('inscription', 'programs'));
         }
     }
 
     public function updatePerfil(Request $request, $inscriptionId)
     {
-        $idCourse = decrypt($request->program);
+
+        if ($request->has('program_session')) {
+            $idCourse = decrypt($request->program_session);
+        } else {
+            $idCourse = $request->program;
+        }
+
         $inscriptionUpdate = Inscription::find($inscriptionId);
 
         $inscription = $inscriptionUpdate->update([
@@ -121,13 +136,13 @@ class ProfileController extends Controller
             'status' => ($request['status']) ? 1 : 0,
         ]);
 
-        if ($inscription) {
+        /*if ($inscription) {
             $course = Course::findOrFail($idCourse);
             $amount = 1;
             $price = onlyNumbers($course->price)  / 100;
             $subtotal = $amount * $price;
             $inscriptionUpdate->courses()->sync($idCourse, ['course' => $course->name, 'amount' => $amount, 'price' => $price, 'subtotal' => $subtotal]);
-        }
+        }*/
 
         return redirect()->route('profiles.inscription.edit', $inscriptionId)->with('success', 'Dados alterado com sucesso!!');
     }

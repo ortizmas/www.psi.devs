@@ -58,6 +58,7 @@ class InscriptionController extends Controller
     public function edit(Inscription $inscription)
     {
         $courses = Course::all();
+
         return view('dashboard.inscriptions.edit', compact('inscription', 'courses'));
     }
 
@@ -66,27 +67,7 @@ class InscriptionController extends Controller
         $inscriptionUpdate = Inscription::find($inscription->id);
 
         $inscription = $inscriptionUpdate->update([
-            'user_id' => (Auth::user()->id) ? Auth::user()->id : '',
-            'name' => $request['name'],
-            'cpf' => $request['cpf'],
-            'cep' => $request['cep'],
-            'street' => $request['description'],
-            'neighborhood' => $request['neighborhood'],
-            'city' => $request['city'],
-            'state' => $request['state'],
-            'ibge' => $request['ibge'],
-            'email' => $request['email'],
-            'phone' => $request['phone'],
-            'company' => $request['company'],
-            'company_phone' => $request['company_phone'],
-            'status' => $request['status']
-
-        ]);
-
-        /*$idCourse = decrypt($request->program);
-
-        $inscription = Inscription::create([
-            'user_id' => (Auth::user()->id) ? Auth::user()->id : '',
+            //'user_id' => (Auth::user()->id) ? Auth::user()->id : '',
             'name' => $request['name'],
             'cpf' => $request['cpf'],
             'cep' => $request['cep'],
@@ -94,20 +75,13 @@ class InscriptionController extends Controller
             'neighborhood' => $request['neighborhood'],
             'city' => $request['city'],
             'state' => $request['state'],
-            'ibge' => $request['ibge'],
-            'email_inscription' => $request['email_inscription'],
+            //'ibge' => $request['ibge'],
+            'email' => $request['email_inscription'],
             'phone' => $request['phone'],
             'company' => $request['company'],
-            'company_phone' => $request['company_phone']
+            'company_phone' => $request['company_phone'],
+            'status' => $request['status']
         ]);
-
-        if ($inscription) {
-            $course = Course::findOrFail($idCourse);
-            $amount = 1;
-            $price = onlyNumbers($course->price)  / 100;
-            $subtotal = $amount * $price;
-            $inscription->courses()->attach($idCourse, ['course' => $course->name, 'amount' => $amount, 'price' => $price, 'subtotal' => $subtotal]);
-        }*/
 
         return redirect()->route('inscriptions.index')->with('success', 'Inscrição alterado com sucesso!!');
     }

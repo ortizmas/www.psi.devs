@@ -26,8 +26,8 @@ class CreateInscriptionsTable extends Migration
             $table->integer('ibge');
             $table->string('email_inscription');
             $table->string('phone');
-            $table->string('company');
-            $table->string('company_phone');
+            $table->string('company')->nullable();
+            $table->string('company_phone')->nullable();
             $table->char('status', 1)->default(1);
             $table->timestamps();
         });

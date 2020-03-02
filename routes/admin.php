@@ -29,7 +29,7 @@ Route::group(['middleware' => ['role:super-admin|admin']], function() {
 	Route::resource('posts', 'PostController');
 });
 
-Route::group(['middleware' => ['role:super-admin|admin|teachers|student']], function() {
+Route::group(['middleware' => ['role:super-admin|admin|teachers']], function() {
 	Route::resource('universities', 'UniversityController');
 	Route::resource('periods', 'PeriodController');
 	Route::resource('careers', 'CareerController');

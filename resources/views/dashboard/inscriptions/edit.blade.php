@@ -107,7 +107,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-2">
+                            {{-- <div class="col-md-2">
                                 <div class="form-group mb-3">
                                     <input id="ibge" type="text" class="basic-usage form-control{{ $errors->has('ibge') ? ' is-invalid' : '' }}" name="ibge" value="{{ old('ibge', $inscription->ibge ) }}" placeholder="IBGE" required autofocus> 
                                     @if ($errors->has('ibge'))
@@ -116,16 +116,16 @@
                                         </span> 
                                     @endif
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
 
                         <div class="row">
                             <div class="col-md-8">
                                 <div class="form-group mb-3">
-                                    <input id="email" type="email" class="basic-usage form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="email" value="{{ old('email', $inscription->email ) }}" placeholder="E-MAIL" required autofocus> 
-                                    @if ($errors->has('email'))
+                                    <input id="email_inscription" type="email" class="basic-usage form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="email_inscription" value="{{ old('email_inscription', $inscription->email_inscription ) }}" placeholder="E-MAIL" required autofocus> 
+                                    @if ($errors->has('email_inscription'))
                                         <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('email') }}</strong>
+                                            <strong>{{ $errors->first('email_inscription') }}</strong>
                                         </span> 
                                     @endif
                                 </div>
@@ -175,7 +175,7 @@
                                         <option value=""> -- SELECIONAR UM CURSO --</option>}
                                         option
                                         @foreach ($courses as $course)
-                                            <option value="{{ $course->id }}" {{ old('course_id', $course->id )=='1' ? 'selected' : ''  }}>{{ $course->name }}</option>
+                                            <option value="{{ $course->id }}" {{ old('course_id', $inscription->courses[0]->id )== $course->id  ? 'selected' : ''  }}>{{ $course->name }}</option>
                                         @endforeach
                                     </select>
                                     @if ($errors->has('program'))

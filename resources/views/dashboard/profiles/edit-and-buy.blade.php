@@ -8,13 +8,15 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Antes de continuar verifique as informações se </h1>
+            <h1 class="m-0 text-dark">Antes de realizar o pagamento verifique as informações </h1>
           </div>
+          @role('student')
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="{{ route('inscriptions.index') }}" class="btn btn-info btn-sm">Lista de Inscritos</a></li>
+              <li class="breadcrumb-item"><a href="{{ route('inscriptions.index') }}" class="btn btn-dark btn-sm rounded-0">Lista de Inscritos</a></li>
             </ol>
           </div>
+          @endrole
         </div>
       </div>
     </div>
@@ -153,7 +155,7 @@
                                 <input id="ibge" type="hidden" name="ibge" value="{{ old('ibge') }}">
 
                                 <div class="row">
-                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
                                         <div class="form-group mb-3">
                                             <input id="company" type="text" class="basic-usage form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="company" value="{{ old('company', $inscription->company ) }}" placeholder="EMPRESA" required autofocus> 
                                             @if ($errors->has('company'))
@@ -164,7 +166,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
                                         <div class="form-group mb-3">
                                             <input id="company_phone" type="tel" class="basic-usage form-control{{ $errors->has('company_phone') ? ' is-invalid' : '' }}" name="company_phone" value="{{ old('company_phone', $inscription->company_phone ) }}" placeholder="TELEFONE DA EMPRESSA" required autofocus> 
                                             @if ($errors->has('company_phone'))
@@ -174,7 +176,8 @@
                                             @endif
                                         </div>
                                     </div>
-
+                                    
+                                    @role('super-admin')
                                     <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                                         <div class="input-group mb-3">
                                             <select id="status" name="status" class="form-control{{ $errors->has('status') ? ' is-invalid' : '' }}">
@@ -188,13 +191,14 @@
                                             @endif
                                         </div>
                                     </div>
+                                    @endrole
                                 </div>
 
                                 <input id="program" type="hidden" name="program" value="{{ old('program', session()->get('item_buy')) }}" >
 
                                     <div class="row justify-content-end">
                                         <div class="col-3">
-                                            <button type="submit" class="btn btn-info btn-block btn-flat">Alterar dados <i class="ml-3 fas fa-arrow-alt-circle-right"></i></button>
+                                            <button type="submit" class="btn btn-dark btn-block btn-flat">Alterar dados <i class="ml-3 fas fa-arrow-alt-circle-right"></i></button>
                                         </div>
                                     </div>
                             </div>
@@ -206,20 +210,21 @@
                     <div class="card">
                         <div class="card-header">
                             <img class="float-right img-fluid" src="https://ead.ivca.org.br/images/logo_pagseguro200x41.png" alt="PagSeguro" width="120">
-                            <h4 class="card-title">Formas de pagamento</h4>
+                            <h4 class="card-title font-weight-bold">Formas de pagamento</h4>
                             
                         </div>
                         <div class="card-body">
-                            <h2 class="font-weight-bold bg-light p-3">{{ $inscription->courses[0]->name }}</h2>
+                            <h3 class="bg-light p-3">{{ $inscription->courses[0]->name }}</h3>
 
                             <div class="p-3">
-                                <p class="card-text"><strong>Preço: </strong> {{ $inscription->courses[0]->price }}</p>
-                                <hr>
+                                <strong class="float-left">Total: </strong>
+                                <p class="card-text float-right"> {{ $inscription->courses[0]->price }} R$</p>
+                                
                                 {{-- <p class="card-text"><strong>Total: </strong> {{ $inscription->courses[0]->sub }}</p> --}}
                             </div>
                         </div>
                         <div class="card-footer">
-                            <a target="_blank" href="https://pag.ae/7Vu-m8DB3" class="btn btn-success btn-lg float-right"><i class="fas fa-dollar-sign"></i> Pagar agora</a>
+                            <a target="_blank" href="{{ $inscription->courses[0]->link_buy }}" class="btn btn-danger btn-lg w-100 rounded-0"> Realizar pago</a>
                         </div>
                     </div>
                 </div>
