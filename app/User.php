@@ -2,7 +2,7 @@
 
 namespace App;
 
-use Auth;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Spatie\Permission\Traits\HasRoles;
@@ -30,13 +30,16 @@ class User extends Authenticatable
     ];
 
     public function setPasswordAttribute($password)
-    {   if ($password)
+    {
+        if ($password) {
             $this->attributes['password'] = bcrypt($password);
+        }
     }
 
     public function isSuperAdmin()
     {
         $user = Auth::user();
+        // trait HasRoles::getRoleNames
         foreach ($user->getRoleNames() as $value) {
             if ($value === 'super-admin') {
                 return true;
@@ -66,15 +69,8 @@ class User extends Authenticatable
         return $this->hasMany(Assignment::class);
     }
 
-    public function inscriptions()
+    public function inscription()
     {
-        return $this->hasMany(Inscription::class);
+        return $this->hasOne(Inscription::class);
     }
-
-    // public function classrooms()
-    // {
-    //     return $this->belongsToMany(Classroom::class);
-    // }
-
-    
 }

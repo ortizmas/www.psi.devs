@@ -70,7 +70,7 @@
                         </div>
                     </div>
 
-                    @if ($user->inscriptions)
+                    @if ($user->inscription)
                         <div class="col-md-6">
                             <!-- ENDEREÇO LIST -->
                             <div class="card">
@@ -90,31 +90,31 @@
                                                 <img src="/img/default-150x150.png" alt="Product Image" class="img-size-50">
                                             </div>
                                             <div class="product-info">
-                                            <a href="javascript:void(0)" class="product-title">{{ $user->inscriptions[0]->name }}</a>
-                                                <a href="{{ route('profiles.inscription.edit', $user->inscriptions[0]->id) }}" title="Alterar Usuario"><span class="btn btn-sm btn-outline-primary float-right">Alterar dados <i class="fas fa-edit"></i></span></a>
+                                            <a href="javascript:void(0)" class="product-title">{{ $user->inscription->name }}</a>
+                                                <a href="{{ route('profiles.inscription.edit', $user->inscription->id) }}" title="Alterar Usuario"><span class="btn btn-sm btn-outline-primary float-right">Alterar dados <i class="fas fa-edit"></i></span></a>
                                                 <span class="product-description">
-                                                    <b>CPF: </b>{{ $user->inscriptions[0]->cpf}} - 
-                                                    <b>Telefone: </b>{{ $user->inscriptions[0]->cpf}}
+                                                    <b>CPF: </b>{{ $user->inscription->cpf}} - 
+                                                    <b>Telefone: </b>{{ $user->inscription->cpf}}
                                                 </span>
                                             </div>
                                         </li>
                                         <li class="item">
-                                            <strong>CEP: </strong>{{ $user->inscriptions[0]->cep}}
+                                            <strong>CEP: </strong>{{ $user->inscription->cep}}
                                         </li>
                                         <li class="item">
-                                            <strong>Endereço: </strong>{{ $user->inscriptions[0]->street}}
+                                            <strong>Endereço: </strong>{{ $user->inscription->street}}
                                         </li>
                                         <li class="item">
-                                            <strong>Barrio: </strong>{{ $user->inscriptions[0]->neighborhood}}
+                                            <strong>Barrio: </strong>{{ $user->inscription->neighborhood}}
                                         </li>
                                         <li class="item">
-                                            <strong>Estado: </strong>{{ $user->inscriptions[0]->state}}  <strong>Cidade: </strong>{{ $user->inscriptions[0]->city}}
+                                            <strong>Estado: </strong>{{ $user->inscription->state}}  <strong>Cidade: </strong>{{ $user->inscription->city}}
                                         </li>
                                         <li class="item">
-                                            <strong>Empressa: </strong>{{ $user->inscriptions[0]->company}}
+                                            <strong>Empressa: </strong>{{ $user->inscription->company}}
                                         </li>
                                         <li class="item">
-                                            <strong>Telefone da empressa: </strong>{{ $user->inscriptions[0]->company_phone}}
+                                            <strong>Telefone da empressa: </strong>{{ $user->inscription->company_phone}}
                                         </li>
                                     </ul>
                                 </div>

@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers\Frontend;
 
 use App\Course;
@@ -9,19 +8,10 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PreRegisterController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
     public function create($url = null)
     {
         $course = Course::ofUrl($url)->status()->firstOrFail(['id']);
@@ -29,9 +19,13 @@ class PreRegisterController extends Controller
         //$encrypted = Crypt::encryptString('Hello world.');
         //$decrypted = Crypt::decryptString($encrypted);
         $slug = encrypt($course->id);
+
         //Session para usar depois de fazer login
         session(['item_buy' => $slug]);
         //$slug = decrypt($slug);
+        if (Auth::check()) {
+            return redirect()->route('profiles.create');
+        }
         return view('frontend.prematriculas.create', compact('slug'));
     }
 
@@ -52,7 +46,6 @@ class PreRegisterController extends Controller
 
     public function store(Request $request)
     {
-        $request->session()->flash('error', 'O email já existe, faça login para continuar, ou cadastre um novo e-mail!!');
         $this->validator($request->all())->validate();
 
         $user = User::create([
@@ -70,25 +63,5 @@ class PreRegisterController extends Controller
 
         //return redirect()->to('/home');
         return redirect()->route('profiles.create');
-    }
-
-    public function show($id)
-    {
-        //
-    }
-
-    public function edit($id)
-    {
-        //
-    }
-
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    public function destroy($id)
-    {
-        //
     }
 }

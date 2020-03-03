@@ -21,6 +21,7 @@ class CreateCourseInscriptionTable extends Migration
             $table->integer('amount')->nullable();
             $table->double('price', 10, 2)->nullable();
             $table->double('subtotal', 10, 2)->nullable();
+            $table->char('status', 1)->default('1');
 
 
             $table->foreign('course_id')->references('id')->on('courses')->onDelete('cascade');

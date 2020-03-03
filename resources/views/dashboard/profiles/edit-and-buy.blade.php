@@ -10,7 +10,7 @@
           <div class="col-sm-6">
             <h1 class="m-0 text-dark">Antes de realizar o pagamento verifique as informações </h1>
           </div>
-          @role('student')
+          @role('super-admin')
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="{{ route('inscriptions.index') }}" class="btn btn-dark btn-sm rounded-0">Lista de Inscritos</a></li>
@@ -26,7 +26,7 @@
     <section class="content">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-8 col-xl-8">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                     @if (session('success'))
                         <div class="alert alert-success alert-dismissible fade show" role="alert">
                             <strong>{{ session('success') }}</strong>
@@ -198,7 +198,7 @@
 
                                     <div class="row justify-content-end">
                                         <div class="col-3">
-                                            <button type="submit" class="btn btn-dark btn-block btn-flat">Alterar dados <i class="ml-3 fas fa-arrow-alt-circle-right"></i></button>
+                                            <button type="submit" class="btn btn-danger btn-block btn-flat">Alterar dados e continuar para o pagamento <i class="ml-3 fas fa-arrow-alt-circle-right"></i></button>
                                         </div>
                                     </div>
                             </div>
@@ -206,7 +206,7 @@
                     </form>
                 </div>
 
-                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 col-xl-4">
+                {{-- <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 col-xl-4">
                     <div class="card">
                         <div class="card-header">
                             <img class="float-right img-fluid" src="https://ead.ivca.org.br/images/logo_pagseguro200x41.png" alt="PagSeguro" width="120">
@@ -219,15 +219,13 @@
                             <div class="p-3">
                                 <strong class="float-left">Total: </strong>
                                 <p class="card-text float-right"> {{ $inscription->courses[0]->price }} R$</p>
-                                
-                                {{-- <p class="card-text"><strong>Total: </strong> {{ $inscription->courses[0]->sub }}</p> --}}
                             </div>
                         </div>
                         <div class="card-footer">
                             <a target="_blank" href="{{ $inscription->courses[0]->link_buy }}" class="btn btn-danger btn-lg w-100 rounded-0"> Realizar pago</a>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
     </section>

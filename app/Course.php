@@ -1,20 +1,28 @@
 <?php
-
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class Course extends Model
 {
-    protected $fillable = ['name', 'url', 'description', 'image', 'link_buy', 'price', 'price_old', 'total_hours', 'free', 'published', 'price_plots', 'total_plots', 'status', 'user_id', 'category_id'];
+    protected $fillable = [
+        'name', 'url', 'description', 'image', 'link_buy', 'price', 'price_old',
+        'total_hours', 'free', 'published', 'price_plots', 'total_plots', 'status', 'user_id', 'category_id'
+    ];
 
     public function getResults(array $data, int $total): object
     {
 
-        if (!isset($data['filter']) && !isset($data['name']) && !isset($data['description']) && !isset($data['category_id']) && !isset($data['id']))
+        if (!isset($data['filter'])
+            && !isset($data['name'])
+            && !isset($data['description'])
+            && !isset($data['category_id'])
+            && !isset($data['id'])) {
             return $this->with('category')->paginate($total);
-
+        }
+        
         return $this->with('category')->where(function ($query) use ($data) {
 
             if (isset($data['filter'])) {
@@ -101,10 +109,21 @@ class Course extends Model
         } else {
             return array();
         }
-
     }
 
-    public function getMyCourses(Type $var = null)
+    public function checkPayment(array $data)
+    {
+        $url = $data['url'];
+        $id = $data['course_id'];
+
+        $course = $this->whereHas('inscriptions', function ($q) {
+            $q->where('user_id', Auth::id());
+        })->where('url', $url)->where('id', $id)->first();
+
+        $course->inscriptions->where('user_id', Auth::id())->first();
+    }
+
+    public function getMyCourses()
     {
         return  DB::table('courses')
                     ->join('modules', 'modules.course_id', 'courses.id')
@@ -126,7 +145,8 @@ class Course extends Model
         return $this->hasMany(Module::class);
     }
 
-    public function classrooms() {
+    public function classrooms()
+    {
         return $this->hasManyThrough(Classroom::class, Module::class);
     }
 

@@ -36,6 +36,8 @@ class StudentController extends Controller
         $data['url'] = $url;
         $data['course_id'] = $id;
 
+        $course = $this->course->checkPayment($data);
+
         $courses = $this->course->getCoursesByUser($data);
 
         return view('student.classrooms', compact('courses'));

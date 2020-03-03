@@ -18,9 +18,8 @@ class ProgramsController extends Controller
 {
     public function index(Request $request, $slug = null)
     {
-        //dd(explode('/', $request->url())[3]);
-        //dd($request->segments()[0]);
         $url = $request->segments()[0];
+        
         switch ($url) {
             case 'consultorias':
                 $id = 6;
