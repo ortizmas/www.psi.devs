@@ -144,7 +144,7 @@
                         </div>
 
                         <div class="row">
-                            <div class="col-md-8">
+                            <div class="col-md-4">
                                 <div class="form-group mb-3">
                                     <input id="company" type="text" class="basic-usage form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="company" value="{{ old('company', $inscription->company ) }}" placeholder="EMPRESA" required autofocus> 
                                     @if ($errors->has('company'))
@@ -165,26 +165,7 @@
                                     @endif
                                 </div>
                             </div>
-                        </div>
-                        
-                        <div class="row">
-                            <div class="col-md-8">
-                                <div class="input-group mb-3">
-                                    {{-- <input id="program" type="text" class="form-control{{ $errors->has('program') ? ' is-invalid' : '' }}" name="program" value="{{ old('program', $inscription->program ) }}" placeholder="PROGRAMA REFERENTE" required autofocus> --}}
-                                    <select id="course_id" name="course_id" class="form-control{{ $errors->has('course_id') ? ' is-invalid' : '' }}">
-                                        <option value=""> -- SELECIONAR UM CURSO --</option>}
-                                        option
-                                        @foreach ($courses as $course)
-                                            <option value="{{ $course->id }}" {{ old('course_id', $inscription->courses[0]->id )== $course->id  ? 'selected' : ''  }}>{{ $course->name }}</option>
-                                        @endforeach
-                                    </select>
-                                    @if ($errors->has('program'))
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('program') }}</strong>
-                                        </span> 
-                                    @endif
-                                </div>
-                            </div>
+
                             <div class="col-md-4">
                                 <div class="input-group mb-3">
                                     <select id="status" name="status" class="form-control{{ $errors->has('status') ? ' is-invalid' : '' }}">
@@ -200,10 +181,30 @@
                                 </div>
                             </div>
                         </div>
+                        
+                        {{-- <div class="row">
+                            <div class="col-md-8">
+                                <div class="input-group mb-3">
+                                    <select id="course_id" name="course_id" class="form-control{{ $errors->has('course_id') ? ' is-invalid' : '' }}">
+                                        <option value=""> -- SELECIONAR UM CURSO --</option>}
+                                        option
+                                        @foreach ($courses as $course)
+                                            <option value="{{ $course->id }}" {{ old('course_id', $inscription->courses[0]->id )== $course->id  ? 'selected' : ''  }}>{{ $course->name }}</option>
+                                        @endforeach
+                                    </select>
+                                    @if ($errors->has('program'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('program') }}</strong>
+                                        </span> 
+                                    @endif
+                                </div>
+                            </div>
+                            
+                        </div> --}}
 
-                            <div class="row">
-                                <div class="col-12">
-                                    <button type="submit" class="btn btn-primary btn-block btn-flat">Alterar</button>
+                            <div class="row justify-content-end">
+                                <div class="col-3">
+                                    <button type="submit" class="btn btn-dark btn-block btn-flat">Alterar</button>
                                 </div>
                             </div>
                     </div>

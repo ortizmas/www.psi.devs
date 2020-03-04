@@ -120,7 +120,33 @@ class Course extends Model
             $q->where('user_id', Auth::id());
         })->where('url', $url)->where('id', $id)->first();
 
-        $course->inscriptions->where('user_id', Auth::id())->first();
+        $inscription = $course->inscriptions->where('user_id', Auth::id())->first();
+
+        $status = $inscription->pivot->where('course_id', $course->id)
+                                    ->where('inscription_id', $inscription->id)
+                                    ->where('status', 5)->first(['id', 'status', 'code']);
+        return $status;
+    }
+
+    public function checkCourse(array $data)
+    {
+        $url = $data['url'];
+        $id = $data['course_id'];
+
+        $course = $this->whereHas('inscriptions', function ($q) {
+            $q->where('user_id', Auth::id());
+        })->where('url', $url)->where('id', $id)->first();
+
+        if ($course) {
+            $inscription = $course->inscriptions->where('user_id', Auth::id())->first();
+
+            $status = $inscription->pivot->where('course_id', $course->id)
+                ->where('inscription_id', $inscription->id)
+                ->first(['id', 'status', 'code']);
+            return $status;
+        } else {
+            return null;
+        }
     }
 
     public function getMyCourses()
@@ -158,7 +184,7 @@ class Course extends Model
     public function inscriptions()
     {
         return $this->belongsToMany(Inscription::class)
-            ->withPivot('course', 'amount', 'price', 'subtotal')
+            ->withPivot('course', 'amount', 'price', 'subtotal', 'status', 'code')
             ->withTimestamps();
     }
 }

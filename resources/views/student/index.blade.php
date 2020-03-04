@@ -16,6 +16,16 @@
 
         <div class="container bg-content">
             <div class="row pt-5 pb-5">
+                @if (session()->has('success'))
+                    <div class="col-12">
+                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                            <strong>Hoops</strong> {{ session()->get('success') }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    </div>
+                @endif
                 @foreach ($courses as $course)
                     <div class="col-md-3">
                         <div class="card">

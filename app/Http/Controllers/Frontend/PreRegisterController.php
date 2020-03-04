@@ -3,10 +3,9 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Course;
 use App\User;
-//use Illuminate\Support\Facades\Crypt;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\Controller;
+use App\Inscription;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -14,7 +13,7 @@ class PreRegisterController extends Controller
 {
     public function create($url = null)
     {
-        $course = Course::ofUrl($url)->status()->firstOrFail(['id']);
+        $course = Course::ofUrl($url)->status()->firstOrFail();
 
         //$encrypted = Crypt::encryptString('Hello world.');
         //$decrypted = Crypt::decryptString($encrypted);
@@ -23,10 +22,41 @@ class PreRegisterController extends Controller
         //Session para usar depois de fazer login
         session(['item_buy' => $slug]);
         //$slug = decrypt($slug);
+
         if (Auth::check()) {
-            return redirect()->route('profiles.create');
+            $inscription = Inscription::where('user_id', Auth::id())->firstOrFail('id');
+            $data['user_id'] = Auth::id();
+            $data['url'] = $url;
+            $data['course_id'] = $course->id;
+
+            if ($course->checkCourse($data)) {
+                session()->flash('success', 'O curso já existe na sua lista');
+                return redirect()->route('my.courses');
+            } else {
+                if ($inscription) {
+                    return $this->createCourseInscription($course, $inscription);
+                }
+            }
         }
+
         return view('frontend.prematriculas.create', compact('slug'));
+    }
+
+    public function createCourseInscription($course, $inscription)
+    {
+        $amount = 1;
+        $price = onlyNumbers($course->price)  / 100;
+        $subtotal = $amount * $price;
+        // 1:Aprovada, 2:Cancelada, 3:Em análise, 4:Aguardando pagto., 5:Paga
+        $inscription->courses()->attach($course->id, [
+            'course' => $course->url,
+            'amount' => $amount,
+            'price' => $price,
+            'subtotal' => $subtotal,
+            'status' => 4
+        ]);
+
+        return redirect()->route('profiles.course.details', $course->url);
     }
 
     protected function validator(array $data)
@@ -61,7 +91,6 @@ class PreRegisterController extends Controller
         //Session do programa de interese do cliente
         session(['item_buy' => $request->program]);
 
-        //return redirect()->to('/home');
         return redirect()->route('profiles.create');
     }
 }

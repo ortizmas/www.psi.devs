@@ -44,7 +44,7 @@ class ProfileController extends Controller
             $idCourse = $request->program;
         }
 
-        /*$inscription = Inscription::create([
+        $inscription = Inscription::create([
             'user_id' => (Auth::user()->id) ? Auth::user()->id : '',
             'name' => $request['name'],
             'cpf' => $request['cpf'],
@@ -65,17 +65,16 @@ class ProfileController extends Controller
             $amount = 1;
             $price = onlyNumbers($course->price)  / 100;
             $subtotal = $amount * $price;
-            $status = 4; // 1:Aprovada, 2:Cancelada, 3:Em análise, 4:Aguardando pagto., 5:Paga
+            // 1:Aprovada, 2:Cancelada, 3:Em análise, 4:Aguardando pagto., 5:Paga
             $inscription->courses()->attach($idCourse, [
-                'course' => $course->name,
+                'course' => $course->url,
                 'amount' => $amount,
                 'price' => $price,
                 'subtotal' => $subtotal,
-                'status' => $status
+                'status' => 4
             ]);
-        }*/
-        $course = Course::findOrFail($idCourse);
-        //return redirect()->route('profiles.index')->with('success', 'Seus dados foram cadastrados!!');
+        }
+
         return redirect()->route('profiles.course.details', $course->url);
     }
 

@@ -35,7 +35,7 @@ class Inscription extends Model
     public function courses()
     {
         return $this->belongsToMany(Course::class)
-            ->withPivot('course', 'amount', 'price', 'subtotal')
+            ->withPivot('course', 'amount', 'price', 'subtotal', 'status', 'code')
             ->withTimestamps();
     }
 
