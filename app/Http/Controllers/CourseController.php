@@ -121,7 +121,7 @@ class CourseController extends Controller
 
         //$data['url'] = str_slug($request->name,'-');
         return redirect()->route('courses.index')->with('success', 'Curso alterado com sucesso!!');
-        //return response()->json($course);
+
     }
 
     public function destroy($id)

@@ -68,14 +68,32 @@ if (!function_exists('getStatusInscription')) {
     {
         switch ($status) {
             case 1:
-                return 'Pendente';
-                break;
-            case 2:
-                return 'Pagou';
+                return 'Ativo';
                 break;
             case 0:
                 return 'Inativo';
                 break;
         }
     }
+}
+
+//1:Aprovada, 2:Cancelada, 3:Em análise, 4:Aguardando pagto.
+if (!function_exists('getStatusPaymentCourse')) {
+  function getStatusPaymentCourse($status)
+  {
+    switch ($status) {
+      case 1:
+        return 'Aprovado';
+        break;
+      case 2:
+        return 'Cancelado';
+        break;
+      case 3:
+        return 'Em análise';
+        break;
+      case 4:
+        return 'Aguardando pagamento';
+        break;
+    }
+  }
 }

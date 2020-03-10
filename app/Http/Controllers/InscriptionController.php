@@ -52,7 +52,7 @@ class InscriptionController extends Controller
 
     public function show(Inscription $inscription)
     {
-        //
+        return view('dashboard.inscriptions.show', compact('inscription'));
     }
 
     public function edit(Inscription $inscription)
@@ -84,6 +84,18 @@ class InscriptionController extends Controller
         ]);
 
         return redirect()->route('inscriptions.index')->with('success', 'Inscrição alterado com sucesso!!');
+    }
+
+    public function inscriptionCourseUpdate(Request $request)
+    {
+        $data = $request->except(['_token', '_method']);
+        $inscription = Inscription::find($data['inscription_id']);
+    
+        $inscription->courses()->updateExistingPivot($data['course_id'], [
+            'status' => $data['status']
+        ]);
+
+        return back()->with('success', "Status alterado com sucesso");
     }
 
     public function destroy(Inscription $inscription)

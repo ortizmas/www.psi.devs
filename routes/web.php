@@ -53,5 +53,6 @@ Route::middleware(['auth'])->group(function () {
 });
 
 Route::get('/precing', 'TestController@precing')->name('precing');
+Route::get('/clean-code', 'TestController@cleanCode');
 
 Route::get('/{slug}', 'ContentController@getPage')->name('content.all');
