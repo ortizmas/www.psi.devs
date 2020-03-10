@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Auth;
 
 class Inscription extends Model
 {
+    protected $table = 'inscriptions';
+
     protected $fillable = [
         'user_id',
         'name',
@@ -46,5 +48,16 @@ class Inscription extends Model
         return Course::whereHas('inscriptions', function ($q) {
             $q->where('user_id', Auth::id());
         })->orderBy('name', 'asc')->get();
+    }
+
+    public function updatePivoteTable(array $data)
+    {
+        $inscription = $this->find($data['inscription_id']);
+
+        if ($inscription) {
+            return $inscription->courses()->updateExistingPivot($data['course_id'], [
+                'status' => $data['status']
+            ]);
+        }
     }
 }

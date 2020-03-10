@@ -85,13 +85,16 @@
                                                     @endforeach
                                                 </div>
                                             </div>
-                                            {{-- <div class="card-footer text-center">
+                                            <div class="card-footer text-center">
                                                 <a class="btn btn-primary btn-sm w-100" href="{{ route('assignments.classrooms', $module->id) }}" title="Classrooms">Ver aulas do modulo</a>
-                                            </div> --}}
+                                            </div>
                                         </div>
                                 @endforeach
 
-                                <button type="submit" class="btn btn-success btn-lg float-right">Assignar aulas</button>
+                                <button type="submit" class="btn btn-success btn-md float-right">Assignar aulas</button>
+                                {{-- <a class="btn btn-danger btn-md text-white float-left" href="{{ url()->previous() }}">Voltar atrás</a> --}}
+                                {{-- <a href="javascript:history.back()" title="Atrás" class="btn btn-danger btn-sm">Voltar atrás</a> --}}
+                                <button type="button" class="btn btn-danger btn-md"  onClick="history.go(-1)">Voltar atrás</button>
 
                             @endif
 

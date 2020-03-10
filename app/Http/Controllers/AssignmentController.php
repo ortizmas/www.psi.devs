@@ -60,8 +60,6 @@ class AssignmentController extends Controller
         $modules = Module::where('course_id', $course_id)->get()->load('course', 'classrooms');
 
         $classromId = Assignment::where('user_id', $userId)->get()->pluck('classroom_id')->toArray();
-
-        //$classromId = array_pluck($classes, 'classroom_id');
         
         $count = 0;
         foreach ($modules as $key => $value) {

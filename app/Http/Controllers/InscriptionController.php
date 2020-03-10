@@ -86,15 +86,10 @@ class InscriptionController extends Controller
         return redirect()->route('inscriptions.index')->with('success', 'Inscrição alterado com sucesso!!');
     }
 
-    public function inscriptionCourseUpdate(Request $request)
+    public function inscriptionCourseUpdate(Request $request, Inscription $inscription)
     {
         $data = $request->except(['_token', '_method']);
-        $inscription = Inscription::find($data['inscription_id']);
-    
-        $inscription->courses()->updateExistingPivot($data['course_id'], [
-            'status' => $data['status']
-        ]);
-
+        $inscription->updatePivoteTable($data);
         return back()->with('success', "Status alterado com sucesso");
     }
 

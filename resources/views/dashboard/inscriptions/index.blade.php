@@ -52,6 +52,7 @@
                            <td>{{ $value->name }}</td>
                            <td>{{ $value->cpf }}</td>
                            <td>{{ $value->email_inscription }}</td>
+                           <td><a href="{{ route('assign.courses', $value->user_id) }}" title="Alterar" class="badge badge-pill badge-primary pt-1 pb-1 pl-2 pr-2"><i class="fas fa-edit"></i> Assignar aulas</a></td>
                            <td>
                                 <span class="badge badge-pill badge-{{ ($value->status == 1) ?  'success text-white w-50' : 'danger w-50' }}">
                                     {{ getStatusInscription($value->status) }}

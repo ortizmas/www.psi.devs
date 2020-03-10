@@ -96,7 +96,9 @@
                                                 @php
                                                     $total = $course->pivot->amount * $course->pivot->price
                                                 @endphp
-                                                <strong>Total: </strong><b class="badge badge-success"> R$ {{ $total }}</b>
+                                                <strong>Valor: </strong><m> R$ {{ $total }}</m>
+                                                <hr>
+                                                <a href="{{ route('assignments.modules.user', [$course->id, $inscription->user_id]) }}" title="Alterar" class="badge badge-pill badge-dark pt-1 pb-1 pl-2 pr-2 pb-2"><i class="fas fa-edit"></i> ASSIGNAR AULAS</a>
 
                                                 {{-- <span class="badge badge-pill badge-{{ ($course->pivot->status == 1) ?  'success text-white w-25' : 'warning text-white w-25' }} float-right">{{ getStatusPaymentCourse($course->pivot->status) }}</span> --}}
                                                 <form action="{{ route('inscription.course.update') }}" method="post" class="form-inline float-right">
