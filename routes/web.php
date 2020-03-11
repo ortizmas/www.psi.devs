@@ -54,5 +54,9 @@ Route::middleware(['auth'])->group(function () {
 
 Route::get('/precing', 'TestController@precing')->name('precing');
 Route::get('/clean-code', 'TestController@cleanCode');
+Route::get('video', function () {
+	return view('tests.video');
+});
+Route::get('refactorization', 'TestController@refactorization')->name('test.refactorization');
 
 Route::get('/{slug}', 'ContentController@getPage')->name('content.all');

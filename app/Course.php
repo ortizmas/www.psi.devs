@@ -187,4 +187,26 @@ class Course extends Model
             ->withPivot('course', 'amount', 'price', 'subtotal', 'status', 'code')
             ->withTimestamps();
     }
+
+    public function studentsAverageScore() {
+        //https://dev.to/edmilsonrobson/3-simple-tips-to-improve-your-laravel-code-today-4fdp
+        $participants = Module::get();
+
+        $sum = 0;
+        $totalStudents = 0;
+        foreach($participants as $participant) {
+            if ($participant->status== 1) {
+                $totalStudents++;
+                $sum += $participant->course_id;
+            }
+        }
+
+        return $sum / $totalStudents;
+        
+        // return $participants->filter(function ($participant) {
+        //     return $participant->status == 1);
+        // })->average(function ($participant) {
+        //     return $participant->student->lastRating()->averageScore();
+        // });
+    }
 }

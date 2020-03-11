@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Trainee extends Model
 {
+    protected $trainees;
+
     protected $fillable = [
     	'name',
         'email',
@@ -44,4 +46,5 @@ class Trainee extends Model
     {
     	return $this->belongsTo('App\Period');
     }
+
 }

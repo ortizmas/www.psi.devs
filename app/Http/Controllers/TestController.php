@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use App\User;
+use App\Course;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -83,5 +84,13 @@ class TestController extends Controller
             }
         }
         return $userAdmin;*/
+    }
+
+    public function refactorization(Course $course)
+    {
+        $course = $course->studentsAverageScore();
+
+        return $course;
+        return view('tests.refactorization');
     }
 }
