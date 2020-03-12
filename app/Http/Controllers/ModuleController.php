@@ -10,7 +10,7 @@ use App\Http\Requests\StoreUpdateModuleFormRequest;
 
 class ModuleController extends Controller
 {
-    private $module, $totalPage = 8;
+    private $module, $totalPage = 15;
 
     public function __construct(Module $module)
     {
@@ -24,7 +24,6 @@ class ModuleController extends Controller
         $request->session()->put('idCourse', $idCourse);
 
         return view('dashboard.modules.index', compact('modules'));
-        //return response()->json($module);
     }
 
     public function create(Request $request)

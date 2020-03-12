@@ -10,7 +10,7 @@ use App\Http\Requests\StoreUpdateClassroomFormRequest;
 
 class ClassroomController extends Controller
 {
-    private $classroom, $totalPage = 8;
+    private $classroom, $totalPage = 15;
     
 
     public function __construct(Classroom $classroom)

@@ -59,6 +59,7 @@ Route::group(['middleware' => ['role:super-admin|admin|teachers']], function() {
 Route::resource('profiles', 'ProfileController');
 Route::get('profiles/edit/{iscriptionId}', 'ProfileController@editPerfil')->name('profiles.inscription.edit');
 Route::put('profiles/atualizar/{iscriptionId}', 'ProfileController@updatePerfil')->name('profiles.inscription.update');
+
 Route::get('/course/{url}/details', 'ProfileController@courseDetails')->name('profiles.course.details');
 
 

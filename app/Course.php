@@ -4,6 +4,8 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+//use Illuminate\Database\Eloquent\Collection;
+//use Illuminate\Support\Collection as Collection;
 
 class Course extends Model
 {
@@ -11,6 +13,65 @@ class Course extends Model
         'name', 'url', 'description', 'image', 'link_buy', 'price', 'price_old',
         'total_hours', 'free', 'published', 'price_plots', 'total_plots', 'status', 'user_id', 'category_id'
     ];
+
+    public function getPriceAttribute($value)
+    {
+        return number_format($value, 2, ',', '.');
+    }
+
+    public function setPriceAttribute($value)
+    {
+        $value = str_replace('.', '', $value);
+        $this->attributes['price'] = str_replace(',', '.', $value);
+    }
+
+    public function getPriceOldAttribute($value)
+    {
+        return number_format($value, 2, ',', '.');
+    }
+
+    public function setPriceOldAttribute($value)
+    {
+        $value = str_replace('.', '', $value);
+        $this->attributes['price_old'] = str_replace(',', '.', $value);
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
+
+    public function modules()
+    {
+        return $this->hasMany(Module::class);
+    }
+
+    public function classrooms()
+    {
+        return $this->hasManyThrough(Classroom::class, Module::class);
+    }
+
+    public function sales()
+    {
+        return $this->hasMany(Sale::class);
+    }
+
+    public function inscriptions()
+    {
+        return $this->belongsToMany(Inscription::class)
+            ->withPivot('course', 'amount', 'price', 'subtotal', 'status', 'code')
+            ->withTimestamps();
+    }
+
+    public function scopeOfUrl($query, $url)
+    {
+        return $query->where('url', $url);
+    }
+
+    public function scopeStatus($query)
+    {
+        return $query->where('status', 1);
+    }
 
     public function getResults(array $data, int $total): object
     {
@@ -48,38 +109,6 @@ class Course extends Model
                 $query->where('description', 'LIKE', '%{$description}%');
             }
         })->paginate($total);
-    }
-
-    public function getPriceAttribute($value)
-    {
-        return number_format($value, 2, ',', '.');
-    }
-
-    public function setPriceAttribute($value)
-    {
-        $value = str_replace('.', '', $value);
-        $this->attributes['price'] = str_replace(',', '.', $value);
-    }
-
-    public function getPriceOldAttribute($value)
-    {
-        return number_format($value, 2, ',', '.');
-    }
-
-    public function setPriceOldAttribute($value)
-    {
-        $value = str_replace('.', '', $value);
-        $this->attributes['price_old'] = str_replace(',', '.', $value);
-    }
-
-    public function scopeOfUrl($query, $url)
-    {
-        return $query->where('url', $url);
-    }
-
-    public function scopeStatus($query)
-    {
-        return $query->where('status', 1);
     }
 
     public function getMyCourse(array $data)
@@ -161,38 +190,11 @@ class Course extends Model
                     ->get();
     }
 
-    public function category()
-    {
-        return $this->belongsTo(Category::class);
-    }
-
-    public function modules()
-    {
-        return $this->hasMany(Module::class);
-    }
-
-    public function classrooms()
-    {
-        return $this->hasManyThrough(Classroom::class, Module::class);
-    }
-
-    public function sales()
-    {
-        return $this->hasMany(Sale::class);
-    }
-
-    public function inscriptions()
-    {
-        return $this->belongsToMany(Inscription::class)
-            ->withPivot('course', 'amount', 'price', 'subtotal', 'status', 'code')
-            ->withTimestamps();
-    }
-
     public function studentsAverageScore() {
         //https://dev.to/edmilsonrobson/3-simple-tips-to-improve-your-laravel-code-today-4fdp
         $participants = Module::get();
 
-        $sum = 0;
+        /*$sum = 0;
         $totalStudents = 0;
         foreach($participants as $participant) {
             if ($participant->status== 1) {
@@ -201,12 +203,194 @@ class Course extends Model
             }
         }
 
-        return $sum / $totalStudents;
+        return $sum / $totalStudents;*/
         
-        // return $participants->filter(function ($participant) {
-        //     return $participant->status == 1);
-        // })->average(function ($participant) {
-        //     return $participant->student->lastRating()->averageScore();
-        // });
+        /*return $participants->filter(function ($participant) {
+            return $participant->status == 1;
+        })->average(function ($participant) {
+            return $participant->course_id;
+        });*/
+
+        /*$bronze = collect(['Seya', 'Shiryu', 'Ikki', 'Hyoga', 'Shun', 'Aldebaran']);
+
+        return $bronzeDeFato = $bronze->reject(function ($cavaleiro) {
+            return $cavaleiro === 'Aldebaran';
+        })->map(function($cavaleiro) {
+            return strtoupper($cavaleiro);
+        });*/
+
+        //each
+        /*$bronze = collect([
+           [
+               'name' => 'Seya',
+               'constellation' => 'Pegasu',
+           ],
+           [
+               'name' => 'Shiryu',
+               'constellation' => 'Dragão',
+           ],
+           [
+               'name' => 'Ikki',
+               'constellation' => 'Fênix',
+           ],
+           [
+               'name' => 'Hyoga',
+               'constellation' => 'Cisne',
+           ],
+           [
+               'name' => 'Shun',
+               'constellation' => 'Ândromeda',
+           ],
+        ]);
+
+        $bronze->each(function ($cavaleiro){
+            echo 'Eu sou o ' 
+                . $cavaleiro['name']
+                . ' de ' 
+                . $cavaleiro['constellation'] 
+                . '!!!!' 
+                . PHP_EOL;
+        });*/
+
+        // Filter
+        /*$news = collect([
+            [ 
+                'name' => 'Fake 1', 
+                'type' => 'fake_new' 
+            ],
+            [ 
+                'name' => 'Fake 2', 
+                'type' => 'fake_new' 
+            ],
+            [ 
+                'name' => 'Fake 3', 
+                'type' => 'fake_new' 
+            ],
+            [ 
+                'name' => 'Fake 4', 
+                'type' => 'fake_new' 
+            ],
+            [ 
+                'name' => 'True new', 
+                'type' => 'true_new' 
+            ],
+        ]);
+        $news->filter(function ($new) {
+            return $new['type'] !== 'fake_new';
+        })->each(function ($new) {
+            echo 'Temos uma notícia verdadeira:'
+                . PHP_EOL
+                . '    '
+                . $new['name']
+                . PHP_EOL;
+        });*/
+
+        // First
+        /*$collection = collect(['Último', 'Segundo', 'Primeiro']);
+            echo 'O '
+            . $collection->first() . ' é o primeiro!!!'
+            . PHP_EOL; */
+
+        // Has
+        
+        /*$chaves = collect([
+            'chave0' => 'valor bacana',
+            'chave1' => 'valor mais bacana isso',
+            'para o sucesso' => 'é isso que queremos buscar!',
+        ]);
+        if ($chaves->has('para o sucesso')) {
+            echo 'A CHAVE PARA O SUCESSO FOI ENCONTRADA! ' . $chaves['para o sucesso'] . PHP_EOL;
+        }*/
+
+        // keyBy
+        /*$byFoot = collect([ 
+            'pé direito' => [
+                'pé' => 'pé direito', 
+                'mão' => 'mão direita',
+            ],
+            
+            'pé esquerdo' => [
+                'pé' => 'pé esquerdo', 
+                'mão' => 'mão esquerda',
+            ],
+        ]);
+
+        return $handByFoot = $byFoot->keyBy('mão'); */
+
+        // map
+        $elements = collect([
+            'Cobre', 
+            'Chumbo', 
+            'Âmbar', 
+            'ELEMENTO X',
+        ]);
+        $ouro = $elements->map(function ($element) {
+            return [ 
+                'to' => 'ouro',
+                'from' => $element,
+            ];
+        })->each(function ($newElement) {
+            echo 'Criamos ' 
+                . $newElement['to'] 
+                . ' a partir do ' 
+                . $newElement['from'] 
+                . PHP_EOL;
+        })->dump();
+
+        // pluck
+        $bronze = collect([
+            [ 
+                'name' => 'Fake 1', 
+                'type' => 'fake_new' 
+            ],
+            [ 
+                'name' => 'Fake 2', 
+                'type' => 'fake_new' 
+            ],
+            [ 
+                'name' => 'Fake 3', 
+                'type' => 'fake_new' 
+            ],
+            [ 
+                'name' => 'Fake 4', 
+                'type' => 'fake_new' 
+            ],
+            [ 
+                'name' => 'True new', 
+                'type' => 'true_new' 
+            ],
+        ]);
+
+        //$bronze->pluck('name')->dump();
+
+        $nameByConstellation = $bronze->pluck('name', 'constellation')->dump();
+
+        // reduce
+        $numbers = collect([690, 132, 155, 1024, 2028]);
+
+        $total = $numbers->reduce(function ($carry, $number) {
+            return $carry + $number;
+        });
+        echo 'total: ' . $total . PHP_EOL;
+
+        // Somar o quadrado
+        $total = $numbers->map(function ($item) {
+           return $item * $item;
+        })->reduce(function ($carry, $number) {
+           return $carry + $number;
+        });
+        echo 'total: ' . $total . PHP_EOL;
+
+        // reject
+        $modules = Module::all();
+
+        $names = $modules->reject(function ($module) {
+            return $module->status === 1;
+        })
+        ->map(function ($module) {
+            return $module->name . '-' . $module->description;
+        })->dump();
+
+
     }
 }

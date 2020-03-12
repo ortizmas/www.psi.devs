@@ -111,6 +111,7 @@
                                                             <option value="2" {{ ($course->pivot->status == 2) ? 'selected' : '' }}>Cancelada</option>
                                                             <option value="3" {{ ($course->pivot->status == 3) ? 'selected' : '' }}>Em análise</option>
                                                             <option value="4" {{ ($course->pivot->status == 4) ? 'selected' : '' }}>Aguardando pagto.</option>
+                                                            <option value="5" {{ ($course->pivot->status == 5) ? 'selected' : '' }}>Completo</option>
                                                         </select>
                                                     </div>
                                                     <div class="form-group ml-2 pb-0 mb-0">

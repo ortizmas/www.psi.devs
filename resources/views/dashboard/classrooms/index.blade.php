@@ -54,32 +54,33 @@
       						<th>#</th>
       						<th>Nome</th>
       						<th>Descrição</th>
-                  <th>Video</th>
-                  <th>Estado</th>
+                          <th>Video</th>
+                          <th>Estado</th>
       						<th colspan="2" rowspan="">Ações</th>
       					</tr>
       				</thead>
       				<tbody>
       					
-                  @if ($classrooms)
-                    @foreach ($classrooms as $key => $value)
-                        <tr>
-                           <td>{{ $key + 1 }}</td>
-                           <td>{{ $value->name }}</td>
-                           <td>{{ $value->description }}</td>
-                           <td>{{ $value->video }}</td>
-                           <td>{{ ( $value->status == 1 ) ? 'Ativo' : 'Inativo' }}</td>
-                           <td><a href="{{ route('classrooms.edit', $value->id) }}" title="Alterar"><i class="fas fa-edit"></i></a></td>
-                           <td>
-                                <a href="{{ route('classrooms.destroy', $value->id) }}" class="btn-delete" title="{{ $value->name }}">
-                                  <i class="fas fa-trash" style="color:red;"></i>
-                              </a>        
-                          </td>
-                      </tr>
-                    @endforeach
-                  @endif
-              </tbody>
+                          @if ($classrooms)
+                            @foreach ($classrooms as $key => $value)
+                                <tr>
+                                   <td>{{ $key + 1 }}</td>
+                                   <td>{{ $value->name }}</td>
+                                   <td>{{ $value->description }}</td>
+                                   <td>{{ $value->video }}</td>
+                                   <td>{{ ( $value->status == 1 ) ? 'Ativo' : 'Inativo' }}</td>
+                                   <td><a href="{{ route('classrooms.edit', $value->id) }}" title="Alterar"><i class="fas fa-edit"></i></a></td>
+                                   <td>
+                                        <a href="{{ route('classrooms.destroy', $value->id) }}" class="btn-delete" title="{{ $value->name }}">
+                                          <i class="fas fa-trash" style="color:red;"></i>
+                                      </a>        
+                                  </td>
+                              </tr>
+                            @endforeach
+                          @endif
+                      </tbody>
       			</table>
+                {{ $classrooms->links() }}
       		</div>
       	</div>
     </section>

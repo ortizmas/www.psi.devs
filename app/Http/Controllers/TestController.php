@@ -5,8 +5,11 @@ namespace App\Http\Controllers;
 use App\Category;
 use App\User;
 use App\Course;
+use App\Module;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+// use Illuminate\Support\Collection;
+// use Illuminate\Support\Str;
 
 class TestController extends Controller
 {
@@ -90,7 +93,33 @@ class TestController extends Controller
     {
         $course = $course->studentsAverageScore();
 
-        return $course;
+        //Contains
+        
+        //$module = new Module();
+        //Module::whereIn('id', [1, 2, 3])->get()->dump();
+        $users = \App\User::all();
+        
+        //$users = $users->diff(\App\User::whereIn('id', [24, 2, 3])->get())->dump();
+        //dd($users->contains(25));
+        $users->except([24, 25, 26])->dump();
+
+        // crossJoin
+        $collection = collect([1, 2]);
+
+        $matrix = $collection->crossJoin(['a', 'b']);
+
+        return $matrix->all();
+
+        /*
+            [
+                [1, 'a'],
+                [1, 'b'],
+                [2, 'a'],
+                [2, 'b'],
+            ]
+        */
+
+
         return view('tests.refactorization');
     }
 }

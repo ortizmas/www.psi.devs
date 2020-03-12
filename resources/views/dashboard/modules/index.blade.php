@@ -55,23 +55,25 @@
       				</thead>
       				<tbody>
       					     @if ($modules)
-                        @foreach ($modules as $key => $value)
-                        <tr>
-                           <td>{{ $key + 1 }}</td>
-                           <td><a href="{{ route('classrooms.index.param', $value->id) }}" title="Criar aula">{{ $value->name }}</a></td>
-                           <td>{{ $value->description }}</td>
-                           <td>{{ ( $value->status == 1 ) ? 'Ativo' : 'Inativo' }}</td>
-                           <td><a href="{{ route('modules.edit', $value->id) }}" title="Alterar"><i class="fas fa-edit"></i></a></td>
-                           <td>
-                                <a href="{{ route('modules.destroy', $value->id) }}" class="btn-delete" title="{{ $value->name }}">
-                                  <i class="fas fa-trash" style="color:red;"></i>
-                              </a>        
-                          </td>
-                    </tr>
-                    @endforeach
-                  @endif
-              </tbody>
+                                @foreach ($modules as $key => $value)
+                                <tr>
+                                   <td>{{ $key + 1 }}</td>
+                                   <td><a href="{{ route('classrooms.index.param', $value->id) }}" title="Criar aula">{{ $value->name }}</a></td>
+                                   <td>{{ $value->description }}</td>
+                                   <td>{{ ( $value->status == 1 ) ? 'Ativo' : 'Inativo' }}</td>
+                                   <td><a href="{{ route('modules.edit', $value->id) }}" title="Alterar"><i class="fas fa-edit"></i></a></td>
+                                   <td>
+                                        <a href="{{ route('modules.destroy', $value->id) }}" class="btn-delete" title="{{ $value->name }}">
+                                          <i class="fas fa-trash" style="color:red;"></i>
+                                      </a>        
+                                  </td>
+                            </tr>
+                            @endforeach
+                          @endif
+                      </tbody>
       			</table>
+
+                {{ $modules->links() }}
       		</div>
       	</div>
     </section>
