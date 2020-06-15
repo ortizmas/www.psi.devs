@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Page;
-use Mail;
+use Illuminate\Support\Facades\Mail;
 use App\Mail\ContactMail;
 use App\Mail\FaleConoscoMail;
 
@@ -46,8 +46,28 @@ class MailController extends Controller
         $subject = "Fale conosco";
         $message = $request->message;
 
-        Mail::to('ortizmas14@gmail.com')->send( new FaleConoscoMail($nome, $email, $phone, $subject, $message) );
+        Mail::to('ortizmas14@gmail.com')->send(new FaleConoscoMail($nome, $email, $phone, $subject, $message));
 
         return redirect()->route('fale.conosco')->with('success', 'Message enviado com sucesso !!');
+    }
+
+    public function contact(Request $request)
+    {
+        $this->validate($request, [
+            "name" => "required",
+            "email" => "required",
+            "phone" => "required",
+            "message" => "required",
+        ]);
+
+        $nome = $request->name;
+        $email = $request->email;
+        $phone = $request->phone;
+        $subject = "Fale conosco";
+        $message = $request->message;
+
+        Mail::to('ortizmas14@gmail.com')->send(new FaleConoscoMail($nome, $email, $phone, $subject, $message));
+
+        return redirect()->route('form.contact')->with('success', 'Message enviado com sucesso !!');
     }
 }

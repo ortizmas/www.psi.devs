@@ -55,7 +55,7 @@ class ContactMail extends Mailable
             ->from($e_email)
             ->subject($e_subject)
             ->attach($e_file->getRealPath(), array(
-                    'as' => $e_file->getClientOriginalName(),    
+                    'as' => $e_file->getClientOriginalName(),
                     'mime' => $e_file->getMimeType())
                 );
     }

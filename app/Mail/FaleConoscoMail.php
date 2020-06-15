@@ -46,7 +46,7 @@ class FaleConoscoMail extends Mailable
         $e_subject = $this->sub;
         $e_message = $this->mes;
 
-        return $this->view('mail.faleconosco', compact("e_nome", "e_email", "e_phone", "e_subject", "e_message") )
+        return $this->view('mail.faleconosco', compact("e_nome", "e_email", "e_phone", "e_subject", "e_message"))
             ->from($e_email)
             ->subject($e_subject);
     }

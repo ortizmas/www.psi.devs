@@ -10,6 +10,8 @@
 | contains the "web" middleware group. Now create something great!
 */
 
+use App\Http\Controllers\Frontend\AppController;
+
 Route::namespace('Frontend')->group(function () {
 	Route::get('/', 'AppController@index')->name('inicio');
 	Route::get('/quem-somos', 'AppController@quemSomos')->name('quem.somos');
@@ -20,8 +22,6 @@ Route::namespace('Frontend')->group(function () {
 
 	Route::get('/produtos/{slug?}', 'ProductController@index')->name('products.index');
 	Route::get('/items-clube', 'ProductController@items')->name('products.items');
-
-
 
 	Route::get('/programas/{slug?}', 'ProgramsController@index')->name('programs.index');
 	Route::get('/consultorias/{slug?}', 'ProgramsController@index')->name('consulting.index');
@@ -35,10 +35,12 @@ Route::namespace('Frontend')->group(function () {
 
 	Route::get('/pre-matricula/{slug?}', 'PreRegisterController@create')->name('preregister.create');
 	Route::post('/pre-matricula', 'PreRegisterController@store')->name('preregister.store');
+
+	Route::get('/contato', 'AppController@contact')->name('form.contact');
 });
 
+Route::post('/contato', 'MailController@contact')->name('send.contact');
 Route::post('/send-email', 'MailController@sendemail')->name('send.email');
-Route::get('/fale-conosco', 'GtalentosController@faleconosco')->name('fale.conosco');
 Route::post('/fale-conosco', 'MailController@faleconoscoemail')->name('faleconosco.email');
 
 Route::get('/session', 'SessionController@session');
@@ -57,6 +59,6 @@ Route::get('/clean-code', 'TestController@cleanCode');
 Route::get('video', function () {
 	return view('tests.video');
 });
-Route::get('refactorization', 'TestController@refactorization')->name('test.refactorization');
 
+Route::get('refactorization', 'TestController@refactorization')->name('test.refactorization');
 Route::get('/{slug}', 'ContentController@getPage')->name('content.all');

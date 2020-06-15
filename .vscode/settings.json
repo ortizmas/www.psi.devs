@@ -1,4 +1,8 @@
 {
     "phpcs.standard": "PSR2",
     "files.eol": "\r\n",
+    "editor.codeActionsOnSave": null,
+    "css.remoteStyleSheets": [
+        "https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      ]
 }
