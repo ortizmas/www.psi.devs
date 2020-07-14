@@ -1,4 +1,4 @@
-@extends('layouts.classroom') 
+@extends('layouts.app')
 
 @section('styles')
     <link href="https://vjs.zencdn.net/7.6.6/video-js.css" rel="stylesheet" />
@@ -8,98 +8,71 @@
 @endsection
 
 @section('content')
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            
 
-    <div class="content-wrapper bg-white">
-        <div class="content-header p-0 m-0">
-            <div class="container-fluid">
-                <div class="jumbotron jumbotron-fluid bg-light m-0 p-3">
-                    <div class="container-fluid">
-                        <h1 class="display-4">Programa vencendo a dor crônica </h1>
-                    </div>
+            <div class="card">
+                <div class="card-header">Dashboard</div>
+
+                <div class="card-body">
+                    @if (session('status'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
+                        </div>
+                    @endif
+                    {{-- <video
+                        id="vid1"
+                        class="video-js vjs-theme-city"
+                        width="640" height="264"
+                        data-setup='{ "techOrder": ["vimeo"], "sources": [{ "type": "video/vimeo", "src": "https://vimeo.com/378327608"}], "vimeo": { "color": "#fbc51b"} }'
+                    >
+                    </video> --}}
+
+
+                    <video id="vid1" class="video-js vjs-default-skin vjs-fluid" controls width="100" height="264"></video>
+                    <!--   <video id="vid1" class="video-js vjs-default-skin vjs-fluid" controls width="640" height="264" data-setup='{ "techOrder": ["youtube"], "sources": [{ "type": "video/youtube", "src": "https://www.youtube.com/watch?v=xjS6SftYQaQ"}] }'>
+                        </video> -->
+
+                    <h2>Load Video:</h2>
+                    <form id="vsg-loadvideo">
+                        Video URL:
+                        <br>
+                        <input type="text" name="vidurl" id="vsg-vurl" style="width:450px" value="https://www.youtube.com/watch?v=xDMP3i36naA" placeholder="Enter Youtube URL">
+                        <br>
+                        <br>
+                        <input type="submit" value="Load video">
+                    </form>
                 </div>
             </div>
         </div>
 
-        <div class="container-fluid bg-content">
-            <div class="row pt-5 pb-5">
-                <div class="col-md-8">
-                    <div class="card">
-                        <div class="card-header">
-                            <video id="vid1" class="video-js vjs-default-skin vjs-fluid" controls width="100" height="264"></video>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">Dashboard</div>
 
-                            {{-- <h2>Load Video:</h2>
-                            <form id="vsg-loadvideo">
-                                Video URL:
-                                <br>
-                                <input type="text" name="vidurl" id="vsg-vurl" style="width:450px" value="https://www.youtube.com/watch?v=xDMP3i36naA" placeholder="Enter Youtube URL">
-                                <br>
-                                <br>
-                                <input type="submit" value="Load video">
-                            </form> --}}
+                <div class="card-body">
+                    @if (session('status'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
                         </div>
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    @if (isset($courses))
-                        @foreach ($courses as $key => $module)
-                            
-                            @if ($module->classrooms->count() > 0)
-                                <div class="card mb-0 pb-0 {{ ($key == 0) ? '' : 'collapsed-card' }}">
-                                    <div class="card-header bg-dark">
-                                        <h3 class="card-title">{{ $module->name }}</h3>
-                                        <div class="card-tools">
-                                            <button type="button" class="btn btn-tool" data-widget="collapse">
-                                                <i class="fa fa-minus"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="list-group">
-                                            @foreach ($module->classrooms as $class)
-                                                <div class="list-group-item">
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" name="classroom_id[]" value="{{ $class->id }}" id="defaultCheck1">
-                                                        <label class="form-check-label" for="defaultCheck1">
-                                                            {{ $class->name }}
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                                <input type="hidden" name="class_id[]" value="{{ $class->id }}">
-                                            @endforeach
-                                        </div>
-                                    </div>
-                                </div>
-                            @endif
-                        @endforeach
                     @endif
+                    <ul id="vidlink">
+                        <li><a id="myLink" title="Click video" href="https://www.youtube.com/watch?v=kkGeOWYOFoA">Play Youtube 1</a></li>
+                        <li><a id="myLink" title="Click video" href="https://www.youtube.com/watch?v=Ie8olvmaZug">Play Youtube 2</a></li>
+                        <li><a id="myLink" title="Click video" href="https://vimeo.com/378327608?autoplay=1">Vimeo</a></li>
+                        <li><a id="myLink" title="Click video" href="https://www.youtube.com/watch?v=x4ZTpNPL_dc">Youtube</a></li>
+                    </ul>
                 </div>
             </div>
         </div>
     </div>
+</div>
 @endsection
- 
-@section('javascript')
-    <!-- jQuery -->
-    <script src="/dist/plugins/jquery/jquery.min.js"></script>
-    <!-- jQuery UI 1.11.4 -->
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
-    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-    <script>
-      $.widget.bridge('uibutton', $.ui.button)
 
-    </script>
-    <!-- Bootstrap 4 -->
-    <script src="/dist/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-    <!-- AdminLTE App -->
-    <script src="/dist/js/adminlte.js"></script>
-    <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-    {{-- <script src="/dist/js/pages/dashboard.js"></script> --}}
-    <!-- AdminLTE for demo purposes -->
-    <script src="/dist/js/demo.js"></script>
-
-    <script src="{{ asset('js/videojs.js') }}"></script>
+@section('scripts')
+    <script src="{{ mix('js/videojs.js') }}"></script>
     <script src="{{ asset('js/Youtube.min.js') }}"></script>
     <!--<script src="https://vjs.zencdn.net/7.6.6/video.js"></script>
     <script src="{{ asset('js/videojs-vimeo.min.js') }}"></script>-->
@@ -248,4 +221,6 @@
         });
 
     </script>
-@stop
+
+
+@endsection

@@ -35,7 +35,7 @@
                             <div class="card-body">
                                 <h5 class="card-title">{{ $course->name }}</h5>
                                 {{-- <p class="card-text">{{ $course->description }}</p> --}}
-                                <a class="btn btn-link float-left" href="{{ route('learn.lecture', [$course->url, $course->id]) }}">INICIAR CURSO</a>
+                                <a class="btn btn-success float-left w-100 mt-3" href="{{ route('learn.lecture', [$course->url, $course->id]) }}">Ver curso</a>
                             </div>
                         </div>
                     </div>
