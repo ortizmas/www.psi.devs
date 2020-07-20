@@ -13,6 +13,7 @@ class InscriptionController extends Controller
     public function index()
     {
         $inscriptions = Inscription::where('status', '!=', 2)->paginate()->load('courses');
+
         return view('dashboard.inscriptions.index', compact('inscriptions'));
     }
 

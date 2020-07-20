@@ -55,7 +55,6 @@
 
                                 <div class="row">
                                     <div class="col-md-12">
-
                                         <div class="input-group mb-3">
                                             <div class="custom-file">
                                                 <input type="file" name="image" class="custom-file-input {{ $errors->has('image') ? ' is-invalid' : ''}}" id="customFile" lang="pt-BR">
@@ -67,6 +66,17 @@
                                                 </span>
                                             @endif
                                         </div>
+                                    </div>
+
+                                    <div class="col-md-12">
+                                            <div class="form-group mb-3">
+                                                <input id="video" type="text" class="form-control{{ $errors->has('video') ? ' is-invalid' : '' }}" name="video" value="{{ old('video', $course->video) }}" placeholder="Link do video" required autofocus> 
+                                                @if ($errors->has('video'))
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $errors->first('video') }}</strong>
+                                                    </span> 
+                                                @endif
+                                            </div>
                                     </div>
                                     <div class="col-md-12">
                                         <div class="form-group mb-3">

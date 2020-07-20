@@ -21,6 +21,7 @@ class CreateCoursesTable extends Migration
             $table->string('url')->unique()->nullable();
             $table->string('description')->nullable();
             $table->string('image')->nullable();
+            $table->string('video')->nullable();
             $table->integer('code')->unique()->nullable();
             $table->string('total_hours', 5)->nullable();
             $table->boolean('published')->nullable();

@@ -8,11 +8,10 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">INFORMAÇÕES DE PAGAMENTO</h1>
+            <h1 class="m-0 text-dark">Informações de pagamento</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              {{-- <li class="breadcrumb-item"><a href="#" class="btn btn-info btn-sm">Lista de inscritoss</a></li> --}}
             </ol>
           </div>
         </div>
@@ -47,7 +46,7 @@
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group mb-3">
-                                    <input id="cpf" type="text" class="basic-usage form-control{{ $errors->has('cpf') ? ' is-invalid' : '' }}" name="cpf" value="{{ old('cpf') }}" placeholder="CPF" required autofocus> 
+                                    <input id="cpf" type="text" class="basic-usage form-control{{ $errors->has('cpf') ? ' is-invalid' : '' }}" name="cpf" value="{{ old('cpf', @$user->inscription['cpf']) }}" placeholder="CPF" required autofocus> 
                                     @if ($errors->has('cpf'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('cpf') }}</strong>
@@ -60,7 +59,7 @@
                         <div class="row">
                             <div class="col-md-3">
                                 <div class="form-group mb-3">
-                                    <input id="cep" type="text" class="basic-usage form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="cep" value="{{ old('cep') }}" placeholder="CEP" required autofocus> 
+                                    <input id="cep" type="text" class="basic-usage form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="cep" value="{{ old('cep', @$user->inscription['cep']) }}" placeholder="CEP" required autofocus> 
                                     @if ($errors->has('cep'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('cep') }}</strong>
@@ -70,7 +69,7 @@
                             </div>
                             <div class="col-md-9">
                                 <div class="form-group mb-3">
-                                    <input id="rua" type="text" class="basic-usage form-control{{ $errors->has('street') ? ' is-invalid' : '' }}" name="street" value="{{ old('street') }}" placeholder="ENDEREÇO" required autofocus> 
+                                    <input id="rua" type="text" class="basic-usage form-control{{ $errors->has('street') ? ' is-invalid' : '' }}" name="street" value="{{ old('street', @$user->inscription['street']) }}" placeholder="ENDEREÇO" required autofocus> 
                                     @if ($errors->has('street'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('street') }}</strong>
@@ -83,7 +82,7 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="form-group mb-3">
-                                    <input id="bairro" type="text" class="basic-usage form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="neighborhood" value="{{ old('neighborhood') }}" placeholder="BAIRRO" required autofocus> 
+                                    <input id="bairro" type="text" class="basic-usage form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="neighborhood" value="{{ old('neighborhood', @$user->inscription['neighborhood']) }}" placeholder="BAIRRO" required autofocus> 
                                     @if ($errors->has('neighborhood'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('neighborhood') }}</strong>
@@ -93,7 +92,7 @@
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group mb-3">
-                                    <input id="cidade" type="text" class="basic-usage form-control{{ $errors->has('city') ? ' is-invalid' : '' }}" name="city" value="{{ old('city') }}" placeholder="CIDADE" required autofocus> 
+                                    <input id="cidade" type="text" class="basic-usage form-control{{ $errors->has('city') ? ' is-invalid' : '' }}" name="city" value="{{ old('city', @$user->inscription['city']) }}" placeholder="CIDADE" required autofocus> 
                                     @if ($errors->has('city'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('city') }}</strong>
@@ -104,7 +103,7 @@
 
                             <div class="col-md-4">
                                 <div class="form-group mb-3">
-                                    <input id="uf" type="text" class="basic-usage form-control{{ $errors->has('state') ? ' is-invalid' : '' }}" name="state" value="{{ old('state') }}" placeholder="UF" required autofocus> 
+                                    <input id="uf" type="text" class="basic-usage form-control{{ $errors->has('state') ? ' is-invalid' : '' }}" name="state" value="{{ old('state', @$user->inscription['state']) }}" placeholder="UF" required autofocus> 
                                     @if ($errors->has('state'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('state') }}</strong>
@@ -112,18 +111,7 @@
                                     @endif
                                 </div>
                             </div>
-                             <input id="ibge" type="hidden" name="ibge" value="{{ old('ibge') }}" > 
-
-                            {{-- <div class="col-md-2">
-                                <div class="form-group mb-3">
-                                    <input id="ibge" type="text" class="basic-usage form-control{{ $errors->has('ibge') ? ' is-invalid' : '' }}" name="ibge" value="{{ old('ibge') }}" placeholder="IBGE" required autofocus> 
-                                    @if ($errors->has('ibge'))
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('ibge') }}</strong>
-                                        </span> 
-                                    @endif
-                                </div>
-                            </div> --}}
+                             <input id="ibge" type="hidden" name="ibge" value="{{ old('ibge', @$user->inscription['ibge']) }}" > 
                         </div>
 
                         <div class="row">
@@ -140,7 +128,7 @@
 
                             <div class="col-md-4">
                                 <div class="form-group mb-3">
-                                    <input id="phone" type="tel" class="basic-usage form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}" name="phone" value="{{ old('phone') }}" placeholder="TELEFONE" required autofocus> 
+                                    <input id="phone" type="tel" class="basic-usage form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}" name="phone" value="{{ old('phone', @$user->inscription['phone']) }}" placeholder="TELEFONE" required autofocus> 
                                     @if ($errors->has('phone'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('phone') }}</strong>
@@ -153,7 +141,7 @@
                         <div class="row">
                             <div class="col-md-8">
                                 <div class="form-group mb-3">
-                                    <input id="company" type="text" class="basic-usage form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="company" value="{{ old('company') }}" placeholder="EMPRESA" autofocus> 
+                                    <input id="company" type="text" class="basic-usage form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="company" value="{{ old('company', @$user->inscription['company']) }}" placeholder="EMPRESA" autofocus> 
                                     @if ($errors->has('company'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('company') }}</strong>
@@ -164,7 +152,7 @@
 
                             <div class="col-md-4">
                                 <div class="form-group mb-3">
-                                    <input id="company_phone" type="tel" class="basic-usage form-control{{ $errors->has('company_phone') ? ' is-invalid' : '' }}" name="company_phone" value="{{ old('company_phone') }}" placeholder="TELEFONE DA EMPRESSA" autofocus> 
+                                    <input id="company_phone" type="tel" class="basic-usage form-control{{ $errors->has('company_phone') ? ' is-invalid' : '' }}" name="company_phone" value="{{ old('company_phone', @$user->inscription['company_phone']) }}" placeholder="TELEFONE DA EMPRESSA" autofocus> 
                                     @if ($errors->has('company_phone'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('company_phone') }}</strong>
@@ -175,16 +163,6 @@
                         </div>
                         
                         <div class="row">
-                            {{-- <div class="col-md-8">
-                                <div class="input-group mb-3">
-                                    <input id="program" type="text" class="form-control{{ $errors->has('program') ? ' is-invalid' : '' }}" name="program" value="{{ old('program', session('program', 'default')) }}" placeholder="PROGRAMA REFERENTE" required autofocus style="background: #EEE; cursor: not-allowed; color: #777" readonly="">
-                                    @if ($errors->has('program'))
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('program') }}</strong>
-                                        </span> 
-                                    @endif
-                                </div>
-                            </div> --}}
                             @if (session()->has('item_buy'))
                                 <input id="program" type="hidden" name="program_session" value="{{ old('program', session('item_buy', 'default')) }}" readonly="">
                             @else

@@ -24,7 +24,7 @@
         <section class="content">
           	<div class="container-fluid">
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <div class="card">
                             <div class="card-header">
                                 <h3 class="card-title">Inscrito</h3>
@@ -69,7 +69,7 @@
                         <!-- /.card -->
                     </div>
 
-                    <div class="col-md-6">
+                    <div class="col-md-8">
                         <div class="card">
                             <div class="card-header">
                                 <h3 class="card-title">Cursos</h3>
@@ -97,6 +97,11 @@
                                                     $total = $course->pivot->amount * $course->pivot->price
                                                 @endphp
                                                 <strong>Valor: </strong><m> R$ {{ $total }}</m>
+                                                <hr>
+                                                
+                                                <strong>Estado da compra: </strong> <span class="badge badge-pill badge-{{ ($course->pivot->status == 5) ?  'success text-white' : 'warning' }}">
+                                                        {{ getStatusPaymentCourse($course->pivot->status) }}
+                                                      </span>
                                                 <hr>
                                                 <a href="{{ route('assignments.modules.user', [$course->id, $inscription->user_id]) }}" title="Alterar" class="badge badge-pill badge-dark pt-1 pb-1 pl-2 pr-2 pb-2"><i class="fas fa-edit"></i> ASSIGNAR AULAS</a>
 

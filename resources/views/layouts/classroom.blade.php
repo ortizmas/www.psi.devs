@@ -49,11 +49,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
     @else
         <div class="wrapper" id="app">
             <!-- Header -->
-            @include('layouts.header')
+            @include('layouts.partials.header-classroom')
 
-            @role('student')
-            @include('layouts.partials.sidebar-classroom') 
-            @endrole
+            {{-- @role('student')
+            @include('layouts.partials.sidebar-classes') 
+            @endrole --}}
 
             @yield('content')
             

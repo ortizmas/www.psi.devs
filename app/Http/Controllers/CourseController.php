@@ -19,19 +19,13 @@ class CourseController extends Controller
     public function __construct(Course $course)
     {
         $this->course = $course;
-        
-        // $this->middleware('auth:api')->except([
-        //     'index',
-        //     'show',
-        //     //'myCourse'
-        // ]);
     }
 
     public function index(Request $request)
     {
 
         $courses = $this->course->getResults($request->all(), $this->totalPage);
-        //return response()->json($course);
+        
         return view('dashboard.courses.index', compact('courses'));
     }
 
@@ -39,7 +33,7 @@ class CourseController extends Controller
     {
         $course = $this->course->find($id);
         
-        if(!$course)            
+        if (!$course)
             return response()->json(['error' => 'Not found'], 404);
 
         return response()->json($course);
@@ -70,11 +64,9 @@ class CourseController extends Controller
         }
 
         $data['user_id'] = Auth::id();
-        //$data['url'] = str_slug($request->name,'-');
 
         $course = $this->course->create($data);
 
-        //return response()->json($course, 201);
         return redirect()->route('courses.index')->with('success', 'Curso cadastrado com sucesso!!');
     }
 
@@ -88,10 +80,10 @@ class CourseController extends Controller
 
     public function update(UpdateCourseRequest $request, Course $course)
     {
-        //dd($request->price);
+       
         $course = $this->course->find($course->id);
 
-        if(!$course)            
+        if (!$course)
             return response()->json(['error' => 'Not found'], 404);
 
         $data = $request->all();
@@ -119,7 +111,6 @@ class CourseController extends Controller
 
         $course->update($data);
 
-        //$data['url'] = str_slug($request->name,'-');
         return redirect()->route('courses.index')->with('success', 'Curso alterado com sucesso!!');
 
     }
@@ -128,7 +119,7 @@ class CourseController extends Controller
     {
         $course = $this->course->find($id);
 
-        if (!$course)            
+        if (!$course)
             return response()->json(['error' => 'Not found'], 404);
 
         if ($course->delete())

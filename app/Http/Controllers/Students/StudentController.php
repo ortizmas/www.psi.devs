@@ -41,7 +41,8 @@ class StudentController extends Controller
     public function getCourseByUser($data)
     {
         $courses = $this->course->getCoursesByUser($data);
-        return view('student.classrooms', compact('courses'));
+        $data_course = Course::select('name', 'url', 'image', 'video')->findOrFail($data['course_id']);
+        return view('student.classrooms', compact('courses', 'data_course'));
     }
 
     public function waitingCoursePayment($url)

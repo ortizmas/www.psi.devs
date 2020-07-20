@@ -5,16 +5,135 @@
 
     <!-- If you'd like to support IE8 (for Video.js versions prior to v7) -->
     <!--<script src="https://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>-->
+
+    <style>
+        .classroom-menu {
+            
+        }
+        .classroom-menu ul {
+                list-style-type: none;
+            }
+
+            .classroom-menu a {
+                color: #b63b4d;
+                text-decoration: none;
+            }
+
+            /** =======================
+            * Contenedor Principal
+            ===========================*/
+            .classroom-menu h1 {
+                color: #FFF;
+                font-size: 24px;
+                font-weight: 400;
+                text-align: center;
+                margin-top: 80px;
+            }
+
+            .classroom-menu h1 a {
+                color: #c12c42;
+                font-size: 16px;
+            }
+
+            .classroom-menu .accordion {
+                width: 100%;
+                max-width: 360px;
+                margin: 30px auto 20px;
+                background: #FFF;
+                -webkit-border-radius: 4px;
+                -moz-border-radius: 4px;
+                border-radius: 4px;
+            }
+
+            .classroom-menu .accordion .link {
+                cursor: pointer;
+                display: block;
+                padding: 15px 15px 15px 42px;
+                color: #4D4D4D;
+                font-size: 14px;
+                font-weight: 700;
+                border-bottom: 1px solid #CCC;
+                position: relative;
+                -webkit-transition: all 0.4s ease;
+                -o-transition: all 0.4s ease;
+                transition: all 0.4s ease;
+            }
+
+            .classroom-menu .accordion li:last-child .link {
+                border-bottom: 0;
+            }
+
+            .classroom-menu .accordion li i {
+                position: absolute;
+                top: 16px;
+                left: 12px;
+                font-size: 18px;
+                color: #595959;
+                -webkit-transition: all 0.4s ease;
+                -o-transition: all 0.4s ease;
+                transition: all 0.4s ease;
+            }
+
+            .classroom-menu .accordion li i.fa-chevron-down {
+                right: 12px;
+                left: auto;
+                font-size: 16px;
+            }
+
+            .classroom-menu .accordion li.open .link {
+                color: #b63b4d;
+            }
+
+            .classroom-menu .accordion li.open i {
+                color: #b63b4d;
+            }
+            .classroom-menu .accordion li.open i.fa-chevron-down {
+                -webkit-transform: rotate(180deg);
+                -ms-transform: rotate(180deg);
+                -o-transform: rotate(180deg);
+                transform: rotate(180deg);
+            }
+
+            .classroom-menu .accordion li.default .classroom-menu .submenu {display: block;}
+            /**
+            * Submenu
+            -----------------------------*/
+            .classroom-menu .submenu {
+                display: none;
+                background: #444359;
+                font-size: 14px;
+            }
+
+            .classroom-menu .submenu li {
+                border-bottom: 1px solid #4b4a5e;
+            }
+
+            .classroom-menu .submenu a {
+                display: block;
+                text-decoration: none;
+                color: #d9d9d9;
+                padding: 12px;
+                padding-left: 42px;
+                -webkit-transition: all 0.25s ease;
+                -o-transition: all 0.25s ease;
+                transition: all 0.25s ease;
+            }
+
+            .classroom-menu .submenu a:hover {
+                background: #b63b4d;
+                color: #FFF;
+            }
+    </style>
 @endsection
 
 @section('content')
 
-    <div class="content-wrapper bg-white">
+    <div class="bg-white">
         <div class="content-header p-0 m-0">
             <div class="container-fluid">
                 <div class="jumbotron jumbotron-fluid bg-light m-0 p-3">
                     <div class="container-fluid">
-                        <h1 class="display-4">Programa vencendo a dor crônica </h1>
+                        <h1 class="display-4">{{ $data_course->name }} {{ $data_course->video }}</h1>
                     </div>
                 </div>
             </div>
@@ -41,9 +160,10 @@
                 </div>
 
                 <div class="col-md-4">
-                    @if (isset($courses))
+                    @include('layouts.partials.sidebar-classes', ['courses' => $courses])
+
+                    {{-- @if (isset($courses))
                         @foreach ($courses as $key => $module)
-                            
                             @if ($module->classrooms->count() > 0)
                                 <div class="card mb-0 pb-0 {{ ($key == 0) ? '' : 'collapsed-card' }}">
                                     <div class="card-header bg-dark">
@@ -72,7 +192,7 @@
                                 </div>
                             @endif
                         @endforeach
-                    @endif
+                    @endif --}}
                 </div>
             </div>
         </div>
@@ -106,6 +226,35 @@
     {{-- <script src="https://cdn.jsdelivr.net/npm/videojs-vimeo-v2@2.0.2/src/Vimeo.min.js"></script> --}}
 
     <script>
+        $(function() {
+            var Accordion = function(el, multiple) {
+                this.el = el || {};
+                this.multiple = multiple || false;
+
+                // Variables privadas
+                var links = this.el.find('.link');
+                // Evento
+                links.on('click', {el: this.el, multiple: this.multiple}, this.dropdown)
+            }
+
+            Accordion.prototype.dropdown = function(e) {
+                var $el = e.data.el;
+                    $this = $(this),
+                    $next = $this.next();
+
+                $next.slideToggle();
+                $this.parent().toggleClass('open');
+
+                if (!e.data.multiple) {
+                    $el.find('.submenu').not($next).slideUp().parent().removeClass('open');
+                };
+            }	
+
+            var accordion = new Accordion($('#accordion'), false);
+        });
+    </script>
+
+    <script>
         /* VIDEOJS */
         // declare object for video
         var vgsPlayer, poster;
@@ -125,14 +274,15 @@
             autoplay: false,
             youtube: { "iv_load_policy": 3 },
             sources: [{
-                type: "video/mp4",
-                src: "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"
+                type: "video/vimeo",
+                src: '{{ $data_course->video }}'
+                // src: "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"
             }]
         });
 
         console.log(vgsPlayer.options().autoplay);
 
-        vgsPlayer.poster('https://img.youtube.com/vi/aqz-KE-bpKQ/maxresdefault.jpg');
+        vgsPlayer.poster('{{ asset('storage/courses/' . $data_course->image) }}');
         //vgsPlayer.poster("http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4")
 
         //videojs("vid1").ready(function() {

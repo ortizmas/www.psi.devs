@@ -27,10 +27,6 @@ class Inscription extends Model
 
     public function user()
     {
-        
-        /**
-         * Get the user that did the inscription.
-         */
         return $this->belognsTo(User::class);
     }
 

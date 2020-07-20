@@ -33,6 +33,9 @@ class ProfileController extends Controller
         $user = Auth::user();
         $programs = Course::all();
 
+        if ($user->inscription) {
+            return redirect()->route('preregister.create', session('url'));
+        }
         return view('dashboard.profiles.create', compact('user', 'programs'));
     }
 

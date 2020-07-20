@@ -11,17 +11,15 @@ use Illuminate\Support\Facades\Auth;
 
 class PreRegisterController extends Controller
 {
+
     public function create($url = null)
     {
         $course = Course::ofUrl($url)->status()->firstOrFail();
 
-        //$encrypted = Crypt::encryptString('Hello world.');
-        //$decrypted = Crypt::decryptString($encrypted);
         $slug = encrypt($course->id);
 
         //Session para usar depois de fazer login
         session(['item_buy' => $slug]);
-        //$slug = decrypt($slug);
 
         if (Auth::check()) {
             $inscription = Inscription::where('user_id', Auth::id())->firstOrFail('id');
@@ -39,6 +37,7 @@ class PreRegisterController extends Controller
             }
         }
 
+        session(['url' => $url]);
         return view('frontend.prematriculas.create', compact('slug'));
     }
 

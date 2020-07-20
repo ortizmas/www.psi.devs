@@ -51,15 +51,15 @@ function checkPermission($permissions){
 function getMyPermission($id)
 {
     switch ($id) {
-      case 1:
-        return 'admin';
-        break;
-      case 2:
-        return 'student';
-        break;
-      default:
-        return 'user';
-        break;
+        case 1:
+            return 'admin';
+            break;
+        case 2:
+            return 'student';
+            break;
+        default:
+            return 'user';
+            break;
     }
 }
 
@@ -79,21 +79,24 @@ if (!function_exists('getStatusInscription')) {
 
 //1:Aprovada, 2:Cancelada, 3:Em análise, 4:Aguardando pagto.
 if (!function_exists('getStatusPaymentCourse')) {
-  function getStatusPaymentCourse($status)
-  {
-    switch ($status) {
-      case 1:
-        return 'Aprovado';
-        break;
-      case 2:
-        return 'Cancelado';
-        break;
-      case 3:
-        return 'Em análise';
-        break;
-      case 4:
-        return 'Aguardando pagamento';
-        break;
+    function getStatusPaymentCourse($status)
+    {
+        switch ($status) {
+            case 1:
+                return 'Aprovado';
+                break;
+            case 2:
+                return 'Cancelada';
+                break;
+            case 3:
+                return 'Em análise';
+                break;
+            case 4:
+                return 'Aguardando pagto.';
+                break;
+            case 5:
+                return 'Completo';
+                break;
+        }
     }
-  }
 }
