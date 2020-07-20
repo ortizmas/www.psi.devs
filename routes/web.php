@@ -60,5 +60,14 @@ Route::get('video', function () {
 	return view('tests.video');
 });
 
+Route::get('/clearCache', function(){
+    Artisan::call('cache:clear');
+    Artisan::call('config:clear');
+    Artisan::call('route:clear');
+    Artisan::call('view:clear');    
+
+    return '<h1>Caches limpados</h1>';
+});
+
 Route::get('refactorization', 'TestController@refactorization')->name('test.refactorization');
 Route::get('/{slug}', 'ContentController@getPage')->name('content.all');

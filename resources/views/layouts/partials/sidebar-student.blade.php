@@ -3,7 +3,7 @@
     <!-- Brand Logo -->
     <a href="{{ route('home') }}" class="brand-link">
         <img src="/img/logo-brando-61x61.png" class="brand-image elevation-3" style="opacity: .8" width="100%">
-        <span class="brand-text font-weight-light"><strong>TRAINEE</strong></span>
+        <span class="brand-text font-weight-light"><strong>Pró Saúde Integral</strong></span>
     </a>
 
     <!-- Sidebar -->
