@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
 
 class AssignmentController extends Controller
 {
-    private $totalPage = 8;
+    private $totalPage = 50;
 
     public function __construct()
     {
@@ -22,10 +22,6 @@ class AssignmentController extends Controller
 
     public function index(Request $request)
     {
-        //$assignments = Assignment::with(['user', 'classroom'])->get();
-
-        //$assignments = collect($assignments->where('user_id', Auth::user()->id))->all();
-
         $course = new Course();
         $courses = $course->getResults($request->all(), $this->totalPage);
         return view('dashboard.assignments.index', compact('courses'));
@@ -34,7 +30,6 @@ class AssignmentController extends Controller
     public function getModules(Request $request, $course_id)
     {
         $module = new Module();
-        //$modules = $modules = $module->getResults($request->all(), $this->totalPage);
         $modules = Module::where('course_id', $course_id)->get();
         return view('dashboard.assignments.modules', compact('modules'));
     }
@@ -42,7 +37,6 @@ class AssignmentController extends Controller
     public function getClassrooms(Request $request, $module_id)
     {
         $classroom = new Classroom();
-        //$classrooms = $classrooms = $classroom->getResults($request->all(), $this->totalPage);
         $classrooms = Classroom::where('module_id', $module_id)->get();
         return view('dashboard.assignments.classrooms', compact('classrooms'));
     }
@@ -79,8 +73,6 @@ class AssignmentController extends Controller
 
     public function store(Request $request)
     {
-        //$this->validateData($request);
-
         $assignment = new Assignment();
 
         foreach ($request->class_id as $key => $value) {

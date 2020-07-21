@@ -10,7 +10,7 @@ use App\Http\Requests\StoreUpdateModuleFormRequest;
 
 class ModuleController extends Controller
 {
-    private $module, $totalPage = 15;
+    private $module, $totalPage = 50;
 
     public function __construct(Module $module)
     {
@@ -72,7 +72,6 @@ class ModuleController extends Controller
 
         $module->update($request->all());
         
-        //return response()->json($module);
         return redirect()->route('modules.index.param', $request['course_id'])->with('success', 'Modulo alterado com sucesso!!');
     }
 

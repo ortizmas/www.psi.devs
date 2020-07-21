@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Auth;
 
 class CourseController extends Controller
 {
-    private $course, $totalPage = 8;
+    private $course, $totalPage = 50;
     private $path = 'courses';
 
     public function __construct(Course $course)

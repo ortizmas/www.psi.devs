@@ -48,7 +48,6 @@
       					<tr>
       						<th>#</th>
       						<th>Nome</th>
-      						<th>Descrição</th>
                   <th>Estado</th>
       						<th colspan="2" rowspan="">Ações</th>
       					</tr>
@@ -59,7 +58,6 @@
                                 <tr>
                                    <td>{{ $key + 1 }}</td>
                                    <td><a href="{{ route('classrooms.index.param', $value->id) }}" title="Criar aula">{{ $value->name }}</a></td>
-                                   <td>{{ $value->description }}</td>
                                    <td>{{ ( $value->status == 1 ) ? 'Ativo' : 'Inativo' }}</td>
                                    <td><a href="{{ route('modules.edit', $value->id) }}" title="Alterar"><i class="fas fa-edit"></i></a></td>
                                    <td>

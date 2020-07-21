@@ -133,7 +133,7 @@
             <div class="container-fluid">
                 <div class="jumbotron jumbotron-fluid bg-light m-0 p-3">
                     <div class="container-fluid">
-                        <h1 class="display-4">{{ $data_course->name }} {{ $data_course->video }}</h1>
+                        <h1 class="display-4">{{ $data_course->name }}</h1>
                     </div>
                 </div>
             </div>
