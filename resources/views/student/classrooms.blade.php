@@ -3,9 +3,6 @@
 @section('styles')
     <link href="https://vjs.zencdn.net/7.6.6/video-js.css" rel="stylesheet" />
 
-    <!-- If you'd like to support IE8 (for Video.js versions prior to v7) -->
-    <!--<script src="https://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>-->
-
     <style>
         .classroom-menu {
             
@@ -123,6 +120,238 @@
                 background: #b63b4d;
                 color: #FFF;
             }
+
+            /*Buuton*/
+            .content-wrapper {
+                margin: 0 auto;
+                max-width: 100%;
+            }
+            .video-container {
+                height: 0;
+                max-width: 100%;
+                overflow: hidden;
+                padding-bottom: 56.25%;
+                position: relative;
+            }
+            .video-container img {
+                display: block;
+            }
+            .video-container iframe,
+            .video-container object,
+            .video-container embed,
+            .video-container img {
+                height: 100%;
+                left: 0;
+                position: absolute;
+                top: 0;
+                width: 100%;
+            }
+
+            .video-play-button {
+                position: absolute;
+                z-index: 10;
+                top: 50%;
+                left: 50%;
+                -webkit-transform: translateX(-50%) translateY(-50%);
+                        transform: translateX(-50%) translateY(-50%);
+                box-sizing: content-box;
+                display: block;
+                width: 32px;
+                height: 44px;
+                /* background: #fa183d; */
+                border-radius: 50%;
+                padding: 18px 20px 18px 28px;
+                }
+
+                .video-play-button:before {
+                content: "";
+                position: absolute;
+                z-index: 0;
+                left: 50%;
+                top: 50%;
+                -webkit-transform: translateX(-50%) translateY(-50%);
+                        transform: translateX(-50%) translateY(-50%);
+                display: block;
+                width: 80px;
+                height: 80px;
+                background: #ba1f24;
+                border-radius: 50%;
+                -webkit-animation: pulse-border 1500ms ease-out infinite;
+                        animation: pulse-border 1500ms ease-out infinite;
+                }
+
+                .video-play-button:after {
+                content: "";
+                position: absolute;
+                z-index: 1;
+                left: 50%;
+                top: 50%;
+                -webkit-transform: translateX(-50%) translateY(-50%);
+                        transform: translateX(-50%) translateY(-50%);
+                display: block;
+                width: 80px;
+                height: 80px;
+                background: #fa183d;
+                border-radius: 50%;
+                -webkit-transition: all 200ms;
+                transition: all 200ms;
+                }
+
+                .video-play-button:hover:after {
+                background-color: #da0528;
+                }
+
+                .video-play-button img {
+                position: relative;
+                z-index: 3;
+                max-width: 100%;
+                width: auto;
+                height: auto;
+                }
+
+                .video-play-button span {
+                display: block;
+                position: relative;
+                z-index: 3;
+                width: 0;
+                height: 0;
+                border-left: 32px solid #fff;
+                border-top: 22px solid transparent;
+                border-bottom: 22px solid transparent;
+                }
+
+                @-webkit-keyframes pulse-border {
+                0% {
+                    -webkit-transform: translateX(-50%) translateY(-50%) translateZ(0) scale(1);
+                            transform: translateX(-50%) translateY(-50%) translateZ(0) scale(1);
+                    opacity: 1;
+                }
+                100% {
+                    -webkit-transform: translateX(-50%) translateY(-50%) translateZ(0) scale(1.5);
+                            transform: translateX(-50%) translateY(-50%) translateZ(0) scale(1.5);
+                    opacity: 0;
+                }
+                }
+
+                @keyframes pulse-border {
+                0% {
+                    -webkit-transform: translateX(-50%) translateY(-50%) translateZ(0) scale(1);
+                            transform: translateX(-50%) translateY(-50%) translateZ(0) scale(1);
+                    opacity: 1;
+                }
+                100% {
+                    -webkit-transform: translateX(-50%) translateY(-50%) translateZ(0) scale(1.5);
+                            transform: translateX(-50%) translateY(-50%) translateZ(0) scale(1.5);
+                    opacity: 0;
+                }
+                }
+                .video-overlay {
+                position: fixed;
+                z-index: -1;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                background: rgba(0, 0, 0, 0.8);
+                opacity: 0;
+                -webkit-transition: all ease 500ms;
+                transition: all ease 500ms;
+                }
+
+                .video-overlay.open {
+                position: fixed;
+                z-index: 1000;
+                opacity: 1;
+                }
+
+                .video-overlay-close {
+                position: absolute;
+                z-index: 1000;
+                top: 15px;
+                right: 20px;
+                font-size: 36px;
+                line-height: 1;
+                font-weight: 400;
+                color: #fff;
+                text-decoration: none;
+                cursor: pointer;
+                -webkit-transition: all 200ms;
+                transition: all 200ms;
+                }
+
+                .video-overlay-close:hover {
+                color: #fa183d;
+                }
+
+                .video-overlay iframe {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                -webkit-transform: translateX(-50%) translateY(-50%);
+                        transform: translateX(-50%) translateY(-50%);
+                /* width: 90%; */
+                /* height: auto; */
+                box-shadow: 0 0 15px rgba(0, 0, 0, 0.75);
+                }
+
+                /*toolstip*/
+                .classroom-menu  .wrapper{
+                    position: relative;
+                }
+                .classroom-menu .tooltip:hover span {
+                    opacity: 1;
+                    filter: alpha(opacity=100);
+                    top: -6em;
+                    left: 20em;
+                    z-index: 99;
+                    -webkit-transition: all 0.2s ease;
+                    -moz-transition: all 0.2s ease;
+                    -o-transition: all 0.2s ease;
+                    transition: all 0.2s ease;
+                    }
+
+                    .classroom-menu .box b {
+                    color: #fff;
+                    }
+
+                    .classroom-menu .tooltip span {
+                        background: none repeat scroll 0 0 #222; /*-- some basic styling */
+                        color: #F0B015;
+                        font-family: 'Helvetica';
+                        font-size: 0.8em;
+                        font-weight: normal;
+                        line-height: 1.5em;
+                        padding: 16px 15px;
+                        width: 240px;
+                        top: -4em;  /*-- this is the original position of the tooltip when it's hidden */
+                        left: 20em;
+                        margin-left: 0;	
+                        /*-- set opacity to 0 otherwise our animations won't work */
+                        opacity: 0;
+                        filter: alpha(opacity=0);  	
+                        position: absolute;
+                        text-align: center;	
+                        z-index: 2;
+                        text-transform: none;
+                        -webkit-transition: all 0.3s ease;
+                        -moz-transition: all 0.3s ease-in-out;
+                        -o-transition: all 0.3s ease;
+                        transition: all 0.3s ease-in-out;
+                    }
+
+                    .classroom-menu .tooltip span:after {
+                        border-color: #222 rgba(0, 0, 0, 0);
+                        border-style: solid;
+                        border-width: 15px 15px 0;
+                        bottom: -15px;
+                        content: "";
+                        display: block;
+                        left: 31px;
+                        position: absolute;
+                        width: 0;
+                    }
+
+                
     </style>
 @endsection
 
@@ -144,55 +373,25 @@
                 <div class="col-md-8">
                     <div class="card">
                         <div class="card-header">
-                            <video id="vid1" class="video-js vjs-default-skin vjs-fluid" controls width="100" height="264"></video>
+                            <div id="first_video" class="content-wrapper w-100">
+                                <div class="video-container w-100">
+                                    <img src="{{ asset('storage/courses/' . $data_course->image) }}" alt="" class="img-fluid">
+                                    <a class="video-play-button" href="{{ $data_course->video }}" target="_blank"><span></span></a>
+                                </div>
+                            </div>
 
-                            {{-- <h2>Load Video:</h2>
-                            <form id="vsg-loadvideo">
-                                Video URL:
-                                <br>
-                                <input type="text" name="vidurl" id="vsg-vurl" style="width:450px" value="https://www.youtube.com/watch?v=xDMP3i36naA" placeholder="Enter Youtube URL">
-                                <br>
-                                <br>
-                                <input type="submit" value="Load video">
-                            </form> --}}
+                            <video 
+                                id="vid1"
+                                class="video-js vjs-default-skin vjs-fluid"
+                                controls width="640" height="264"
+                            >
+                            </video>
                         </div>
                     </div>
                 </div>
 
                 <div class="col-md-4">
                     @include('layouts.partials.sidebar-classes', ['courses' => $courses])
-
-                    {{-- @if (isset($courses))
-                        @foreach ($courses as $key => $module)
-                            @if ($module->classrooms->count() > 0)
-                                <div class="card mb-0 pb-0 {{ ($key == 0) ? '' : 'collapsed-card' }}">
-                                    <div class="card-header bg-dark">
-                                        <h3 class="card-title">{{ $module->name }}</h3>
-                                        <div class="card-tools">
-                                            <button type="button" class="btn btn-tool" data-widget="collapse">
-                                                <i class="fa fa-minus"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="list-group">
-                                            @foreach ($module->classrooms as $class)
-                                                <div class="list-group-item">
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" name="classroom_id[]" value="{{ $class->id }}" id="defaultCheck1">
-                                                        <label class="form-check-label" for="defaultCheck1">
-                                                            {{ $class->name }}
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                                <input type="hidden" name="class_id[]" value="{{ $class->id }}">
-                                            @endforeach
-                                        </div>
-                                    </div>
-                                </div>
-                            @endif
-                        @endforeach
-                    @endif --}}
                 </div>
             </div>
         </div>
@@ -207,7 +406,6 @@
     <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
     <script>
       $.widget.bridge('uibutton', $.ui.button)
-
     </script>
     <!-- Bootstrap 4 -->
     <script src="/dist/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -221,11 +419,15 @@
 
     <script src="{{ asset('js/videojs.js') }}"></script>
     <script src="{{ asset('js/Youtube.min.js') }}"></script>
-    <!--<script src="https://vjs.zencdn.net/7.6.6/video.js"></script>
-    <script src="{{ asset('js/videojs-vimeo.min.js') }}"></script>-->
-    {{-- <script src="https://cdn.jsdelivr.net/npm/videojs-vimeo-v2@2.0.2/src/Vimeo.min.js"></script> --}}
+
+    {{-- <script src="https://player.vimeo.com/api/player.js"></script> --}}
+
 
     <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+            //$('[rel=tooltip]').tooltip();
+        })
         $(function() {
             var Accordion = function(el, multiple) {
                 this.el = el || {};
@@ -255,98 +457,85 @@
     </script>
 
     <script>
+        /********* LOAD URL *********/
         /* VIDEOJS */
         // declare object for video
-        var vgsPlayer, poster;
-        /*
-        vgsPlayer = videojs('vid1', {
-        techOrder: ['youtube'],
-        autoplay: false,
-        sources: [{
-            type: "video/youtube",
-            src: "https://www.youtube.com/watch?v=xjS6SftYQaQ"
-        }]
-        });
-        */
+        let vgsPlayer, poster;
+
+        let playButton = document.querySelector('.video-container a');
+        playButton.addEventListener('click', playVideo);
+
+        document.getElementById('vid1').style.display = "none";
+
+        function playVideo(e) {
+            e.preventDefault();
+            let videoContainer = this.parentNode;
+            let videoUrl = this.href;
+            let videoId = videoUrl.split('.com/')[1];
+            let iframeUrl;
+
+            if(videoUrl.includes('vimeo')) {
+                // vimeo
+                videoId = videoId.split('?')[0];
+                iframeUrl = `//player.vimeo.com/video/${videoId}?autoplay=1`;
+            } else {
+                // youtube
+                videoId = videoId.split('v=')[1];
+                iframeUrl = `//www.youtube.com/embed/${videoId}?autoplay=1`;
+            }
+            
+            videoContainer.innerHTML = `<iframe src="${iframeUrl}" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>`;
+        }
+        
 
         vgsPlayer = videojs('vid1', {
             techOrder: ["html5", "youtube", "vimeo"],
             autoplay: false,
             youtube: { "iv_load_policy": 3 },
-            sources: [{
-                type: "video/vimeo",
-                src: '{{ $data_course->video }}'
-                // src: "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"
-            }]
         });
-
-        console.log(vgsPlayer.options().autoplay);
 
         vgsPlayer.poster('{{ asset('storage/courses/' . $data_course->image) }}');
         //vgsPlayer.poster("http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4")
 
-        //videojs("vid1").ready(function() {
-        //  vgsPlayer = this;
-        //});
-
         jQuery(function($) {
-
-        // vsgLoadVideo("https://www.youtube.com/watch?v=r1H98REH0c0");
-        // Video on page load
-
-        //jQuery(document).ready(function($) {
-
-        $("#vsg-loadvideo").submit(function(e) {
-            e.preventDefault();
-
-            var vidURL = $("#vsg-vurl").val();
-
-            vsgLoadVideo(vidURL);
-
+            $("#vsg-loadvideo").submit(function(e) {
+                e.preventDefault();
+                var vidURL = $("#vsg-vurl").val();
+                vsgLoadVideo(vidURL);
+            });
         });
 
-        }); // jQuery(function($) END
-
-
         function vsgLoadVideo(vidURL, poster) {
-
+            vgsPlayer.initChildren();
             if (ytVidId(vidURL) !== false) {
                 ext = "youtube"
-                // alert(getId(vidURL)) // Youtube video ID
+                //alert(getId(vidURL)) // Youtube video ID
                 //var yvID = getId(vidURL);
                 //vidURL = "https://www.youtube.com/watch?v="+yvID;
-
             } else if (vimeo_parser(vidURL) !== false){
                 ext = "vimeo";
                 vgsPlayer.options({
                     autoplay: true
                 });
             } else {
-                //$("#vid1 iframe, #vid1 .vjs-iframe-blocker").remove();
                 if (!ext)
                     ext = "mp4";
-
                 var ext = vidURL.split('.').pop();
             }
-
-            console.log(vgsPlayer.options().autoplay);
 
             vgsPlayer.src({
                 //"techOrder": ['youtube'],
                 "type": "video/" + ext,
-                "src": vidURL
+                "src": vidURL,
+                
                 //"youtube": { "iv_load_policy": 3 }
-
             });
-
 
             if (poster)
                 vgsPlayer.poster(poster);
 
             vgsPlayer.play();
         }
-
-
 
         function ytVidId(url) {
             //var p = /^(?:https?:\/\/)?(?:www\.)?youtube\.com\/watch\?(?=.*v=((\w|-){11}))(?:\S+)?$/;
@@ -355,7 +544,6 @@
         }
 
         /*Vimeo https://vimeo.com/378327608 explode vimeo*/
-
         function getVimeoId(url) {
             var m = url.match(/^.+vimeo.com\/(.*\/)?([^#\?]*)/);
             return m ? m[2] || m[1] : null;
@@ -367,17 +555,14 @@
             var match = url.match(regExp);
             var vimeoName = (match&&match[1]) ? match[1] : false;
 
-            //return vimeoName;
-
             if (vimeoName == false){
                 return false;
             } else{
                 var fetchVimeoNameArr = vimeoName.split('.');
-                return fetchVimeoNameArr[0];
+                return fetchVimeoNameArr[0]; // return vimeo
             }
         }
 
-        /**/
         function getId(url) {
             var regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
             var match = url.match(regExp);
@@ -389,13 +574,20 @@
             }
         }
 
-        /********* LOAD URL *********/
-        $('#vidlink li a').on('click', function(e) {
+        $('#vidlink a').on('click', function(e) {
             e.preventDefault();
             var vidlink = $(this).attr('href');
             vsgLoadVideo(vidlink);
             $('#vsg-vurl').val(vidlink);
-        });
 
+            document.getElementById('vid1').style.display = "block";
+
+            var node = document.getElementById("first_video");
+            if (node != null) {
+                if (node.parentNode) {
+                    node.parentNode.removeChild(node);
+                }
+            }
+        });
     </script>
 @stop

@@ -78,7 +78,7 @@
         </div> --}}
       
       <div class="row">
-        <section class="col-lg-7 connectedSortable">
+        {{-- <section class="col-lg-7 connectedSortable">
           <div class="card">
             <div class="card-header">
               <h3 class="card-title">
@@ -178,11 +178,11 @@
                 </li>
               </ul>
             </div>
-            {{-- <div class="card-footer clearfix">
+            <div class="card-footer clearfix">
               <button type="button" class="btn btn-info float-right"><i class="fa fa-plus"></i> Add item</button>
-            </div> --}}
+            </div>
           </div>
-        </section>
+        </section> --}}
 
         <section class="col-lg-5 connectedSortable">
           <div class="card bg-success-gradient">

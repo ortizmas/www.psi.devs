@@ -67,6 +67,17 @@
                                     @endif
                                 </div>
                             </div>
+
+                            <div class="col-md-12">
+                                <div class="form-group mb-3">
+                                    <input id="file" type="text" class="basic-usage form-control{{ $errors->has('file') ? ' is-invalid' : '' }}" name="file" value="{{ old('file', $classroom->file) }}" placeholder="file" required autofocus> 
+                                    @if ($errors->has('file'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('file') }}</strong>
+                                        </span> 
+                                    @endif
+                                </div>
+                            </div>
                         </div>
                         
                         <div class="row">
