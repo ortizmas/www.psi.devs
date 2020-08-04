@@ -18,6 +18,7 @@ class CreateClassroomsTable extends Migration
             $table->string('name');
             $table->string('description')->nullable();
             $table->string('video')->nullable();
+            $table->string('file')->nullable();
             $table->integer('views')->nullable();
             $table->boolean('status')->nullable();
             $table->integer('module_id')->unsigned();

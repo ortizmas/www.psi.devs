@@ -12,8 +12,7 @@ class Classroom extends Model
     {
         if (!isset($data['filter']) && !isset($data['name']) && !isset($data['description']) && !isset($data['module_id']))
             return $this->with('module')->paginate($total);
-        
-        
+
         $classrooms = $this->where(function($query) use ($data) {
 
             if (isset($data['filter'])) {
@@ -54,5 +53,10 @@ class Classroom extends Model
     {
         //return $this->hasMany(Assignment::class, 'classroom_id', 'id')
         return $this->hasMany(Assignment::class);
+    }
+
+    public function annotations()
+    {
+        return $this->hasMany(Annotation::class);
     }
 }

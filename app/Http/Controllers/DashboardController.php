@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Career;
 use App\Trainee;
-use App\User;
+use App\Inscription;
 use Auth;
 use Illuminate\Http\Request;
 
@@ -75,7 +75,10 @@ class DashboardController extends Controller
 
     public function student($item_carrinho)
     {
-        return view('dashboard.student');
+        //$model->problems()->where('phone_problem', $problem->id)->first()->pivot->price;
+        
+        $courses = Inscription::getCourses();
+        return view('dashboard.student', compact('courses'));
         
     }
 

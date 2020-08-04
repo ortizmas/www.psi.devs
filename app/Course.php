@@ -63,6 +63,11 @@ class Course extends Model
             ->withTimestamps();
     }
 
+    public function bonuses()
+    {
+        return $this->hasMany(Bonus::class);
+    }
+
     public function scopeOfUrl($query, $url)
     {
         return $query->where('url', $url);

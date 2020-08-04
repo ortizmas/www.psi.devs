@@ -22,7 +22,38 @@
 
   <section class="content">
     <div class="container-fluid">
-        {{-- <div class="row">
+        <div class="bg-content">
+            <div class="row pt-5 pb-5">
+                @if (session()->has('success'))
+                <div class="col-12">
+                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        <strong>Hoops</strong> {{ session()->get('success') }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                </div>
+                @endif
+                @foreach ($courses as $course)
+                <div class="col-md-3">
+                    <div class="card">
+                        <a href="{{ route('learn.lecture', [$course->url, $course->id]) }}" title="{{ $course->name }}">
+                            <img src="{{ asset('storage/courses/' . $course->image) }}" class="card-img-top"
+                                alt="{{ $course->name }}">
+                        </a>
+                        <div class="card-body">
+                            <h5 class="card-title">{{ $course->name }}</h5>
+                            {{-- <p class="card-text">{{ $course->description }}</p> --}}
+                            <a class="btn btn-success float-left w-100 mt-3"
+                                href="{{ route('learn.lecture', [$course->url, $course->id]) }}">Ver curso</a>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+        </div>
+
+        <div class="row">
             <div class="col-lg-3 col-6">
               <div class="small-box bg-info">
                 <div class="inner">
@@ -75,10 +106,10 @@
                 <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
               </div>
             </div>
-        </div> --}}
+        </div>
       
       <div class="row">
-        {{-- <section class="col-lg-7 connectedSortable">
+        <section class="col-lg-7 connectedSortable">
           <div class="card">
             <div class="card-header">
               <h3 class="card-title">
@@ -182,7 +213,7 @@
               <button type="button" class="btn btn-info float-right"><i class="fa fa-plus"></i> Add item</button>
             </div>
           </div>
-        </section> --}}
+        </section>
 
         <section class="col-lg-5 connectedSortable">
           <div class="card bg-success-gradient">

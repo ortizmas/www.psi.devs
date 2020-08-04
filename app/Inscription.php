@@ -39,11 +39,11 @@ class Inscription extends Model
 
     public static function getCourses()
     {
-        /*$query = Inscription::with('courses')->where('user_id', Auth::id())->get();
-        return collect($query[0]->courses);*/
-        return Course::whereHas('inscriptions', function ($q) {
+        $courses = Course::whereHas('inscriptions', function ($q) {
             $q->where('user_id', Auth::id());
         })->orderBy('name', 'asc')->get();
+        
+        return $courses
     }
 
     public function updatePivoteTable(array $data)

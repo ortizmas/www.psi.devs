@@ -19,7 +19,9 @@ class CreateModulesTable extends Migration
             $table->string('description')->nullable();
             $table->boolean('status')->nullable();
             $table->integer('course_id')->unsigned();
+
             $table->foreign('course_id')->references('id')->on('courses');
+
             $table->timestamps();
         });
     }
