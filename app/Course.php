@@ -5,7 +5,8 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 //use Illuminate\Database\Eloquent\Collection;
-//use Illuminate\Support\Collection as Collection;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Course extends Model
 {
@@ -133,12 +134,13 @@ class Course extends Model
         $assignmentsByUser = Assignment::where('user_id', $userId)->count();
 
         if ($assignmentsByUser > 0) {
-            $modules = Module::with(['classrooms' => function ($query) use ($userId) {
-                $query->with(['assignments' => function ($q) use ($userId) {
-                    $q->where('user_id', $userId)->count();
-                }]);
-            }])->where('course_id', $courseId)->get();
-
+            $modules = Module::where('course_id', $courseId)
+                ->with(['classrooms' => function ($query) use ($userId) {
+                    $query->whereIn('classrooms.id', function ($q) use ($userId) {
+                        $q->select('classroom_id')->from('assignments')->where('user_id', $userId);
+                    });
+                }])
+                ->get();
             return $modules;
         } else {
             return array();

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Career;
+use App\Course;
 use App\Trainee;
 use App\Inscription;
 use Auth;
@@ -22,7 +23,7 @@ class DashboardController extends Controller
     
     public function home()
     {
-        $user =Auth::user();
+        $user = Auth::user();
         $role = $user->roles[0]->name;
         
         switch ($role) {
@@ -37,12 +38,14 @@ class DashboardController extends Controller
             case 'student':
                     //Item selecionado por o cliente que deseja comprar 
                     $item_carrinho = session()->get('item_buy');
+
+                    //dd($item_carrinho);
                     
                     if ($item_carrinho != null) {
                         return redirect()->route('profiles.create');
                     } else {
                         return $this->student($item_carrinho);
-                    }                    
+                    }
                 break;
             
             default:
@@ -75,8 +78,6 @@ class DashboardController extends Controller
 
     public function student($item_carrinho)
     {
-        //$model->problems()->where('phone_problem', $problem->id)->first()->pivot->price;
-        
         $courses = Inscription::getCourses();
         return view('dashboard.student', compact('courses'));
         

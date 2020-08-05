@@ -29,6 +29,7 @@ class PreRegisterController extends Controller
 
             if ($course->checkCourse($data)) {
                 session()->flash('success', 'O curso já existe na sua lista');
+                session()->forget('item_buy'); // Removes a specific variable session
                 return redirect()->route('my.courses');
             } else {
                 if ($inscription) {
@@ -54,7 +55,8 @@ class PreRegisterController extends Controller
             'subtotal' => $subtotal,
             'status' => 4
         ]);
-
+        
+        //session()->forget('item_buy'); // Removes a specific variable session
         return redirect()->route('profiles.course.details', $course->url);
     }
 

@@ -25,7 +25,7 @@
                 <li class="nav-item">
                     <a href="{{ route('profiles.show', Auth::id()) }}" class="nav-link">
                         <i class="fa fa-user-o nav-icon"></i>
-                        <p>Seu perfil</p>
+                        <p>Ver perfil</p>
                     </a>
                 </li>
                 

@@ -33,7 +33,7 @@ class ProfileController extends Controller
         $user = Auth::user();
         $programs = Course::all();
 
-        if ($user->inscription) {
+        if ($user->inscription && session('url') != null) {
             return redirect()->route('preregister.create', session('url'));
         }
         return view('dashboard.profiles.create', compact('user', 'programs'));
@@ -78,6 +78,7 @@ class ProfileController extends Controller
             ]);
         }
 
+        session()->forget('item_buy'); // Removes a specific variable session
         return redirect()->route('profiles.course.details', $course->url);
     }
 

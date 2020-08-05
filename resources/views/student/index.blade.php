@@ -1,21 +1,9 @@
 @extends('layouts.master') 
 
 @section('content')
-
-    <div class="content-wrapper bg-white">
-        <div class="content-header p-0 m-0">
-            <div class="container-fluid">
-                <div class="jumbotron jumbotron-fluid bg-dark m-0">
-                    <div class="container">
-                        <h1 class="display-4">Meus cursos</h1>
-                        <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
+    <div class="content-wrapper bg-white pt-4">
         <div class="container bg-content">
-            <div class="row pt-5 pb-5">
+            <div class="row">
                 @if (session()->has('success'))
                     <div class="col-12">
                         <div class="alert alert-warning alert-dismissible fade show" role="alert">
