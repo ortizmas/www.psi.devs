@@ -15,13 +15,16 @@ class CreateAnnotationsTable extends Migration
     {
         Schema::create('annotations', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedInteger('user_id');
+            $table->unsignedInteger('course_id');
             $table->unsignedInteger('classroom_id');
             $table->string('description')->nullable();
 
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('course_id')->references('id')->on('courses');
             $table->foreign('classroom_id')->references('id')->on('classrooms');
             
             $table->timestamps();
-
         });
     }
 

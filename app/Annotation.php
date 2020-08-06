@@ -9,7 +9,7 @@ class Annotation extends Model
     protected $table = 'annotations';
 
     protected $fillable = [
-        'description'
+        'user_id', 'course_id', 'classroom_id', 'description'
     ];
 
     public function classroom()

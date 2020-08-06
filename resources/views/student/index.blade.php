@@ -2,32 +2,36 @@
 
 @section('content')
     <div class="content-wrapper bg-white pt-4">
-        <div class="container bg-content">
-            <div class="row">
-                @if (session()->has('success'))
+        <div class="container-fluid">
+            <div class="bg-content">
+                <div class="row">
+                    @if (session()->has('success'))
                     <div class="col-12">
                         <div class="alert alert-warning alert-dismissible fade show" role="alert">
                             <strong>Hoops</strong> {{ session()->get('success') }}
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
+                                <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                     </div>
-                @endif
-                @foreach ($courses as $course)
+                    @endif
+                    @foreach ($courses as $course)
                     <div class="col-md-3">
                         <div class="card">
-                            <a href="{{ route('learn.lecture', [$course->url, $course->id]) }}" title="{{ $course->name }}">
-                                <img src="{{ asset('storage/courses/' . $course->image) }}" class="card-img-top" alt="{{ $course->name }}">
+                            <a href="{{ route('learn.classroom', [$course->url, $course->id]) }}" title="{{ $course->name }}">
+                                <img src="{{ asset('storage/courses/' . $course->image) }}" class="card-img-top"
+                                    alt="{{ $course->name }}">
                             </a>
                             <div class="card-body">
                                 <h5 class="card-title">{{ $course->name }}</h5>
                                 {{-- <p class="card-text">{{ $course->description }}</p> --}}
-                                <a class="btn btn-success float-left w-100 mt-3" href="{{ route('learn.lecture', [$course->url, $course->id]) }}">Ver curso</a>
+                                <a class="btn btn-dark float-left w-100 mt-3"
+                                    href="{{ route('learn.classroom', [$course->url, $course->id]) }}">VER CURSO</a>
                             </div>
                         </div>
                     </div>
-                @endforeach
+                    @endforeach
+                </div>
             </div>
         </div>
     </div>

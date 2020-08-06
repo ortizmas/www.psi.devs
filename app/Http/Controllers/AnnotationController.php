@@ -38,6 +38,17 @@ class AnnotationController extends Controller
         //
     }
 
+    public function storeStudentNotes(Request $request)
+    {
+        $request['user_id'] = auth()->user()->id;
+        //$request['classroom_id'] = 0;
+        
+        //dd($request->all());
+        $annotation = Annotation::create($request->all());
+
+        return redirect()->back()->with('success', 'Anotação foi salva');
+    }
+
     /**
      * Display the specified resource.
      *
