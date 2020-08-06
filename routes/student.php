@@ -10,6 +10,10 @@ Route::prefix('course')->namespace('Students')->group(function () {
     Route::get('class/{url}/learn/{id}', 'StudentController@getClassroomBySlugAndId')->name('learn.play');
 
     Route::get('/has-many-through', 'StudentController@hasManyThrough')->name('learn.hasmanythrough');
+
+
 });
 
 Route::post('student/anotation', 'AnnotationController@storeStudentNotes')->name('student.annotation');
+Route::post('student/course/axios', 'AnnotationController@axiosStoreCourse')->name('student.course.axios');
+Route::post('student/classroom/axios', 'AnnotationController@axiosStoreClassroom')->name('student.classroom.axios');

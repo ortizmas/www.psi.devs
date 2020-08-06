@@ -27,13 +27,15 @@ class StoreUpdateClassroomFormRequest extends FormRequest
         switch ($this->getMethod()) {
             case "POST":
                 $rules = [
-                        "name" => "required|min:3|max:199"
+                        "name" => "required|min:3|max:191",
+                        "slug" => "required|min:3|max:191|unique:classrooms,slug"
                     ];
                 break;
             
             case "PUT":
                 $rules = [
-                        "name" => "required|min:3|max:50|unique:classrooms,name,{$this->classroom}"
+                        "name" => "required|min:3|max:191|unique:classrooms,name,{$this->classroom}",
+                        "slug" => "required|min:3|max:191|unique:classrooms,slug,{$this->classroom}"
                     ];
                 break;
         }

@@ -42,13 +42,25 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-md-12">
+                            <div class="col-md-6">
                                 <div class="form-group mb-3">
                                     <input id="name" type="text" class="basic-usage form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" placeholder="Titulo da aula" required autofocus> 
                                     @if ($errors->has('name'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('name') }}</strong>
                                         </span> 
+                                    @endif
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group mb-3">
+                                    <input id="slug" type="text" class="basic-usage form-control{{ $errors->has('slug') ? ' is-invalid' : '' }}"
+                                        name="slug" value="{{ old('slug') }}" placeholder="Titulo da aula" required autofocus>
+                                    @if ($errors->has('slug'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('slug') }}</strong>
+                                    </span>
                                     @endif
                                 </div>
                             </div>
@@ -164,7 +176,7 @@
         $(document).ready( function() {
             //$("#basic-usage").stringToSlug();
             $("#name").stringToSlug({
-                 getPut: '#url',
+                 getPut: '#slug',
             });
         });
 

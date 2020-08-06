@@ -44,9 +44,37 @@ class AnnotationController extends Controller
         //$request['classroom_id'] = 0;
         
         //dd($request->all());
-        $annotation = Annotation::create($request->all());
+        $annotation = Annotation::updateOrCreate($request->except('_token'));
 
         return redirect()->back()->with('success', 'Anotação foi salva');
+    }
+
+    public function axiosStoreCourse(Request $request)
+    {
+        $annotation = Annotation::where('user_id', auth()->user()->id)
+            ->where('course_id', $request->course_id)->whereNull('classroom_id')->first();
+        if ($annotation) {
+            $data = $annotation->update($request->all());
+        } else {
+            $request['user_id'] = auth()->user()->id;
+            $data = Annotation::create($request->all());
+        }
+        
+        return response()->json($data);
+    }
+
+    public function axiosStoreClassroom(Request $request)
+    {
+        $annotation = Annotation::where('user_id', auth()->user()->id)
+            ->where('course_id', $request->course_id)->where('classroom_id', $request->classroom_id)->first();
+        if ($annotation) {
+            $data = $annotation->update($request->all());
+        } else {
+            $request['user_id'] = auth()->user()->id;
+            $data = Annotation::create($request->all());
+        }
+
+        return response()->json($data);
     }
 
     /**

@@ -50,48 +50,32 @@
 
                     <div class="col-md-4">
                         <div class="card" id="notas">
+                            <div id="results" style="display: none;">
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    <strong>Anotação salva com sucesso</strong>
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            </div>
                             <div class="card-body">
                                 <form action="{{ route('student.annotation') }}" method="post">
                                     @csrf
                                     <div class="form-group">
                                         <label>Anotações</label>
-                                        <textarea class="form-control" name="description" rows="1">Textarea One</textarea>
+                                        <textarea id="description" class="form-control" name="description" rows="10" required="">{{ old('name', isset($annotation) ? $annotation->description : '') }}</textarea>
                                     </div>
-                                    <input type="text" name="course_id" value="{{ $data_course->id }}" >
-                                    <input type="text" name="classroom_id" value="{{ $classroom->id }}">
-
-                                    <button type="submit" class="btn btn-dark pull-right">Salvar</button>
+                                    <input id="courseId" type="hidden" name="course_id" value="{{ $data_course->id }}" >
+                                    <input id="classroomId" type="hidden" name="classroom_id" value="{{ $classroom->id }}">
+                                    <div id="preloader" style="display: none;">
+                                        Salvando...
+                                    </div>
+                                    <button id="saveBtn" type="submit" class="btn btn-dark pull-right">Salvar</button>
                                 </form>
                             </div>
-                        </div>
 
-                        <div class="card">
-                            <div class="card-header">
-                                <h3 class="card-title">
-                                    <i class="fa fa-file mr-1"></i> Minhas Anotações
-                                </h3>
-
-                                <div class="card-tools">
-                                    <button type="button" class="btn btn-tool p-1" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
-                                </div>
-                            </div>
                             <div class="card-body">
-                                <ul class="todo-list">
-                                    @foreach ($classroom->annotations as $note)
-                                        <li>
-                                            {{-- <span class="handle">
-                                                <i class="fa fa-ellipsis-v"></i>
-                                                <i class="fa fa-ellipsis-v"></i>
-                                            </span> --}}
-                                            {{-- <input type="checkbox" value="" name=""> --}}
-                                            <span class="text">{{ $note->description }}</span>
-                                            <div class="tools">
-                                                <i class="fa fa-edit"></i>
-                                                <i class="fa fa-trash-o"></i>
-                                            </div>
-                                        </li>
-                                    @endforeach
-                                </ul>
+                                <example-component></example-component>
                             </div>
                         </div>
                     </div>
@@ -126,62 +110,49 @@
     {{-- <script src="https://player.vimeo.com/api/player.js"></script> --}}
     <script src="https://vjs.zencdn.net/7.8.4/video.js"></script>
 
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <script>
+        $('#saveBtn').click(function (e) {
+            e.preventDefault();
+
+            let courseId = document.getElementById('courseId').value;
+            let classroomId = document.getElementById('classroomId').value;
+            let desc = document.getElementById('description').value;
+
+            startPreloader ()
+
+            axios.post('{{ route('student.classroom.axios') }}', {
+                course_id: courseId,
+                classroom_id: classroomId,
+                description: desc
+            })
+            .then(function (response) {
+                document.getElementById('results').style.display = "block"
+                console.log(response.data);
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
+            .finally(() => endPreloader ());
+        });
+
+        function startPreloader () {
+            // Exibe a div de preloader
+            document.getElementById('preloader').style.display = 'block'
+        }
+
+        function endPreloader () {
+            // Oculta a div de preloader
+            document.getElementById('preloader').style.display = 'none'
+        }
+    </script>
+
     <script>
         $(function () {
             $('[data-toggle="tooltip"]').tooltip()
             //$('[rel=tooltip]').tooltip();
         })
-        $(function() {
-            var Accordion = function(el, multiple) {
-                this.el = el || {};
-                this.multiple = multiple || false;
-
-                // Variables privadas
-                var links = this.el.find('.link');
-                // Evento
-                links.on('click', {el: this.el, multiple: this.multiple}, this.dropdown)
-            }
-
-            Accordion.prototype.dropdown = function(e) {
-                var $el = e.data.el;
-                    $this = $(this),
-                    $next = $this.next();
-
-                $next.slideToggle();
-                $this.parent().toggleClass('open');
-
-                if (!e.data.multiple) {
-                    $el.find('.submenu').not($next).slideUp().parent().removeClass('open');
-                };
-            }	
-
-            var accordion = new Accordion($('#accordion'), false);
-        });
     </script>
 
-    {{-- <script>
-        let playButton = document.querySelector('.video-container a');
-        playButton.addEventListener('click', playVideo);
-
-        function playVideo(e) {
-            e.preventDefault();
-            let videoContainer = this.parentNode;
-            let videoUrl = this.href;
-            let videoId = videoUrl.split('.com/')[1];
-            let iframeUrl;
-
-            if(videoUrl.includes('vimeo')) {
-                // vimeo
-                videoId = videoId.split('?')[0];
-                iframeUrl = `//player.vimeo.com/video/${videoId}?autoplay=1`;
-            } else {
-                // youtube
-                videoId = videoId.split('v=')[1];
-                iframeUrl = `//www.youtube.com/embed/${videoId}?autoplay=1`;
-            }
-            
-            videoContainer.innerHTML = `<iframe src="${iframeUrl}" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>`;
-        }
-        
-    </script> --}}
 @stop

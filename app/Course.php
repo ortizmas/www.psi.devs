@@ -57,6 +57,11 @@ class Course extends Model
         return $this->hasMany(Sale::class);
     }
 
+    public function annotation()
+    {
+        return $this->hasOne(Annotation::class);
+    }
+
     public function inscriptions()
     {
         return $this->belongsToMany(Inscription::class)

@@ -23,7 +23,7 @@
             </div>
 
             <div class="container-fluid bg-content">
-                <div class="row pt-5 pb-5">
+                <div class="row pt-2 pb-5">
                     <div class="col-md-8">
                         <div class="card">
                             <div class="card-body p-0 rounded-0">
@@ -40,24 +40,35 @@
                     </div>
 
                     <div class="col-md-4">
-                        <div class="card bg-primary" id="notas">
+                        <div class="card bg-light" id="notas">
+                            <div id="results" style="display: none;">
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    <strong>Anotação salva com sucesso</strong>
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            </div>
                             <div class="card-body">
-                                <form action="{{ route('student.annotation') }}" method="post">
-                                    @csrf
-                                    
+                                {{-- <form action="{{ route('student.annotation') }}" method="post">
+                                    @csrf --}}
+                                <form id="annotationsForm">
                                     <div class="form-group">
-                                        <label>Anotações</label>
-                                        <textarea class="form-control" name="description" rows="1">Textarea One</textarea>
+                                        <label>Quadro para notações</label>
+                                        <textarea id="description" class="form-control" name="description" rows="6" required="">{{ old('description', isset($annotation) ? $annotation->description : '') }}</textarea>
                                     </div>
-                                    <input type="text" name="course_id" value="{{ $data_course->id }}" >
-
-                                    <button type="submit" class="btn btn-dark pull-right">Salvar</button>
+                                    <input id="courseId" type="hidden" name="course_id" value="{{ $data_course->id }}" >
+                                    <div id="preloader" style="display: none;">
+                                        Salvando...
+                                    </div>
+                                    <button id="saveBtn" type="submit" class="btn btn-dark pull-right">Salvar</button>
                                 </form>
+
+                                <div id="axios-test"></div>
                             </div>
                         </div>
 
-
-                        <div class="card">
+                        {{-- <div class="card">
                             <div class="card-header">
                                 <h3 class="card-title">
                                     <i class="fa fa-file mr-1"></i> Minhas Anotações
@@ -71,11 +82,6 @@
                                 <ul class="todo-list">
                                     @foreach ($annotations as $note)
                                         <li>
-                                            {{-- <span class="handle">
-                                                <i class="fa fa-ellipsis-v"></i>
-                                                <i class="fa fa-ellipsis-v"></i>
-                                            </span> --}}
-                                            {{-- <input type="checkbox" value="" name=""> --}}
                                             <span class="text">{{ $note->description }}</span>
                                             <div class="tools">
                                                 <i class="fa fa-edit"></i>
@@ -85,7 +91,7 @@
                                     @endforeach
                                 </ul>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>
@@ -108,7 +114,7 @@
     <!-- AdminLTE App -->
     <script src="/dist/js/adminlte.min.js"></script>
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-    <script src="/dist/js/pages/dashboard.js"></script>
+    {{-- <script src="/dist/js/pages/dashboard.js"></script> --}}
     <!-- AdminLTE for demo purposes -->
     <script src="/dist/js/demo.js"></script>
 
@@ -117,37 +123,54 @@
 
     {{-- <script src="https://player.vimeo.com/api/player.js"></script> --}}
 
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <script>
+        //const axios = require('axios');
+
+        // axios.post('{{ route('student.course.axios') }}').then(respond => {
+        //     document.getElementById('axios-test').innerHTML = respond.data;
+        //     console.log(respond.data)
+        // })
+        
+        $('#saveBtn').click(function (e) {
+            e.preventDefault();
+
+            let courseId = document.getElementById('courseId').value;
+            let desc = document.getElementById('description').value;
+
+            startPreloader ()
+
+            axios.post('{{ route('student.course.axios') }}', {
+                course_id: courseId,
+                description: desc
+            })
+            .then(function (response) {
+                document.getElementById('results').style.display = "block"
+                console.log(response.data);
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
+            .finally(() => endPreloader ());
+        });
+
+        function startPreloader () {
+            // Exibe a div de preloader
+            document.getElementById('preloader').style.display = 'block'
+        }
+
+        function endPreloader () {
+
+            // Oculta a div de preloader
+            document.getElementById('preloader').style.display = 'none'
+        }
+    </script>
+
     <script>
         $(function () {
             $('[data-toggle="tooltip"]').tooltip()
-            //$('[rel=tooltip]').tooltip();
         })
-        $(function() {
-            var Accordion = function(el, multiple) {
-                this.el = el || {};
-                this.multiple = multiple || false;
-
-                // Variables privadas
-                var links = this.el.find('.link');
-                // Evento
-                links.on('click', {el: this.el, multiple: this.multiple}, this.dropdown)
-            }
-
-            Accordion.prototype.dropdown = function(e) {
-                var $el = e.data.el;
-                    $this = $(this),
-                    $next = $this.next();
-
-                $next.slideToggle();
-                $this.parent().toggleClass('open');
-
-                if (!e.data.multiple) {
-                    $el.find('.submenu').not($next).slideUp().parent().removeClass('open');
-                };
-            }	
-
-            var accordion = new Accordion($('#accordion'), false);
-        });
     </script>
 
     <script>

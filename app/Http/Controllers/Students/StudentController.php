@@ -68,8 +68,10 @@ class StudentController extends Controller
         $courses = $this->course->getCoursesByUser($data);
 
         $data_course = Course::select('id', 'name', 'url', 'image', 'video')->findOrFail($data['course_id']);
-        $annotations = Annotation::where('user_id', auth()->user()->id)->get();
-        return view('student.course-play', compact('courses', 'annotations', 'data_course'));
+        $annotation = $data_course->annotation()->where('user_id', auth()->user()->id)
+            ->whereNull('classroom_id')->first();
+       // $annotations = Annotation::where('user_id', auth()->user()->id)->get();
+        return view('student.course-play', compact('courses', 'annotation', 'data_course'));
     }
 
     public function getClassroomBySlugAndId($url, $id)
@@ -80,10 +82,12 @@ class StudentController extends Controller
 
         $courses = $this->course->getCoursesByUser($data);
         $data_course = Course::select('id', 'name', 'url', 'image', 'video')->findOrFail($data['course_id']);
+        
         $classroom = Classroom::where('slug', $url)->firstOrFail();
+        $annotation = $classroom->annotation()->where('user_id', auth()->user()->id)->first();
         //$annotations = Annotation::where('user_id', auth()->user()->id)->get();
 
-        return view('student.classrooms-play', compact('courses', 'classroom', 'data_course'));
+        return view('student.classrooms-play', compact('courses', 'classroom', 'data_course', 'annotation'));
     }
 
     public function waitingCoursePayment($url)

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Classroom extends Model
 {
-    protected $fillable = ['name', 'description', 'video', 'file', 'views', 'status', 'module_id'];
+    protected $fillable = ['name', 'slug', 'description', 'video', 'file', 'views', 'status', 'module_id'];
 
     public function getResults($data, $total)
     {
@@ -53,6 +53,11 @@ class Classroom extends Model
     {
         //return $this->hasMany(Assignment::class, 'classroom_id', 'id')
         return $this->hasMany(Assignment::class);
+    }
+
+    public function annotation()
+    {
+        return $this->hasOne(Annotation::class);
     }
 
     public function annotations()
