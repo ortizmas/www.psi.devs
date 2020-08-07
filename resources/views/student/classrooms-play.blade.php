@@ -51,7 +51,7 @@
                     <div class="col-md-4">
                         <div class="card" id="notas">
                             <div id="results" style="display: none;">
-                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
                                     <strong>Anotação salva com sucesso</strong>
                                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
@@ -72,10 +72,6 @@
                                     </div>
                                     <button id="saveBtn" type="submit" class="btn btn-dark pull-right">Salvar</button>
                                 </form>
-                            </div>
-
-                            <div class="card-body">
-                                <example-component></example-component>
                             </div>
                         </div>
                     </div>
@@ -120,6 +116,7 @@
             let classroomId = document.getElementById('classroomId').value;
             let desc = document.getElementById('description').value;
 
+            
             startPreloader ()
 
             axios.post('{{ route('student.classroom.axios') }}', {
@@ -145,6 +142,11 @@
         function endPreloader () {
             // Oculta a div de preloader
             document.getElementById('preloader').style.display = 'none'
+
+            setTimeout(function() {
+                //window.location = response.data.redirect;
+                document.getElementById('results').style.display = "none"
+            }, 3000);
         }
     </script>
 

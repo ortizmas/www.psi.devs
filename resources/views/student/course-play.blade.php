@@ -41,8 +41,18 @@
 
                     <div class="col-md-4">
                         <div class="card bg-light" id="notas">
+                            {{-- @if (session('message'))
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    <strong>{{ session('message') }}</strong>
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            @endif --}}
+
+                            {{-- <div class="flash-message"></div> --}}
                             <div id="results" style="display: none;">
-                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
                                     <strong>Anotação salva com sucesso</strong>
                                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
@@ -138,7 +148,7 @@
 
             let courseId = document.getElementById('courseId').value;
             let desc = document.getElementById('description').value;
-
+            
             startPreloader ()
 
             axios.post('{{ route('student.course.axios') }}', {
@@ -146,8 +156,11 @@
                 description: desc
             })
             .then(function (response) {
-                document.getElementById('results').style.display = "block"
-                console.log(response.data);
+                if (response.data.status == 200) {
+                    document.getElementById('results').style.display = "block"
+                }
+                //$("div.flash-message").html(response.data);
+                console.log(response.data.status);
             })
             .catch(function (error) {
                 console.log(error);
@@ -161,9 +174,13 @@
         }
 
         function endPreloader () {
-
             // Oculta a div de preloader
             document.getElementById('preloader').style.display = 'none'
+
+            setTimeout(function() {
+                //window.location = response.data.redirect;
+                document.getElementById('results').style.display = "none"
+            }, 3000);
         }
     </script>
 

@@ -36,6 +36,13 @@
                     </a>
                 </li>
 
+                <li class="nav-item">
+                    <a href="{{ route('student.annotations', $data_course->id) }}" class="nav-link">
+                        <i class="fa fa-edit nav-icon"></i>
+                        <p>Anotações</p>
+                    </a>
+                </li>
+
                 @if (auth()->user()->name!=null)
                     <li class="nav-item">
                         <a href="{{ route('logout') }}"

@@ -3,10 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Annotation;
+use App\Classroom;
+use Illuminate\Support\Facades\View;
 use Illuminate\Http\Request;
+use App\Course;
 
 class AnnotationController extends Controller
 {
+    private $course;
     /**
      * Display a listing of the resource.
      *
@@ -41,9 +45,7 @@ class AnnotationController extends Controller
     public function storeStudentNotes(Request $request)
     {
         $request['user_id'] = auth()->user()->id;
-        //$request['classroom_id'] = 0;
-        
-        //dd($request->all());
+
         $annotation = Annotation::updateOrCreate($request->except('_token'));
 
         return redirect()->back()->with('success', 'Anotação foi salva');
@@ -60,7 +62,10 @@ class AnnotationController extends Controller
             $data = Annotation::create($request->all());
         }
         
-        return response()->json($data);
+        // session()->flash("success", "Anotação salva com sucesso");
+        // return View::make("partials/flash-messages");
+        
+        return response()->json(['status' => 200, 'data' => $data]);
     }
 
     public function axiosStoreClassroom(Request $request)
@@ -74,7 +79,32 @@ class AnnotationController extends Controller
             $data = Annotation::create($request->all());
         }
 
-        return response()->json($data);
+        // session()->flash("success", "Anotação salva com sucesso");
+        // return View::make("partials/flash-messages");
+        return response()->json(['status' => 200, 'data' => $data]);
+    }
+
+    public function getList($id)
+    {
+        $data['user_id'] = auth()->id();
+        $data['course_id'] = $id;
+
+        $userId = auth()->id();
+
+        //$courses = $this->course->getCoursesByUser($data);
+
+        $data_course = Course::select('id', 'name', 'url', 'image', 'video')->findOrFail($data['course_id']);
+
+        $classrooms = Classroom::select('*', 'annotations.*')
+            ->join('annotations', 'classrooms.id', '=', 'annotations.classroom_id')
+            ->where('annotations.user_id', $userId)
+            ->where('annotations.course_id', $id)
+            ->get();
+        
+        $annotation = $data_course->annotation()->where('user_id', auth()->user()->id)
+            ->whereNull('classroom_id')->first();
+       // $annotations = Annotation::where('user_id', auth()->user()->id)->get();
+        return view('student.annotations', compact('annotation', 'data_course', 'classrooms'));
     }
 
     /**

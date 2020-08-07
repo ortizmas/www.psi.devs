@@ -53,7 +53,8 @@ Route::group(['middleware' => ['role:super-admin|admin|teachers']], function() {
 
 	Route::get('assignments/{userId}/courses', 'AssignmentController@assignCourses')->name('assign.courses');
 	Route::get('assignments/module/{course_id}/user/{userId}', 'AssignmentController@assignModules')->name('assignments.modules.user');
-
+	
+	Route::resource('annotations', 'AnnotationController');
 });
 
 Route::resource('profiles', 'ProfileController');
