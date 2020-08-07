@@ -59,8 +59,9 @@
                                 </div>
                             </div>
                             <div class="card-body">
-                                <form action="{{ route('student.annotation') }}" method="post">
-                                    @csrf
+                                <!-- <form action="{{ route('student.annotation') }}" method="post">
+                                    @csrf -->
+                                <form id="annotationsForm">
                                     <div class="form-group">
                                         <label>Anotações</label>
                                         <textarea id="description" class="form-control" name="description" rows="10" required="">{{ old('name', isset($annotation) ? $annotation->description : '') }}</textarea>

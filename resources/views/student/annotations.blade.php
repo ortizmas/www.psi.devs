@@ -33,11 +33,12 @@
                                 </button>
                             </div>
                         </div>
-                        @foreach ($classrooms as $item)
+                        @foreach ($courses as $key => $module)
+                            @if ($module->classrooms->count() > 0)
                             <div class="card">
                                 <div class="card-header">
                                     <h3 class="card-title">
-                                        <i class="ion ion-clipboard mr-1"></i> {{ $item->name }}
+                                        <i class="ion ion-clipboard mr-1"></i> {{ $module->name }}
                                     </h3>
 
                                     <div class="card-tools">
@@ -46,21 +47,45 @@
                                 </div>
                                 
                                 <div class="card-body">
-                                    <form action="{{ route('student.annotation') }}" method="post">
-                                        @csrf
-                                        <div class="form-group">
-                                            <label>Anotações</label>
-                                            <textarea id="description" class="form-control" name="description" rows="3" required="">{{ old('name', $item->description) }}</textarea>
+                                    @foreach ($module->classrooms as $class)
+                                    <div class="card collapsed-card">
+                                        <div class="card-header">
+                                            <h3 class="card-title">
+                                                <i class="ion ion-clipboard mr-1"></i> {{ $class->name }}
+                                            </h3>
+                                    
+                                            <div class="card-tools">
+                                                <button type="button" class="btn btn-tool p-1" data-card-widget="collapse"><i
+                                                        class="fas fa-minus"></i></button>
+                                            </div>
                                         </div>
-                                        <input id="courseId" type="hidden" name="course_id" value="{{ $item->course_id }}" >
-                                        <input id="classroomId" type="hidden" name="classroom_id" value="{{ $item->classroom_id }}">
-                                        <div id="preloader" style="display: none;">
-                                            Salvando...
+                                    
+                                        <div class="card-body">
+                                            <form class="form_anotacao" action="#">
+                                                @csrf
+                                                <div class="form-group">
+                                                    <input type="hidden" name="course_id" value="{{ $module->course_id }}">
+                                                    <input type="hidden" name="classroom_id" value="{{ $class->id }}">
+                                                    <textarea class="form-control" name="description" rows="3"
+                                                        required="">{{ old('description', @$class->annotation['description']) }}</textarea>
+                                                    <span class="msg_salvou_anotacao badge badge-success p-2" style="display: none; color: #fff;">Anotação
+                                                        salva com sucesso</span>
+                                                </div>
+                                                <div class="form-group end-xs">
+                                                    <button class="btn btn-success pull-right save_anotation" type="submit">
+                                                        Salvar
+                                                        <div class="spinner_button spinner-border" role="status" style="display: none">
+                                                            <span class="sr-only">Loading...</span>
+                                                        </div>
+                                                    </button>
+                                                </div>
+                                            </form>
                                         </div>
-                                        <button id="saveBtn" type="submit" class="btn btn-dark pull-right">Salvar</button>
-                                    </form>
+                                    </div>
+                                    @endforeach
                                 </div>
                             </div>
+                            @endif
                         @endforeach
                     </div>
                 </div>
@@ -107,7 +132,7 @@
 
             startPreloader ()
 
-            axios.post('{{ route('student.classroom.axios') }}', {
+            axios.post('{{ route('student.classroom.axios')}}', {
                 course_id: courseId,
                 classroom_id: classroomId,
                 description: desc
@@ -139,6 +164,44 @@
                 document.getElementById('results').style.display = "none"
             }, 3000);
         }
+    </script>
+
+    <script>
+        var url = '{{ route('student.classroom.axios')}}';
+
+        $('.save_anotation').click(function (event) {
+            event.preventDefault();
+            // Mostrar loading in the button
+            $('.spinner_button').show();
+
+            var current_form = $(this).closest('.form_anotacao');
+
+            $.post(url, current_form.serialize())
+                .done(function (data) {
+                    if (data.status == 200)
+                        current_form.find('.msg_salvou_anotacao')
+                            .css("color", "#fff")
+                            .text("Anotação salva com sucesso!")
+                            .show().delay(3000).hide(200);
+                    else
+                        current_form.find('.msg_salvou_anotacao')
+                            .css("color", "red")
+                            .text("Erro ao salvar a anotação!")
+                            .show().delay(3000).hide(200);
+
+                    // Ocultar loading in the button
+                    $('.spinner_button').hide();
+                })
+                .fail(function () {
+                    current_form.find('.msg_salvou_anotacao')
+                        .css("color", "red")
+                        .text("Erro ao salvar a anotação!")
+                        .show().delay(3000).hide(200);
+
+                    // Ocultar loading in the button
+                    $('.spinner_button').hide();
+                });
+        });
     </script>
 
 @stop

@@ -152,6 +152,27 @@ class Course extends Model
         }
     }
 
+    public function getCoursesByAnnotations(array $data)
+    {
+        $courseId = $data['course_id'];
+        $userId = $data['user_id'];
+
+        $assignmentsByUser = Assignment::where('user_id', $userId)->count();
+
+        if ($assignmentsByUser > 0) {
+            $modules = Module::where('course_id', $courseId)
+                ->with(['classrooms' => function ($query) use ($userId) {
+                    $query->whereIn('classrooms.id', function ($q) use ($userId) {
+                        $q->select('classroom_id')->from('assignments')->where('user_id', $userId);
+                    });
+                }], 'annotation')
+                ->get();
+            return $modules;
+        } else {
+            return array();
+        }
+    }
+
     public function checkPayment(array $data)
     {
         $url = $data['url'];

@@ -11,11 +11,12 @@ use App\Course;
 class AnnotationController extends Controller
 {
     private $course;
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
+    public function __construct(Course $course)
+    {
+        $this->course = $course;
+    }
+
     public function index()
     {
         //
@@ -91,20 +92,20 @@ class AnnotationController extends Controller
 
         $userId = auth()->id();
 
-        //$courses = $this->course->getCoursesByUser($data);
+        $courses = $this->course->getCoursesByAnnotations($data);
 
         $data_course = Course::select('id', 'name', 'url', 'image', 'video')->findOrFail($data['course_id']);
 
-        $classrooms = Classroom::select('*', 'annotations.*')
+        /*$classrooms = Classroom::select('*', 'annotations.*')
             ->join('annotations', 'classrooms.id', '=', 'annotations.classroom_id')
             ->where('annotations.user_id', $userId)
             ->where('annotations.course_id', $id)
-            ->get();
+            ->get();*/
         
         $annotation = $data_course->annotation()->where('user_id', auth()->user()->id)
             ->whereNull('classroom_id')->first();
        // $annotations = Annotation::where('user_id', auth()->user()->id)->get();
-        return view('student.annotations', compact('annotation', 'data_course', 'classrooms'));
+        return view('student.annotations', compact('annotation', 'data_course', 'courses'));
     }
 
     /**
