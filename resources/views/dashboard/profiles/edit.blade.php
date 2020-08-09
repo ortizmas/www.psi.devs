@@ -26,7 +26,7 @@
         <section class="content">
           	<div class="container-fluid">
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                         <div class="card">
                             <div class="card-body register-card-body">
                                 <p class="login-box-msg"><i class='fa fa-user-plus'></i> Alterar {{$user->name}}</p>

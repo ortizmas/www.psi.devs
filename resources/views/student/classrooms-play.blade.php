@@ -5,6 +5,8 @@
     <link href="https://vjs.zencdn.net/7.8.4/video-js.css" rel="stylesheet" />
     <link href="{{ asset('dist/css/menu-accordion.css') }}" rel="stylesheet" />
 
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
+    
     <!-- If you'd like to support IE8 (for Video.js versions prior to v7) -->
     <script src="https://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>  
 
@@ -30,18 +32,20 @@
                     <div class="col-md-8">
                         <div class="card">
                             <div class="card-body p-0 rounded-0">
+                                <!-- poster="MY_VIDEO_POSTER.jpg" -->
                                 <video class="video-container w-100"
                                     id="my-video"
                                     class="video-js"
                                     controls
+                                    autoplay="true"
                                     preload="auto"
                                     width="100%"
                                     height="264"
-                                    poster="MY_VIDEO_POSTER.jpg"
                                     data-setup="{}"
                                     >
                                     <source src="{{ $classroom->video }}" type="video/vimeo" />
                               </video>
+                              {{-- <iframe src="{{ $classroom->video }}?autoplay=1" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe> --}}
                             </div>
                         </div>
 
@@ -94,6 +98,8 @@
     <!-- Bootstrap 4 -->
     <script src="/dist/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
+
     <!-- AdminLTE App -->
     <script src="/dist/js/adminlte.min.js"></script>
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
@@ -109,6 +115,19 @@
 
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
+    <script>
+        $('#description').summernote({
+            placeholder: 'Hello Bootstrap 4',
+            tabsize: 2,
+            height: 100,
+            toolbar: [
+                ['font', ['bold', 'clear']],
+                ['para', ['ul', 'ol']],
+                ['color', ['color']],
+                ['view', ['codeview']]
+            ]
+        });
+    </script>
     <script>
         $('#saveBtn').click(function (e) {
             e.preventDefault();

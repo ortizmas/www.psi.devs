@@ -4,8 +4,21 @@
     <link href="https://vjs.zencdn.net/7.6.6/video-js.css" rel="stylesheet" />
     <link href="{{ asset('dist/css/menu-accordion.css') }}" rel="stylesheet" />
 
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
+
     <!-- If you'd like to support IE8 (for Video.js versions prior to v7) -->
-    <script src="https://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>  
+    <script src="https://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script> 
+
+    <style>
+        .card-module::before {
+            position:absolute;
+            content:'';
+            background: linear-gradient(#007bff, #007bff);
+            width:6px;
+            height:100%;
+            border-radius:4px 0 0 4px;
+        }
+    </style>
 @endsection
 
 @section('content')
@@ -14,7 +27,7 @@
         <section class="content p-0">
             <div class="content-header bg-dark p-0 m-0">
                 <div class="container-fluid bg-dark p-0">
-                    <div class="jumbotron jumbotron-fluid bg-dark m-0 p-3">
+                    <div class="jumbotron jumbotron-fluid bg-dark m-0 p-3 shadow">
                         <div class="container-fluid">
                             <h1 class="text-white">{{ $data_course->name }}</h1>
                         </div>
@@ -23,7 +36,7 @@
             </div>
 
             <div class="container-fluid bg-content">
-                <div class="row pt-2 pb-5">
+                <div class="row pt-3 pb-5">
                     <div class="col-md-12">
                         <div id="results" style="display: none;">
                             <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -33,16 +46,16 @@
                                 </button>
                             </div>
                         </div>
-                        @foreach ($courses as $key => $module)
+                        @foreach ($courses[0]->modules as $key => $module)
                             @if ($module->classrooms->count() > 0)
-                            <div class="card">
+                            <div class="card card-module">
                                 <div class="card-header">
                                     <h3 class="card-title">
-                                        <i class="ion ion-clipboard mr-1"></i> {{ $module->name }}
+                                        <i class="fa fa-folder-open text-primary mr-1"></i> {{ $module->name }}
                                     </h3>
 
                                     <div class="card-tools">
-                                        <button type="button" class="btn btn-tool p-1" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+                                        <button type="button" class="btn btn-tool p-1" data-card-widget="collapse"><i class="fa fa-minus"></i></button>
                                     </div>
                                 </div>
                                 
@@ -55,8 +68,12 @@
                                             </h3>
                                     
                                             <div class="card-tools">
-                                                <button type="button" class="btn btn-tool p-1" data-card-widget="collapse"><i
-                                                        class="fas fa-minus"></i></button>
+                                                <button type="button" class="btn btn-tool bg-success" data-card-widget="collapse">
+                                                    <i class="fa fa-plus"></i>
+                                                </button>
+                                                <button type="button" class="btn btn-tool bg-light" data-card-widget="collapse">
+                                                    <i class="fa fa-check {{ (isset($class->annotation['description'])) ? 'text-success' : 'text-dark'  }}"></i>
+                                                </button>
                                             </div>
                                         </div>
                                     
@@ -66,7 +83,7 @@
                                                 <div class="form-group">
                                                     <input type="hidden" name="course_id" value="{{ $module->course_id }}">
                                                     <input type="hidden" name="classroom_id" value="{{ $class->id }}">
-                                                    <textarea class="form-control" name="description" rows="3"
+                                                    <textarea id="description" class="form-control" name="description" rows="2"
                                                         required="">{{ old('description', @$class->annotation['description']) }}</textarea>
                                                     <span class="msg_salvou_anotacao badge badge-success p-2" style="display: none; color: #fff;">Anotação
                                                         salva com sucesso</span>
@@ -105,6 +122,7 @@
     </script>
     <!-- Bootstrap 4 -->
     <script src="/dist/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
 
     <!-- AdminLTE App -->
     <script src="/dist/js/adminlte.min.js"></script>
@@ -116,6 +134,21 @@
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
     <script>
+        $('#description').summernote({
+            placeholder: 'Hello Bootstrap 4',
+            tabsize: 2,
+            height: 100,
+            toolbar: [
+                ['font', ['bold', 'clear']],
+                ['para', ['ul', 'ol']],
+                ['color', ['color']],
+                ['view', ['codeview']]
+            ]
+        });
+    </script>
+
+    <script>
+        
         //const axios = require('axios');
 
         // axios.post('{{ route('student.course.axios') }}').then(respond => {

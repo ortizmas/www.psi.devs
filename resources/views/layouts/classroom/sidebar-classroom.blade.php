@@ -23,13 +23,6 @@
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
                 <li class="nav-item">
-                    <a href="{{ route('profiles.show', Auth::id()) }}" class="nav-link">
-                        <i class="fa fa-user-o nav-icon"></i>
-                        <p>Ver perfil</p>
-                    </a>
-                </li>
-                
-                <li class="nav-item">
                     <a href="{{ route('my.courses') }}" class="nav-link">
                         <i class="fa fa-book nav-icon"></i>
                         <p>Meus cursos</p>
@@ -43,20 +36,12 @@
                     </a>
                 </li>
 
-                @if (auth()->user()->name!=null)
-                    <li class="nav-item">
-                        <a href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();" class="nav-link">
-                            <i class="nav-icon fa fas fa-circle-notch text-danger"></i>
-                            {{ __('Logout') }}
-                            
-                        </a>
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                            @csrf
-                        </form>
-                    </li>
-                @endif
+                <li class="nav-item">
+                    <a href="{{ route('student.pdf', $data_course->id) }}" class="nav-link">
+                        <i class="fa fa-edit nav-icon"></i>
+                        <p>Exportar anotações</p>
+                    </a>
+                </li>
             </ul>
         </nav>
     </div>

@@ -18,3 +18,5 @@ Route::post('student/anotation', 'AnnotationController@storeStudentNotes')->name
 Route::post('student/course/axios', 'AnnotationController@axiosStoreCourse')->name('student.course.axios');
 Route::post('student/classroom/axios', 'AnnotationController@axiosStoreClassroom')->name('student.classroom.axios');
 Route::get('student/annotations/{curseId?}', 'AnnotationController@getList')->name('student.annotations');
+
+Route::get('student/pdf/{curseId?}', 'Students\PDFController@generatePdf')->name('student.pdf');

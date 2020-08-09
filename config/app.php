@@ -146,11 +146,13 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
+        
 
         /*
          * Package Service Providers...
          */
         Spatie\Permission\PermissionServiceProvider::class,
+        Barryvdh\DomPDF\ServiceProvider::class,
         //Harimayco\Menu\MenuServiceProvider::class,
         //UniSharp\LaravelFilemanager\LaravelFilemanagerServiceProvider::class,
         //Intervention\Image\ImageServiceProvider::class,
@@ -221,7 +223,7 @@ return [
         'MyHelper' => App\Helpers\MyHelper::class,
         //'Menu' => Harimayco\Menu\Facades\Menu::class,
         //'Image' => Intervention\Image\Facades\Image::class,
-
+        'PDF' => Barryvdh\DomPDF\Facade::class,
     ],
 
 ];

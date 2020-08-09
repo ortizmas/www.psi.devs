@@ -152,25 +152,22 @@ class Course extends Model
         }
     }
 
-    public function getCoursesByAnnotations(array $data)
+    public function getCoursesByAnnotations($userId, $id)
     {
-        $courseId = $data['course_id'];
-        $userId = $data['user_id'];
-
-        $assignmentsByUser = Assignment::where('user_id', $userId)->count();
-
-        if ($assignmentsByUser > 0) {
-            $modules = Module::where('course_id', $courseId)
-                ->with(['classrooms' => function ($query) use ($userId) {
-                    $query->whereIn('classrooms.id', function ($q) use ($userId) {
-                        $q->select('classroom_id')->from('assignments')->where('user_id', $userId);
-                    });
-                }], 'annotation')
-                ->get();
-            return $modules;
-        } else {
-            return array();
-        }
+        return Course::with(['modules' => function ($query) use ($userId) {
+            $query->whereHas('classrooms')
+            ->with(['classrooms' => function ($query) use ($userId) {
+                $query->whereHas('assignments');
+                $query->whereIn('classrooms.id', function ($q) use ($userId) {
+                    $q->select('classroom_id')->from('assignments')->where('user_id', $userId);
+                })
+                ->with(['annotation' => function ($query) use ($userId) {
+                    $query->where('user_id', $userId);
+                }]);
+            }]);
+        }])
+        ->where('id', $id)
+        ->get();
     }
 
     public function checkPayment(array $data)

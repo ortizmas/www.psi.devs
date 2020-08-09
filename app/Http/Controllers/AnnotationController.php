@@ -87,33 +87,13 @@ class AnnotationController extends Controller
 
     public function getList($id)
     {
-        $data['user_id'] = auth()->id();
-        $data['course_id'] = $id;
-
         $userId = auth()->id();
+        $courses = $this->course->getCoursesByAnnotations($userId, $id);
+        $data_course = Course::select('id', 'name', 'url', 'image', 'video')->findOrFail($id);
 
-        $courses = $this->course->getCoursesByAnnotations($data);
-
-        $data_course = Course::select('id', 'name', 'url', 'image', 'video')->findOrFail($data['course_id']);
-
-        /*$classrooms = Classroom::select('*', 'annotations.*')
-            ->join('annotations', 'classrooms.id', '=', 'annotations.classroom_id')
-            ->where('annotations.user_id', $userId)
-            ->where('annotations.course_id', $id)
-            ->get();*/
-        
-        $annotation = $data_course->annotation()->where('user_id', auth()->user()->id)
-            ->whereNull('classroom_id')->first();
-       // $annotations = Annotation::where('user_id', auth()->user()->id)->get();
-        return view('student.annotations', compact('annotation', 'data_course', 'courses'));
+        return view('student.annotations', compact('data_course', 'courses'));
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Annotation  $annotation
-     * @return \Illuminate\Http\Response
-     */
     public function show(Annotation $annotation)
     {
         //
