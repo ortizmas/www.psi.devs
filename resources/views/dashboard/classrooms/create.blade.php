@@ -121,7 +121,19 @@
                                 </div>
                                 @endif
                             </div>
-                            <div class="col-md-6">
+
+                            <div class="col-md-3">
+                                <div class="form-group mb-3">
+                                    <input id="order" type="text" class="basic-usage form-control{{ $errors->has('order') ? ' is-invalid' : '' }}" name="order" value="{{ old('order') }}" placeholder="Ordem"> 
+                                    @if ($errors->has('order'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('order') }}</strong>
+                                        </span> 
+                                    @endif
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
                                 <div class="input-group mb-3">
                                     <select id="status" name="status" class="form-control{{ $errors->has('status') ? ' is-invalid' : '' }}">
                                         <option value="1" {{ old('status')=='1' ? 'selected' : ''  }}>Ativo</option>

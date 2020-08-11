@@ -54,8 +54,9 @@
       						<th>#</th>
       						<th>Nome</th>
       						<th>Descrição</th>
-                          <th>Video</th>
-                          <th>Estado</th>
+                  <th>Video</th>
+                  <th>Ordem</th>
+                  <th>Estado</th>
       						<th colspan="2" rowspan="">Ações</th>
       					</tr>
       				</thead>
@@ -68,6 +69,7 @@
                                    <td>{{ $value->name }}</td>
                                    <td>{{ $value->description }}</td>
                                    <td>{{ $value->video }}</td>
+                                   <td>{{ $value->order }}</td>
                                    <td>{{ ( $value->status == 1 ) ? 'Ativo' : 'Inativo' }}</td>
                                    <td><a href="{{ route('classrooms.edit', $value->id) }}" title="Alterar"><i class="fas fa-edit"></i></a></td>
                                    <td>

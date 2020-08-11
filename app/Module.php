@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Module extends Model
 {
-    protected $fillable = ['name', 'description', 'status', 'course_id'];
+    protected $fillable = ['name', 'description', 'order', 'status', 'course_id'];
 
     public function getResults($data, $total)
     {
@@ -34,7 +34,7 @@ class Module extends Model
                 $description = $data['description'];
                 $query->where('description', 'LIKE', '%{$description}%');
             }
-        })->with('course')->paginate($total);
+        })->orderBy('order')->with('course')->paginate($total);
 
         if (count($modules) > 0) {
             return $modules;

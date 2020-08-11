@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Classroom extends Model
 {
-    protected $fillable = ['name', 'slug', 'description', 'video', 'file', 'views', 'status', 'module_id'];
+    protected $fillable = ['name', 'slug', 'description', 'video', 'file', 'views', 'order', 'status', 'module_id'];
 
     public function getResults($data, $total)
     {

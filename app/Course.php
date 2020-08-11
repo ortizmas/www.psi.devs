@@ -145,6 +145,7 @@ class Course extends Model
                         $q->select('classroom_id')->from('assignments')->where('user_id', $userId);
                     });
                 }])
+                ->orderBy('order')
                 ->get();
             return $modules;
         } else {

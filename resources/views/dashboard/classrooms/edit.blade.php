@@ -100,9 +100,6 @@
                                             <option value="{{ $value->id }}" {{ old('module_id', $classroom->module_id)== $value->id ? 'selected' : ''  }}>{{ $value->name }}</option>
                                         @endforeach
                                     </select>
-                                    {{-- <span class="input-group-btn">
-                                        <button class="category-modal btn btn-outline-dark" type="button" data-toggle="modal" data-target="#modalForm"><i class="fa fa-plus fa-fw"></i></button>
-                                    </span> --}}
                                     @if ($errors->has('module_id'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('module_id') }}</strong>
@@ -110,7 +107,19 @@
                                     @endif
                                 </div>
                             </div>
-                            <div class="col-md-6">
+
+                            <div class="col-md-3">
+                                <div class="form-group mb-3">
+                                    <input id="order" type="text" class="basic-usage form-control{{ $errors->has('order') ? ' is-invalid' : '' }}" name="order" value="{{ old('order', $classroom->order) }}" placeholder="Ordem"> 
+                                    @if ($errors->has('order'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('order') }}</strong>
+                                        </span> 
+                                    @endif
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
                                 <div class="input-group mb-3">
                                     <select id="status" name="status" class="form-control{{ $errors->has('status') ? ' is-invalid' : '' }}">
                                         <option value="1" {{ old('status', $classroom->status)=='1' ? 'selected' : ''  }}>Ativo</option>
