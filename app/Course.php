@@ -143,7 +143,7 @@ class Course extends Model
                 ->with(['classrooms' => function ($query) use ($userId) {
                     $query->whereIn('classrooms.id', function ($q) use ($userId) {
                         $q->select('classroom_id')->from('assignments')->where('user_id', $userId);
-                    });
+                    })->orderBy('order');
                 }])
                 ->orderBy('order')
                 ->get();
@@ -162,6 +162,7 @@ class Course extends Model
                 $query->whereIn('classrooms.id', function ($q) use ($userId) {
                     $q->select('classroom_id')->from('assignments')->where('user_id', $userId);
                 })
+                ->orderBy('order')
                 ->with(['annotation' => function ($query) use ($userId) {
                     $query->where('user_id', $userId);
                 }]);

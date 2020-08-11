@@ -46,17 +46,16 @@
 	      				</button>
 	      			</div>
       			@endif
-            <b class="pl-4 pb-5">Todas as aulas</b>
+            <b class="pl-4 pb-5"></b>
       			<table class="table table-striped">
               
       				<thead>
       					<tr>
       						<th>#</th>
-      						<th>Nome</th>
-      						<th>Descrição</th>
-                  <th>Video</th>
-                  <th>Ordem</th>
-                  <th>Estado</th>
+      						<th>Modulo</th>
+      						<th>Aula</th>
+                            <th>Ordem</th>
+                            <th>Estado</th>
       						<th colspan="2" rowspan="">Ações</th>
       					</tr>
       				</thead>
@@ -66,9 +65,8 @@
                             @foreach ($classrooms as $key => $value)
                                 <tr>
                                    <td>{{ $key + 1 }}</td>
+                                   <td class="bg-primary">{{ $value->module->name }}</td>
                                    <td>{{ $value->name }}</td>
-                                   <td>{{ $value->description }}</td>
-                                   <td>{{ $value->video }}</td>
                                    <td>{{ $value->order }}</td>
                                    <td>{{ ( $value->status == 1 ) ? 'Ativo' : 'Inativo' }}</td>
                                    <td><a href="{{ route('classrooms.edit', $value->id) }}" title="Alterar"><i class="fas fa-edit"></i></a></td>

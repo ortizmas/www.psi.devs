@@ -34,7 +34,7 @@ class Classroom extends Model
                 $query->where('description', 'LIKE', '%{$description}%');
             }
             
-        })->with('module')->paginate($total);
+        })->orderBy('order')->with('module')->paginate($total);
 
         if (count($classrooms) > 0) {
             return $classrooms;

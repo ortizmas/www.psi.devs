@@ -17,6 +17,7 @@ class CreateModulesTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('description')->nullable();
+            $table->integer('order')->nullable();
             $table->boolean('status')->nullable();
             $table->integer('course_id')->unsigned();
 

@@ -45,7 +45,6 @@
                                     >
                                     <source src="{{ $classroom->video }}" type="video/vimeo" />
                               </video>
-                              {{-- <iframe src="{{ $classroom->video }}?autoplay=1" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe> --}}
                             </div>
                         </div>
 

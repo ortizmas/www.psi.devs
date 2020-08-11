@@ -45,7 +45,11 @@ Route::post('/fale-conosco', 'MailController@faleconoscoemail')->name('faleconos
 
 Route::get('/session', 'SessionController@session');
 
-Auth::routes();
+Auth::routes(['register' => false, 'verify' => true]);
+
+Route::match(['get','post'], 'register', function () {
+    return view('errors.403');
+})->name('register');
 
 //Rotas do andmin geral
 Route::middleware(['auth'])->group(function () {

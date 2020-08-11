@@ -24,13 +24,10 @@ class ClassroomController extends Controller
     public function index(Request $request, $idModule = null)
     {
         
-        //$request['module_id'] = $request->get('idModule');
         $request['module_id'] = $idModule;
         $classrooms = $this->classroom->getResults($request->all(), $this->totalPage);
-        //dd($classrooms[0]->module->course_id);
         $request->session()->put('idModule', $idModule);
 
-        //return response()->json($classroom);
         return view('dashboard.classrooms.index', compact('classrooms'));
     }
 
@@ -69,6 +66,7 @@ class ClassroomController extends Controller
 
     public function update(StoreUpdateClassroomFormRequest $request, $id)
     {
+
         $classroom = $this->classroom->find($id);
 
         if (!$classroom)
@@ -76,7 +74,10 @@ class ClassroomController extends Controller
 
         $classroom->update($request->all());
         
-        //return response()->json($classroom);
+        if (session()->get('idModule')) {
+            return redirect()->route('classrooms.index.param', session()->get('idModule'))->with('success', 'Aula alterado com sucesso!!');
+        } 
+
         return redirect()->route('classrooms.index')->with('success', 'Aula alterado com sucesso!!');
     }
 

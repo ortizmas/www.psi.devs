@@ -21,6 +21,7 @@ class CreateClassroomsTable extends Migration
             $table->string('video')->nullable();
             $table->string('file')->nullable();
             $table->integer('views')->nullable();
+            $table->integer('order')->nullable();
             $table->boolean('status')->nullable();
             $table->integer('module_id')->unsigned();
             $table->foreign('module_id')->references('id')->on('modules')->onDelete('cascade');
