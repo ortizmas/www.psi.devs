@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Spatie\Permission\Traits\HasRoles;
+use App\Notifications\ResetPassword as ResetPasswordNotification;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -36,6 +37,11 @@ class User extends Authenticatable implements MustVerifyEmail
             $this->attributes['password'] = bcrypt($password);
         }
     }
+
+    // public function sendPasswordResetNotification($token)
+    // {
+    //     $this->notify(new ResetPasswordNotification($token));
+    // }
 
     public function isSuperAdmin()
     {

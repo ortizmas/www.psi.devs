@@ -45,5 +45,6 @@
   "Whoops!": "Ops!",
   "Whoops, something went wrong on our servers.": "Ops, algo deu errado em nossos servidores.",
   "Contact" : "Contato",
-  "Home" : "Inicio"
+  "Home" : "Inicio",
+  "This password reset link will expire in :count minutes.": "Este link de redefinição de senha irá expirar em 60 minutos."
 }
