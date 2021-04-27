@@ -9,6 +9,12 @@
         <input id="slug-modal" type="text" class="form-control{{ $errors->has('slug') ? ' is-invalid' : '' }}" name="slug" value="{{ old('slug') }}" placeholder="Slug" required autofocus>
         <span id="error-slug" class="invalid-feedback"></span>
     </div>
+
+    <div class="input-group mb-3">
+        <input id="section" type="text" class="form-control{{ $errors->has('section') ? ' is-invalid' : '' }}" name="section" value="{{ old('section') }}" placeholder="section" required autofocus>
+        <span id="error-section" class="invalid-feedback"></span>
+    </div>
+
     <div class="form-group mb-3">
         <select id="enabled" name="enabled" class="form-control{{ $errors->has('enabled') ? ' is-invalid' : '' }}">
             <option value="">Estado da categoria</option>

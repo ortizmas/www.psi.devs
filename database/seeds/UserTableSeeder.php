@@ -35,7 +35,7 @@ class UserTableSeeder extends Seeder
         $editor = User::create([
         	'name' => 'admin',
         	'email' => 'admin@gmail.com',
-        	'password' => bcrypt('secret'),
+        	'password' => 'password', //bcrypt('secret'),
         ]);
 
         $editor->assignRole('super-admin');
