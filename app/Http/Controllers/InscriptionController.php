@@ -10,9 +10,20 @@ use Illuminate\Support\Facades\Auth;
 class InscriptionController extends Controller
 {
 
-    public function index()
+    public function index(Request $request)
     {
-        $inscriptions = Inscription::where('status', '!=', 2)->paginate()->load('courses');
+
+        $inscriptions = Inscription::with('courses')
+            ->where(function ($query) use ($request) {
+                if ($request->has('search')) {
+                    $query->where('name', 'LIKE', '%'.$request->search.'%')
+                    ->orWhere('cpf', 'LIKE', '%'.$request->search.'%')
+                    ->orWhere('email_inscription', 'LIKE', '%'.$request->search.'%');
+                }
+            })
+            ->where('status', '!=', 2)
+            ->orderBy('id', 'desc')
+            ->paginate(40);
 
         return view('dashboard.inscriptions.index', compact('inscriptions'));
     }
