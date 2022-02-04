@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use App\Course;
 use App\Inscription;
+use App\CourseInscription;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -36,15 +38,23 @@ class InscriptionController extends Controller
 
     public function create()
     {
-        
-        return view('dashboard.inscriptions.create');
+        $users = User::all();
+        return view('dashboard.inscriptions.create', compact('users'));
     }
 
     public function store(Request $request)
     {
+        $user = User::find($request->user_id);
+        $verifyInscription = Inscription::where('user_id', $request->user_id)->first();
+
+        if ($verifyInscription ) {
+            return redirect()->route('inscriptions.create')
+                ->with('error', 'O usuario já posui uma inscrição, vai na lista de inscritos para assignar aulas!!');
+        }
+
         $inscription = Inscription::create([
-            'user_id' => (Auth::user()->id) ? Auth::user()->id : '',
-            'name' => $request['name'],
+            'user_id' => $request['user_id'],
+            'name' => $request['name'] ? $request['name'] : $user->name,
             'cpf' => $request['cpf'],
             'cep' => $request['cep'],
             'street' => $request['street'],
@@ -52,19 +62,23 @@ class InscriptionController extends Controller
             'city' => $request['city'],
             'state' => $request['state'],
             'ibge' => $request['ibge'],
-            'email' => $request['email'],
+            'email_inscription' => $request['email_inscription'],
             'phone' => $request['phone'],
             'company' => $request['company'],
             'company_phone' => $request['company_phone'],
             'program' => $request['program']
         ]);
 
-        return redirect()->route('inscriptions.index')->with('success', 'Inscrito cadastrado com sucesso!!');
+        return redirect()->route('inscriptions.index')->with('success', 'Inscrição cadastrado com sucesso!!');
     }
 
     public function show(Inscription $inscription)
     {
-        return view('dashboard.inscriptions.show', compact('inscription'));
+        
+        $inscriptions = Inscription::all();
+        $courses = Course::all();
+        
+        return view('dashboard.inscriptions.show', compact('inscription', 'inscriptions', 'courses'));
     }
 
     public function edit(Inscription $inscription)
@@ -103,6 +117,25 @@ class InscriptionController extends Controller
         $data = $request->except(['_token', '_method']);
         $inscription->updatePivoteTable($data);
         return back()->with('success', "Status alterado com sucesso");
+    }
+
+    public function assignEnrollmentCourse(Request $request)
+    {
+        $course = Course::find($request->course_id);
+
+        CourseInscription::create([
+            'course_id' => $course->id,
+            'inscription_id' => $request->inscription_id,
+            'course' =>$course->name,
+            'amount' => 1,
+            'price' => $course->price,
+            'subtotal' => $course->price,
+            'status' => 4,
+            'code' => '123ABC'
+        ]);
+
+        return redirect()->route('inscriptions.show', $request->inscription_id)
+            ->with('message', "O curso foi assignado com sucesso!! ");
     }
 
     public function destroy(Inscription $inscription)

@@ -43,6 +43,7 @@ Route::group(['middleware' => ['role:super-admin|admin|teachers']], function() {
 	Route::resource('trainees', 'TraineeController');
 
 	Route::resource('/inscriptions', 'InscriptionController');
+	Route::post('assign-enrollment-course', 'InscriptionController@assignEnrollmentCourse')->name('assign.enrollment.course');
 	Route::put('/inscriptions/course/update', 'InscriptionController@inscriptionCourseUpdate')->name('inscription.course.update');
 
 	Route::get('alunos', 'InscriptionController@getInscriptionPaid')->name('inscriptions.paid');

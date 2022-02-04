@@ -1,5 +1,10 @@
 @extends('layouts.master')
 
+@section('styles')
+    <link rel="stylesheet" type="text/css" href="{{ asset('vendor/select2/css/select2.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('vendor/select2/css/select2-bootstrap4.min.css') }}">
+@endsection
+
 @section('content')
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
@@ -9,14 +14,14 @@
             <div class="row mb-2">
               <div class="col-sm-6">
                 <h1 class="m-0 text-dark">Dados do inscrito</h1>
-              </div><!-- /.col -->
+              </div>
               <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                   <li class="breadcrumb-item"><a href="{{ route('inscriptions.index') }}" class="btn btn-info btn-sm">Lista de inscritos</a></li>
                 </ol>
-              </div><!-- /.col -->
-            </div><!-- /.row -->
-          </div><!-- /.container-fluid -->
+              </div>
+            </div>
+          </div>
         </div>
         <!-- /.content-header -->
 
@@ -70,6 +75,69 @@
                     </div>
 
                     <div class="col-md-8">
+                        <!--Card para assignar mais de um curso para o inscrito-->
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">Assignar cursos ao usuario</h3>
+                                <div class="card-tools">
+                                    <button type="button" class="btn btn-tool" data-widget="collapse">
+                                        <i class="fa fa-minus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="card-body p-0">
+                                @if (session()->has('message'))
+                                    <div class="alert alert-success alert-dismissible fade show m-4" role="alert">
+                                          <strong></strong> {{ session('message') }}
+                                          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                @endif
+                                <div class="m-4">
+                                    <form action="{{ route('assign.enrollment.course') }}" method="post" class="form-horizontal">
+                                        @csrf
+                                        <div class="input-group mb-3">
+                                            <select id="inscription_id" name="inscription_id" class="form-control{{ $errors->has('inscription_id') ? ' is-invalid' : '' }}" required>
+                                                <option value="">Selecionar inscrito</option>
+                                                @foreach ($inscriptions as $value)
+                                                    <option value="{{ $value->id }}" {{ old('inscription_id', $inscription->id)== $value->id ? 'selected' : ''  }}>{{ $value->name }} - {{ $value->cpf }}</option>
+                                                @endforeach
+                                            </select>
+                                            @if ($errors->has('inscription_id'))
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $errors->first('inscription_id') }}</strong>
+                                                </span> 
+                                            @endif
+                                        </div>
+
+                                        
+                                        <div class="input-group mb-3">
+                                            <select id="course_id" name="course_id" class="form-control{{ $errors->has('course_id') ? ' is-invalid' : '' }}" required>
+                                                <option value="">Selecionar cursos</option>
+                                                @foreach ($courses as $value)
+                                                    <option value="{{ $value->id }}" {{ old('course_id')== $value->id ? 'selected' : ''  }}>{{ $value->name }}</option>
+                                                @endforeach
+                                            </select>
+                                            @if ($errors->has('course_id'))
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $errors->first('course_id') }}</strong>
+                                                </span> 
+                                            @endif
+                                        </div>
+
+                                        <div class="input-group mb-3">
+                                            <button class="btn btn-primary" type="submit">Assignar curso</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="card-footer text-center">
+                                
+                            </div>
+                        </div>
+
+                        <!--Card para liberar os cursos por status de pagamento-->
                         <div class="card">
                             <div class="card-header">
                                 <h3 class="card-title">Cursos</h3>
@@ -134,7 +202,6 @@
                                 
                             </div>
                         </div>
-                        <!-- /.card -->
                     </div>
                 </div>
           	</div>
@@ -151,6 +218,7 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
     <!-- Bootstrap 4 -->
     <script src="/dist/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="{{ asset('vendor/select2/js/select2.min.js') }}"></script>
     
     <!-- AdminLTE App -->
     <script src="/dist/js/adminlte.js"></script>
@@ -162,5 +230,11 @@
 
         const status = $('#status').val();
         console.log(status);
+        $( "#inscription_id").select2({
+            theme: "bootstrap4"
+        });
+        $( "#course_id").select2({
+            theme: "bootstrap4"
+        });
     </script>
 @stop

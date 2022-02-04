@@ -39,11 +39,7 @@ class Inscription extends Model
 
     public static function getCourses()
     {
-        /* $courses = Course::whereHas('inscriptions', function ($q) {
-            $q->where('user_id', Auth::id());
-        })->orderBy('name', 'asc')->get(); */
-
-        // $model->problems()->where('phone_problem', $problem->id)->first()->pivot->price;
+        
         $inscription = Inscription::where('user_id', auth()->user()->id)->firstOrFail();
         $courses = $inscription->courses()->where('course_inscription.status', '!=', 2)->get();
         

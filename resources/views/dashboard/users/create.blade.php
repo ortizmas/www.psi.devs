@@ -24,7 +24,7 @@
     <section class="content">
       	<div class="container-fluid">
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-12">
                     <div class="card">
                         <div class="card-body register-card-body">
                             <p class="login-box-msg">{{ __('Register') }}</p>
@@ -93,7 +93,7 @@
 
                                 <div class="row">
                                     <div class="col-6">
-                                        <button type="submit" class="btn btn-primary btn-block btn-flat">Register</button>
+                                        <button type="submit" class="btn btn-primary rounded btn-block btn-flat w-25">Salvar</button>
                                     </div>
                                     <!-- /.col -->
                                 </div>

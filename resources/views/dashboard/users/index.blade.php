@@ -8,15 +8,18 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">{{ $title }}</h1>
+            <h1 class="m-0 text-dark">Lista de usuarios</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               @can('create user', User::class)
-                  <li class="breadcrumb-item"><a href="{{ route('users.create') }}"><i class="fas fa-plus-square" style="font-size: 48px;"></i></a></li>
+                  <li>
+                    <a class="btn btn-success btn-sm" href="{{ route('users.create') }}"><i class="fas fa-plus-square"></i> Usuario</a>
+                  </li>
+                  <li class="ml-2">
+                    <a class="btn btn-primary btn-sm" href="{{ route('inscriptions.index') }}"><i class="fas fa-list"></i> Inscritos</a>
+                  </li>
               @endcan
-              
-              {{-- <li class="breadcrumb-item active">Dashboard v2</li> --}}
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->

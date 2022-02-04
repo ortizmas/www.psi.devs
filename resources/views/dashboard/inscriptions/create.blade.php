@@ -1,5 +1,10 @@
 @extends('layouts.master')
 
+@section('styles')
+    <link rel="stylesheet" type="text/css" href="{{ asset('vendor/select2/css/select2.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('vendor/select2/css/select2-bootstrap4.min.css') }}">
+@endsection
+
 @section('content')
     
     <div class="content-wrapper">
@@ -8,11 +13,16 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Inscrição</h1>
+            <h1 class="m-0 text-dark">Adicionar nova inscrição</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="{{ route('inscriptions.index') }}" class="btn btn-info btn-sm">Lista de inscritoss</a></li>
+                <li class="breadcrumb-item">
+                  <a href="{{ route('inscriptions.index') }}" class="btn btn-info btn-sm">Lista de inscritoss</a>
+                </li>
+                <li class="breadcrumb-item">
+                  <a href="{{ route('users.create') }}" class="btn btn-primary btn-sm">Nono usuario</a>
+                </li>
             </ol>
           </div>
         </div>
@@ -22,20 +32,45 @@
     <!-- Main content -->
     <section class="content">
       	<div class="container-fluid">
+            @if (session('error'))
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <strong>{{ session('error') }}</strong>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            @endif
             <form action="{{ route('inscriptions.store') }}" method="post">
                 @csrf
                 <div class="card">
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-8">
-                                <div class="form-group mb-3">
+                                <!-- <div class="form-group mb-3">
                                     <input id="name" type="text" class="basic-usage form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" placeholder="NOME" required autofocus> 
                                     @if ($errors->has('name'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('name') }}</strong>
                                         </span> 
                                     @endif
-                                </div>
+                                </div> -->
+                                @if ( Session::has('userId') )
+                                    <input type="text" name="user_id" value="{{ Session::get('idCourse') }}" placeholder="" >
+                                @else
+                                    <div class="input-group mb-3">
+                                        <select id="user_id" name="user_id" class="form-control{{ $errors->has('user_id') ? ' is-invalid' : '' }}" required>
+                                            <option value="">Selecionar Usuario</option>
+                                            @foreach ($users as $value)
+                                                <option value="{{ $value->id }}" {{ old('user_id')== $value->id ? 'selected' : ''  }}>{{ $value->name }}</option>
+                                            @endforeach
+                                        </select>
+                                        @if ($errors->has('user_id'))
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $errors->first('user_id') }}</strong>
+                                            </span> 
+                                        @endif
+                                    </div>
+                                @endif
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group mb-3">
@@ -73,7 +108,7 @@
                         </div>
 
                         <div class="row">
-                            <div class="col-md-4">
+                            <div class="col-md-5">
                                 <div class="form-group mb-3">
                                     <input id="bairro" type="text" class="basic-usage form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="neighborhood" value="{{ old('neighborhood') }}" placeholder="BAIRRO" required autofocus> 
                                     @if ($errors->has('neighborhood'))
@@ -94,7 +129,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-2">
+                            <div class="col-md-3">
                                 <div class="form-group mb-3">
                                     <input id="uf" type="text" class="basic-usage form-control{{ $errors->has('state') ? ' is-invalid' : '' }}" name="state" value="{{ old('state') }}" placeholder="UF" required autofocus> 
                                     @if ($errors->has('state'))
@@ -104,8 +139,9 @@
                                     @endif
                                 </div>
                             </div>
+                            <input id="ibge" type="hidden" class="basic-usage form-control{{ $errors->has('ibge') ? ' is-invalid' : '' }}" name="ibge" value="{{ old('ibge') }}" placeholder="IBGE" required autofocus>
 
-                            <div class="col-md-2">
+                            <!-- <div class="col-md-2">
                                 <div class="form-group mb-3">
                                     <input id="ibge" type="text" class="basic-usage form-control{{ $errors->has('ibge') ? ' is-invalid' : '' }}" name="ibge" value="{{ old('ibge') }}" placeholder="IBGE" required autofocus> 
                                     @if ($errors->has('ibge'))
@@ -114,16 +150,16 @@
                                         </span> 
                                     @endif
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
 
                         <div class="row">
                             <div class="col-md-8">
                                 <div class="form-group mb-3">
-                                    <input id="email" type="email" class="basic-usage form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" placeholder="E-MAIL" required autofocus> 
-                                    @if ($errors->has('email'))
+                                    <input id="email_inscription" type="email_inscription" class="basic-usage form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="email_inscription" value="{{ old('email_inscription') }}" placeholder="E-MAIL" required autofocus> 
+                                    @if ($errors->has('email_inscription'))
                                         <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('email') }}</strong>
+                                            <strong>{{ $errors->first('email_inscription') }}</strong>
                                         </span> 
                                     @endif
                                 </div>
@@ -142,7 +178,7 @@
                         </div>
 
                         <div class="row">
-                            <div class="col-md-8">
+                            <div class="col-md-6">
                                 <div class="form-group mb-3">
                                     <input id="company" type="text" class="basic-usage form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="company" value="{{ old('company') }}" placeholder="EMPRESA" required autofocus> 
                                     @if ($errors->has('company'))
@@ -163,20 +199,7 @@
                                     @endif
                                 </div>
                             </div>
-                        </div>
-                        
-                        <div class="row">
-                            <div class="col-md-8">
-                                <div class="input-group mb-3">
-                                    <input id="program" type="text" class="form-control{{ $errors->has('program') ? ' is-invalid' : '' }}" name="program" value="{{ old('program') }}" placeholder="PROGRAMA REFERENTE" required autofocus>
-                                    @if ($errors->has('program'))
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('program') }}</strong>
-                                        </span> 
-                                    @endif
-                                </div>
-                            </div>
-                            <div class="col-md-4">
+                            <div class="col-md-2">
                                 <div class="input-group mb-3">
                                     <select id="status" name="status" class="form-control{{ $errors->has('status') ? ' is-invalid' : '' }}">
                                         <option value="1" {{ old('status')=='1' ? 'selected' : ''  }}>Ativo</option>
@@ -191,11 +214,11 @@
                             </div>
                         </div>
 
-                            <div class="row">
-                                <div class="col-12">
-                                    <button type="submit" class="btn btn-primary btn-block btn-flat">Register</button>
-                                </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <button type="submit" class="btn btn-primary rounded btn-flat w-25 float-right">Register</button>
                             </div>
+                        </div>
                     </div>
                 </div>
             </form>
@@ -214,6 +237,7 @@
 
     <!--Mask jQuery-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="{{ asset('vendor/select2/js/select2.min.js') }}"></script>
     
     <!-- AdminLTE App -->
     <script src="/dist/js/adminlte.js"></script>
@@ -307,6 +331,12 @@
                     limpa_formulário_cep();
                 }
             });
+        });
+
+        // Select2
+        //$(document).ready(function() { $("#user_id").select2(); });
+        $( "#user_id" ).select2({
+            theme: "bootstrap4"
         });
     </script>
 @stop
