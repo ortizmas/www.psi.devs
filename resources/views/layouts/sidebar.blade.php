@@ -277,7 +277,9 @@
                         </li>
                     </ul>
                 </li>
+                @endrole
 
+                @role('master-admin')
                 <li class="nav-header">SEÇÃO INSTITUIÇÕES</li>
                 <li class="nav-item has-treeview">
                     <a href="#" class="nav-link">
@@ -359,7 +361,7 @@
                 </li>
                 @endrole
 
-                @role('super-admin')
+                @role('master-admin')
                 <li class="nav-header">MISCELLANEOUS</li>
                 <li class="nav-item">
                     <a href="https://adminlte.io/docs" class="nav-link">
@@ -415,9 +417,10 @@
                         </form>
                     </li>
                 @endif
+                <li>
+                    <div class="pb-5"></div>
+                </li>
             </ul>
         </nav>
-        <!-- /.sidebar-menu -->
     </div>
-    <!-- /.sidebar -->
 </aside>

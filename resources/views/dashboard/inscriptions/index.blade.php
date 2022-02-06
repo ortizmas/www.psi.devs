@@ -20,9 +20,9 @@
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="{{ route('inscriptions.create') }}"><i class="fas fa-plus-square" style="font-size: 48px;"></i></a></li>
             </ol>
-          </div><!-- /.col -->
-        </div><!-- /.row -->
-      </div><!-- /.container-fluid -->
+          </div>
+        </div>
+      </div>
     </div>
     <!-- /.content-header -->
 
@@ -44,8 +44,9 @@
       						<th>#</th>
       						<th>Nome</th>
       						<th>CPF</th>
-                            <th>E-mail</th>
-                            <th>Estado</th>
+                  <th>E-mail</th>
+                  <th>Qtd. Cursos</th>
+                  <th>Assignar aulas</th>
       						<th colspan="3" rowspan="">Ações</th>
       					</tr>
       				</thead>
@@ -56,7 +57,14 @@
                       <td>{{ $value->name }}</td>
                       <td>{{ $value->cpf }}</td>
                       <td>{{ $value->email_inscription }}</td>
-                      <td><a href="{{ route('assign.courses', $value->user_id) }}" title="Alterar" class="badge badge-pill badge-primary pt-1 pb-1 pl-2 pr-2"><i class="fas fa-edit"></i> Assignar aulas</a></td>
+                      <td>
+                        <a href="#" class="badge badge-dark" data-toggle="modal" data-target="#exampleModal" onclick="getCourses({{ $value->courses }})">
+                          {{ $value->courses->count() }}
+                        </a>
+                      </td>
+                      <td><a href="{{ route('assign.courses', $value->user_id) }}" title="Alterar" class="badge badge-pill badge-primary pt-1 pb-1 pl-2 pr-2">
+                        <i class="fas fa-edit"></i> Assignar</a>
+                      </td>
                       <td>
                           <span class="badge badge-pill badge-{{ ($value->status == 1) ?  'success text-white w-100' : 'danger w-100' }}">
                               {{ getStatusInscription($value->status) }}
@@ -83,6 +91,28 @@
           </div>
 
       	</div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Cursos</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <ul class="list-group">
+                  <div id="courses"></div>
+                </ul>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+              </div>
+            </div>
+          </div>
+        </div>
     </section>
     <!-- /.content -->
     </div>
@@ -108,6 +138,41 @@
     <script src="/dist/js/demo.js"></script>
 		
     <script>
+      function getCourses(data) {
+        var dataAll = '';
+        var courseData = data.map((course) => {
+          return `<li class="list-group-item d-flex justify-content-between align-items-center">
+            ${course.name } 
+            ${getStatus(course.pivot.status)}
+            </li>`;
+        });
+        document.getElementById('courses').innerHTML = courseData.join('');
+        
+      }
+
+      function getStatus(value) {
+        
+        var pagStatus = '';
+        switch (value) {
+          case '1':
+            pagStatus = `<span class="badge badge-primary badge-pill">Aprovado</span>`;
+            break;
+          case '2':
+            pagStatus = `<span class="badge badge-danger badge-pill">Cancelado</span>`;
+            break;
+          case '3':
+            pagStatus = `<span class="badge badge-dark badge-pill">Em análise</span>`;
+            break;
+          case '4':
+            pagStatus = `<span class="badge badge-warning badge-pill">Aguardando pagto.</span>`;
+            break;
+          case '5':
+            pagStatus = `<span class="badge badge-success badge-pill">Pago</span>`;
+            break;
+        }
+        return pagStatus;
+      }
+
       $('body').on('click', '.btn-delete', function (event) {
           event.preventDefault();
 
@@ -153,5 +218,6 @@
               }
           });
       });
+
     </script>
 @stop

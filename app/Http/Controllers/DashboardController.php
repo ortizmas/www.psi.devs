@@ -23,6 +23,7 @@ class DashboardController extends Controller
     
     public function home()
     {
+        
         $user = Auth::user();
         $role = $user->roles[0]->name;
         
@@ -38,11 +39,9 @@ class DashboardController extends Controller
             case 'student':
                     //Item selecionado por o cliente que deseja comprar 
                     $item_carrinho = session()->get('item_buy');
-
-                    //dd($item_carrinho);
                     
-                    if ($item_carrinho != null) {
-                        return redirect()->route('profiles.create');
+                    if ($item_carrinho == null) {
+                        return redirect()->route('my.courses');
                     } else {
                         return $this->student($item_carrinho);
                     }
@@ -78,8 +77,10 @@ class DashboardController extends Controller
 
     public function student($item_carrinho)
     {
+        
         $courses = Inscription::getCourses();
-        return view('dashboard.student', compact('courses'));
+        return redirect()->route('profiles.create');
+        // return view('dashboard.student', compact('courses'));
         
     }
 

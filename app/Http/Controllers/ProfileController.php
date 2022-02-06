@@ -30,13 +30,20 @@ class ProfileController extends Controller
 
     public function create(Request $request)
     {
+        // Obtemos o curso selecionado para compra se existe a session
+        $course = null;
+        if (session()->has('item_buy')) {
+            $courseId = decrypt(session()->get('item_buy'));
+            $course = Course::findOrFail($courseId);
+        }
+        
         $user = Auth::user();
         $programs = Course::all();
 
         if ($user->inscription && session('url') != null) {
             return redirect()->route('preregister.create', session('url'));
         }
-        return view('dashboard.profiles.create', compact('user', 'programs'));
+        return view('dashboard.profiles.create', compact('user', 'programs', 'course'));
     }
 
     public function store(Request $request)

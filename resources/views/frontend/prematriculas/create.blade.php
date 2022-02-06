@@ -35,8 +35,8 @@
                 <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
                     <form action="{{ route('login') }}" method="post" novalidate="">
                         <div class="card mt-4">
-                            <div class="card-header pt-3 pb-1">
-                                <h5 class="card-title">Fazer lpgin</h5>
+                            <div class="card-header text-white pt-3 pb-1" style="background: #3e4095;">
+                                <h5 class="card-title">Fazer login</h5>
                             </div>
                             <div class="card-body">
                                 @csrf
@@ -73,7 +73,7 @@
                                     <input type="hidden" name="program" value="{{$slug}}">
                                     <!-- /.col -->
                                     <div class="col-12">
-                                        <button type="submit" class="btn btn-primary btn-block btn-flat">ENTRAR</button>
+                                        <button type="submit" class="btn btn-primary btn-block btn-flat" style="background: #3e4095;">ENTRAR</button>
                                     </div>
                                     <!-- /.col -->
                                 </div>
@@ -86,7 +86,7 @@
                     <form action="{{ route('preregister.store') }}" method="post" novalidate="">
                         @csrf
                         <div class="card mt-4">
-                            <div class="card-header pt-3 pb-1">
+                            <div class="card-header bg-dark text-white pt-3 pb-1">
                                 <h5 class="card-title">Ainda não tem uma conta? <strong>Cadastre-se agora</strong></h5>
                             </div>
                             <div class="card-body">
@@ -148,9 +148,9 @@
                                 </div>
                                 <input type="hidden" name="program" value="{{$slug}}">
                                 <br>
-                                <div class="row justify-content-center">
-                                    <div class="col-4">
-                                        <button type="submit" class="btn btn-success btn-block btn-flat">REGISTRAR <i class="fas fa-angle-double-right"></i></button>
+                                <div class="row justify-content-end">
+                                    <div class="col-3">
+                                        <button type="submit" class="btn btn-success btn-block btn-flat" style="background: #343a40;">REGISTRAR <i class="fas fa-angle-double-right"></i></button>
                                     </div>
                                 </div>
                             </div>

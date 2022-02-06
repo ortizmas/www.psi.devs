@@ -34,7 +34,7 @@ class InscriptionRequest extends FormRequest
                     'name' => 'required',
                     'cep' => 'required',
                     'email_inscription' => 'email|max:200|required',
-                    'cpf' => 'required|cpf|max:14',
+                    'cpf' => 'required|cpf|max:14|unique:inscriptions,cpf',
                     'phone' => 'required',
                     'name_user' => 'required|string|max:255',
                     'email' => 'required|string|email|max:255|unique:users',
@@ -47,8 +47,8 @@ class InscriptionRequest extends FormRequest
                 return [
                     'name' => 'required',
                     'cep' => 'required',
-                    'email' => 'email|max:200|unique:donations,email,'.$this->id,
-                    'cpf' => 'required|cpf|max:15',
+                    'email' => 'email|max:200|unique:inscriptions,email,'.$this->id,
+                    'cpf' => 'required|cpf|max:15|unique:inscriptions,cpf,'.$this->id,
                     'phone' => 'required'
                 ];
                 break;

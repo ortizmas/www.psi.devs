@@ -21,8 +21,15 @@ class StudentController extends Controller
 
     public function index()
     {
+
         $courses = Inscription::getCourses();
+
+        if (!$courses) {
+            return  redirect()->route('profiles.create');
+        }
+
         return view('student.index', compact('courses'));
+        
     }
 
     public function myCourse($url, $id)

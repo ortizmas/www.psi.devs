@@ -53,7 +53,8 @@ class PreRegisterController extends Controller
             'amount' => $amount,
             'price' => $price,
             'subtotal' => $subtotal,
-            'status' => 4
+            'status' => 4,
+            'code' => '123ABC'
         ]);
         
         //session()->forget('item_buy'); // Removes a specific variable session

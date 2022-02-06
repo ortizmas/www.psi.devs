@@ -1,5 +1,10 @@
 @extends('layouts.master')
 
+@section('styles')
+    <link rel="stylesheet" type="text/css" href="{{ asset('vendor/select2/css/select2.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('vendor/select2/css/select2-bootstrap4.min.css') }}">
+@endsection
+
 @section('content')
     
     <div class="content-wrapper">
@@ -7,9 +12,9 @@
     <div class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
-          <div class="col-sm-6">
+          {{-- <div class="col-sm-6">
             <h1 class="m-0 text-dark">Informações de pagamento</h1>
-          </div>
+          </div> --}}
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
             </ol>
@@ -29,11 +34,40 @@
         </div>
         @endif
         <div class="container-fluid">
+            @if (session()->has('item_buy'))
+            <div class="card">
+                <div class="card-header font-weight-bold">Detalhes do pedido</div>
+                <div class="card-body pb-1  ">
+                    <p class="font-weight-bold">{{ $course->name }}</p>
+                </div>
+            </div>
+            @endif
             <form action="{{ route('profiles.store') }}" method="post">
                 @csrf
                 <div class="card">
+                    <div class="card-header font-weight-bold">Complete as seguintes informações para continuar</div>
                     <div class="card-body">
                         <div class="row">
+                            @if (session()->has('item_buy'))
+                                <input id="program" type="hidden" name="program_session" value="{{ old('program', session('item_buy', 'default')) }}" readonly="">
+                            @else
+                                <div class="col-md-12">
+                                    <div class="input-group mb-3">
+                                        <select id="program" name="program" class="form-control{{ $errors->has('program') ? ' is-invalid' : '' }}" required="required">
+                                            <option value="" >-- Selecionar um curso --</option>
+                                            @foreach ($programs as $program)
+                                                <option value="{{ $program->id }}" {{ old('program')==$program->id  ? 'selected' : ''  }}>{{ $program->name }}</option>
+                                            @endforeach
+                                        </select>
+                                        @if ($errors->has('program'))
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $errors->first('program') }}</strong>
+                                            </span> 
+                                        @endif
+                                    </div>
+                                </div>
+                            @endif
+
                             <div class="col-md-8">
                                 <div class="form-group mb-3">
                                     <input id="name" type="text" class="basic-usage form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name', $user->name) }}" placeholder="NOME" required autofocus> 
@@ -163,27 +197,6 @@
                         </div>
                         
                         <div class="row">
-                            @if (session()->has('item_buy'))
-                                <input id="program" type="hidden" name="program_session" value="{{ old('program', session('item_buy', 'default')) }}" readonly="">
-                            @else
-                                <div class="col-md-4">
-                                    <div class="input-group mb-3">
-                                        <select id="program" name="program" class="form-control{{ $errors->has('program') ? ' is-invalid' : '' }}" required="required">
-                                            <option value="" >-- Selecionar um curso --</option>
-                                            @foreach ($programs as $program)
-                                                <option value="{{ $program->id }}" {{ old('program')==$program->id  ? 'selected' : ''  }}>{{ $program->name }}</option>
-                                            @endforeach
-                                        </select>
-                                        @if ($errors->has('program'))
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $errors->first('program') }}</strong>
-                                            </span> 
-                                        @endif
-                                    </div>
-                                </div>
-                            @endif
-                            
-
                             @role('super-admin')
                             <div class="col-md-4">
                                 <div class="input-group mb-3">
@@ -227,6 +240,7 @@
 
     <!--Mask jQuery-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="{{ asset('vendor/select2/js/select2.min.js') }}"></script>
     
     <!-- AdminLTE App -->
     <script src="/dist/js/adminlte.js"></script>
@@ -234,6 +248,12 @@
     <script src="/dist/js/demo.js"></script>
 
     <script>
+        @if (!session()->has('item_buy'))
+            $( "#program" ).select2({
+                theme: "bootstrap4"
+            });
+        @endif
+
         $(document).ready(function() {
             $(function() {
                 $("#phone").mask("(00) 90000-0000");

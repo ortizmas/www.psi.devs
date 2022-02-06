@@ -40,10 +40,15 @@ class Inscription extends Model
     public static function getCourses()
     {
         
-        $inscription = Inscription::where('user_id', auth()->user()->id)->firstOrFail();
-        $courses = $inscription->courses()->where('course_inscription.status', '!=', 2)->get();
+        $inscription = Inscription::where('user_id', auth()->user()->id)->first();
         
-        return $courses;
+        if ($inscription) {
+            $courses = $inscription->courses()->where('course_inscription.status', '!=', 2)->get();
+            return $courses;
+        }
+        
+        return null;
+        
     }
 
     public function updatePivoteTable(array $data)

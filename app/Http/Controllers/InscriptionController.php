@@ -25,7 +25,7 @@ class InscriptionController extends Controller
             })
             ->where('status', '!=', 2)
             ->orderBy('id', 'desc')
-            ->paginate(40);
+            ->paginate(100);
 
         return view('dashboard.inscriptions.index', compact('inscriptions'));
     }
